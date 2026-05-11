@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Company OS — Context creates clarity.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Das Betriebssystem für deine Firma. Tickets, Strategie, CRM, Wissen, Mitarbeiter und Kosten in einem System.">
+<style>
+@font-face { font-family:"Inter"; src:url("fonts/Inter-Regular.woff2") format("woff2"); font-weight:400; font-display:swap; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-Medium.woff2") format("woff2"); font-weight:500; font-display:swap; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-SemiBold.woff2") format("woff2"); font-weight:600; font-display:swap; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-Bold.woff2") format("woff2"); font-weight:700; font-display:swap; }
+
+:root {
+  --bg:          #0f0f10;
+  --surface:     #191918;
+  --surface-2:   #222220;
+  --surface-3:   #2c2c29;
+  --line:        #383835;
+  --line-strong: #575750;
+  --text:        #f3f3ee;
+  --muted:       #a7a79e;
+  --muted-2:     #7f786a;
+  --blue:        #4aa3ff;
+  --green:       #3ed277;
+  --amber:       #ffb340;
+  --pink:        #ff6577;
+  --violet:      #b4a6ff;
+  --blue-soft:   rgba(74,163,255,.14);
+  --green-soft:  rgba(62,210,119,.14);
+  --amber-soft:  rgba(255,179,64,.14);
+  --pink-soft:   rgba(255,101,119,.14);
+  --violet-soft: rgba(180,166,255,.14);
+  --blue-text:   #b9ddff;
+  --green-text:  #b8ffc9;
+  --amber-text:  #ffd992;
+  --pink-text:   #ffadb6;
+  --violet-text: #d6c9ff;
+  --radius:      6px;
+  --radius-sm:   4px;
+  --font:        "Inter","Segoe UI",system-ui,sans-serif;
+  --font-mono:   "SF Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+html, body { background:var(--bg); color:var(--text); font-family:var(--font); font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-decoration:none; }
+
+.container { max-width:1160px; margin:0 auto; padding:0 28px; }
+
+/* Nav */
+.nav { position:sticky; top:0; z-index:100; background:rgba(15,15,16,.93); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.nav-inner { display:flex; align-items:center; gap:20px; padding:15px 0; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:14px; white-space:nowrap; margin-right:auto; }
+.bmark { flex-shrink:0; }
+.brand-by { font-size:11px; color:var(--muted); font-weight:500; }
+.nav-links { display:flex; gap:18px; font-size:13px; }
+.nav-links a { color:var(--muted); cursor:pointer; transition:color .15s; }
+.nav-links a:hover { color:var(--text); }
+.lang-toggle { display:flex; background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius-sm); padding:3px; gap:2px; }
+.lang-btn { padding:4px 10px; border-radius:3px; font-size:12px; font-weight:600; cursor:pointer; color:var(--muted); background:transparent; border:none; font-family:var(--font); transition:background .15s, color .15s; }
+.lang-btn.active { background:var(--surface-3); color:var(--text); }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:36px; padding:0 16px; border:1px solid var(--line); background:var(--surface-2); color:var(--text); border-radius:var(--radius-sm); font:inherit; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; transition:background .15s, border-color .15s; }
+.btn:hover { background:var(--surface-3); border-color:var(--line-strong); }
+.btn-primary { background:var(--blue-soft); border-color:rgba(74,163,255,.45); color:var(--blue-text); }
+.btn-primary:hover { background:rgba(74,163,255,.22); border-color:rgba(74,163,255,.65); }
+.btn-lg { height:44px; padding:0 22px; font-size:14px; }
+.btn-xl { height:50px; padding:0 30px; font-size:15px; border-radius:var(--radius); }
+
+/* Pills */
+.pill { display:inline-flex; align-items:center; gap:6px; height:27px; padding:0 11px; border:1px solid var(--line); border-radius:999px; font-size:12px; font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap; background:var(--surface); }
+.pill .pd { width:6px; height:6px; border-radius:50%; background:var(--muted-2); flex-shrink:0; }
+.pill.p-blue   { border-color:rgba(74,163,255,.45);  color:var(--blue-text);   background:var(--blue-soft); }   .pill.p-blue .pd   { background:var(--blue); }
+.pill.p-green  { border-color:rgba(62,210,119,.45);  color:var(--green-text);  background:var(--green-soft); }  .pill.p-green .pd  { background:var(--green); }
+.pill.p-amber  { border-color:rgba(255,179,64,.45);  color:var(--amber-text);  background:var(--amber-soft); }  .pill.p-amber .pd  { background:var(--amber); }
+.pill.p-pink   { border-color:rgba(255,101,119,.45); color:var(--pink-text);   background:var(--pink-soft); }   .pill.p-pink .pd   { background:var(--pink); }
+.pill.p-violet { border-color:rgba(180,166,255,.45); color:var(--violet-text); background:var(--violet-soft); } .pill.p-violet .pd { background:var(--violet); }
+
+/* Eyebrow */
+.eyebrow { display:inline-block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:14px; padding:4px 10px; border:1px solid var(--line); border-radius:999px; background:var(--surface); }
+
+/* Type */
+.h1 { font-size:60px; line-height:1.02; font-weight:760; letter-spacing:-0.022em; }
+.h2 { font-size:38px; line-height:1.1; font-weight:720; letter-spacing:-0.014em; }
+.h3 { font-size:19px; line-height:1.25; font-weight:700; }
+.lede { color:var(--muted); font-size:16px; line-height:1.65; }
+
+/* Sections */
+section { padding:96px 0; border-bottom:1px solid var(--line); }
+.section-head { max-width:680px; margin-bottom:48px; }
+.section-head .lede { margin-top:12px; }
+
+/* Frame */
+.frame { border:1px solid var(--line); background:var(--surface); border-radius:var(--radius); overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(74,163,255,.05); }
+.frame-bar { display:flex; align-items:center; gap:6px; padding:10px 14px; border-bottom:1px solid var(--line); background:#161615; flex-shrink:0; }
+.frame-bar .bdot { width:9px; height:9px; border-radius:50%; }
+.bdot.r { background:#ff6058; } .bdot.y { background:#ffbd2e; } .bdot.g { background:#29cb42; }
+.frame-bar .furl { margin-left:12px; font-size:11px; color:var(--muted-2); font-family:var(--font-mono); }
+.frame img { display:block; width:100%; height:auto; }
+
+/* ───── HERO ───── */
+.hero { padding:72px 0 100px; border-bottom:1px solid var(--line); }
+.hero-pills { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+.hero-slogan { font-size:21px; color:var(--blue); font-weight:500; margin-top:16px; letter-spacing:.005em; }
+.hero-lede { max-width:58ch; margin-top:16px; font-size:17px; }
+.hero-actions { display:flex; gap:10px; margin-top:32px; flex-wrap:wrap; }
+.hero-frame { margin-top:60px; }
+
+/* ───── PROBLEM ───── */
+.problem-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.stat-card { background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:36px 32px; display:flex; flex-direction:column; gap:12px; }
+.stat-card .accent { width:40px; height:3px; border-radius:2px; margin-bottom:4px; }
+.stat-card .stat-num { font-size:68px; line-height:1; font-weight:700; letter-spacing:-0.03em; font-variant-numeric:tabular-nums; }
+.stat-card .stat-label { font-size:15px; color:var(--muted); line-height:1.55; }
+.stat-card.amber .accent { background:var(--amber); } .stat-card.amber .stat-num { color:var(--amber); }
+.stat-card.pink  .accent { background:var(--pink); }  .stat-card.pink  .stat-num { color:var(--pink); }
+.stat-card.violet .accent { background:var(--violet); } .stat-card.violet .stat-num { color:var(--violet); }
+
+/* ───── MONDAY MORNING ───── */
+.monday-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; margin-top:48px; }
+.tab-list { background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:18px; display:flex; flex-direction:column; gap:8px; }
+.tab-row { display:flex; align-items:center; justify-content:space-between; padding:11px 14px; background:var(--surface-3); border:1px solid var(--line); border-radius:var(--radius-sm); font-family:var(--font-mono); font-size:12px; color:var(--muted); gap:12px; }
+.tab-row .badge { font-size:11px; color:var(--muted-2); white-space:nowrap; flex-shrink:0; }
+.tab-legend { font-size:12px; color:var(--muted-2); margin-top:6px; text-align:center; }
+.monday-right { display:flex; flex-direction:column; gap:24px; }
+.monday-arrow { font-size:12px; font-weight:700; color:var(--blue); letter-spacing:.1em; text-transform:uppercase; }
+.monday-pills { display:flex; flex-direction:column; gap:8px; align-items:flex-start; }
+.monday-body { font-size:15px; color:var(--muted); line-height:1.65; }
+
+/* ───── SOLUTION ───── */
+.fc-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:48px; }
+.fc { background:var(--surface-2); border:1px solid var(--line); border-top:4px solid var(--line); border-radius:var(--radius); padding:28px 30px; display:flex; flex-direction:column; gap:10px; }
+.fc.fc-blue   { border-top-color:var(--blue); }
+.fc.fc-green  { border-top-color:var(--green); }
+.fc.fc-violet { border-top-color:var(--violet); }
+.fc.fc-amber  { border-top-color:var(--amber); }
+.fc .fc-num { font-family:var(--font-mono); font-size:11px; color:var(--muted-2); letter-spacing:.08em; }
+.fc.fc-blue   .fc-num { color:var(--blue); }
+.fc.fc-green  .fc-num { color:var(--green); }
+.fc.fc-violet .fc-num { color:var(--violet); }
+.fc.fc-amber  .fc-num { color:var(--amber-text); }
+.fc h3 { font-size:18px; font-weight:700; letter-spacing:-0.01em; }
+.fc p  { font-size:14px; color:var(--muted); line-height:1.6; }
+
+/* ───── PRODUCT PREVIEW ───── */
+.preview-layout { display:grid; grid-template-columns:200px 1fr; gap:24px; align-items:start; margin-top:48px; }
+.preview-tabs { display:flex; flex-direction:column; gap:4px; }
+.preview-tab { padding:11px 14px; border:1px solid var(--line); background:transparent; border-radius:var(--radius-sm); cursor:pointer; text-align:left; font:inherit; color:var(--muted); font-size:13px; font-weight:600; transition:background .15s, color .15s, border-color .15s; }
+.preview-tab:hover { background:var(--surface-2); color:var(--text); }
+.preview-tab.active { background:var(--blue-soft); border-color:rgba(74,163,255,.45); color:var(--blue-text); }
+
+/* ───── COMPETITION ───── */
+.comp-wrap { border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:48px; }
+.comp-table { width:100%; border-collapse:collapse; }
+.comp-table th { background:var(--surface-2); text-align:left; padding:14px 20px; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-bottom:1px solid var(--line); color:var(--muted); }
+.comp-table th.us-head { color:var(--blue-text); background:var(--blue-soft); }
+.comp-table td { padding:15px 20px; border-bottom:1px solid var(--line); font-size:14px; color:var(--muted); vertical-align:middle; }
+.comp-table tr:last-child td { border-bottom:0; }
+.comp-table td.row-label { color:var(--text); font-weight:600; }
+.comp-table td.us-cell { color:var(--blue-text); font-weight:600; background:var(--blue-soft); border-left:3px solid var(--blue); }
+.ck { color:var(--green); font-weight:700; }
+.da { color:var(--muted-2); }
+
+/* ───── AUDIENCE ───── */
+.audience-layout { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; margin-top:48px; }
+.market-funnel { display:flex; flex-direction:column; gap:12px; }
+.market-layer { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:22px 24px; border:1px solid var(--line); border-left:4px solid var(--line); border-radius:var(--radius); background:var(--surface-2); }
+.market-layer.l-som { border-left-color:var(--amber); }
+.market-layer.l-sam { border-left-color:var(--blue); }
+.market-layer.l-tam { border-left-color:var(--green); }
+.ml-key { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.market-layer.l-som .ml-key { color:var(--amber-text); }
+.market-layer.l-sam .ml-key { color:var(--blue-text); }
+.market-layer.l-tam .ml-key { color:var(--green-text); }
+.ml-name { font-size:13px; color:var(--muted); margin-top:4px; }
+.ml-val { font-size:40px; font-weight:700; letter-spacing:-0.025em; line-height:1; color:var(--text); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.audience-items { display:flex; flex-direction:column; gap:12px; }
+.audience-item { background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; display:flex; gap:14px; align-items:flex-start; }
+.ai-num { font-size:11px; color:var(--muted-2); font-weight:700; letter-spacing:.08em; min-width:22px; flex-shrink:0; padding-top:2px; }
+.audience-item strong { display:block; font-size:14px; font-weight:700; margin-bottom:4px; }
+.audience-item p { margin:0; color:var(--muted); font-size:13px; line-height:1.55; }
+
+/* ───── FOUNDER ───── */
+.founder-block { border:1px solid var(--line); background:var(--surface-2); border-radius:var(--radius); padding:44px 48px; display:grid; grid-template-columns:60px 1fr; gap:28px; align-items:start; }
+.founder-mark { width:52px; height:52px; flex-shrink:0; color:var(--muted); }
+.founder-body p { font-size:16px; color:var(--text); line-height:1.7; margin-bottom:16px; }
+.founder-body p.p-muted { font-size:14px; color:var(--muted); margin-bottom:0; }
+.founder-meta { display:flex; gap:24px; margin-top:24px; padding-top:20px; border-top:1px solid var(--line); font-size:12px; color:var(--muted-2); flex-wrap:wrap; }
+.founder-meta b { color:var(--text); font-weight:700; }
+
+/* ───── CTA ───── */
+.cta-section { padding:120px 0; text-align:center; border-bottom:0; }
+.cta-section .h2 { max-width:580px; margin:0 auto; }
+.cta-section .lede { margin:16px auto 0; max-width:52ch; }
+.cta-actions { display:flex; gap:12px; justify-content:center; margin-top:32px; flex-wrap:wrap; }
+.cta-note { font-size:12px; color:var(--muted-2); margin-top:18px; }
+
+/* ───── FOOTER ───── */
+footer { padding:56px 0 48px; border-top:1px solid var(--line); }
+.footer-grid { display:grid; grid-template-columns:1fr auto auto; gap:48px; align-items:start; }
+.footer-brand .fb-name { display:flex; align-items:center; gap:8px; font-weight:700; font-size:14px; margin-bottom:8px; }
+.footer-brand .fb-tag  { font-size:13px; color:var(--muted); line-height:1.55; max-width:36ch; }
+.footer-col h4 { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-2); margin-bottom:10px; }
+.footer-col a  { display:block; font-size:13px; color:var(--muted); margin-bottom:6px; cursor:pointer; transition:color .15s; }
+.footer-col a:hover { color:var(--text); }
+.footer-bottom { margin-top:40px; padding-top:20px; border-top:1px solid var(--line); font-size:12px; color:var(--muted-2); }
+@media (max-width:860px) { .footer-grid { grid-template-columns:1fr; gap:32px; } }
+
+/* ───── Responsive ───── */
+
+/* Tablet ≤860px */
+@media (max-width:860px) {
+  section { padding:64px 0; }
+  .hero { padding:48px 0 64px; }
+  .cta-section { padding:80px 0; }
+
+  .h1 { font-size:42px; }
+  .h2 { font-size:28px; }
+
+  .nav-links { display:none; }
+
+  .problem-stats { grid-template-columns:1fr; }
+  .monday-grid { grid-template-columns:1fr; }
+  .fc-grid { grid-template-columns:1fr; }
+  .preview-layout { grid-template-columns:1fr; }
+  .preview-tabs { flex-direction:row; flex-wrap:wrap; }
+  .audience-layout { grid-template-columns:1fr; }
+  .founder-block { grid-template-columns:1fr; padding:28px; }
+  .footer-grid { grid-template-columns:1fr; gap:32px; }
+
+  /* Competition table: horizontal scroll on tablet */
+  .comp-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .comp-table { min-width:560px; }
+}
+
+/* Mobile ≤480px */
+@media (max-width:480px) {
+  .container { padding:0 18px; }
+
+  section { padding:48px 0; }
+  .hero { padding:36px 0 48px; }
+  .hero-frame { margin-top:32px; }
+  .cta-section { padding:64px 0; }
+  .section-head { margin-bottom:28px; }
+
+  .h1 { font-size:32px; letter-spacing:-0.012em; }
+  .h2 { font-size:25px; letter-spacing:-0.008em; }
+  .lede { font-size:15px; }
+  .hero-slogan { font-size:17px; }
+  .hero-lede { font-size:15px; }
+  .hero-actions { flex-direction:column; }
+  .hero-actions .btn { width:100%; justify-content:center; }
+
+  /* Nav: hide CTA button on very small screens */
+  .nav-cta { display:none; }
+  .nav-inner { gap:12px; }
+
+  /* Pills: smaller on mobile */
+  .hero-pills { gap:6px; }
+  .pill { font-size:11px; height:24px; padding:0 9px; }
+
+  /* Problem stats */
+  .stat-card { padding:24px 20px; }
+  .stat-card .stat-num { font-size:52px; }
+
+  /* Monday tab list */
+  .tab-row { font-size:12px; padding:9px 12px; }
+  .monday-grid { gap:28px; }
+
+  /* Solution cards */
+  .fc { padding:22px 20px; }
+  .fc-grid { gap:12px; }
+
+  /* Product preview tabs */
+  .preview-tab { padding:8px 12px; font-size:12px; }
+
+  /* Competition table */
+  .comp-table th, .comp-table td { padding:12px 14px; font-size:13px; }
+
+  /* Audience / Market */
+  .market-layer { padding:16px 18px; }
+  .ml-val { font-size:32px; }
+  .audience-item { padding:14px 16px; }
+  .audience-items { gap:8px; }
+
+  /* Founder */
+  .founder-block { padding:22px; }
+  .founder-body p { font-size:15px; }
+  .founder-meta { gap:12px; flex-direction:column; }
+
+  /* CTA */
+  .cta-actions { flex-direction:column; align-items:center; }
+  .cta-actions .btn { width:100%; max-width:300px; justify-content:center; }
+
+  /* Footer */
+  .footer-grid { gap:24px; }
+  .footer-bottom { margin-top:28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="brand">
+      <svg class="bmark" width="22" height="22" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="3.5" fill="currentColor"/><line x1="20" y1="16.5" x2="20" y2="4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="22.47" y1="17.53" x2="31.31" y2="8.69" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="23.5" y1="20" x2="36" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="22.47" y1="22.47" x2="31.31" y2="31.31" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="20" y1="23.5" x2="20" y2="36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17.53" y1="22.47" x2="8.69" y2="31.31" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="16.5" y1="20" x2="4" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17.53" y1="17.53" x2="8.69" y2="8.69" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="2" r="2" fill="currentColor"/><circle cx="32.73" cy="7.27" r="2" fill="currentColor"/><circle cx="38" cy="20" r="2" fill="currentColor"/><circle cx="32.73" cy="32.73" r="2" fill="currentColor"/><circle cx="20" cy="38" r="2" fill="currentColor"/><circle cx="7.27" cy="32.73" r="2" fill="currentColor"/><circle cx="2" cy="20" r="2" fill="currentColor"/><circle cx="7.27" cy="7.27" r="2" fill="currentColor"/></svg>
+      Company OS
+      <span class="brand-by" data-i18n="brand.by">by Decode IT</span>
+    </div>
+    <div class="nav-links">
+      <a href="#problem" data-i18n="nav.problem">Problem</a>
+      <a href="#preview" data-i18n="nav.product">Produkt</a>
+      <a href="#audience" data-i18n="nav.audience">Für wen</a>
+      <a href="#founder" data-i18n="nav.story">Story</a>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a class="btn btn-primary nav-cta" href="mailto:daniel@decode-it.net" data-i18n="nav.cta">Demo anfragen</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-pills">
+      <span class="pill p-green"><span class="pd"></span>Cash 85.000 €</span>
+      <span class="pill p-amber"><span class="pd"></span>Runway 4.7 Mon.</span>
+      <span class="pill p-pink"><span class="pd"></span>1 blocked</span>
+      <span class="pill p-blue"><span class="pd"></span>1 approval pending</span>
+      <span class="pill p-amber"><span class="pd"></span>Tax 9.500 € · 12 Tage</span>
+    </div>
+    <h1 class="h1" data-i18n="hero.h1">Operative Realität<br>als System.</h1>
+    <div class="hero-slogan">Context creates clarity.</div>
+    <p class="lede hero-lede" data-i18n="hero.lede">Tickets, Strategie, CRM, Wissen, Mitarbeiter und Kosten in einer einzigen steuerbaren Oberfläche. Kein weiteres Tool — ein Zusammenhang.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary btn-lg" href="mailto:daniel@decode-it.net" data-i18n="hero.cta1">Demo anfragen</a>
+    </div>
+    <div class="hero-frame">
+      <div class="frame">
+        <div class="frame-bar">
+          <span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span>
+          <span class="furl">company-os.app/cockpit/runway</span>
+        </div>
+        <img src="assets/screenshots/Finance.png" alt="Runway Cockpit" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROBLEM ══ -->
+<section id="problem">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-i18n="problem.eyebrow">Das Problem</span>
+      <h2 class="h2" data-i18n="problem.h2">Operative Komplexität<br>übersteigt menschliche Koordination.</h2>
+      <p class="lede" data-i18n="problem.lede">Kleine Firmen führen 8–12 Tools parallel. Menschen werden zur manuellen Integrationsschicht — und das skaliert nicht.</p>
+    </div>
+    <div class="problem-stats">
+      <div class="stat-card amber">
+        <div class="accent"></div>
+        <div class="stat-num" data-i18n="problem.stat1.num">8–12</div>
+        <div class="stat-label" data-i18n="problem.stat1.label">Tools laufen parallel in einer Firma mit 10 Mitarbeitern. Tickets, Docs, CRM, HR, Finanzen, Wiki — alles getrennt.</div>
+      </div>
+      <div class="stat-card pink">
+        <div class="accent"></div>
+        <div class="stat-num" data-i18n="problem.stat2.num">0</div>
+        <div class="stat-label" data-i18n="problem.stat2.label">Systeme teilen einen gemeinsamen operativen Kontext. Verantwortung, Kosten und Risiken sind überall fragmentiert.</div>
+      </div>
+      <div class="stat-card violet">
+        <div class="accent"></div>
+        <div class="stat-num" data-i18n="problem.stat3.num">Founder</div>
+        <div class="stat-label" data-i18n="problem.stat3.label">ist die einzige Person, die alles im Kopf zusammenhält. Strukturell — und das skaliert nicht.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MONDAY MORNING ══ -->
+<section id="monday">
+  <div class="container">
+    <span class="eyebrow" data-i18n="monday.eyebrow">Montag, 9:00 Uhr</span>
+    <h2 class="h2" data-i18n="monday.h2">Sieben Tabs für<br>eine einzige Frage.</h2>
+    <p class="lede" style="margin-top:12px; max-width:54ch;" data-i18n="monday.subtitle">„Wo steht meine Firma gerade?"</p>
+    <div class="monday-grid">
+      <div class="tab-list">
+        <div class="tab-row"><span>linear.app/team</span><span class="badge">14 Tickets</span></div>
+        <div class="tab-row"><span>notion.so/wiki</span><span class="badge">3 ungelesen</span></div>
+        <div class="tab-row"><span>hubspot.com/deals</span><span class="badge">2 Deals offen</span></div>
+        <div class="tab-row"><span>personio.de/people</span><span class="badge">1 Onboarding</span></div>
+        <div class="tab-row"><span>datev.de/buchhaltung</span><span class="badge">Steuer in 12 Tagen</span></div>
+        <div class="tab-row"><span>sheets/runway</span><span class="badge">manuell</span></div>
+        <div class="tab-row"><span>slack.com/blockers</span><span class="badge">1 blocked</span></div>
+        <p class="tab-legend" data-i18n="monday.legend">Sieben Tabs. Keine Sicht. Keine Priorität.</p>
+      </div>
+      <div class="monday-right">
+        <p class="monday-arrow" data-i18n="monday.arrow">Mit Company OS →</p>
+        <div class="monday-pills">
+          <span class="pill p-amber"><span class="pd"></span>Runway 4.7 Mon. ↓</span>
+          <span class="pill p-pink"><span class="pd"></span>1 blocked</span>
+          <span class="pill p-amber"><span class="pd"></span>Tax 9.500 € · in 12 Tagen</span>
+          <span class="pill p-blue"><span class="pd"></span>1 approval pending</span>
+          <span class="pill p-green"><span class="pd"></span>Cash 85.000 €</span>
+        </div>
+        <p class="monday-body" data-i18n="monday.body">Eine Ansicht. Eine operative Wahrheit. Alles aus dem gleichen Datenmodell — ohne einen einzigen Tab mehr.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOLUTION ══ -->
+<section id="solution">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-i18n="solution.eyebrow">Die Lösung</span>
+      <h2 class="h2" data-i18n="solution.h2">Ein Betriebssystem für<br>operative Realität.</h2>
+      <p class="lede" data-i18n="solution.lede">Vier Bausteine, ein zusammenhängendes Modell. Kein weiteres Tool — eine operative Infrastruktur.</p>
+    </div>
+    <div class="fc-grid">
+      <div class="fc fc-blue">
+        <div class="fc-num" data-i18n="solution.fc1.num">01 · Work Items</div>
+        <h3 data-i18n="solution.fc1.h3">Arbeit, Kosten,<br>Verantwortung vereint.</h3>
+        <p data-i18n="solution.fc1.p">Jedes Ticket trägt Department, Kostentreiber, Owner und Runway-Impact. Strukturell verbunden — nicht nachträglich verlinkt.</p>
+      </div>
+      <div class="fc fc-green">
+        <div class="fc-num" data-i18n="solution.fc2.num">02 · Operational Context</div>
+        <h3 data-i18n="solution.fc2.h3">Die richtige Information<br>zur richtigen Zeit.</h3>
+        <p data-i18n="solution.fc2.p">Tickets, Docs, CRM, SOPs, Kosten und Mitarbeiter teilen ein Datenmodell. Kontext entsteht durch Struktur, nicht durch Suche.</p>
+      </div>
+      <div class="fc fc-violet">
+        <div class="fc-num" data-i18n="solution.fc3.num">03 · AI-lesbare Realität</div>
+        <h3 data-i18n="solution.fc3.h3">Strukturierte Zusammen­hänge<br>für AI.</h3>
+        <p data-i18n="solution.fc3.p">Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert die Schicht.</p>
+      </div>
+      <div class="fc fc-amber">
+        <div class="fc-num" data-i18n="solution.fc4.num">04 · Runway als Signal</div>
+        <h3 data-i18n="solution.fc4.h3">Finanzielle Realität<br>immer im Blick.</h3>
+        <p data-i18n="solution.fc4.p">Cash, Burn, Tax und Runway als Signal-Pills. Nicht in einem Report — als operative Wahrnehmungsschicht über jeder Entscheidung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRODUCT PREVIEW ══ -->
+<section id="preview">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-i18n="preview.eyebrow">Produkt</span>
+      <h2 class="h2" data-i18n="preview.h2">Von Vision bis Daily Work.</h2>
+      <p class="lede" data-i18n="preview.lede">Fünf Ansichten. Vom Forecast bis zur einzigen Frage, die du heute beantworten musst.</p>
+    </div>
+    <div class="preview-layout">
+      <div class="preview-tabs" id="preview-tabs"></div>
+      <div class="frame" id="preview-frame">
+        <div class="frame-bar">
+          <span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span>
+          <span class="furl" id="preview-url">company-os.app/cockpit/runway</span>
+        </div>
+        <img id="preview-img" src="assets/screenshots/Kanban1.png" alt="Runway">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMPETITION ══ -->
+<section id="competition">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-i18n="competition.eyebrow">Warum anders</span>
+      <h2 class="h2" data-i18n="competition.h2">Linear plant Arbeit. Notion archiviert Wissen.<br>Company OS verbindet beides — operativ.</h2>
+      <p class="lede" data-i18n="competition.lede">Jedes Tool löst sein Problem isoliert. Company OS verbindet die Probleme — weil sie im echten Betrieb auch verbunden sind.</p>
+    </div>
+    <div class="comp-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:32%"></th>
+            <th data-i18n="competition.col.linear">Linear</th>
+            <th data-i18n="competition.col.notion">Notion</th>
+            <th data-i18n="competition.col.erp">ERP / DATEV</th>
+            <th class="us-head" data-i18n="competition.col.us">Company OS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label" data-i18n="competition.row1">Tickets &amp; Arbeit</td>
+            <td><span class="ck">✓</span></td><td><span class="da">—</span></td><td><span class="da">—</span></td>
+            <td class="us-cell"><span class="ck">✓</span></td>
+          </tr>
+          <tr>
+            <td class="row-label" data-i18n="competition.row2">Dokumente &amp; Wissen</td>
+            <td><span class="da">—</span></td><td><span class="ck">✓</span></td><td><span class="da">—</span></td>
+            <td class="us-cell"><span class="ck">✓</span></td>
+          </tr>
+          <tr>
+            <td class="row-label" data-i18n="competition.row3">CRM &amp; Forecast</td>
+            <td><span class="da">—</span></td><td><span class="da">—</span></td><td class="da" data-i18n="competition.erp3">teils</td>
+            <td class="us-cell"><span class="ck">✓</span></td>
+          </tr>
+          <tr>
+            <td class="row-label" data-i18n="competition.row4">Runway als Live-Signal</td>
+            <td><span class="da">—</span></td><td><span class="da">—</span></td><td class="da" data-i18n="competition.erp4">Report</td>
+            <td class="us-cell" data-i18n="competition.live" style="color:var(--green);font-weight:700">Live</td>
+          </tr>
+          <tr>
+            <td class="row-label" data-i18n="competition.row5">Mitarbeiter, Assets, Vault</td>
+            <td><span class="da">—</span></td><td><span class="da">—</span></td><td class="da" data-i18n="competition.erp5">teils</td>
+            <td class="us-cell"><span class="ck">✓</span></td>
+          </tr>
+          <tr>
+            <td class="row-label" data-i18n="competition.row6">Gemeinsames Datenmodell</td>
+            <td><span class="da">—</span></td><td><span class="da">—</span></td><td><span class="da">—</span></td>
+            <td class="us-cell"><span class="ck">✓</span></td>
+          </tr>
+          <tr>
+            <td class="row-label" data-i18n="competition.row7">AI-lesbarer Kontext</td>
+            <td><span class="da">—</span></td><td><span class="da">—</span></td><td><span class="da">—</span></td>
+            <td class="us-cell" data-i18n="competition.native" style="color:var(--blue-text);font-weight:700">Native</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AUDIENCE ══ -->
+<section id="audience">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-i18n="audience.eyebrow">Markt &amp; Zielgruppe</span>
+      <h2 class="h2" data-i18n="audience.h2">AI-native Unternehmen<br>entstehen jetzt.</h2>
+      <p class="lede" data-i18n="audience.lede">Kleine Firmen, die schnell wachsen, leiden bereits unter Fragmentierung. Entscheider: Founder oder COO.</p>
+    </div>
+    <div class="audience-layout">
+      <div class="market-funnel">
+        <div class="market-layer l-som">
+          <div><div class="ml-key" data-i18n="audience.som.key">SOM · 24 Mon.</div><div class="ml-name" data-i18n="audience.som.name">2.000 Pilotkunden, DACH</div></div>
+          <div class="ml-val">€ 7 M</div>
+        </div>
+        <div class="market-layer l-sam">
+          <div><div class="ml-key" data-i18n="audience.sam.key">SAM</div><div class="ml-name" data-i18n="audience.sam.name">400.000 Firmen × 150 €/Mon., DACH</div></div>
+          <div class="ml-val">€ 720 M</div>
+        </div>
+        <div class="market-layer l-tam">
+          <div><div class="ml-key" data-i18n="audience.tam.key">TAM</div><div class="ml-name" data-i18n="audience.tam.name">Operative Infrastruktur, weltweit</div></div>
+          <div class="ml-val" data-i18n="audience.tam.val">Mrd. €</div>
+        </div>
+      </div>
+      <div class="audience-items">
+        <div class="audience-item"><span class="ai-num">01</span><div><strong data-i18n="audience.a1.title">Founder mit 1–20 Mitarbeitern</strong><p data-i18n="audience.a1.p">Du willst dein Wissen aus dem Kopf bringen — sodass die Firma auch ohne dich einen Tag funktioniert.</p></div></div>
+        <div class="audience-item"><span class="ai-num">02</span><div><strong data-i18n="audience.a2.title">IT-Dienstleister</strong><p data-i18n="audience.a2.p">Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.</p></div></div>
+        <div class="audience-item"><span class="ai-num">03</span><div><strong data-i18n="audience.a3.title">Kleine SaaS- und Agenturteams</strong><p data-i18n="audience.a3.p">Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.</p></div></div>
+        <div class="audience-item"><span class="ai-num">04</span><div><strong data-i18n="audience.a4.title">Teams mit zu vielen Tools</strong><p data-i18n="audience.a4.p">Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Wahrheit, viel Doppelarbeit.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOUNDER ══ -->
+<section id="founder">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-i18n="founder.eyebrow">Story</span>
+      <h2 class="h2" data-i18n="founder.h2">Nicht erfunden. Erfahren.</h2>
+    </div>
+    <div class="founder-block">
+      <div class="founder-mark">
+        <svg width="52" height="52" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="3.5" fill="currentColor"/><line x1="20" y1="16.5" x2="20" y2="4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="22.47" y1="17.53" x2="31.31" y2="8.69" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="23.5" y1="20" x2="36" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="22.47" y1="22.47" x2="31.31" y2="31.31" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="20" y1="23.5" x2="20" y2="36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17.53" y1="22.47" x2="8.69" y2="31.31" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="16.5" y1="20" x2="4" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17.53" y1="17.53" x2="8.69" y2="8.69" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="2" r="2" fill="currentColor"/><circle cx="32.73" cy="7.27" r="2" fill="currentColor"/><circle cx="38" cy="20" r="2" fill="currentColor"/><circle cx="32.73" cy="32.73" r="2" fill="currentColor"/><circle cx="20" cy="38" r="2" fill="currentColor"/><circle cx="7.27" cy="32.73" r="2" fill="currentColor"/><circle cx="2" cy="20" r="2" fill="currentColor"/><circle cx="7.27" cy="7.27" r="2" fill="currentColor"/></svg>
+      </div>
+      <div class="founder-body">
+        <p data-i18n="founder.p1">Company OS entsteht nicht in einem Designer-Workshop — aus dem echten Aufbau von Decode IT.</p>
+        <p data-i18n="founder.p2">Wir bauen unsere eigene Firma damit. Vom ersten Mitarbeiter über das erste Kundenprojekt bis zum ersten Steuertermin — alles läuft durch dieses System. Was im echten Betrieb hilft, kommt ins Produkt. Was nicht hilft, fliegt raus.</p>
+        <p class="p-muted" data-i18n="founder.p3">Das Ergebnis ist eine Oberfläche, die nach Founder-Realität aussieht — nicht nach SaaS-Demo.</p>
+        <div class="founder-meta">
+          <span><b>Decode IT</b> · Heidelberg</span>
+          <span data-i18n="founder.meta2"><b>Phase</b> · früh, mit echtem Betrieb als Grundlage</span>
+          <span data-i18n="founder.meta3"><b>Erste Nutzer</b> · wir selbst</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section id="cta" class="cta-section">
+  <div class="container">
+    <h2 class="h2" data-i18n="cta.h2">Baue deine Firma wie ein System.</h2>
+    <p class="lede" data-i18n="cta.lede">Company OS macht aus Tickets, Wissen, Kunden, Mitarbeitern und Kosten ein steuerbares Unternehmen.</p>
+    <div class="cta-actions">
+      <a class="btn btn-primary btn-xl" href="mailto:daniel@decode-it.net" data-i18n="cta.cta1">Demo anfragen</a>
+    </div>
+    <p class="cta-note" data-i18n="cta.note">Aktuell in früher Produktphase. Entwickelt mit echtem Firmenbetrieb als Grundlage.</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="fb-name">
+          <svg class="bmark" width="22" height="22" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="3.5" fill="currentColor"/><line x1="20" y1="16.5" x2="20" y2="4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="22.47" y1="17.53" x2="31.31" y2="8.69" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="23.5" y1="20" x2="36" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="22.47" y1="22.47" x2="31.31" y2="31.31" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="20" y1="23.5" x2="20" y2="36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17.53" y1="22.47" x2="8.69" y2="31.31" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="16.5" y1="20" x2="4" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17.53" y1="17.53" x2="8.69" y2="8.69" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="2" r="2" fill="currentColor"/><circle cx="32.73" cy="7.27" r="2" fill="currentColor"/><circle cx="38" cy="20" r="2" fill="currentColor"/><circle cx="32.73" cy="32.73" r="2" fill="currentColor"/><circle cx="20" cy="38" r="2" fill="currentColor"/><circle cx="7.27" cy="32.73" r="2" fill="currentColor"/><circle cx="2" cy="20" r="2" fill="currentColor"/><circle cx="7.27" cy="7.27" r="2" fill="currentColor"/></svg>
+          Decode IT
+        </div>
+        <p class="fb-tag" data-i18n="footer.tagline">Company OS · Operative Klarheit für schnell wachsende SaaS-Unternehmen.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.contact.head">Kontakt</h4>
+        <a href="mailto:daniel@decode-it.net">daniel@decode-it.net</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.legal.head">Rechtliches</h4>
+        <a href="impressum.html" data-i18n="footer.impressum">Impressum</a>
+        <a href="datenschutz.html" data-i18n="footer.privacy">Datenschutz</a>
+      </div>
+    </div>
+    <div class="footer-bottom" data-i18n="footer.copy">© 2026 Decode IT. Alle Rechte vorbehalten.</div>
+  </div>
+</footer>
+
+<script>
+const LANG = {
+  de: {
+    "brand.by": "by Decode IT",
+    "nav.problem": "Problem", "nav.product": "Produkt", "nav.audience": "Für wen", "nav.story": "Story", "nav.cta": "Demo anfragen",
+    "hero.h1": "Operative Realität<br>als System.",
+    "hero.lede": "Tickets, Strategie, CRM, Wissen, Mitarbeiter und Kosten in einer einzigen steuerbaren Oberfläche. Kein weiteres Tool — ein Zusammenhang.",
+    "hero.cta1": "Demo anfragen", "hero.cta2": "Produkt ansehen",
+    "problem.eyebrow": "Das Problem",
+    "problem.h2": "Operative Komplexität<br>übersteigt menschliche Koordination.",
+    "problem.lede": "Kleine Firmen führen 8–12 Tools parallel. Menschen werden zur manuellen Integrationsschicht — und das skaliert nicht.",
+    "problem.stat1.num": "8–12", "problem.stat1.label": "Tools laufen parallel in einer Firma mit 10 Mitarbeitern. Tickets, Docs, CRM, HR, Finanzen, Wiki — alles getrennt.",
+    "problem.stat2.num": "0",    "problem.stat2.label": "Systeme teilen einen gemeinsamen operativen Kontext. Verantwortung, Kosten und Risiken sind überall fragmentiert.",
+    "problem.stat3.num": "Founder", "problem.stat3.label": "ist die einzige Person, die alles im Kopf zusammenhält. Strukturell — und das skaliert nicht.",
+    "monday.eyebrow": "Montag, 9:00 Uhr",
+    "monday.h2": "Sieben Tabs für<br>eine einzige Frage.",
+    "monday.subtitle": "„Wo steht meine Firma gerade?"",
+    "monday.legend": "Sieben Tabs. Keine Sicht. Keine Priorität.",
+    "monday.arrow": "Mit Company OS →",
+    "monday.body": "Eine Ansicht. Eine operative Wahrheit. Alles aus dem gleichen Datenmodell — ohne einen einzigen Tab mehr.",
+    "solution.eyebrow": "Die Lösung",
+    "solution.h2": "Ein Betriebssystem für<br>operative Realität.",
+    "solution.lede": "Vier Bausteine, ein zusammenhängendes Modell. Kein weiteres Tool — eine operative Infrastruktur.",
+    "solution.fc1.num": "01 · Work Items",           "solution.fc1.h3": "Arbeit, Kosten,<br>Verantwortung vereint.",          "solution.fc1.p": "Jedes Ticket trägt Department, Kostentreiber, Owner und Runway-Impact. Strukturell verbunden — nicht nachträglich verlinkt.",
+    "solution.fc2.num": "02 · Operational Context",  "solution.fc2.h3": "Die richtige Information<br>zur richtigen Zeit.",      "solution.fc2.p": "Tickets, Docs, CRM, SOPs, Kosten und Mitarbeiter teilen ein Datenmodell. Kontext entsteht durch Struktur, nicht durch Suche.",
+    "solution.fc3.num": "03 · AI-lesbare Realität",  "solution.fc3.h3": "Strukturierte Zusammen­hänge<br>für AI.",             "solution.fc3.p": "Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert die Schicht.",
+    "solution.fc4.num": "04 · Runway als Signal",    "solution.fc4.h3": "Finanzielle Realität<br>immer im Blick.",             "solution.fc4.p": "Cash, Burn, Tax und Runway als Signal-Pills. Nicht in einem Report — als operative Wahrnehmungsschicht über jeder Entscheidung.",
+    "preview.eyebrow": "Produkt", "preview.h2": "Von Vision bis Daily Work.", "preview.lede": "Fünf Ansichten. Vom Forecast bis zur einzigen Frage, die du heute beantworten musst.",
+    "preview.tabs": ["Runway","Mission & Vision","Execution Board","Structures","Invoice"],
+    "competition.eyebrow": "Warum anders",
+    "competition.h2": "Linear plant Arbeit. Notion archiviert Wissen.<br>Company OS verbindet beides — operativ.",
+    "competition.lede": "Jedes Tool löst sein Problem isoliert. Company OS verbindet die Probleme — weil sie im echten Betrieb auch verbunden sind.",
+    "competition.col.linear": "Linear", "competition.col.notion": "Notion", "competition.col.erp": "ERP / DATEV", "competition.col.us": "Company OS",
+    "competition.row1": "Tickets &amp; Arbeit", "competition.row2": "Dokumente &amp; Wissen", "competition.row3": "CRM &amp; Forecast",
+    "competition.row4": "Runway als Live-Signal", "competition.row5": "Mitarbeiter, Assets, Vault", "competition.row6": "Gemeinsames Datenmodell", "competition.row7": "AI-lesbarer Kontext",
+    "competition.erp3": "teils", "competition.erp4": "Report", "competition.erp5": "teils", "competition.live": "Live", "competition.native": "Native",
+    "audience.eyebrow": "Markt &amp; Zielgruppe",
+    "audience.h2": "AI-native Unternehmen<br>entstehen jetzt.",
+    "audience.lede": "Kleine Firmen, die schnell wachsen, leiden bereits unter Fragmentierung. Entscheider: Founder oder COO.",
+    "audience.som.key": "SOM · 24 Mon.", "audience.som.name": "2.000 Pilotkunden, DACH",
+    "audience.sam.key": "SAM", "audience.sam.name": "400.000 Firmen × 150 €/Mon., DACH",
+    "audience.tam.key": "TAM", "audience.tam.name": "Operative Infrastruktur, weltweit", "audience.tam.val": "Mrd. €",
+    "audience.a1.title": "Founder mit 1–20 Mitarbeitern", "audience.a1.p": "Du willst dein Wissen aus dem Kopf bringen — sodass die Firma auch ohne dich einen Tag funktioniert.",
+    "audience.a2.title": "IT-Dienstleister", "audience.a2.p": "Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.",
+    "audience.a3.title": "Kleine SaaS- und Agenturteams", "audience.a3.p": "Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.",
+    "audience.a4.title": "Teams mit zu vielen Tools", "audience.a4.p": "Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Wahrheit, viel Doppelarbeit.",
+    "founder.eyebrow": "Story", "founder.h2": "Nicht erfunden. Erfahren.",
+    "founder.p1": "Company OS entsteht nicht in einem Designer-Workshop — aus dem echten Aufbau von Decode IT.",
+    "founder.p2": "Wir bauen unsere eigene Firma damit. Vom ersten Mitarbeiter über das erste Kundenprojekt bis zum ersten Steuertermin — alles läuft durch dieses System. Was im echten Betrieb hilft, kommt ins Produkt. Was nicht hilft, fliegt raus.",
+    "founder.p3": "Das Ergebnis ist eine Oberfläche, die nach Founder-Realität aussieht — nicht nach SaaS-Demo.",
+    "founder.meta2": "<b>Phase</b> · früh, mit echtem Betrieb als Grundlage", "founder.meta3": "<b>Erste Nutzer</b> · wir selbst",
+    "cta.h2": "Baue deine Firma wie ein System.",
+    "cta.lede": "Company OS macht aus Tickets, Wissen, Kunden, Mitarbeitern und Kosten ein steuerbares Unternehmen.",
+    "cta.cta1": "Demo anfragen", "cta.cta2": "Produkt ansehen",
+    "cta.note": "Aktuell in früher Produktphase. Entwickelt mit echtem Firmenbetrieb als Grundlage.",
+    "footer.tagline": "Company OS · Operative Klarheit für schnell wachsende SaaS-Unternehmen.",
+    "footer.contact.head": "Kontakt", "footer.legal.head": "Rechtliches",
+    "footer.impressum": "Impressum", "footer.privacy": "Datenschutz",
+    "footer.copy": "© 2026 Decode IT. Alle Rechte vorbehalten.",
+  },
+  en: {
+    "brand.by": "by Decode IT",
+    "nav.problem": "Problem", "nav.product": "Product", "nav.audience": "Who it's for", "nav.story": "Story", "nav.cta": "Request demo",
+    "hero.h1": "Operational Reality<br>as a System.",
+    "hero.lede": "Tickets, strategy, CRM, knowledge, people, and costs in a single controllable interface. Not another tool — a connected whole.",
+    "hero.cta1": "Request demo", "hero.cta2": "See the product",
+    "problem.eyebrow": "The Problem",
+    "problem.h2": "Operational complexity<br>outpaces human coordination.",
+    "problem.lede": "Small companies run 8–12 tools in parallel. People become the manual integration layer — and that doesn't scale.",
+    "problem.stat1.num": "8–12", "problem.stat1.label": "Tools running in parallel in a 10-person company. Tickets, docs, CRM, HR, finance, wiki — all separate.",
+    "problem.stat2.num": "0",    "problem.stat2.label": "Systems share a common operational context. Responsibility, costs, and risks are fragmented everywhere.",
+    "problem.stat3.num": "Founder", "problem.stat3.label": "is the only person who holds everything together in their head. Structurally — and that doesn't scale.",
+    "monday.eyebrow": "Monday, 9:00 AM",
+    "monday.h2": "Seven tabs for<br>a single question.",
+    "monday.subtitle": '"Where does my company stand right now?"',
+    "monday.legend": "Seven tabs. No unified view. No priority.",
+    "monday.arrow": "With Company OS →",
+    "monday.body": "One view. One operational truth. Everything from the same data model — without a single extra tab.",
+    "solution.eyebrow": "The Solution",
+    "solution.h2": "An operating system for<br>operational reality.",
+    "solution.lede": "Four building blocks, one connected model. Not another tool — an operational infrastructure.",
+    "solution.fc1.num": "01 · Work Items",          "solution.fc1.h3": "Work, costs,<br>responsibility unified.",          "solution.fc1.p": "Every ticket carries department, cost driver, owner, and runway impact. Structurally connected — not retroactively linked.",
+    "solution.fc2.num": "02 · Operational Context", "solution.fc2.h3": "The right information<br>at the right time.",         "solution.fc2.p": "Tickets, docs, CRM, SOPs, costs, and people share one data model. Context emerges through structure, not search.",
+    "solution.fc3.num": "03 · AI-readable Reality", "solution.fc3.h3": "Structured connections<br>for AI.",                  "solution.fc3.p": "Reasoning models can finally interpret operational reality — when it's structured. Company OS delivers that layer.",
+    "solution.fc4.num": "04 · Runway as Signal",    "solution.fc4.h3": "Financial reality<br>always visible.",               "solution.fc4.p": "Cash, burn, tax, and runway as signal pills. Not in a report — as an operational perception layer above every decision.",
+    "preview.eyebrow": "Product", "preview.h2": "From vision to daily work.", "preview.lede": "Five views. From the forecast to the one question you need to answer today.",
+    "preview.tabs": ["Runway","Mission & Vision","Execution Board","Structures","Invoice"],
+    "competition.eyebrow": "Why different",
+    "competition.h2": "Linear plans work. Notion archives knowledge.<br>Company OS connects both — operationally.",
+    "competition.lede": "Every tool solves its problem in isolation. Company OS connects the problems — because in real operations, they're connected too.",
+    "competition.col.linear": "Linear", "competition.col.notion": "Notion", "competition.col.erp": "ERP / Accounting", "competition.col.us": "Company OS",
+    "competition.row1": "Tickets &amp; Work", "competition.row2": "Documents &amp; Knowledge", "competition.row3": "CRM &amp; Forecast",
+    "competition.row4": "Runway as Live Signal", "competition.row5": "People, Assets, Vault", "competition.row6": "Shared Data Model", "competition.row7": "AI-readable Context",
+    "competition.erp3": "partly", "competition.erp4": "Report", "competition.erp5": "partly", "competition.live": "Live", "competition.native": "Native",
+    "audience.eyebrow": "Market &amp; Audience",
+    "audience.h2": "AI-native companies<br>are forming now.",
+    "audience.lede": "Small companies growing fast already suffer from fragmentation. Decision-makers: founder or COO.",
+    "audience.som.key": "SOM · 24 mo.", "audience.som.name": "2,000 pilot customers, DACH",
+    "audience.sam.key": "SAM", "audience.sam.name": "400,000 companies × €150/mo., DACH",
+    "audience.tam.key": "TAM", "audience.tam.name": "Operational infrastructure, worldwide", "audience.tam.val": "Bn. €",
+    "audience.a1.title": "Founders with 1–20 employees", "audience.a1.p": "Get knowledge out of your head — so the company runs for a day without you.",
+    "audience.a2.title": "IT service providers", "audience.a2.p": "Multiple client projects in parallel, thin margins, clear delivery. Tickets need to talk to costs and pipeline.",
+    "audience.a3.title": "Small SaaS and agency teams", "audience.a3.p": "Building a product and a company simultaneously. Neither should devour the other.",
+    "audience.a4.title": "Teams with too many tools", "audience.a4.p": "Jira plus Notion plus HubSpot plus accounting plus Slack. No unified truth, lots of duplicate work.",
+    "founder.eyebrow": "Story", "founder.h2": "Not invented. Experienced.",
+    "founder.p1": "Company OS isn't built in a design workshop — it's built from the real operations of Decode IT.",
+    "founder.p2": "We run our own company with it. From the first employee to the first client project to the first tax appointment — everything runs through this system. What actually helps makes it into the product. What doesn't gets cut.",
+    "founder.p3": "The result is an interface that looks like founder reality — not a SaaS demo.",
+    "founder.meta2": "<b>Stage</b> · early, grounded in real operations", "founder.meta3": "<b>First users</b> · ourselves",
+    "cta.h2": "Build your company like a system.",
+    "cta.lede": "Company OS turns tickets, knowledge, customers, people, and costs into a controllable business.",
+    "cta.cta1": "Request demo", "cta.cta2": "See the product",
+    "cta.note": "Currently in early product phase. Built on a foundation of real operations.",
+    "footer.tagline": "Company OS · Operational clarity for fast-growing SaaS companies.",
+    "footer.contact.head": "Contact", "footer.legal.head": "Legal",
+    "footer.impressum": "Legal notice", "footer.privacy": "Privacy",
+    "footer.copy": "© 2026 Decode IT. All rights reserved.",
+  }
+};
+
+const TABS = [
+  { key:"Runway",          img:"assets/screenshots/Kanban1.png",                        url:"company-os.app/cockpit/runway" },
+  { key:"Mission & Vision",img:"assets/screenshots/documents-section dark.png",         url:"company-os.app/mission-vision" },
+  { key:"Execution Board", img:"assets/screenshots/Execution Kanban Board 1 dark.png",  url:"company-os.app/kanban" },
+  { key:"Structures",      img:"assets/screenshots/structures dark.png",                url:"company-os.app/structures" },
+  { key:"Invoice",         img:"assets/screenshots/Invoice-Section dark.png",           url:"company-os.app/costs/invoice" },
+];
+
+let currentLang = localStorage.getItem('cos-lang') || 'de';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('cos-lang', lang);
+  document.documentElement.lang = lang;
+  const d = LANG[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (d[key] !== undefined) el.innerHTML = d[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  buildTabs(lang);
+}
+
+function buildTabs(lang) {
+  const labels = LANG[lang]['preview.tabs'];
+  const container = document.getElementById('preview-tabs');
+  container.innerHTML = '';
+  TABS.forEach((tab, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'preview-tab' + (i === 0 ? ' active' : '');
+    btn.textContent = labels[i] || tab.key;
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.preview-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('preview-img').src = tab.img;
+      document.getElementById('preview-url').textContent = tab.url;
+    });
+    container.appendChild(btn);
+  });
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
+
+applyLang(currentLang);
+</script>
+</body>
+</html>
