@@ -267,7 +267,11 @@ img { -webkit-user-drag:none; -moz-user-drag:none; user-drag:none; -webkit-user-
 
 /* ───── AUDIENCE ───── */
 .audience-items { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:48px; }
-.audience-item { background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; display:flex; gap:14px; align-items:flex-start; }
+.audience-item { background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--line-strong); border-radius:var(--radius); padding:18px 20px; display:flex; gap:14px; align-items:flex-start; }
+.audience-item.ai-amber { border-left-color:var(--amber); }
+.audience-item.ai-blue  { border-left-color:var(--blue); }
+.audience-item.ai-violet{ border-left-color:var(--violet); }
+.audience-item.ai-pink  { border-left-color:var(--pink); }
 .ai-num { font-size:11px; color:var(--muted-2); font-weight:700; letter-spacing:.08em; min-width:22px; flex-shrink:0; padding-top:2px; }
 .audience-item strong { display:block; font-size:14px; font-weight:700; margin-bottom:4px; }
 .audience-item p { margin:0; color:var(--muted); font-size:13px; line-height:1.55; }
@@ -876,13 +880,13 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
     <div class="section-head">
       <span class="eyebrow" data-i18n="audience.eyebrow">Zielgruppe</span>
       <h2 class="h2" data-i18n="audience.h2">AI-native Unternehmen<br>entstehen jetzt.</h2>
-      <p class="lede" data-i18n="audience.lede">Kleine Firmen, die schnell wachsen, leiden bereits unter Fragmentierung. Entscheider: Founder oder COO.</p>
+      <p class="lede" data-i18n="audience.lede">Moderne Teams wachsen schneller als ihre operative Struktur.</p>
     </div>
     <div class="audience-items">
-      <div class="audience-item"><span class="ai-num">01</span><div><strong data-i18n="audience.a1.title">Founder mit 1–20 Mitarbeitern</strong><p data-i18n="audience.a1.p">Du willst dein Wissen aus dem Kopf bringen — sodass die Firma auch ohne dich einen Tag funktioniert.</p></div></div>
-      <div class="audience-item"><span class="ai-num">02</span><div><strong data-i18n="audience.a2.title">IT-Dienstleister</strong><p data-i18n="audience.a2.p">Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.</p></div></div>
-      <div class="audience-item"><span class="ai-num">03</span><div><strong data-i18n="audience.a3.title">Kleine SaaS- und Agenturteams</strong><p data-i18n="audience.a3.p">Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.</p></div></div>
-      <div class="audience-item"><span class="ai-num">04</span><div><strong data-i18n="audience.a4.title">Teams mit zu vielen Tools</strong><p data-i18n="audience.a4.p">Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Wahrheit, viel Doppelarbeit.</p></div></div>
+      <div class="audience-item ai-amber"><span class="ai-num">01</span><div><strong data-i18n="audience.a1.title">Founder mit 1–20 Mitarbeitern</strong><p data-i18n="audience.a1.p">Du willst dein Wissen aus dem Kopf bringen — sodass die Firma auch ohne dich einen Tag funktioniert.</p></div></div>
+      <div class="audience-item ai-blue"><span class="ai-num">02</span><div><strong data-i18n="audience.a2.title">IT-Dienstleister</strong><p data-i18n="audience.a2.p">Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.</p></div></div>
+      <div class="audience-item ai-violet"><span class="ai-num">03</span><div><strong data-i18n="audience.a3.title">Kleine SaaS- und Agenturteams</strong><p data-i18n="audience.a3.p">Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.</p></div></div>
+      <div class="audience-item ai-pink"><span class="ai-num">04</span><div><strong data-i18n="audience.a4.title">Teams mit zu vielen Tools</strong><p data-i18n="audience.a4.p">Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Wahrheit, viel Doppelarbeit.</p></div></div>
     </div>
   </div>
 </section>
@@ -1131,7 +1135,7 @@ const LANG = {
     "competition.erp3": "teils", "competition.erp4": "Report", "competition.erp5": "teils", "competition.live": "Live", "competition.native": "Native",
     "audience.eyebrow": "Zielgruppe",
     "audience.h2": "AI-native Unternehmen<br>entstehen jetzt.",
-    "audience.lede": "Kleine Firmen, die schnell wachsen, leiden bereits unter Fragmentierung. Entscheider: Founder oder COO.",
+    "audience.lede": "Moderne Teams wachsen schneller als ihre operative Struktur.",
     "audience.a1.title": "Founder mit 1–20 Mitarbeitern", "audience.a1.p": "Du willst dein Wissen aus dem Kopf bringen — sodass die Firma auch ohne dich einen Tag funktioniert.",
     "audience.a2.title": "IT-Dienstleister", "audience.a2.p": "Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.",
     "audience.a3.title": "Kleine SaaS- und Agenturteams", "audience.a3.p": "Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.",
@@ -1252,7 +1256,7 @@ const LANG = {
     "competition.erp3": "partly", "competition.erp4": "Report", "competition.erp5": "partly", "competition.live": "Live", "competition.native": "Native",
     "audience.eyebrow": "Audience",
     "audience.h2": "AI-native companies<br>are forming now.",
-    "audience.lede": "Small companies growing fast already suffer from fragmentation. Decision-makers: founder or COO.",
+    "audience.lede": "Modern teams grow faster than their operational structure.",
     "audience.a1.title": "Founders with 1–20 employees", "audience.a1.p": "Get knowledge out of your head — so the company runs for a day without you.",
     "audience.a2.title": "IT service providers", "audience.a2.p": "Multiple client projects in parallel, thin margins, clear delivery. Tickets need to talk to costs and pipeline.",
     "audience.a3.title": "Small SaaS and agency teams", "audience.a3.p": "Building a product and a company simultaneously. Neither should devour the other.",
