@@ -501,8 +501,20 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
 .hs-fab-node { font-size:12px; font-weight:600; color:var(--text); padding:4px 10px; border:1px solid var(--line); border-radius:4px; background:var(--surface-2); }
 .hs-fab-arrow { color:var(--muted-2); font-size:14px; }
 
-/* ───── SCENE CARD SHADOW UPGRADE ───── */
-.scene-card { box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 1px 3px rgba(0,0,0,.15),0 4px 16px rgba(0,0,0,.25),0 20px 60px rgba(0,0,0,.35),0 72px 130px rgba(0,0,0,.25); }
+/* ───── SCENE CARD LIGHT SURFACE (dark page) ───── */
+.scene-card {
+  --bg:#fafaf8; --surface:#ffffff; --surface-2:#f4f4f1; --surface-3:#eaeae6;
+  --line:#dededb; --line-strong:#c4c4be;
+  --text:#18181a; --muted:#525250; --muted-2:#8a8a84;
+  --blue:#1570cd; --amber:#b45309; --pink:#dc2626; --green:#15803d;
+  --blue-soft:rgba(21,112,205,.10); --green-soft:rgba(21,128,61,.10);
+  --amber-soft:rgba(180,83,9,.10); --pink-soft:rgba(220,38,38,.10);
+  --violet-soft:rgba(109,40,217,.10); --violet-text:#4c1d95;
+  --blue-text:#1258a8; --green-text:#14532d; --amber-text:#92400e; --pink-text:#991b1b;
+  border-color:rgba(0,0,0,.07);
+  background:var(--surface);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,1),0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.10),0 20px 60px rgba(0,0,0,.14),0 72px 130px rgba(0,0,0,.08);
+}
 @media (max-width:480px) {
   .hs-fab-signals { grid-template-columns:1fr; gap:16px; }
   .hs-rwy-num { font-size:44px; }
