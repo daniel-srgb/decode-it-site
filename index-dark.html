@@ -151,6 +151,13 @@ section { padding:96px 0; border-bottom:1px solid var(--line); }
 .preview-tab:hover { background:var(--surface-2); color:var(--text); }
 .preview-tab.active { background:var(--blue-soft); border-color:rgba(74,163,255,.45); color:var(--blue-text); }
 
+/* ── CINEMATIC CROP — delete this block to revert ── */
+.preview-img-wrap { position:relative; overflow:hidden; max-height:440px; }
+.preview-img-wrap::after { content:''; position:absolute; bottom:0; left:0; right:0; height:42%; background:linear-gradient(to bottom, transparent, var(--bg)); pointer-events:none; z-index:1; }
+.preview-img-wrap img { display:block; width:100%; height:auto; pointer-events:none; user-select:none; -webkit-user-drag:none; -webkit-user-select:none; }
+.preview-shield { position:absolute; inset:0; z-index:2; cursor:default; }
+/* ── END CINEMATIC ── */
+
 /* ───── COMPETITION ───── */
 .comp-wrap { border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:48px; }
 .comp-table { width:100%; border-collapse:collapse; }
@@ -543,7 +550,10 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
           <span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span>
           <span class="furl" id="preview-url">company-os.app/cockpit/runway</span>
         </div>
-        <img id="preview-img" src="assets/screenshots/Finance.png" alt="Runway">
+        <div class="preview-img-wrap">
+          <img id="preview-img" src="assets/screenshots/Finance.png" alt="Runway" draggable="false" oncontextmenu="return false">
+          <div class="preview-shield"></div>
+        </div>
       </div>
     </div>
   </div>
