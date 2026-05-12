@@ -144,19 +144,74 @@ section { padding:96px 0; border-bottom:1px solid var(--line); }
 .fc h3 { font-size:18px; font-weight:700; letter-spacing:-0.01em; }
 .fc p  { font-size:14px; color:var(--muted); line-height:1.65; }
 
-/* ───── PRODUCT PREVIEW ───── */
-.preview-layout { display:grid; grid-template-columns:200px 1fr; gap:24px; align-items:start; margin-top:48px; }
-.preview-tabs { display:flex; flex-direction:column; gap:4px; }
-.preview-tab { padding:11px 14px; border:1px solid var(--line); background:transparent; border-radius:var(--radius-sm); cursor:pointer; text-align:left; font:inherit; color:var(--muted); font-size:13px; font-weight:600; transition:background .15s, color .15s, border-color .15s; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
-.preview-tab:hover { background:var(--surface-2); color:var(--text); }
-.preview-tab.active { background:var(--blue-soft); border-color:rgba(21,112,205,.35); color:var(--blue-text); }
-
-/* ── CINEMATIC CROP — delete this block to revert ── */
-.preview-img-wrap { position:relative; overflow:hidden; max-height:440px; }
-.preview-img-wrap::after { content:''; position:absolute; bottom:0; left:0; right:0; height:42%; background:linear-gradient(to bottom, transparent, var(--bg)); pointer-events:none; z-index:1; }
-.preview-img-wrap img { display:block; width:100%; height:auto; pointer-events:none; user-select:none; -webkit-user-drag:none; -webkit-user-select:none; }
-.preview-shield { position:absolute; inset:0; z-index:2; cursor:default; }
-/* ── END CINEMATIC ── */
+/* ───── PRODUCT SCENES ───── */
+.scene-nav { display:flex; gap:8px; margin:36px 0 52px; flex-wrap:wrap; }
+.scene-btn { padding:7px 18px; border:1px solid var(--line); background:transparent; border-radius:999px; font:inherit; font-size:13px; font-weight:600; cursor:pointer; color:var(--muted); transition:all .18s; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+.scene-btn:hover { border-color:var(--line-strong); color:var(--text); }
+.scene-btn.active { background:var(--text); color:var(--bg); border-color:var(--text); }
+.scene-layout { display:grid; grid-template-columns:1fr 1.65fr; gap:64px; align-items:center; }
+.scene-copy-label { font-size:11px; letter-spacing:.11em; text-transform:uppercase; color:var(--blue); font-weight:700; margin-bottom:14px; }
+.scene-copy-h3 { font-size:28px; line-height:1.15; font-weight:720; letter-spacing:-.016em; margin-bottom:14px; }
+.scene-copy-p { color:var(--muted); font-size:15px; line-height:1.7; }
+/* Card shell */
+.scene-card { border:1px solid var(--line); background:var(--surface); border-radius:10px; overflow:hidden; box-shadow:0 24px 64px rgba(0,0,0,.10),0 4px 12px rgba(0,0,0,.06); }
+/* Sub-elements */
+.sc-head { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid var(--line); }
+.sc-eyebrow { font-size:10px; letter-spacing:.13em; text-transform:uppercase; font-weight:700; color:var(--muted); font-family:var(--font-mono); }
+.sc-meta { font-size:11px; color:var(--muted-2); font-family:var(--font-mono); }
+.sc-badge { font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px; background:var(--blue-soft); color:var(--blue-text); border:1px solid rgba(21,112,205,.25); }
+.sc-title { padding:14px 20px 0; font-size:14px; font-weight:600; color:var(--text); }
+.sc-kpis { display:grid; padding:16px 20px; gap:0; }
+.sc-kpis.n4 { grid-template-columns:repeat(4,1fr); }
+.sc-kpis.n3 { grid-template-columns:repeat(3,1fr); }
+.sc-kpi { padding-right:16px; }
+.sc-kpi-num { font-size:19px; font-weight:700; letter-spacing:-.02em; line-height:1.2; }
+.sc-kpi-label { font-size:11px; color:var(--muted); margin-top:3px; }
+.sc-kpi.green .sc-kpi-num { color:var(--green); }
+.sc-kpi.amber .sc-kpi-num { color:var(--amber); }
+.sc-kpi.red .sc-kpi-num { color:var(--pink); }
+.sc-div { height:1px; background:var(--line); }
+.sc-section { padding:14px 20px; }
+.sc-section-label { font-size:10px; letter-spacing:.11em; text-transform:uppercase; color:var(--muted-2); font-weight:700; margin-bottom:10px; }
+.sc-bar-wrap { height:5px; background:var(--surface-3); border-radius:99px; overflow:hidden; margin-bottom:5px; }
+.sc-bar-fill { height:100%; border-radius:99px; background:var(--amber); }
+.sc-bar-note { font-size:11px; color:var(--muted-2); }
+.sc-qi { display:flex; align-items:center; justify-content:space-between; padding:7px 0; font-size:13px; }
+.sc-qi+.sc-qi { border-top:1px solid var(--line); }
+.sc-qi-name { color:var(--text); font-weight:500; }
+.sc-tag { font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px; white-space:nowrap; }
+.sc-tag.a { background:var(--amber-soft); color:var(--amber-text); }
+.sc-tag.g { background:var(--green-soft); color:var(--green-text); }
+.sc-tag.b { background:var(--blue-soft); color:var(--blue-text); }
+.sc-tag.m { background:var(--surface-2); color:var(--muted); }
+.sc-doc { display:flex; align-items:center; gap:10px; padding:7px 0; }
+.sc-doc+.sc-doc { border-top:1px solid var(--line); }
+.sc-doc-icon { width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:9px; flex-shrink:0; font-weight:800; }
+.sc-doc-icon.ok { background:var(--green-soft); color:var(--green-text); }
+.sc-doc-icon.warn { background:var(--amber-soft); color:var(--amber-text); }
+.sc-doc-name { flex:1; font-size:13px; color:var(--text); font-weight:500; }
+.sc-doc-status { font-size:11px; }
+.sc-doc-status.ok { color:var(--green-text); }
+.sc-doc-status.warn { color:var(--amber-text); font-weight:600; }
+.sc-ai { padding:13px 20px; background:var(--surface-2); border-top:1px solid var(--line); }
+.sc-ai-label { font-size:10px; letter-spacing:.11em; text-transform:uppercase; color:var(--blue); font-weight:700; margin-bottom:4px; }
+.sc-ai-text { font-size:12px; color:var(--text); line-height:1.55; }
+.sc-dept { display:flex; align-items:center; justify-content:space-between; padding:9px 0; }
+.sc-dept+.sc-dept { border-top:1px solid var(--line); padding-top:14px; margin-top:5px; }
+.sc-dept-name { font-size:14px; font-weight:700; color:var(--text); }
+.sc-dept-count { font-size:11px; color:var(--muted); }
+.sc-children { border-left:2px solid var(--line); margin:5px 0 0 4px; padding-left:14px; }
+.sc-child { display:flex; align-items:center; justify-content:space-between; padding:4px 0; font-size:12px; color:var(--muted); }
+.sc-child-tag { color:var(--muted-2); font-size:11px; }
+.sc-kv { display:flex; align-items:center; justify-content:space-between; padding:6px 0; font-size:12px; }
+.sc-kv+.sc-kv { border-top:1px solid var(--line); }
+.sc-kv-key { color:var(--muted); }
+.sc-kv-val { font-weight:600; color:var(--text); }
+.sc-kv-val.a { color:var(--amber-text); }
+.sc-inv { display:flex; align-items:center; gap:10px; padding:8px 0; }
+.sc-inv+.sc-inv { border-top:1px solid var(--line); }
+.sc-inv-name { flex:1; font-size:13px; color:var(--text); font-weight:500; }
+.sc-inv-amount { font-weight:700; font-size:13px; color:var(--text); font-variant-numeric:tabular-nums; }
 
 /* ───── COMPETITION ───── */
 .comp-wrap { border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:48px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
@@ -280,8 +335,9 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
   .problem-stats { grid-template-columns:1fr; }
   .monday-grid { grid-template-columns:1fr; }
   .fc-grid { grid-template-columns:1fr; }
-  .preview-layout { grid-template-columns:1fr; }
-  .preview-tabs { flex-direction:row; flex-wrap:wrap; }
+  .scene-layout { grid-template-columns:1fr; gap:32px; }
+  .sc-kpis.n4 { grid-template-columns:repeat(2,1fr); gap:12px; }
+  .scene-copy-h3 { font-size:22px; }
   .audience-layout { grid-template-columns:1fr; }
   .founder-block { grid-template-columns:1fr; padding:28px; }
   .footer-grid { grid-template-columns:1fr; gap:32px; }
@@ -552,24 +608,127 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
     <div class="section-head">
       <span class="eyebrow" data-i18n="preview.eyebrow">Produkt</span>
       <h2 class="h2" data-i18n="preview.h2">Von Vision bis Daily Work.</h2>
-      <p class="lede" data-i18n="preview.lede">Vier Ansichten. Vom Forecast bis zur einzigen Frage, die du heute beantworten musst.</p>
     </div>
-    <div class="preview-layout">
-      <div class="preview-tabs" id="preview-tabs">
-        <button class="preview-tab active" data-idx="0">Runway</button>
-        <button class="preview-tab" data-idx="1">Documents</button>
-        <button class="preview-tab" data-idx="2">Structures</button>
-        <button class="preview-tab" data-idx="3">Invoice Management</button>
+
+    <div class="scene-nav" id="scene-nav">
+      <button class="scene-btn active" data-scene="0">Runway</button>
+      <button class="scene-btn" data-scene="1">Documents</button>
+      <button class="scene-btn" data-scene="2">Structures</button>
+      <button class="scene-btn" data-scene="3">Invoice</button>
+    </div>
+
+    <div class="scene-layout">
+      <div class="scene-copy">
+        <div class="scene-copy-label" id="scene-label">Financial Operations</div>
+        <h3 class="scene-copy-h3" id="scene-h3">Runway als Live-Signal.</h3>
+        <p class="scene-copy-p" id="scene-p">Cash, Burn und operative Entscheidungen in einem Datenmodell — kein Report, kein Tab.</p>
       </div>
-      <div class="frame" id="preview-frame">
-        <div class="frame-bar">
-          <span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span>
-          <span class="furl" id="preview-url">company-os.app/cockpit/runway</span>
+      <div id="scene-display">
+
+        <!-- ── Scene 0: Runway ── -->
+        <div class="scene-card" id="sc-0">
+          <div class="sc-head">
+            <span class="sc-eyebrow">Financial Operations Control</span>
+            <span class="sc-meta">Montag · 09:14</span>
+          </div>
+          <div class="sc-kpis n4">
+            <div class="sc-kpi amber"><div class="sc-kpi-num">4.7 Mon.</div><div class="sc-kpi-label">Runway</div></div>
+            <div class="sc-kpi"><div class="sc-kpi-num">16.220 €</div><div class="sc-kpi-label">Monatl. Burn</div></div>
+            <div class="sc-kpi green"><div class="sc-kpi-num">+2.458 €</div><div class="sc-kpi-label">MoM Delta</div></div>
+            <div class="sc-kpi"><div class="sc-kpi-num">2</div><div class="sc-kpi-label">Entscheidungen</div></div>
+          </div>
+          <div class="sc-div"></div>
+          <div class="sc-section">
+            <div class="sc-section-label">Runway Signal</div>
+            <div class="sc-bar-wrap"><div class="sc-bar-fill" style="width:47%"></div></div>
+            <div class="sc-bar-note">47% bis kritischem Schwellwert · Ziel: 6 Monate</div>
+          </div>
+          <div class="sc-div"></div>
+          <div class="sc-section">
+            <div class="sc-section-label">Critical Queue</div>
+            <div class="sc-qi"><span class="sc-qi-name">Hire Backend Engineer</span><span class="sc-tag a">−1.2 Mon. Runway</span></div>
+            <div class="sc-qi"><span class="sc-qi-name">License Renewal Q3</span><span class="sc-tag a">−0.3 Mon. Runway</span></div>
+          </div>
+          <div class="sc-ai">
+            <div class="sc-ai-label">AI Signal</div>
+            <div class="sc-ai-text">Burn rate +12% MoM. Hiring decision blocked — missing supplier invoice unresolved.</div>
+          </div>
         </div>
-        <div class="preview-img-wrap">
-          <img id="preview-img" src="assets/screenshots/Finance.png" alt="Runway" draggable="false" oncontextmenu="return false">
-          <div class="preview-shield"></div>
+
+        <!-- ── Scene 1: Documents ── -->
+        <div class="scene-card" id="sc-1" style="display:none">
+          <div class="sc-head">
+            <span class="sc-eyebrow">Procurement Request</span>
+            <span class="sc-badge">Q2 · Offen</span>
+          </div>
+          <div class="sc-title">MacBook Procurement — Design Team</div>
+          <div class="sc-div" style="margin-top:14px"></div>
+          <div class="sc-section">
+            <div class="sc-section-label">Expected Documents</div>
+            <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name">Supplier Quote</span><span class="sc-doc-status ok">erhalten</span></div>
+            <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name">Delivery Note</span><span class="sc-doc-status ok">erhalten</span></div>
+            <div class="sc-doc"><span class="sc-doc-icon warn">⚠</span><span class="sc-doc-name">Invoice</span><span class="sc-doc-status warn">fehlt</span></div>
+          </div>
+          <div class="sc-ai">
+            <div class="sc-ai-label">AI Signal</div>
+            <div class="sc-ai-text">Missing supplier invoice detected. Hiring decision blocked until resolved.</div>
+          </div>
+          <div class="sc-section" style="border-top:1px solid var(--line)">
+            <div class="sc-section-label">Verknüpfte Entscheidung</div>
+            <div class="sc-qi"><span class="sc-qi-name">Budget approved — Q2 Hiring</span><span class="sc-tag b">Offen</span></div>
+          </div>
         </div>
+
+        <!-- ── Scene 2: Structures ── -->
+        <div class="scene-card" id="sc-2" style="display:none">
+          <div class="sc-head">
+            <span class="sc-eyebrow">Operational Structure</span>
+            <span class="sc-meta">6 Members · 3 Departments</span>
+          </div>
+          <div class="sc-section">
+            <div class="sc-dept"><span class="sc-dept-name">Engineering</span><span class="sc-dept-count">4 Members</span></div>
+            <div class="sc-children">
+              <div class="sc-child"><span>Backend Development</span><span class="sc-child-tag">2 aktive Tickets</span></div>
+              <div class="sc-child"><span>Infrastructure</span><span class="sc-child-tag">1 aktives Ticket</span></div>
+              <div class="sc-child"><span>Product</span><span class="sc-child-tag">3 aktive Tickets</span></div>
+            </div>
+            <div class="sc-dept"><span class="sc-dept-name">Design</span><span class="sc-dept-count">2 Members</span></div>
+            <div class="sc-children">
+              <div class="sc-child"><span>UX/UI</span><span class="sc-child-tag">1 aktives Ticket</span></div>
+            </div>
+          </div>
+          <div class="sc-ai">
+            <div class="sc-ai-label">Shared Context</div>
+            <div class="sc-kv"><span class="sc-kv-key">Budget Pool · Engineering</span><span class="sc-kv-val">€ 12.400 / Mon.</span></div>
+            <div class="sc-kv"><span class="sc-kv-key">Runway Impact</span><span class="sc-kv-val a">−0.8 Mon.</span></div>
+            <div class="sc-kv"><span class="sc-kv-key">AI Observation</span><span class="sc-kv-val">Engineering over-indexed</span></div>
+          </div>
+        </div>
+
+        <!-- ── Scene 3: Invoice ── -->
+        <div class="scene-card" id="sc-3" style="display:none">
+          <div class="sc-head">
+            <span class="sc-eyebrow">Invoice Management</span>
+            <span class="sc-meta">Mai 2026</span>
+          </div>
+          <div class="sc-kpis n3">
+            <div class="sc-kpi"><div class="sc-kpi-num">€ 8.400</div><div class="sc-kpi-label">Offen</div></div>
+            <div class="sc-kpi green"><div class="sc-kpi-num">€ 22.800</div><div class="sc-kpi-label">Genehmigt</div></div>
+            <div class="sc-kpi red"><div class="sc-kpi-num">€ 1.200</div><div class="sc-kpi-label">Überfällig</div></div>
+          </div>
+          <div class="sc-div"></div>
+          <div class="sc-section">
+            <div class="sc-section-label">Aktuell</div>
+            <div class="sc-inv"><span class="sc-inv-name">Vercel Pro</span><span class="sc-inv-amount">€ 280</span><span class="sc-tag a">3 Tage</span></div>
+            <div class="sc-inv"><span class="sc-inv-name">AWS Infrastructure</span><span class="sc-inv-amount">€ 1.840</span><span class="sc-tag g">✓ genehmigt</span></div>
+            <div class="sc-inv"><span class="sc-inv-name">Design Agency</span><span class="sc-inv-amount">€ 4.200</span><span class="sc-tag m">in Prüfung</span></div>
+          </div>
+          <div class="sc-ai">
+            <div class="sc-ai-label">Budget Signal</div>
+            <div class="sc-ai-text">Cost run-rate +12% vs. plan. 2 Rechnungen nicht mit Procurement verknüpft.</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1057,14 +1216,45 @@ const LANG = {
   }
 };
 
-const TABS = [
-  { key:"Runway",             img:"assets/screenshots/Finance.png",                      url:"company-os.app/cockpit/runway" },
-  { key:"Documents",          img:"assets/screenshots/documents-section dark.png",       url:"company-os.app/documents" },
-  { key:"Structures",         img:"assets/screenshots/structures dark.png",              url:"company-os.app/structures" },
-  { key:"Invoice Management", img:"assets/screenshots/Invoice-Section dark.png",         url:"company-os.app/costs/invoice" },
+const SCENES = [
+  {
+    label: { de:"Financial Operations",   en:"Financial Operations" },
+    h3:    { de:"Runway als Live-Signal.", en:"Runway as a live signal." },
+    p:     { de:"Cash, Burn und operative Entscheidungen in einem Datenmodell — kein Report, kein Tab.",
+             en:"Cash, burn, and operational decisions in one data model — no report, no extra tab." }
+  },
+  {
+    label: { de:"Document Intelligence",          en:"Document Intelligence" },
+    h3:    { de:"Dokumente als operative Objekte.", en:"Documents as operational objects." },
+    p:     { de:"Jedes Dokument ist mit einem Procurement, einer Entscheidung und einer Kostenstelle verknüpft — nicht nur abgelegt.",
+             en:"Every document is linked to a procurement, a decision, a cost centre — not just filed away." }
+  },
+  {
+    label: { de:"Operational Structure",     en:"Operational Structure" },
+    h3:    { de:"Struktur als gemeinsame Schicht.", en:"Structure as a shared layer." },
+    p:     { de:"Departments, Rollen und Verantwortlichkeiten teilen ein Datenmodell mit Tickets, Kosten und Runway.",
+             en:"Departments, roles, and responsibilities share one data model with tickets, costs, and runway." }
+  },
+  {
+    label: { de:"Invoice Management",           en:"Invoice Management" },
+    h3:    { de:"Rechnungen im operativen Kontext.", en:"Invoices in operational context." },
+    p:     { de:"Jede Rechnung ist mit einem Procurement, einem Budget und einem Runway-Signal verbunden — nicht isoliert in einem PDF.",
+             en:"Every invoice is linked to a procurement, a budget, and a runway signal — not isolated in a PDF." }
+  }
 ];
 
 let currentLang = localStorage.getItem('cos-lang') || 'de';
+let currentScene = 0;
+
+function applyScene(idx) {
+  for (let i = 0; i < SCENES.length; i++) document.getElementById('sc-'+i).style.display = i === idx ? '' : 'none';
+  const s = SCENES[idx];
+  document.getElementById('scene-label').textContent = s.label[currentLang];
+  document.getElementById('scene-h3').textContent   = s.h3[currentLang];
+  document.getElementById('scene-p').textContent    = s.p[currentLang];
+  document.querySelectorAll('.scene-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+  currentScene = idx;
+}
 
 function applyLang(lang) {
   currentLang = lang;
@@ -1078,30 +1268,13 @@ function applyLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
-  buildTabs(lang);
+  applyScene(currentScene);
 }
 
-function buildTabs(lang) {
-  const labels = LANG[lang]['preview.tabs'];
-  const container = document.getElementById('preview-tabs');
-  container.innerHTML = '';
-  TABS.forEach((tab, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'preview-tab' + (i === 0 ? ' active' : '');
-    btn.textContent = labels[i] || tab.key;
-    btn.dataset.idx = i;
-    container.appendChild(btn);
-  });
-}
-
-document.getElementById('preview-tabs').addEventListener('click', function(e) {
-  const btn = e.target.closest('.preview-tab');
+document.getElementById('scene-nav').addEventListener('click', function(e) {
+  const btn = e.target.closest('.scene-btn');
   if (!btn) return;
-  const i = parseInt(btn.dataset.idx, 10);
-  this.querySelectorAll('.preview-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('preview-img').src = TABS[i].img;
-  document.getElementById('preview-url').textContent = TABS[i].url;
+  applyScene(parseInt(btn.dataset.scene, 10));
 });
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
