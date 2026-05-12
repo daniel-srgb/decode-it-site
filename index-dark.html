@@ -70,7 +70,7 @@ a { color:inherit; text-decoration:none; }
 .btn-xl { height:50px; padding:0 30px; font-size:15px; border-radius:var(--radius); }
 
 /* Pills */
-.pill { display:inline-flex; align-items:center; gap:6px; height:27px; padding:0 11px; border:1px solid var(--line); border-radius:999px; font-size:12px; font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap; background:var(--surface); }
+.pill { display:inline-flex; align-items:center; gap:6px; height:29px; padding:0 13px; border:1px solid var(--line); border-radius:999px; font-size:12px; font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap; background:var(--surface); box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 1px 3px rgba(0,0,0,.2); }
 .pill .pd { width:6px; height:6px; border-radius:50%; background:var(--muted-2); flex-shrink:0; }
 .pill.p-blue   { border-color:rgba(74,163,255,.45);  color:var(--blue-text);   background:var(--blue-soft); }   .pill.p-blue .pd   { background:var(--blue); }
 .pill.p-green  { border-color:rgba(62,210,119,.45);  color:var(--green-text);  background:var(--green-soft); }  .pill.p-green .pd  { background:var(--green); }
@@ -93,7 +93,7 @@ section { padding:96px 0; border-bottom:1px solid var(--line); }
 .section-head .lede { margin-top:12px; }
 
 /* Frame */
-.frame { border:1px solid var(--line); background:var(--surface); border-radius:var(--radius); overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(74,163,255,.05); }
+.frame { border:1px solid var(--line); background:var(--surface); border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.2),0 12px 36px rgba(0,0,0,.35),0 36px 80px rgba(0,0,0,.45),0 72px 130px rgba(0,0,0,.25); }
 .frame-bar { display:flex; align-items:center; gap:6px; padding:10px 14px; border-bottom:1px solid var(--line); background:#161615; flex-shrink:0; }
 .frame-bar .bdot { width:9px; height:9px; border-radius:50%; }
 .bdot.r { background:#ff6058; } .bdot.y { background:#ffbd2e; } .bdot.g { background:#29cb42; }
@@ -101,20 +101,23 @@ section { padding:96px 0; border-bottom:1px solid var(--line); }
 .frame img { display:block; width:100%; height:auto; }
 
 /* ───── HERO ───── */
-.hero { padding:72px 0 100px; border-bottom:1px solid var(--line); }
+.hero { padding:72px 0 0; border-bottom:none; }
 .hero-pills { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
 .hero-slogan { font-size:21px; color:var(--blue); font-weight:500; margin-top:16px; letter-spacing:.005em; }
 .hero-lede { max-width:58ch; margin-top:16px; font-size:17px; }
 .hero-actions { display:flex; gap:10px; margin-top:32px; flex-wrap:wrap; }
-.hero-frame { margin-top:60px; }
+.hero-frame { margin-top:52px; margin-bottom:-80px; position:relative; z-index:2; }
 
 /* ───── HERO SCENE ───── */
 .hero-scene { display:grid; grid-template-columns:172px 1fr; background:var(--bg); }
-.hs-nav { background:var(--surface); border-right:1px solid var(--line); padding:10px 0; display:flex; flex-direction:column; gap:1px; }
-.hs-nav-item { display:flex; align-items:center; gap:9px; padding:7px 14px; font-size:12px; color:var(--muted); font-family:var(--font-mono); white-space:nowrap; }
-.hs-nav-item.active { color:var(--text); font-weight:600; background:var(--surface-2); }
-.hs-nav-dot { width:5px; height:5px; border-radius:50%; background:var(--line-strong); flex-shrink:0; }
-.hs-nav-item.active .hs-nav-dot { background:var(--blue); }
+.hs-nav { background:var(--surface); border-right:1px solid var(--line); padding:0; display:flex; flex-direction:column; }
+.hs-ctx { padding:16px 14px; border-bottom:1px solid var(--line); }
+.hs-ctx:last-child { border-bottom:0; }
+.hs-ctx-label { font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted-2); font-weight:700; margin-bottom:7px; font-family:var(--font-mono); }
+.hs-ctx-val { font-size:17px; font-weight:720; letter-spacing:-.02em; line-height:1.1; color:var(--text); }
+.hs-ctx-val.amber { color:var(--amber); }
+.hs-ctx-val.blue { color:var(--blue); }
+.hs-ctx-sub { font-size:11px; color:var(--muted); margin-top:4px; }
 .hs-main { padding:22px 26px; display:flex; flex-direction:column; }
 .hs-kpis { display:grid; grid-template-columns:repeat(4,1fr); padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line); align-items:end; }
 .hs-kpi-num { font-size:24px; font-weight:720; letter-spacing:-.025em; line-height:1; }
@@ -127,9 +130,19 @@ section { padding:96px 0; border-bottom:1px solid var(--line); }
 .hs-qi + .hs-qi { border-top:1px solid var(--line); }
 .hs-qi-name { flex:1; font-size:13px; color:var(--text); font-weight:500; }
 .hs-qi-amount { font-size:13px; font-weight:600; color:var(--text); font-variant-numeric:tabular-nums; }
-.hs-ai { margin-top:14px; padding:11px 14px; background:var(--surface-2); border-left:2px solid var(--blue); border-radius:0 5px 5px 0; display:flex; gap:10px; align-items:flex-start; }
-.hs-ai-tag { font-size:9px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--blue); flex-shrink:0; margin-top:2px; font-family:var(--font-mono); }
-.hs-ai-text { font-size:12px; color:var(--text); line-height:1.55; }
+.hs-ai { margin-top:16px; padding:14px 16px; background:var(--blue-soft); border:1px solid var(--line); border-radius:6px; }
+.hs-ai-tag { font-size:9px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--blue); display:block; margin-bottom:6px; font-family:var(--font-mono); }
+.hs-ai-text { font-size:14px; font-weight:500; color:var(--text); line-height:1.5; }
+
+/* ───── HERO BRIDGE ───── */
+.hero-bridge { padding:112px 0 80px; background:var(--bg); border-bottom:1px solid var(--line); }
+.hb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.hb-item { padding:16px 18px; border:1px solid var(--line); border-radius:8px; background:var(--surface); box-shadow:0 1px 3px rgba(0,0,0,.15); }
+.hb-tag { display:block; font-size:10px; letter-spacing:.11em; text-transform:uppercase; font-weight:700; margin-bottom:8px; }
+.hb-tag.amber { color:var(--amber-text); }
+.hb-tag.blue { color:var(--blue-text); }
+.hb-tag.violet { color:var(--violet-text); }
+.hb-text { font-size:13px; color:var(--muted); line-height:1.6; }
 
 /* ───── PROBLEM ───── */
 .problem-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
@@ -349,7 +362,7 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
 /* Tablet ≤860px */
 @media (max-width:860px) {
   section { padding:64px 0; }
-  .hero { padding:48px 0 64px; }
+  .hero { padding:48px 0 0; }
   .cta-section { padding:80px 0; }
 
   .h1 { font-size:42px; }
@@ -364,6 +377,11 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
   .sc-kpis.n4 { grid-template-columns:repeat(2,1fr); gap:12px; }
   .scene-copy-h3 { font-size:22px; }
   .audience-layout { grid-template-columns:1fr; }
+  .hero-frame { margin-bottom:-40px; }
+  .hero-bridge { padding-top:80px; padding-bottom:52px; }
+  .hb-grid { grid-template-columns:1fr; gap:10px; }
+  .hero-scene { grid-template-columns:1fr; }
+  .hs-nav { display:none; }
   .founder-block { grid-template-columns:1fr; padding:28px; }
   .footer-grid { grid-template-columns:1fr; gap:32px; }
 
@@ -386,8 +404,9 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
   .container { padding:0 18px; }
 
   section { padding:48px 0; }
-  .hero { padding:36px 0 48px; }
-  .hero-frame { margin-top:32px; }
+  .hero { padding:36px 0 0; }
+  .hero-frame { margin-top:32px; margin-bottom:0; }
+  .hero-bridge { padding-top:64px; padding-bottom:40px; }
   .cta-section { padding:64px 0; }
   .section-head { margin-bottom:28px; }
 
@@ -514,12 +533,26 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
         </div>
         <div class="hero-scene">
           <div class="hs-nav">
-            <div class="hs-nav-item active"><span class="hs-nav-dot"></span>Runway</div>
-            <div class="hs-nav-item"><span class="hs-nav-dot"></span>Pipeline</div>
-            <div class="hs-nav-item"><span class="hs-nav-dot"></span>Decisions</div>
-            <div class="hs-nav-item"><span class="hs-nav-dot"></span>Structures</div>
-            <div class="hs-nav-item"><span class="hs-nav-dot"></span>Documents</div>
-            <div class="hs-nav-item"><span class="hs-nav-dot"></span>Team</div>
+            <div class="hs-ctx">
+              <div class="hs-ctx-label">Runway</div>
+              <div class="hs-ctx-val amber" data-i18n="hs.ctx1.val">4.7 Mon.</div>
+              <div class="hs-ctx-sub" data-i18n="hs.ctx1.sub">−12% vs. Plan</div>
+            </div>
+            <div class="hs-ctx">
+              <div class="hs-ctx-label">Critical Queue</div>
+              <div class="hs-ctx-val" data-i18n="hs.ctx2.val">3 Items</div>
+              <div class="hs-ctx-sub" data-i18n="hs.ctx2.sub">offen</div>
+            </div>
+            <div class="hs-ctx">
+              <div class="hs-ctx-label">AI Signal</div>
+              <div class="hs-ctx-val blue" data-i18n="hs.ctx3.val">Aktiv</div>
+              <div class="hs-ctx-sub" data-i18n="hs.ctx3.sub">1 Warnung</div>
+            </div>
+            <div class="hs-ctx">
+              <div class="hs-ctx-label">Procurement</div>
+              <div class="hs-ctx-val amber" data-i18n="hs.ctx4.val">2 offen</div>
+              <div class="hs-ctx-sub" data-i18n="hs.ctx4.sub">nicht verknüpft</div>
+            </div>
           </div>
           <div class="hs-main">
             <div class="hs-kpis">
@@ -561,6 +594,26 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HERO BRIDGE ══ -->
+<section class="hero-bridge">
+  <div class="container">
+    <div class="hb-grid">
+      <div class="hb-item">
+        <span class="hb-tag amber" data-i18n="hb.t1.tag">Finance</span>
+        <span class="hb-text" data-i18n="hb.t1.text">Runway sinkt — 2 unverknüpfte Procurement-Positionen erhöhen Burn-Rate.</span>
+      </div>
+      <div class="hb-item">
+        <span class="hb-tag blue" data-i18n="hb.t2.tag">Operations</span>
+        <span class="hb-text" data-i18n="hb.t2.text">Q2-Budget-Entscheidung blockiert aktive Hiring-Pipeline.</span>
+      </div>
+      <div class="hb-item">
+        <span class="hb-tag violet" data-i18n="hb.t3.tag">AI Signal</span>
+        <span class="hb-text" data-i18n="hb.t3.text">Burn +12% MoM — Kurskorrektur empfohlen vor Q3.</span>
       </div>
     </div>
   </div>
@@ -1079,6 +1132,13 @@ const LANG = {
     "hs.runway.label":"Runway · Monate", "hs.burn.label":"Burn / Monat", "hs.queue.label":"Critical Queue",
     "hs.q1.tag":"3 Tage", "hs.q2.tag":"ausstehend", "hs.q3.tag":"12 Tage", "hs.q3.name":"Steuer · Vorauszahlung",
     "hs.ai.text":"Runway −0.4 Mon. durch 2 offene Procurement-Positionen. Design Agency nicht mit Q2-Entscheidung verknüpft.",
+    "hs.ctx1.val":"4.7 Mon.", "hs.ctx1.sub":"−12% vs. Plan",
+    "hs.ctx2.val":"3 Items", "hs.ctx2.sub":"offen",
+    "hs.ctx3.val":"Aktiv", "hs.ctx3.sub":"1 Warnung",
+    "hs.ctx4.val":"2 offen", "hs.ctx4.sub":"nicht verknüpft",
+    "hb.t1.tag":"Finance", "hb.t1.text":"Runway sinkt — 2 unverknüpfte Procurement-Positionen erhöhen Burn-Rate.",
+    "hb.t2.tag":"Operations", "hb.t2.text":"Q2-Budget-Entscheidung blockiert aktive Hiring-Pipeline.",
+    "hb.t3.tag":"AI Signal", "hb.t3.text":"Burn +12% MoM — Kurskorrektur empfohlen vor Q3.",
     "problem.eyebrow": "Das Problem",
     "problem.h2": "Operative Komplexität<br>übersteigt menschliche Koordination.",
     "problem.lede": "Kleine Firmen führen 8–12 Tools parallel. Menschen werden zur manuellen Integrationsschicht — und das skaliert nicht.",
@@ -1195,6 +1255,13 @@ const LANG = {
     "hs.runway.label":"Runway · months", "hs.burn.label":"Burn / month", "hs.queue.label":"Critical Queue",
     "hs.q1.tag":"3 days", "hs.q2.tag":"pending", "hs.q3.tag":"12 days", "hs.q3.name":"Tax · Prepayment",
     "hs.ai.text":"Runway −0.4 mo. from 2 open procurement positions. Design Agency not linked to Q2 decision.",
+    "hs.ctx1.val":"4.7 mo.", "hs.ctx1.sub":"−12% vs. plan",
+    "hs.ctx2.val":"3 items", "hs.ctx2.sub":"open",
+    "hs.ctx3.val":"Active", "hs.ctx3.sub":"1 warning",
+    "hs.ctx4.val":"2 open", "hs.ctx4.sub":"not linked",
+    "hb.t1.tag":"Finance", "hb.t1.text":"Runway declining — 2 unlinked procurement positions increasing burn rate.",
+    "hb.t2.tag":"Operations", "hb.t2.text":"Q2 budget decision blocking active hiring pipeline.",
+    "hb.t3.tag":"AI Signal", "hb.t3.text":"Burn +12% MoM — course correction recommended before Q3.",
     "problem.eyebrow": "The Problem",
     "problem.h2": "Operational complexity<br>outpaces human coordination.",
     "problem.lede": "Small companies run 8–12 tools in parallel. People become the manual integration layer — and that doesn't scale.",
