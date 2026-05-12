@@ -206,6 +206,55 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
 .footer-bottom { margin-top:40px; padding-top:20px; border-top:1px solid var(--line); font-size:12px; color:var(--muted-2); }
 @media (max-width:860px) { .footer-grid { grid-template-columns:1fr; gap:32px; } }
 
+/* ───── STORY (expanded) ───── */
+.story-hero { display:grid; grid-template-columns:1fr 168px; gap:48px; align-items:start; padding-bottom:64px; border-bottom:1px solid var(--line); margin-bottom:56px; }
+.story-hero .eyebrow { display:inline-block; margin-bottom:18px; }
+.story-hero-h2 { font-size:38px; line-height:1.1; font-weight:720; letter-spacing:-0.014em; }
+.story-hero-sub { margin-top:16px; max-width:50ch; color:var(--muted); font-size:16px; line-height:1.65; }
+.portrait-wrap { padding-top:4px; }
+.portrait-img { width:100%; display:block; border-radius:var(--radius); border:1px solid var(--line); }
+.portrait-caption { margin-top:10px; font-size:11px; color:var(--muted-2); letter-spacing:.04em; }
+.story-pills { display:flex; gap:6px; flex-wrap:wrap; margin-top:20px; }
+.story-pills .pill { height:22px; font-size:11px; padding:0 9px; }
+.story-divider { height:1px; background:var(--line); margin:52px 0; }
+.story-prose-layout { display:grid; grid-template-columns:196px 1fr; gap:48px; align-items:start; }
+.story-prose-sidebar .eyebrow { margin-bottom:14px; }
+.story-prose-sidebar-note { font-size:13px; color:var(--muted-2); line-height:1.6; }
+.story-prose { display:flex; flex-direction:column; gap:18px; }
+.story-prose p { font-size:16px; color:var(--muted); line-height:1.75; }
+.story-prose p.sp-highlight { color:var(--text); font-size:18px; font-weight:500; letter-spacing:-0.006em; line-height:1.6; }
+.story-prose em { color:var(--text); font-style:normal; }
+.story-sub-head { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted-2); margin-bottom:22px; }
+.manifesto-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.manifesto-item { background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:36px; display:flex; flex-direction:column; gap:14px; }
+.manifesto-num { font-family:var(--font-mono); font-size:10px; color:var(--muted-2); letter-spacing:.1em; }
+.manifesto-item h4 { font-size:20px; font-weight:700; line-height:1.2; letter-spacing:-0.01em; }
+.manifesto-item p { font-size:13px; color:var(--muted-2); line-height:1.65; }
+.manifesto-item.m-accent { background:rgba(74,163,255,.08); border-color:rgba(74,163,255,.22); }
+.manifesto-item.m-accent .manifesto-num { color:var(--blue); }
+.manifesto-item.m-accent h4 { color:var(--blue-text); }
+.why-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.why-card { background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:24px; display:flex; flex-direction:column; gap:8px; }
+.why-card .why-signal { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-2); }
+.why-card h4 { font-size:15px; font-weight:700; line-height:1.3; }
+.why-card p { font-size:13px; color:var(--muted); line-height:1.55; }
+.why-card.why-hero { grid-column:1/-1; flex-direction:row; gap:48px; align-items:flex-start; padding:36px 44px; background:var(--blue-soft); border-color:rgba(74,163,255,.3); }
+.why-hero-left { flex-shrink:0; display:flex; flex-direction:column; gap:10px; min-width:180px; }
+.why-hero-left .why-signal { color:var(--blue); }
+.why-hero-left h4 { font-size:24px; font-weight:700; line-height:1.15; letter-spacing:-0.012em; color:var(--blue-text); }
+.why-hero-right p { font-size:15px; color:var(--blue-text); line-height:1.7; opacity:.8; max-width:54ch; }
+.story-tl { display:flex; flex-direction:column; }
+.tl-item { display:grid; grid-template-columns:140px 1px 1fr; gap:0 24px; }
+.tl-left { text-align:right; padding:18px 0; }
+.tl-label { font-size:11px; color:var(--muted-2); font-weight:600; letter-spacing:.04em; line-height:1.4; display:block; }
+.tl-spine { background:var(--line); position:relative; }
+.tl-spine::before { content:''; position:absolute; top:22px; left:50%; transform:translateX(-50%); width:7px; height:7px; border-radius:50%; background:var(--surface-3); border:1px solid var(--line-strong); }
+.tl-item.tl-current .tl-spine::before { background:var(--blue); border-color:var(--blue); box-shadow:0 0 8px rgba(74,163,255,.4); }
+.tl-content { padding:14px 0 22px; }
+.tl-content h4 { font-size:14px; font-weight:700; margin-bottom:3px; }
+.tl-content p { font-size:13px; color:var(--muted); line-height:1.55; }
+.tl-item.tl-current .tl-content h4 { color:var(--blue-text); }
+
 /* ───── Responsive ───── */
 
 /* Tablet ≤860px */
@@ -231,6 +280,15 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
   /* Competition table: horizontal scroll on tablet */
   .comp-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
   .comp-table { min-width:560px; }
+
+  .story-hero { grid-template-columns:1fr 140px; gap:32px; }
+  .story-hero-h2 { font-size:28px; }
+  .story-prose-layout { grid-template-columns:1fr; gap:24px; }
+  .manifesto-grid { grid-template-columns:1fr; }
+  .why-grid { grid-template-columns:1fr 1fr; }
+  .why-card.why-hero { flex-direction:column; gap:20px; padding:28px; }
+  .why-hero-left { min-width:0; }
+  .why-hero-left h4 { font-size:20px; }
 }
 
 /* Mobile ≤480px */
@@ -295,6 +353,23 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
   /* Footer */
   .footer-grid { gap:24px; }
   .footer-bottom { margin-top:28px; }
+
+  /* Story */
+  .story-hero { grid-template-columns:1fr; }
+  .portrait-wrap { max-width:120px; }
+  .story-hero-h2 { font-size:25px; letter-spacing:-0.008em; }
+  .story-hero-sub { font-size:15px; }
+  .story-divider { margin:36px 0; }
+  .story-prose p { font-size:15px; }
+  .story-prose p.sp-highlight { font-size:16px; }
+  .manifesto-item { padding:24px; }
+  .manifesto-item h4 { font-size:17px; }
+  .why-grid { grid-template-columns:1fr; }
+  .why-card.why-hero { padding:22px; gap:16px; }
+  .why-hero-left h4 { font-size:18px; }
+  .why-hero-right p { font-size:14px; }
+  .tl-item { grid-template-columns:88px 1px 1fr; gap:0 14px; }
+  .tl-label { font-size:10px; }
 }
 </style>
 </head>
@@ -558,28 +633,148 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
   </div>
 </section>
 
-<!-- ══ FOUNDER ══ -->
+<!-- ══ FOUNDER / STORY ══ -->
 <section id="founder">
   <div class="container">
-    <div class="section-head">
-      <span class="eyebrow" data-i18n="founder.eyebrow">Story</span>
-      <h2 class="h2" data-i18n="founder.h2">Nicht erfunden. Erfahren.</h2>
-    </div>
-    <div class="founder-block">
-      <div class="founder-mark">
-        <svg width="52" height="52" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="3.5" fill="currentColor"/><line x1="20" y1="16.5" x2="20" y2="4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="22.47" y1="17.53" x2="31.31" y2="8.69" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="23.5" y1="20" x2="36" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="22.47" y1="22.47" x2="31.31" y2="31.31" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="20" y1="23.5" x2="20" y2="36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17.53" y1="22.47" x2="8.69" y2="31.31" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="16.5" y1="20" x2="4" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17.53" y1="17.53" x2="8.69" y2="8.69" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="2" r="2" fill="currentColor"/><circle cx="32.73" cy="7.27" r="2" fill="currentColor"/><circle cx="38" cy="20" r="2" fill="currentColor"/><circle cx="32.73" cy="32.73" r="2" fill="currentColor"/><circle cx="20" cy="38" r="2" fill="currentColor"/><circle cx="7.27" cy="32.73" r="2" fill="currentColor"/><circle cx="2" cy="20" r="2" fill="currentColor"/><circle cx="7.27" cy="7.27" r="2" fill="currentColor"/></svg>
+
+    <!-- Opening -->
+    <div class="story-hero">
+      <div class="story-hero-text">
+        <span class="eyebrow" data-i18n="founder.eyebrow">Story</span>
+        <h2 class="story-hero-h2" data-i18n="founder.h2">Gebaut aus<br>operativer Realität.</h2>
+        <p class="story-hero-sub" data-i18n="founder.subtitle">Company OS entstand nicht aus einem Marktforschungs-Workshop — sondern aus dem echten Aufbau von Decode IT.</p>
+        <div class="story-pills">
+          <span class="pill p-blue"><span class="pd"></span>Decode IT · Heidelberg</span>
+          <span class="pill p-violet"><span class="pd"></span><span data-i18n="founder.pill.operator">Operator-Perspektive</span></span>
+        </div>
       </div>
-      <div class="founder-body">
-        <p data-i18n="founder.p1">Company OS entsteht nicht in einem Designer-Workshop — aus dem echten Aufbau von Decode IT.</p>
-        <p data-i18n="founder.p2">Wir bauen unsere eigene Firma damit. Vom ersten Mitarbeiter über das erste Kundenprojekt bis zum ersten Steuertermin — alles läuft durch dieses System. Was im echten Betrieb hilft, kommt ins Produkt. Was nicht hilft, fliegt raus.</p>
-        <p class="p-muted" data-i18n="founder.p3">Das Ergebnis ist eine Oberfläche, die nach Founder-Realität aussieht — nicht nach SaaS-Demo.</p>
-        <div class="founder-meta">
-          <span><b>Decode IT</b> · Heidelberg</span>
-          <span data-i18n="founder.meta2"><b>Phase</b> · früh, mit echtem Betrieb als Grundlage</span>
-          <span data-i18n="founder.meta3"><b>Erste Nutzer</b> · wir selbst</span>
+      <div class="portrait-wrap">
+        <img class="portrait-img" src="assets/images/daniel.PNG" alt="Daniel Sobiak · Decode IT">
+        <p class="portrait-caption">Daniel Sobiak · Decode IT</p>
+      </div>
+    </div>
+
+    <!-- Origin -->
+    <div class="story-prose-layout">
+      <div class="story-prose-sidebar">
+        <span class="eyebrow" data-i18n="founder.origin.eyebrow">Origin</span>
+        <p class="story-prose-sidebar-note" data-i18n="founder.origin.note">Keine Idee aus dem Nichts. Eine strukturelle Beobachtung aus echtem Betrieb.</p>
+      </div>
+      <div class="story-prose">
+        <p class="sp-highlight" data-i18n="founder.prose.p1">During operational work inside fast-moving startup environments, one problem became visible again and again.</p>
+        <p data-i18n="founder.prose.p2">Teams moved faster than their operational structure. Execution lived across tickets, chats, spreadsheets, documents and people's heads. Der Founder war die einzige Integrationsschicht — hielt alles manuell zusammen.</p>
+        <p data-i18n="founder.prose.p3">Company OS entstand aus der Idee, dass <em>operative Realität selbst eine bessere Strukturschicht braucht.</em></p>
+        <p data-i18n="founder.prose.p4">Kein weiteres Tool. Ein anderes Modell.</p>
+      </div>
+    </div>
+
+    <!-- Philosophy -->
+    <div class="story-divider"></div>
+    <p class="story-sub-head" data-i18n="founder.phil.label">Philosophy</p>
+    <div class="manifesto-grid">
+      <div class="manifesto-item">
+        <div class="manifesto-num">01</div>
+        <h4 data-i18n="founder.phil.1.h">Companies don't have a tool problem. They have a structure problem.</h4>
+        <p data-i18n="founder.phil.1.p">Mehr Tools reduzieren keine Komplexität — sie fragmentieren sie weiter. Struktur reduziert Komplexität. Tools folgen der Struktur.</p>
+      </div>
+      <div class="manifesto-item m-accent">
+        <div class="manifesto-num">02</div>
+        <h4 data-i18n="founder.phil.2.h">AI becomes powerful when operational reality is structured.</h4>
+        <p data-i18n="founder.phil.2.p">Reasoning-Modelle können interpretieren und handeln — aber nur wenn die Daten darunter Form haben. Company OS baut diese Schicht.</p>
+      </div>
+      <div class="manifesto-item">
+        <div class="manifesto-num">03</div>
+        <h4 data-i18n="founder.phil.3.h">Runway and execution cannot live in separate systems.</h4>
+        <p data-i18n="founder.phil.3.p">Jedes Ticket ist eine Kostenentscheidung. Jede Einstellung beeinflusst den Runway. Jede Verzögerung hat ein finanzielles Signal. Das ist dasselbe System.</p>
+      </div>
+      <div class="manifesto-item">
+        <div class="manifesto-num">04</div>
+        <h4 data-i18n="founder.phil.4.h">The Founder shouldn't be the integration layer.</h4>
+        <p data-i18n="founder.phil.4.p">Wenn eine Person das operative Bild im Kopf hält, skaliert die Firma nicht — sie nimmt sich selbst in Geiselhaft.</p>
+      </div>
+    </div>
+
+    <!-- Why Now -->
+    <div class="story-divider"></div>
+    <p class="story-sub-head" data-i18n="founder.why.label">Warum Jetzt</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-signal" data-i18n="founder.why.s1">Signal 01</div>
+        <h4 data-i18n="founder.why.1.h">AI-native Unternehmen entstehen jetzt</h4>
+        <p data-i18n="founder.why.1.p">Eine neue Generation baut mit AI von Anfang an — und braucht operative Struktur, die AI lesen kann.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-signal" data-i18n="founder.why.s2">Signal 02</div>
+        <h4 data-i18n="founder.why.2.h">Tool-Fragmentierung explodiert</h4>
+        <p data-i18n="founder.why.2.p">Die durchschnittliche 10-Personen-Firma führt 8–12 Tools. Kein gemeinsames Datenmodell. Kein gemeinsamer Kontext.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-signal" data-i18n="founder.why.s3">Signal 03</div>
+        <h4 data-i18n="founder.why.3.h">Investoren fordern operative Transparenz</h4>
+        <p data-i18n="founder.why.3.p">Runway-Klarheit, Execution-Sichtbarkeit und Governance sind von Nice-to-have zu Mindestanforderungen geworden.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-signal" data-i18n="founder.why.s4">Signal 04</div>
+        <h4 data-i18n="founder.why.4.h">Founder bewegen sich schneller — nicht klarer</h4>
+        <p data-i18n="founder.why.4.p">Geschwindigkeit ohne Struktur erzeugt operativen Debt. Je schneller du dich bewegst, desto mehr brauchst du ein System.</p>
+      </div>
+      <div class="why-card why-hero">
+        <div class="why-hero-left">
+          <div class="why-signal" data-i18n="founder.why.s5">Signal 05</div>
+          <h4 data-i18n="founder.why.5.h">AI braucht Struktur — keine Dokumente.</h4>
+        </div>
+        <div class="why-hero-right">
+          <p data-i18n="founder.why.5.p">LLMs können nicht auf operative Realität handeln, wenn diese nicht strukturiert ist. Die Schicht unter AI ist wichtiger als AI selbst.</p>
         </div>
       </div>
     </div>
+
+    <!-- Timeline -->
+    <div class="story-divider"></div>
+    <p class="story-sub-head" data-i18n="founder.tl.label">Background</p>
+    <div class="story-tl">
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-label" data-i18n="founder.tl.1.label">Organisationsentwicklung</span></div>
+        <div class="tl-spine"></div>
+        <div class="tl-content">
+          <h4 data-i18n="founder.tl.1.h">Organizational Design</h4>
+          <p data-i18n="founder.tl.1.p">Strukturierung von Prozessen, Rollen und Verantwortlichkeiten in wachsenden Organisationen.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-label" data-i18n="founder.tl.2.label">Startup Operations</span></div>
+        <div class="tl-spine"></div>
+        <div class="tl-content">
+          <h4 data-i18n="founder.tl.2.h">Startup Execution</h4>
+          <p data-i18n="founder.tl.2.p">Operative Arbeit in schnell wachsenden Startups. Das Chaos von innen erlebt — und strukturiert.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-label">Station F</span></div>
+        <div class="tl-spine"></div>
+        <div class="tl-content">
+          <h4 data-i18n="founder.tl.3.h">Startup Ecosystem</h4>
+          <p data-i18n="founder.tl.3.p">Einblick in das globale Startup-Ökosystem. Muster in erfolgreichen Gründer-Strukturen erkannt.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-label" data-i18n="founder.tl.4.label">Process Architecture</span></div>
+        <div class="tl-spine"></div>
+        <div class="tl-content">
+          <h4 data-i18n="founder.tl.4.h">Operational Infrastructure</h4>
+          <p data-i18n="founder.tl.4.p">Entwicklung strukturierter operativer Systeme. Das Fundament für Company OS.</p>
+        </div>
+      </div>
+      <div class="tl-item tl-current">
+        <div class="tl-left"><span class="tl-label" data-i18n="founder.tl.5.label">Heute</span></div>
+        <div class="tl-spine"></div>
+        <div class="tl-content">
+          <h4>Company OS · Decode IT</h4>
+          <p data-i18n="founder.tl.5.p">Das System, das wir selbst gebraucht hätten. Gebaut im echten Betrieb. Nicht im Workshop.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -636,7 +831,7 @@ const LANG = {
     "problem.stat3.num": "Founder", "problem.stat3.label": "ist die einzige Person, die alles im Kopf zusammenhält. Strukturell — und das skaliert nicht.",
     "monday.eyebrow": "Montag, 9:00 Uhr",
     "monday.h2": "Sieben Tabs für<br>eine einzige Frage.",
-    "monday.subtitle": "„Wo steht meine Firma gerade?"",
+    "monday.subtitle": "„Wo steht meine Firma gerade?“",
     "monday.legend": "Sieben Tabs. Keine Sicht. Keine Priorität.",
     "monday.arrow": "Mit Company OS →",
     "monday.body": "Eine Ansicht. Eine operative Wahrheit. Alles aus dem gleichen Datenmodell — ohne einen einzigen Tab mehr.",
@@ -666,11 +861,54 @@ const LANG = {
     "audience.a2.title": "IT-Dienstleister", "audience.a2.p": "Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.",
     "audience.a3.title": "Kleine SaaS- und Agenturteams", "audience.a3.p": "Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.",
     "audience.a4.title": "Teams mit zu vielen Tools", "audience.a4.p": "Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Wahrheit, viel Doppelarbeit.",
-    "founder.eyebrow": "Story", "founder.h2": "Nicht erfunden. Erfahren.",
-    "founder.p1": "Company OS entsteht nicht in einem Designer-Workshop — aus dem echten Aufbau von Decode IT.",
-    "founder.p2": "Wir bauen unsere eigene Firma damit. Vom ersten Mitarbeiter über das erste Kundenprojekt bis zum ersten Steuertermin — alles läuft durch dieses System. Was im echten Betrieb hilft, kommt ins Produkt. Was nicht hilft, fliegt raus.",
-    "founder.p3": "Das Ergebnis ist eine Oberfläche, die nach Founder-Realität aussieht — nicht nach SaaS-Demo.",
-    "founder.meta2": "<b>Phase</b> · früh, mit echtem Betrieb als Grundlage", "founder.meta3": "<b>Erste Nutzer</b> · wir selbst",
+    "founder.eyebrow": "Story",
+    "founder.h2": "Gebaut aus<br>operativer Realität.",
+    "founder.subtitle": "Company OS entstand nicht aus einem Marktforschungs-Workshop — sondern aus dem echten Aufbau von Decode IT.",
+    "founder.pill.operator": "Operator-Perspektive",
+    "founder.origin.eyebrow": "Entstehung",
+    "founder.origin.note": "Keine Idee aus dem Nichts. Eine strukturelle Beobachtung aus echtem Betrieb.",
+    "founder.prose.p1": "Während operativer Arbeit in schnell wachsenden Startup-Umgebungen wurde immer wieder dasselbe Problem sichtbar.",
+    "founder.prose.p2": "Teams bewegten sich schneller als ihre operative Struktur. Execution lebte in Tickets, Chats, Spreadsheets, Dokumenten und in den Köpfen der Menschen. Der Founder war die einzige Integrationsschicht — hielt alles manuell zusammen.",
+    "founder.prose.p3": "Company OS entstand aus der Idee, dass <em>operative Realität selbst eine bessere Strukturschicht braucht.</em>",
+    "founder.prose.p4": "Kein weiteres Tool. Ein anderes Modell.",
+    "founder.phil.label": "Philosophie",
+    "founder.phil.1.h": "Unternehmen haben kein Tool-Problem. Sie haben ein Struktur-Problem.",
+    "founder.phil.1.p": "Mehr Tools reduzieren keine Komplexität — sie fragmentieren sie weiter. Struktur reduziert Komplexität. Tools folgen der Struktur.",
+    "founder.phil.2.h": "AI wird mächtig, wenn operative Realität strukturiert ist.",
+    "founder.phil.2.p": "Reasoning-Modelle können interpretieren und handeln — aber nur wenn die Daten darunter Form haben. Company OS baut diese Schicht.",
+    "founder.phil.3.h": "Runway und Execution können nicht in getrennten Systemen leben.",
+    "founder.phil.3.p": "Jedes Ticket ist eine Kostenentscheidung. Jede Einstellung beeinflusst den Runway. Jede Verzögerung hat ein finanzielles Signal. Das ist dasselbe System.",
+    "founder.phil.4.h": "Der Founder sollte nicht die Integrationsschicht sein.",
+    "founder.phil.4.p": "Wenn eine Person das operative Bild im Kopf hält, skaliert die Firma nicht — sie nimmt sich selbst in Geiselhaft.",
+    "founder.why.label": "Warum Jetzt",
+    "founder.why.s1": "Signal 01", "founder.why.s2": "Signal 02", "founder.why.s3": "Signal 03",
+    "founder.why.s4": "Signal 04", "founder.why.s5": "Signal 05", "founder.why.s6": "Signal 06",
+    "founder.why.1.h": "AI-native Unternehmen entstehen jetzt",
+    "founder.why.1.p": "Eine neue Generation baut mit AI von Anfang an — und braucht operative Struktur, die AI lesen kann.",
+    "founder.why.2.h": "Tool-Fragmentierung explodiert",
+    "founder.why.2.p": "Die durchschnittliche 10-Personen-Firma führt 8–12 Tools. Kein gemeinsames Datenmodell. Kein gemeinsamer Kontext.",
+    "founder.why.3.h": "Investoren fordern operative Transparenz",
+    "founder.why.3.p": "Runway-Klarheit, Execution-Sichtbarkeit und Governance sind von Nice-to-have zu Mindestanforderungen geworden.",
+    "founder.why.4.h": "Founder bewegen sich schneller — nicht klarer",
+    "founder.why.4.p": "Geschwindigkeit ohne Struktur erzeugt operativen Debt. Je schneller du dich bewegst, desto mehr brauchst du ein System.",
+    "founder.why.5.h": "AI braucht Struktur — keine Dokumente.",
+    "founder.why.5.p": "LLMs können nicht auf operative Realität handeln, wenn diese nicht strukturiert ist. Die Schicht unter AI ist wichtiger als AI selbst.",
+    "founder.why.6.h": "Governance wird Infrastruktur",
+    "founder.why.6.p": "Compliance, Prüfbarkeit und Datenintegrität wandern nach unten — von Enterprise zu kleinen Teams. Das Tooling hat nicht mitgehalten.",
+    "founder.tl.label": "Operative Grundlagen",
+    "founder.tl.1.label": "Organisationsentwicklung",
+    "founder.tl.1.h": "Organizational Design",
+    "founder.tl.1.p": "Strukturierung von Prozessen, Rollen und Verantwortlichkeiten in wachsenden Organisationen.",
+    "founder.tl.2.label": "Startup Operations",
+    "founder.tl.2.h": "Startup Execution",
+    "founder.tl.2.p": "Operative Arbeit in schnell wachsenden Startups. Das Chaos von innen erlebt — und strukturiert.",
+    "founder.tl.3.h": "Startup Ecosystem",
+    "founder.tl.3.p": "Einblick in das globale Startup-Ökosystem. Muster in erfolgreichen Gründer-Strukturen erkannt.",
+    "founder.tl.4.label": "Process Architecture",
+    "founder.tl.4.h": "Operational Infrastructure",
+    "founder.tl.4.p": "Entwicklung strukturierter operativer Systeme. Das Fundament für Company OS.",
+    "founder.tl.5.label": "Heute",
+    "founder.tl.5.p": "Das System, das wir selbst gebraucht hätten. Gebaut im echten Betrieb. Nicht im Workshop.",
     "cta.h2": "Baue deine Firma wie ein System.",
     "cta.lede": "Company OS macht aus Tickets, Wissen, Kunden, Mitarbeitern und Kosten ein steuerbares Unternehmen.",
     "cta.cta1": "Demo anfragen", "cta.cta2": "Produkt ansehen",
@@ -724,11 +962,54 @@ const LANG = {
     "audience.a2.title": "IT service providers", "audience.a2.p": "Multiple client projects in parallel, thin margins, clear delivery. Tickets need to talk to costs and pipeline.",
     "audience.a3.title": "Small SaaS and agency teams", "audience.a3.p": "Building a product and a company simultaneously. Neither should devour the other.",
     "audience.a4.title": "Teams with too many tools", "audience.a4.p": "Jira plus Notion plus HubSpot plus accounting plus Slack. No unified truth, lots of duplicate work.",
-    "founder.eyebrow": "Story", "founder.h2": "Not invented. Experienced.",
-    "founder.p1": "Company OS isn't built in a design workshop — it's built from the real operations of Decode IT.",
-    "founder.p2": "We run our own company with it. From the first employee to the first client project to the first tax appointment — everything runs through this system. What actually helps makes it into the product. What doesn't gets cut.",
-    "founder.p3": "The result is an interface that looks like founder reality — not a SaaS demo.",
-    "founder.meta2": "<b>Stage</b> · early, grounded in real operations", "founder.meta3": "<b>First users</b> · ourselves",
+    "founder.eyebrow": "Story",
+    "founder.h2": "Built from<br>operational reality.",
+    "founder.subtitle": "Company OS wasn't built in a market research workshop — it was built from the real operations of Decode IT.",
+    "founder.pill.operator": "Operator Perspective",
+    "founder.origin.eyebrow": "Origin",
+    "founder.origin.note": "Not an idea from nowhere. A structural observation from real operations.",
+    "founder.prose.p1": "During operational work inside fast-moving startup environments, one problem became visible again and again.",
+    "founder.prose.p2": "Teams moved faster than their operational structure. Execution lived across tickets, chats, spreadsheets, documents and people's heads. The Founder was the only integration layer — holding everything together manually.",
+    "founder.prose.p3": "Company OS emerged from the idea that <em>operational reality itself needed a better structure layer.</em>",
+    "founder.prose.p4": "Not another tool. A different model.",
+    "founder.phil.label": "Philosophy",
+    "founder.phil.1.h": "Companies don't have a tool problem. They have a structure problem.",
+    "founder.phil.1.p": "Adding tools doesn't reduce complexity — it fragments it further. Structure reduces complexity. Tools should follow structure.",
+    "founder.phil.2.h": "AI becomes powerful when operational reality is structured.",
+    "founder.phil.2.p": "Reasoning models can interpret, suggest, and act — but only when the underlying data has shape. Company OS builds that layer.",
+    "founder.phil.3.h": "Runway and execution cannot live in separate systems.",
+    "founder.phil.3.p": "Every ticket is a cost decision. Every hire affects runway. Every delay has a financial signal. These are the same system.",
+    "founder.phil.4.h": "The Founder shouldn't be the integration layer.",
+    "founder.phil.4.p": "When one person holds the full operational picture in their head, the company doesn't scale — it hostages itself to one mind.",
+    "founder.why.label": "Why Now",
+    "founder.why.s1": "Signal 01", "founder.why.s2": "Signal 02", "founder.why.s3": "Signal 03",
+    "founder.why.s4": "Signal 04", "founder.why.s5": "Signal 05", "founder.why.s6": "Signal 06",
+    "founder.why.1.h": "AI-native companies are forming",
+    "founder.why.1.p": "A new generation builds with AI from day one — and needs operational structure that AI can actually read.",
+    "founder.why.2.h": "Tool fragmentation is exploding",
+    "founder.why.2.p": "The average 10-person company runs 8–12 tools. No shared data model. No shared context. The problem is getting worse.",
+    "founder.why.3.h": "Investors demand operational transparency",
+    "founder.why.3.p": "Runway clarity, execution visibility, and governance have moved from nice-to-have to table stakes for early-stage funding.",
+    "founder.why.4.h": "Founders move faster, not clearer",
+    "founder.why.4.p": "Speed without structure creates operational debt. The faster you move, the more you need a system — not more tabs.",
+    "founder.why.5.h": "AI needs structure, not documents.",
+    "founder.why.5.p": "LLMs can't act on operational reality unless it's structured. The layer beneath AI matters more than the AI itself.",
+    "founder.why.6.h": "Governance becomes infrastructure",
+    "founder.why.6.p": "Compliance, auditability, and data integrity are moving down the stack — from enterprise to small teams. The tooling hasn't caught up.",
+    "founder.tl.label": "Operational Foundations",
+    "founder.tl.1.label": "Org. Development",
+    "founder.tl.1.h": "Organizational Design",
+    "founder.tl.1.p": "Structuring processes, roles, and responsibilities in growing organizations.",
+    "founder.tl.2.label": "Startup Operations",
+    "founder.tl.2.h": "Startup Execution",
+    "founder.tl.2.p": "Operational work inside fast-moving startups. Experienced the chaos from within — and structured it.",
+    "founder.tl.3.h": "Startup Ecosystem",
+    "founder.tl.3.p": "Exposure to the global startup ecosystem. Identified patterns in successful founder structures.",
+    "founder.tl.4.label": "Process Architecture",
+    "founder.tl.4.h": "Operational Infrastructure",
+    "founder.tl.4.p": "Developing structured operational systems. The foundation for Company OS.",
+    "founder.tl.5.label": "Today",
+    "founder.tl.5.p": "The system we needed ourselves. Built in real operations. Not in a workshop.",
     "cta.h2": "Build your company like a system.",
     "cta.lede": "Company OS turns tickets, knowledge, customers, people, and costs into a controllable business.",
     "cta.cta1": "Request demo", "cta.cta2": "See the product",
