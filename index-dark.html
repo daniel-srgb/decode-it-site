@@ -109,7 +109,7 @@ section { padding:96px 0; border-bottom:1px solid var(--line); }
 .hero-frame { margin-top:52px; margin-bottom:-80px; position:relative; z-index:2; }
 
 /* ───── HERO SCENE ───── */
-.hero-scene { display:grid; grid-template-columns:172px 1fr; background:var(--bg); }
+.hero-scene { display:block; background:var(--bg); }
 .hs-nav { background:var(--surface); border-right:1px solid var(--line); padding:0; display:flex; flex-direction:column; }
 .hs-status-head { font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted-2); font-weight:700; padding:14px 14px 10px; font-family:var(--font-mono); border-bottom:1px solid var(--line); }
 .hs-si { display:flex; align-items:flex-start; gap:8px; padding:7px 14px; font-size:11px; color:var(--muted); font-family:var(--font-mono); line-height:1.4; }
@@ -483,6 +483,31 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
   .tl-item { grid-template-columns:88px 1px 1fr; gap:0 14px; }
   .tl-label { font-size:10px; }
 }
+
+/* ───── HERO FABRIC ───── */
+.hs-fabric { padding:28px 32px; display:flex; flex-direction:column; gap:0; }
+.hs-fab-runway { padding-bottom:24px; margin-bottom:24px; border-bottom:1px solid var(--line); }
+.hs-rwy-label { font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted-2); font-weight:700; font-family:var(--font-mono); display:block; margin-bottom:8px; }
+.hs-rwy-num { font-size:56px; font-weight:760; letter-spacing:-.03em; line-height:1; color:var(--amber); }
+.hs-rwy-unit { font-size:14px; color:var(--muted); margin-top:4px; }
+.hs-rwy-signal { display:inline-flex; padding:4px 10px; border-radius:4px; background:var(--amber-soft); color:var(--amber-text); font-size:12px; font-weight:600; margin-top:12px; }
+.hs-fab-signals { display:grid; grid-template-columns:1fr 1fr; gap:24px; padding-bottom:24px; margin-bottom:24px; border-bottom:1px solid var(--line); }
+.hs-fab-signal-tag { font-size:9px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; font-family:var(--font-mono); display:block; margin-bottom:8px; }
+.hs-fab-signal-tag.blocked { color:var(--pink); }
+.hs-fab-signal-tag.ai { color:var(--blue); }
+.hs-fab-signal-text { font-size:13px; color:var(--text); line-height:1.55; font-weight:500; }
+.hs-fab-chain-label { font-size:9px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; font-family:var(--font-mono); color:var(--muted-2); display:block; margin-bottom:10px; }
+.hs-fab-chain-flow { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.hs-fab-node { font-size:12px; font-weight:600; color:var(--text); padding:4px 10px; border:1px solid var(--line); border-radius:4px; background:var(--surface-2); }
+.hs-fab-arrow { color:var(--muted-2); font-size:14px; }
+
+/* ───── SCENE CARD SHADOW UPGRADE ───── */
+.scene-card { box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 1px 3px rgba(0,0,0,.15),0 4px 16px rgba(0,0,0,.25),0 20px 60px rgba(0,0,0,.35),0 72px 130px rgba(0,0,0,.25); }
+@media (max-width:480px) {
+  .hs-fab-signals { grid-template-columns:1fr; gap:16px; }
+  .hs-rwy-num { font-size:44px; }
+  .hs-fabric { padding:20px 22px; }
+}
 </style>
 </head>
 <body>
@@ -532,38 +557,38 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
           <span class="furl">company-os.app/cockpit/runway</span>
         </div>
         <div class="hero-scene">
-          <div class="hs-nav">
-            <div class="hs-status-head" data-i18n="hs.status.head">System Status</div>
-            <div class="hs-si"><span class="hs-si-dot amber"></span><span data-i18n="hs.si1">Runway 4.7 Mon.</span></div>
-            <div class="hs-si"><span class="hs-si-dot pink"></span><span data-i18n="hs.si2">3 kritische Abhängigkeiten</span></div>
-            <div class="hs-si"><span class="hs-si-dot amber"></span><span data-i18n="hs.si3">1 blockierte Entscheidung</span></div>
-            <div class="hs-si"><span class="hs-si-dot amber"></span><span data-i18n="hs.si4">2 Procurement-Lücken</span></div>
-            <div class="hs-si"><span class="hs-si-dot blue"></span><span data-i18n="hs.si5">AI Signal aktiv</span></div>
-          </div>
-          <div class="hs-main">
+          <div class="hs-fabric">
             <div class="hs-scene-head">
               <span class="hs-scene-eyebrow">Financial Operations Control</span>
               <span class="hs-scene-date" data-i18n="hs.scene.date">Mon · 01:14</span>
             </div>
-            <div class="hs-queue-label" data-i18n="hs.queue.label">Critical Queue</div>
-            <div class="hs-qi">
-              <span class="sc-tag a" data-i18n="hs.q1.tag">3 Tage</span>
-              <span class="hs-qi-name">AWS Infrastructure · Rechnung</span>
-              <span class="hs-qi-amount">€ 1.840</span>
+            <div class="hs-fab-runway">
+              <span class="hs-rwy-label">RUNWAY</span>
+              <div class="hs-rwy-num">4.7</div>
+              <div class="hs-rwy-unit" data-i18n="hs.rwy.unit">Monate</div>
+              <div class="hs-rwy-signal">↓ 12% vs. Plan</div>
             </div>
-            <div class="hs-qi">
-              <span class="sc-tag m" data-i18n="hs.q2.tag">ausstehend</span>
-              <span class="hs-qi-name">Design Agency · Q2 Budget</span>
-              <span class="hs-qi-amount">€ 4.200</span>
+            <div class="hs-fab-signals">
+              <div class="hs-fab-signal">
+                <span class="hs-fab-signal-tag blocked">BLOCKED</span>
+                <div class="hs-fab-signal-text" data-i18n="hs.blocked.text">Hiring-Pipeline blockiert durch offene Procurement-Abhängigkeit.</div>
+              </div>
+              <div class="hs-fab-signal">
+                <span class="hs-fab-signal-tag ai">AI SIGNAL</span>
+                <div class="hs-fab-signal-text" data-i18n="hs.ai.text">2 Procurement-Positionen nicht mit genehmigtem Budget verknüpft.</div>
+              </div>
             </div>
-            <div class="hs-qi">
-              <span class="sc-tag a" data-i18n="hs.q3.tag">12 Tage</span>
-              <span class="hs-qi-name" data-i18n="hs.q3.name">Steuer · Vorauszahlung</span>
-              <span class="hs-qi-amount">€ 9.500</span>
-            </div>
-            <div class="hs-ai">
-              <span class="hs-ai-tag">AI</span>
-              <span class="hs-ai-text" data-i18n="hs.ai.text">Runway −0.4 Mon. durch 2 offene Procurement-Positionen. Design Agency nicht mit Q2-Entscheidung verknüpft.</span>
+            <div class="hs-fab-chain">
+              <span class="hs-fab-chain-label" data-i18n="hs.chain.label">CONNECTED OBJECTS</span>
+              <div class="hs-fab-chain-flow">
+                <span class="hs-fab-node" data-i18n="hs.chain.n1">Q2 Hiring</span>
+                <span class="hs-fab-arrow">↔</span>
+                <span class="hs-fab-node" data-i18n="hs.chain.n2">Procurement</span>
+                <span class="hs-fab-arrow">↔</span>
+                <span class="hs-fab-node" data-i18n="hs.chain.n3">Invoice</span>
+                <span class="hs-fab-arrow">↔</span>
+                <span class="hs-fab-node" data-i18n="hs.chain.n4">Runway</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1104,7 +1129,9 @@ const LANG = {
     "hero.cta1": "Demo anfragen", "hero.cta2": "Produkt ansehen",
     "hs.runway.label":"Runway · Monate", "hs.burn.label":"Burn / Monat", "hs.queue.label":"Critical Queue",
     "hs.q1.tag":"3 Tage", "hs.q2.tag":"ausstehend", "hs.q3.tag":"12 Tage", "hs.q3.name":"Steuer · Vorauszahlung",
-    "hs.ai.text":"Runway −0.4 Mon. durch 2 offene Procurement-Positionen. Design Agency nicht mit Q2-Entscheidung verknüpft.",
+    "hs.ai.text":"2 Procurement-Positionen nicht mit genehmigtem Budget verknüpft.",
+    "hs.rwy.unit":"Monate", "hs.blocked.text":"Hiring-Pipeline blockiert durch offene Procurement-Abhängigkeit.",
+    "hs.chain.label":"CONNECTED OBJECTS", "hs.chain.n1":"Q2 Hiring", "hs.chain.n2":"Procurement", "hs.chain.n3":"Invoice", "hs.chain.n4":"Runway",
     "hs.status.head":"System Status", "hs.scene.date":"Mon · 01:14",
     "hs.si1":"Runway 4.7 Mon.", "hs.si2":"3 kritische Abhängigkeiten",
     "hs.si3":"1 blockierte Entscheidung", "hs.si4":"2 Procurement-Lücken", "hs.si5":"AI Signal aktiv",
@@ -1226,7 +1253,9 @@ const LANG = {
     "hero.cta1": "Request demo", "hero.cta2": "See the product",
     "hs.runway.label":"Runway · months", "hs.burn.label":"Burn / month", "hs.queue.label":"Critical Queue",
     "hs.q1.tag":"3 days", "hs.q2.tag":"pending", "hs.q3.tag":"12 days", "hs.q3.name":"Tax · Prepayment",
-    "hs.ai.text":"Runway −0.4 mo. from 2 open procurement positions. Design Agency not linked to Q2 decision.",
+    "hs.ai.text":"2 procurement positions not linked to approved budget allocation.",
+    "hs.rwy.unit":"months", "hs.blocked.text":"Hiring pipeline blocked by unresolved procurement dependency.",
+    "hs.chain.label":"CONNECTED OBJECTS", "hs.chain.n1":"Q2 Hiring", "hs.chain.n2":"Procurement", "hs.chain.n3":"Invoice", "hs.chain.n4":"Runway",
     "hs.status.head":"System Status", "hs.scene.date":"Mon · 01:14",
     "hs.si1":"Runway 4.7 mo.", "hs.si2":"3 dependencies critical",
     "hs.si3":"1 blocked decision", "hs.si4":"2 procurement gaps", "hs.si5":"AI signal active",
