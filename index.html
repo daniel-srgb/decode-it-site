@@ -545,15 +545,14 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
     <div class="section-head">
       <span class="eyebrow" data-i18n="preview.eyebrow">Produkt</span>
       <h2 class="h2" data-i18n="preview.h2">Von Vision bis Daily Work.</h2>
-      <p class="lede" data-i18n="preview.lede">Fünf Ansichten. Vom Forecast bis zur einzigen Frage, die du heute beantworten musst.</p>
+      <p class="lede" data-i18n="preview.lede">Vier Ansichten. Vom Forecast bis zur einzigen Frage, die du heute beantworten musst.</p>
     </div>
     <div class="preview-layout">
       <div class="preview-tabs" id="preview-tabs">
-        <button class="preview-tab active">Runway</button>
-        <button class="preview-tab">Documents</button>
-        <button class="preview-tab">Work Item Details</button>
-        <button class="preview-tab">Structures</button>
-        <button class="preview-tab">Invoice Management</button>
+        <button class="preview-tab active" data-idx="0">Runway</button>
+        <button class="preview-tab" data-idx="1">Documents</button>
+        <button class="preview-tab" data-idx="2">Structures</button>
+        <button class="preview-tab" data-idx="3">Invoice Management</button>
       </div>
       <div class="frame" id="preview-frame">
         <div class="frame-bar">
@@ -869,8 +868,8 @@ const LANG = {
     "solution.fc2.num": "02 · Operational Context",  "solution.fc2.h3": "Die richtige Information<br>zur richtigen Zeit.",      "solution.fc2.p": "Tickets, Docs, CRM, SOPs, Kosten und Mitarbeiter teilen ein Datenmodell. Kontext entsteht durch Struktur, nicht durch Suche.",
     "solution.fc3.num": "03 · AI-lesbare Realität",  "solution.fc3.h3": "Strukturierte Zusammen­hänge<br>für AI.",             "solution.fc3.p": "Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert die Schicht.",
     "solution.fc4.num": "04 · Runway als Signal",    "solution.fc4.h3": "Finanzielle Realität<br>immer im Blick.",             "solution.fc4.p": "Cash, Burn, Tax und Runway als Signal-Pills. Nicht in einem Report — als operative Wahrnehmungsschicht über jeder Entscheidung.",
-    "preview.eyebrow": "Produkt", "preview.h2": "Von Vision bis Daily Work.", "preview.lede": "Fünf Ansichten. Vom Forecast bis zur einzigen Frage, die du heute beantworten musst.",
-    "preview.tabs": ["Runway","Documents","Work Item Details","Structures","Invoice Management"],
+    "preview.eyebrow": "Produkt", "preview.h2": "Von Vision bis Daily Work.", "preview.lede": "Vier Ansichten. Vom Forecast bis zur einzigen Frage, die du heute beantworten musst.",
+    "preview.tabs": ["Runway","Documents","Structures","Invoice Management"],
     "competition.eyebrow": "Warum anders",
     "competition.h2": "Linear plant Arbeit. Notion archiviert Wissen.<br>Company OS verbindet beides — operativ.",
     "competition.lede": "Jedes Tool löst sein Problem isoliert. Company OS verbindet die Probleme — weil sie im echten Betrieb auch verbunden sind.",
@@ -970,8 +969,8 @@ const LANG = {
     "solution.fc2.num": "02 · Operational Context", "solution.fc2.h3": "The right information<br>at the right time.",         "solution.fc2.p": "Tickets, docs, CRM, SOPs, costs, and people share one data model. Context emerges through structure, not search.",
     "solution.fc3.num": "03 · AI-readable Reality", "solution.fc3.h3": "Structured connections<br>for AI.",                  "solution.fc3.p": "Reasoning models can finally interpret operational reality — when it's structured. Company OS delivers that layer.",
     "solution.fc4.num": "04 · Runway as Signal",    "solution.fc4.h3": "Financial reality<br>always visible.",               "solution.fc4.p": "Cash, burn, tax, and runway as signal pills. Not in a report — as an operational perception layer above every decision.",
-    "preview.eyebrow": "Product", "preview.h2": "From vision to daily work.", "preview.lede": "Five views. From the forecast to the one question you need to answer today.",
-    "preview.tabs": ["Runway","Documents","Work Item Details","Structures","Invoice Management"],
+    "preview.eyebrow": "Product", "preview.h2": "From vision to daily work.", "preview.lede": "Four views. From the forecast to the one question you need to answer today.",
+    "preview.tabs": ["Runway","Documents","Structures","Invoice Management"],
     "competition.eyebrow": "Why different",
     "competition.h2": "Linear plans work. Notion archives knowledge.<br>Company OS connects both — operationally.",
     "competition.lede": "Every tool solves its problem in isolation. Company OS connects the problems — because in real operations, they're connected too.",
@@ -1051,7 +1050,6 @@ const LANG = {
 const TABS = [
   { key:"Runway",             img:"assets/screenshots/Finance.png",                      url:"company-os.app/cockpit/runway" },
   { key:"Documents",          img:"assets/screenshots/documents-section dark.png",       url:"company-os.app/documents" },
-  { key:"Work Item Details",  img:"assets/screenshots/Execution-Ticket dark.png",        url:"company-os.app/work-items" },
   { key:"Structures",         img:"assets/screenshots/structures dark.png",              url:"company-os.app/structures" },
   { key:"Invoice Management", img:"assets/screenshots/Invoice-Section dark.png",         url:"company-os.app/costs/invoice" },
 ];
@@ -1081,15 +1079,20 @@ function buildTabs(lang) {
     const btn = document.createElement('button');
     btn.className = 'preview-tab' + (i === 0 ? ' active' : '');
     btn.textContent = labels[i] || tab.key;
-    btn.addEventListener('click', () => {
-      container.querySelectorAll('.preview-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('preview-img').src = tab.img;
-      document.getElementById('preview-url').textContent = tab.url;
-    });
+    btn.dataset.idx = i;
     container.appendChild(btn);
   });
 }
+
+document.getElementById('preview-tabs').addEventListener('click', function(e) {
+  const btn = e.target.closest('.preview-tab');
+  if (!btn) return;
+  const i = parseInt(btn.dataset.idx, 10);
+  this.querySelectorAll('.preview-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('preview-img').src = TABS[i].img;
+  document.getElementById('preview-url').textContent = TABS[i].url;
+});
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => applyLang(btn.dataset.lang));
