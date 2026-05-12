@@ -145,16 +145,18 @@ section { padding:96px 0; border-bottom:1px solid var(--line); }
 .fc p  { font-size:14px; color:var(--muted); line-height:1.65; }
 
 /* ───── PRODUCT SCENES ───── */
-.scene-nav { display:flex; gap:8px; margin:36px 0 52px; flex-wrap:wrap; }
-.scene-btn { padding:7px 18px; border:1px solid var(--line); background:transparent; border-radius:999px; font:inherit; font-size:13px; font-weight:600; cursor:pointer; color:var(--muted); transition:all .18s; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
-.scene-btn:hover { border-color:var(--line-strong); color:var(--text); }
-.scene-btn.active { background:var(--text); color:var(--bg); border-color:var(--text); }
-.scene-layout { display:grid; grid-template-columns:1fr 1.65fr; gap:64px; align-items:center; }
+#preview .section-head { margin-bottom:8px; }
+#preview .section-head .h2 { font-size:30px; font-weight:660; letter-spacing:-.010em; }
+.scene-nav { display:flex; gap:6px; margin:32px 0 44px; flex-wrap:wrap; }
+.scene-btn { padding:5px 14px; border:1px solid transparent; background:transparent; border-radius:999px; font:inherit; font-size:12px; font-weight:500; cursor:pointer; color:var(--muted); transition:all .15s; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+.scene-btn:hover { border-color:var(--line); color:var(--text); }
+.scene-btn.active { background:var(--surface-2); color:var(--text); border-color:var(--line); }
+.scene-layout { display:grid; grid-template-columns:1fr 2fr; gap:48px; align-items:center; }
 .scene-copy-label { font-size:11px; letter-spacing:.11em; text-transform:uppercase; color:var(--blue); font-weight:700; margin-bottom:14px; }
 .scene-copy-h3 { font-size:28px; line-height:1.15; font-weight:720; letter-spacing:-.016em; margin-bottom:14px; }
 .scene-copy-p { color:var(--muted); font-size:15px; line-height:1.7; }
 /* Card shell */
-.scene-card { border:1px solid var(--line); background:var(--surface); border-radius:10px; overflow:hidden; box-shadow:0 24px 64px rgba(0,0,0,.10),0 4px 12px rgba(0,0,0,.06); }
+.scene-card { border:1px solid rgba(0,0,0,.07); background:var(--surface); border-radius:12px; overflow:hidden; box-shadow:inset 0 1px 0 rgba(255,255,255,1),0 1px 3px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.07),0 20px 60px rgba(0,0,0,.09); }
 /* Sub-elements */
 .sc-head { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid var(--line); }
 .sc-eyebrow { font-size:10px; letter-spacing:.13em; text-transform:uppercase; font-weight:700; color:var(--muted); font-family:var(--font-mono); }
@@ -728,6 +730,13 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
             <div class="sc-inv"><span class="sc-inv-name">AWS Infrastructure</span><span class="sc-inv-amount">€ 1.840</span><span class="sc-tag g" data-i18n="sc3.inv2.tag">✓ genehmigt</span></div>
             <div class="sc-inv"><span class="sc-inv-name">Design Agency</span><span class="sc-inv-amount">€ 4.200</span><span class="sc-tag m" data-i18n="sc3.inv3.tag">in Prüfung</span></div>
           </div>
+          <div class="sc-div"></div>
+          <div class="sc-section">
+            <div class="sc-section-label" data-i18n="sc3.ops.label">Operative Verbindungen</div>
+            <div class="sc-kv"><span class="sc-kv-key">Runway Impact</span><span class="sc-kv-val a" data-i18n="sc3.ops.runway.val">−0,4 Mon.</span></div>
+            <div class="sc-kv"><span class="sc-kv-key">Linked Procurement</span><span class="sc-kv-val">MacBook · Design Team</span></div>
+            <div class="sc-kv"><span class="sc-kv-key">Linked Decision</span><span class="sc-kv-val" data-i18n="sc3.ops.decision.val">Q2 Budget genehmigt</span></div>
+          </div>
           <div class="sc-ai">
             <div class="sc-ai-label">Budget Signal</div>
             <div class="sc-ai-text" data-i18n="sc3.ai.text">Cost run-rate +12% vs. plan. 2 Rechnungen nicht mit Procurement verknüpft.</div>
@@ -1056,6 +1065,7 @@ const LANG = {
     "sc3.kpi3.label":"Überfällig", "sc3.section.current":"Aktuell",
     "sc3.inv1.tag":"3 Tage", "sc3.inv2.tag":"✓ genehmigt", "sc3.inv3.tag":"in Prüfung",
     "sc3.ai.text":"Cost run-rate +12% vs. Plan. 2 Rechnungen nicht mit Procurement verknüpft.",
+    "sc3.ops.label":"Operative Verbindungen", "sc3.ops.runway.val":"−0,4 Mon.", "sc3.ops.decision.val":"Q2 Budget genehmigt",
     "competition.eyebrow": "Warum anders",
     "competition.h2": "Linear plant Arbeit. Notion archiviert Wissen.<br>Company OS verbindet beides — operativ.",
     "competition.lede": "Jedes Tool löst sein Problem isoliert. Company OS verbindet die Probleme — weil sie im echten Betrieb auch verbunden sind.",
@@ -1168,6 +1178,7 @@ const LANG = {
     "sc3.kpi3.label":"Overdue", "sc3.section.current":"Current",
     "sc3.inv1.tag":"3 days", "sc3.inv2.tag":"✓ approved", "sc3.inv3.tag":"under review",
     "sc3.ai.text":"Cost run-rate +12% vs. plan. 2 invoices not linked to procurement.",
+    "sc3.ops.label":"Operational Connections", "sc3.ops.runway.val":"−0.4 mo.", "sc3.ops.decision.val":"Q2 Budget approved",
     "competition.eyebrow": "Why different",
     "competition.h2": "Linear plans work. Notion archives knowledge.<br>Company OS connects both — operationally.",
     "competition.lede": "Every tool solves its problem in isolation. Company OS connects the problems — because in real operations, they're connected too.",
