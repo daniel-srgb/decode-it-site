@@ -147,7 +147,7 @@ section { padding:96px 0; border-bottom:1px solid var(--line); }
 /* ───── PRODUCT PREVIEW ───── */
 .preview-layout { display:grid; grid-template-columns:200px 1fr; gap:24px; align-items:start; margin-top:48px; }
 .preview-tabs { display:flex; flex-direction:column; gap:4px; }
-.preview-tab { padding:11px 14px; border:1px solid var(--line); background:transparent; border-radius:var(--radius-sm); cursor:pointer; text-align:left; font:inherit; color:var(--muted); font-size:13px; font-weight:600; transition:background .15s, color .15s, border-color .15s; }
+.preview-tab { padding:11px 14px; border:1px solid var(--line); background:transparent; border-radius:var(--radius-sm); cursor:pointer; text-align:left; font:inherit; color:var(--muted); font-size:13px; font-weight:600; transition:background .15s, color .15s, border-color .15s; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
 .preview-tab:hover { background:var(--surface-2); color:var(--text); }
 .preview-tab.active { background:var(--blue-soft); border-color:rgba(74,163,255,.45); color:var(--blue-text); }
 
@@ -534,17 +534,17 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
     <div class="preview-layout">
       <div class="preview-tabs" id="preview-tabs">
         <button class="preview-tab active">Runway</button>
-        <button class="preview-tab">Mission &amp; Vision</button>
-        <button class="preview-tab">Execution Board</button>
+        <button class="preview-tab">Documents</button>
+        <button class="preview-tab">Work Item Details</button>
         <button class="preview-tab">Structures</button>
-        <button class="preview-tab">Invoice</button>
+        <button class="preview-tab">Invoice Management</button>
       </div>
       <div class="frame" id="preview-frame">
         <div class="frame-bar">
           <span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span>
           <span class="furl" id="preview-url">company-os.app/cockpit/runway</span>
         </div>
-        <img id="preview-img" src="assets/screenshots/Kanban1.png" alt="Runway">
+        <img id="preview-img" src="assets/screenshots/Finance.png" alt="Runway">
       </div>
     </div>
   </div>
@@ -854,7 +854,7 @@ const LANG = {
     "solution.fc3.num": "03 · AI-lesbare Realität",  "solution.fc3.h3": "Strukturierte Zusammen­hänge<br>für AI.",             "solution.fc3.p": "Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert die Schicht.",
     "solution.fc4.num": "04 · Runway als Signal",    "solution.fc4.h3": "Finanzielle Realität<br>immer im Blick.",             "solution.fc4.p": "Cash, Burn, Tax und Runway als Signal-Pills. Nicht in einem Report — als operative Wahrnehmungsschicht über jeder Entscheidung.",
     "preview.eyebrow": "Produkt", "preview.h2": "Von Vision bis Daily Work.", "preview.lede": "Fünf Ansichten. Vom Forecast bis zur einzigen Frage, die du heute beantworten musst.",
-    "preview.tabs": ["Runway","Mission & Vision","Execution Board","Structures","Invoice"],
+    "preview.tabs": ["Runway","Documents","Work Item Details","Structures","Invoice Management"],
     "competition.eyebrow": "Warum anders",
     "competition.h2": "Linear plant Arbeit. Notion archiviert Wissen.<br>Company OS verbindet beides — operativ.",
     "competition.lede": "Jedes Tool löst sein Problem isoliert. Company OS verbindet die Probleme — weil sie im echten Betrieb auch verbunden sind.",
@@ -955,7 +955,7 @@ const LANG = {
     "solution.fc3.num": "03 · AI-readable Reality", "solution.fc3.h3": "Structured connections<br>for AI.",                  "solution.fc3.p": "Reasoning models can finally interpret operational reality — when it's structured. Company OS delivers that layer.",
     "solution.fc4.num": "04 · Runway as Signal",    "solution.fc4.h3": "Financial reality<br>always visible.",               "solution.fc4.p": "Cash, burn, tax, and runway as signal pills. Not in a report — as an operational perception layer above every decision.",
     "preview.eyebrow": "Product", "preview.h2": "From vision to daily work.", "preview.lede": "Five views. From the forecast to the one question you need to answer today.",
-    "preview.tabs": ["Runway","Mission & Vision","Execution Board","Structures","Invoice"],
+    "preview.tabs": ["Runway","Documents","Work Item Details","Structures","Invoice Management"],
     "competition.eyebrow": "Why different",
     "competition.h2": "Linear plans work. Notion archives knowledge.<br>Company OS connects both — operationally.",
     "competition.lede": "Every tool solves its problem in isolation. Company OS connects the problems — because in real operations, they're connected too.",
@@ -1033,11 +1033,11 @@ const LANG = {
 };
 
 const TABS = [
-  { key:"Runway",          img:"assets/screenshots/Kanban1.png",                        url:"company-os.app/cockpit/runway" },
-  { key:"Mission & Vision",img:"assets/screenshots/documents-section dark.png",         url:"company-os.app/mission-vision" },
-  { key:"Execution Board", img:"assets/screenshots/Execution Kanban Board 1 dark.png",  url:"company-os.app/kanban" },
-  { key:"Structures",      img:"assets/screenshots/structures dark.png",                url:"company-os.app/structures" },
-  { key:"Invoice",         img:"assets/screenshots/Invoice-Section dark.png",           url:"company-os.app/costs/invoice" },
+  { key:"Runway",             img:"assets/screenshots/Finance.png",                      url:"company-os.app/cockpit/runway" },
+  { key:"Documents",          img:"assets/screenshots/documents-section white.png",     url:"company-os.app/documents" },
+  { key:"Work Item Details",  img:"assets/screenshots/Execution-Ticket white.png",      url:"company-os.app/work-items" },
+  { key:"Structures",         img:"assets/screenshots/structures white.png",            url:"company-os.app/structures" },
+  { key:"Invoice Management", img:"assets/screenshots/Invoice-Section white.png",       url:"company-os.app/costs/invoice" },
 ];
 
 let currentLang = localStorage.getItem('cos-lang') || 'de';
