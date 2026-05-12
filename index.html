@@ -276,7 +276,9 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
 .story-hero-h2 { font-size:38px; line-height:1.1; font-weight:720; letter-spacing:-0.014em; }
 .story-hero-sub { margin-top:16px; max-width:50ch; color:var(--muted); font-size:16px; line-height:1.7; }
 .portrait-wrap { padding-top:4px; }
-.portrait-img { width:100%; display:block; border-radius:var(--radius); border:1px solid var(--line); }
+.portrait-img { width:100%; display:block; border-radius:var(--radius); border:1px solid var(--line); pointer-events:none; user-select:none; -webkit-user-drag:none; }
+.portrait-shield { position:absolute; inset:0; border-radius:var(--radius); cursor:default; }
+.portrait-wrap { position:relative; }
 .portrait-caption { margin-top:10px; font-size:11px; color:var(--muted-2); letter-spacing:.04em; }
 .story-pills { display:flex; gap:6px; flex-wrap:wrap; margin-top:20px; }
 .story-pills .pill { height:22px; font-size:11px; padding:0 9px; }
@@ -503,7 +505,10 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
           <span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span>
           <span class="furl">company-os.app/cockpit/runway</span>
         </div>
-        <img src="assets/screenshots/Finance.png" alt="Runway Cockpit" loading="lazy">
+        <div style="position:relative;overflow:hidden;">
+          <img src="assets/screenshots/Finance.png" alt="Runway Cockpit" loading="lazy" draggable="false" oncontextmenu="return false" style="display:block;width:100%;pointer-events:none;user-select:none;-webkit-user-drag:none;">
+          <div style="position:absolute;inset:0;cursor:default;"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -629,25 +634,25 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
         <div class="scene-card" id="sc-0">
           <div class="sc-head">
             <span class="sc-eyebrow">Financial Operations Control</span>
-            <span class="sc-meta">Montag · 09:14</span>
+            <span class="sc-meta" data-i18n="sc0.meta">Montag · 09:14</span>
           </div>
           <div class="sc-kpis n4">
             <div class="sc-kpi amber"><div class="sc-kpi-num">4.7 Mon.</div><div class="sc-kpi-label">Runway</div></div>
-            <div class="sc-kpi"><div class="sc-kpi-num">16.220 €</div><div class="sc-kpi-label">Monatl. Burn</div></div>
+            <div class="sc-kpi"><div class="sc-kpi-num">16.220 €</div><div class="sc-kpi-label" data-i18n="sc0.kpi.burn">Monatl. Burn</div></div>
             <div class="sc-kpi green"><div class="sc-kpi-num">+2.458 €</div><div class="sc-kpi-label">MoM Delta</div></div>
-            <div class="sc-kpi"><div class="sc-kpi-num">2</div><div class="sc-kpi-label">Entscheidungen</div></div>
+            <div class="sc-kpi"><div class="sc-kpi-num">2</div><div class="sc-kpi-label" data-i18n="sc0.kpi.decisions">Entscheidungen</div></div>
           </div>
           <div class="sc-div"></div>
           <div class="sc-section">
             <div class="sc-section-label">Runway Signal</div>
             <div class="sc-bar-wrap"><div class="sc-bar-fill" style="width:47%"></div></div>
-            <div class="sc-bar-note">47% bis kritischem Schwellwert · Ziel: 6 Monate</div>
+            <div class="sc-bar-note" data-i18n="sc0.bar.note">47% bis kritischem Schwellwert · Ziel: 6 Monate</div>
           </div>
           <div class="sc-div"></div>
           <div class="sc-section">
             <div class="sc-section-label">Critical Queue</div>
-            <div class="sc-qi"><span class="sc-qi-name">Hire Backend Engineer</span><span class="sc-tag a">−1.2 Mon. Runway</span></div>
-            <div class="sc-qi"><span class="sc-qi-name">License Renewal Q3</span><span class="sc-tag a">−0.3 Mon. Runway</span></div>
+            <div class="sc-qi"><span class="sc-qi-name">Hire Backend Engineer</span><span class="sc-tag a" data-i18n="sc0.q1.tag">−1.2 Mon. Runway</span></div>
+            <div class="sc-qi"><span class="sc-qi-name">License Renewal Q3</span><span class="sc-tag a" data-i18n="sc0.q2.tag">−0.3 Mon. Runway</span></div>
           </div>
           <div class="sc-ai">
             <div class="sc-ai-label">AI Signal</div>
@@ -659,23 +664,23 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
         <div class="scene-card" id="sc-1" style="display:none">
           <div class="sc-head">
             <span class="sc-eyebrow">Procurement Request</span>
-            <span class="sc-badge">Q2 · Offen</span>
+            <span class="sc-badge" data-i18n="sc1.badge">Q2 · Offen</span>
           </div>
           <div class="sc-title">MacBook Procurement — Design Team</div>
           <div class="sc-div" style="margin-top:14px"></div>
           <div class="sc-section">
             <div class="sc-section-label">Expected Documents</div>
-            <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name">Supplier Quote</span><span class="sc-doc-status ok">erhalten</span></div>
-            <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name">Delivery Note</span><span class="sc-doc-status ok">erhalten</span></div>
-            <div class="sc-doc"><span class="sc-doc-icon warn">⚠</span><span class="sc-doc-name">Invoice</span><span class="sc-doc-status warn">fehlt</span></div>
+            <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name">Supplier Quote</span><span class="sc-doc-status ok" data-i18n="sc1.doc.received">erhalten</span></div>
+            <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name">Delivery Note</span><span class="sc-doc-status ok" data-i18n="sc1.doc.received">erhalten</span></div>
+            <div class="sc-doc"><span class="sc-doc-icon warn">⚠</span><span class="sc-doc-name">Invoice</span><span class="sc-doc-status warn" data-i18n="sc1.doc.missing">fehlt</span></div>
           </div>
           <div class="sc-ai">
             <div class="sc-ai-label">AI Signal</div>
             <div class="sc-ai-text">Missing supplier invoice detected. Hiring decision blocked until resolved.</div>
           </div>
           <div class="sc-section" style="border-top:1px solid var(--line)">
-            <div class="sc-section-label">Verknüpfte Entscheidung</div>
-            <div class="sc-qi"><span class="sc-qi-name">Budget approved — Q2 Hiring</span><span class="sc-tag b">Offen</span></div>
+            <div class="sc-section-label" data-i18n="sc1.decision.label">Verknüpfte Entscheidung</div>
+            <div class="sc-qi"><span class="sc-qi-name">Budget approved — Q2 Hiring</span><span class="sc-tag b" data-i18n="sc1.decision.tag">Offen</span></div>
           </div>
         </div>
 
@@ -688,19 +693,19 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
           <div class="sc-section">
             <div class="sc-dept"><span class="sc-dept-name">Engineering</span><span class="sc-dept-count">4 Members</span></div>
             <div class="sc-children">
-              <div class="sc-child"><span>Backend Development</span><span class="sc-child-tag">2 aktive Tickets</span></div>
-              <div class="sc-child"><span>Infrastructure</span><span class="sc-child-tag">1 aktives Ticket</span></div>
-              <div class="sc-child"><span>Product</span><span class="sc-child-tag">3 aktive Tickets</span></div>
+              <div class="sc-child"><span>Backend Development</span><span class="sc-child-tag" data-i18n="sc2.child1.tag">2 aktive Tickets</span></div>
+              <div class="sc-child"><span>Infrastructure</span><span class="sc-child-tag" data-i18n="sc2.child2.tag">1 aktives Ticket</span></div>
+              <div class="sc-child"><span>Product</span><span class="sc-child-tag" data-i18n="sc2.child3.tag">3 aktive Tickets</span></div>
             </div>
             <div class="sc-dept"><span class="sc-dept-name">Design</span><span class="sc-dept-count">2 Members</span></div>
             <div class="sc-children">
-              <div class="sc-child"><span>UX/UI</span><span class="sc-child-tag">1 aktives Ticket</span></div>
+              <div class="sc-child"><span>UX/UI</span><span class="sc-child-tag" data-i18n="sc2.child4.tag">1 aktives Ticket</span></div>
             </div>
           </div>
           <div class="sc-ai">
             <div class="sc-ai-label">Shared Context</div>
-            <div class="sc-kv"><span class="sc-kv-key">Budget Pool · Engineering</span><span class="sc-kv-val">€ 12.400 / Mon.</span></div>
-            <div class="sc-kv"><span class="sc-kv-key">Runway Impact</span><span class="sc-kv-val a">−0.8 Mon.</span></div>
+            <div class="sc-kv"><span class="sc-kv-key">Budget Pool · Engineering</span><span class="sc-kv-val" data-i18n="sc2.kv1.val">€ 12.400 / Mon.</span></div>
+            <div class="sc-kv"><span class="sc-kv-key">Runway Impact</span><span class="sc-kv-val a" data-i18n="sc2.kv2.val">−0.8 Mon.</span></div>
             <div class="sc-kv"><span class="sc-kv-key">AI Observation</span><span class="sc-kv-val">Engineering over-indexed</span></div>
           </div>
         </div>
@@ -709,23 +714,23 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
         <div class="scene-card" id="sc-3" style="display:none">
           <div class="sc-head">
             <span class="sc-eyebrow">Invoice Management</span>
-            <span class="sc-meta">Mai 2026</span>
+            <span class="sc-meta" data-i18n="sc3.meta">Mai 2026</span>
           </div>
           <div class="sc-kpis n3">
-            <div class="sc-kpi"><div class="sc-kpi-num">€ 8.400</div><div class="sc-kpi-label">Offen</div></div>
-            <div class="sc-kpi green"><div class="sc-kpi-num">€ 22.800</div><div class="sc-kpi-label">Genehmigt</div></div>
-            <div class="sc-kpi red"><div class="sc-kpi-num">€ 1.200</div><div class="sc-kpi-label">Überfällig</div></div>
+            <div class="sc-kpi"><div class="sc-kpi-num">€ 8.400</div><div class="sc-kpi-label" data-i18n="sc3.kpi1.label">Offen</div></div>
+            <div class="sc-kpi green"><div class="sc-kpi-num">€ 22.800</div><div class="sc-kpi-label" data-i18n="sc3.kpi2.label">Genehmigt</div></div>
+            <div class="sc-kpi red"><div class="sc-kpi-num">€ 1.200</div><div class="sc-kpi-label" data-i18n="sc3.kpi3.label">Überfällig</div></div>
           </div>
           <div class="sc-div"></div>
           <div class="sc-section">
-            <div class="sc-section-label">Aktuell</div>
-            <div class="sc-inv"><span class="sc-inv-name">Vercel Pro</span><span class="sc-inv-amount">€ 280</span><span class="sc-tag a">3 Tage</span></div>
-            <div class="sc-inv"><span class="sc-inv-name">AWS Infrastructure</span><span class="sc-inv-amount">€ 1.840</span><span class="sc-tag g">✓ genehmigt</span></div>
-            <div class="sc-inv"><span class="sc-inv-name">Design Agency</span><span class="sc-inv-amount">€ 4.200</span><span class="sc-tag m">in Prüfung</span></div>
+            <div class="sc-section-label" data-i18n="sc3.section.current">Aktuell</div>
+            <div class="sc-inv"><span class="sc-inv-name">Vercel Pro</span><span class="sc-inv-amount">€ 280</span><span class="sc-tag a" data-i18n="sc3.inv1.tag">3 Tage</span></div>
+            <div class="sc-inv"><span class="sc-inv-name">AWS Infrastructure</span><span class="sc-inv-amount">€ 1.840</span><span class="sc-tag g" data-i18n="sc3.inv2.tag">✓ genehmigt</span></div>
+            <div class="sc-inv"><span class="sc-inv-name">Design Agency</span><span class="sc-inv-amount">€ 4.200</span><span class="sc-tag m" data-i18n="sc3.inv3.tag">in Prüfung</span></div>
           </div>
           <div class="sc-ai">
             <div class="sc-ai-label">Budget Signal</div>
-            <div class="sc-ai-text">Cost run-rate +12% vs. plan. 2 Rechnungen nicht mit Procurement verknüpft.</div>
+            <div class="sc-ai-text" data-i18n="sc3.ai.text">Cost run-rate +12% vs. plan. 2 Rechnungen nicht mit Procurement verknüpft.</div>
           </div>
         </div>
 
@@ -844,7 +849,8 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
         </div>
       </div>
       <div class="portrait-wrap">
-        <img class="portrait-img" src="assets/images/daniel.PNG" alt="Daniel Sobiak · Decode IT">
+        <img class="portrait-img" src="assets/images/daniel.PNG" alt="Daniel Sobiak · Decode IT" draggable="false" oncontextmenu="return false">
+        <div class="portrait-shield"></div>
         <p class="portrait-caption">Daniel Sobiak · Decode IT</p>
       </div>
     </div>
@@ -1037,8 +1043,19 @@ const LANG = {
     "solution.fc2.num": "02 · Operational Context",  "solution.fc2.h3": "Die richtige Information<br>zur richtigen Zeit.",      "solution.fc2.p": "Tickets, Docs, CRM, SOPs, Kosten und Mitarbeiter teilen ein Datenmodell. Kontext entsteht durch Struktur, nicht durch Suche.",
     "solution.fc3.num": "03 · AI-lesbare Realität",  "solution.fc3.h3": "Strukturierte Zusammen­hänge<br>für AI.",             "solution.fc3.p": "Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert die Schicht.",
     "solution.fc4.num": "04 · Runway als Signal",    "solution.fc4.h3": "Finanzielle Realität<br>immer im Blick.",             "solution.fc4.p": "Cash, Burn, Tax und Runway als Signal-Pills. Nicht in einem Report — als operative Wahrnehmungsschicht über jeder Entscheidung.",
-    "preview.eyebrow": "Produkt", "preview.h2": "Von Vision bis Daily Work.", "preview.lede": "Vier Ansichten. Vom Forecast bis zur einzigen Frage, die du heute beantworten musst.",
-    "preview.tabs": ["Runway","Documents","Structures","Invoice Management"],
+    "preview.eyebrow": "Produkt", "preview.h2": "Von Vision bis Daily Work.",
+    "sc0.meta":"Montag · 09:14", "sc0.kpi.burn":"Monatl. Burn", "sc0.kpi.decisions":"Entscheidungen",
+    "sc0.bar.note":"47% bis kritischem Schwellwert · Ziel: 6 Monate",
+    "sc0.q1.tag":"−1.2 Mon. Runway", "sc0.q2.tag":"−0.3 Mon. Runway",
+    "sc1.badge":"Q2 · Offen", "sc1.doc.received":"erhalten", "sc1.doc.missing":"fehlt",
+    "sc1.decision.label":"Verknüpfte Entscheidung", "sc1.decision.tag":"Offen",
+    "sc2.child1.tag":"2 aktive Tickets", "sc2.child2.tag":"1 aktives Ticket",
+    "sc2.child3.tag":"3 aktive Tickets", "sc2.child4.tag":"1 aktives Ticket",
+    "sc2.kv1.val":"€ 12.400 / Mon.", "sc2.kv2.val":"−0.8 Mon.",
+    "sc3.meta":"Mai 2026", "sc3.kpi1.label":"Offen", "sc3.kpi2.label":"Genehmigt",
+    "sc3.kpi3.label":"Überfällig", "sc3.section.current":"Aktuell",
+    "sc3.inv1.tag":"3 Tage", "sc3.inv2.tag":"✓ genehmigt", "sc3.inv3.tag":"in Prüfung",
+    "sc3.ai.text":"Cost run-rate +12% vs. Plan. 2 Rechnungen nicht mit Procurement verknüpft.",
     "competition.eyebrow": "Warum anders",
     "competition.h2": "Linear plant Arbeit. Notion archiviert Wissen.<br>Company OS verbindet beides — operativ.",
     "competition.lede": "Jedes Tool löst sein Problem isoliert. Company OS verbindet die Probleme — weil sie im echten Betrieb auch verbunden sind.",
@@ -1138,8 +1155,19 @@ const LANG = {
     "solution.fc2.num": "02 · Operational Context", "solution.fc2.h3": "The right information<br>at the right time.",         "solution.fc2.p": "Tickets, docs, CRM, SOPs, costs, and people share one data model. Context emerges through structure, not search.",
     "solution.fc3.num": "03 · AI-readable Reality", "solution.fc3.h3": "Structured connections<br>for AI.",                  "solution.fc3.p": "Reasoning models can finally interpret operational reality — when it's structured. Company OS delivers that layer.",
     "solution.fc4.num": "04 · Runway as Signal",    "solution.fc4.h3": "Financial reality<br>always visible.",               "solution.fc4.p": "Cash, burn, tax, and runway as signal pills. Not in a report — as an operational perception layer above every decision.",
-    "preview.eyebrow": "Product", "preview.h2": "From vision to daily work.", "preview.lede": "Four views. From the forecast to the one question you need to answer today.",
-    "preview.tabs": ["Runway","Documents","Structures","Invoice Management"],
+    "preview.eyebrow": "Product", "preview.h2": "From vision to daily work.",
+    "sc0.meta":"Monday · 09:14", "sc0.kpi.burn":"Monthly Burn", "sc0.kpi.decisions":"Decisions",
+    "sc0.bar.note":"47% to critical threshold · Target: 6 months",
+    "sc0.q1.tag":"−1.2 mo. Runway", "sc0.q2.tag":"−0.3 mo. Runway",
+    "sc1.badge":"Q2 · Open", "sc1.doc.received":"received", "sc1.doc.missing":"missing",
+    "sc1.decision.label":"Linked Decision", "sc1.decision.tag":"Open",
+    "sc2.child1.tag":"2 active tickets", "sc2.child2.tag":"1 active ticket",
+    "sc2.child3.tag":"3 active tickets", "sc2.child4.tag":"1 active ticket",
+    "sc2.kv1.val":"€ 12,400 / mo.", "sc2.kv2.val":"−0.8 mo.",
+    "sc3.meta":"May 2026", "sc3.kpi1.label":"Open", "sc3.kpi2.label":"Approved",
+    "sc3.kpi3.label":"Overdue", "sc3.section.current":"Current",
+    "sc3.inv1.tag":"3 days", "sc3.inv2.tag":"✓ approved", "sc3.inv3.tag":"under review",
+    "sc3.ai.text":"Cost run-rate +12% vs. plan. 2 invoices not linked to procurement.",
     "competition.eyebrow": "Why different",
     "competition.h2": "Linear plans work. Notion archives knowledge.<br>Company OS connects both — operationally.",
     "competition.lede": "Every tool solves its problem in isolation. Company OS connects the problems — because in real operations, they're connected too.",
