@@ -266,19 +266,7 @@ img { -webkit-user-drag:none; -moz-user-drag:none; user-drag:none; -webkit-user-
 .da { color:var(--muted-2); }
 
 /* ───── AUDIENCE ───── */
-.audience-layout { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; margin-top:48px; }
-.market-funnel { display:flex; flex-direction:column; gap:12px; }
-.market-layer { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:22px 24px; border:1px solid var(--line); border-left:4px solid var(--line); border-radius:var(--radius); background:var(--surface-2); }
-.market-layer.l-som { border-left-color:var(--amber); }
-.market-layer.l-sam { border-left-color:var(--blue); }
-.market-layer.l-tam { border-left-color:var(--green); }
-.ml-key { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
-.market-layer.l-som .ml-key { color:var(--amber-text); }
-.market-layer.l-sam .ml-key { color:var(--blue-text); }
-.market-layer.l-tam .ml-key { color:var(--green-text); }
-.ml-name { font-size:13px; color:var(--muted); margin-top:4px; }
-.ml-val { font-size:40px; font-weight:700; letter-spacing:-0.025em; line-height:1; color:var(--text); font-variant-numeric:tabular-nums; white-space:nowrap; }
-.audience-items { display:flex; flex-direction:column; gap:12px; }
+.audience-items { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:48px; }
 .audience-item { background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; display:flex; gap:14px; align-items:flex-start; }
 .ai-num { font-size:11px; color:var(--muted-2); font-weight:700; letter-spacing:.08em; min-width:22px; flex-shrink:0; padding-top:2px; }
 .audience-item strong { display:block; font-size:14px; font-weight:700; margin-bottom:4px; }
@@ -380,7 +368,7 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
   .scene-layout { grid-template-columns:1fr; gap:32px; }
   .sc-kpis.n4 { grid-template-columns:repeat(2,1fr); gap:12px; }
   .scene-copy-h3 { font-size:22px; }
-  .audience-layout { grid-template-columns:1fr; }
+  .audience-items { grid-template-columns:1fr; }
   .hero-frame { margin-bottom:-40px; }
   .hero-bridge { padding-top:80px; padding-bottom:52px; }
   .hb-grid { grid-template-columns:1fr; gap:10px; }
@@ -448,9 +436,7 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
   /* Competition table */
   .comp-table th, .comp-table td { padding:12px 14px; font-size:13px; }
 
-  /* Audience / Market */
-  .market-layer { padding:16px 18px; }
-  .ml-val { font-size:32px; }
+  /* Audience */
   .audience-item { padding:14px 16px; }
   .audience-items { gap:8px; }
 
@@ -888,31 +874,15 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
 <section id="audience">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow" data-i18n="audience.eyebrow">Markt &amp; Zielgruppe</span>
+      <span class="eyebrow" data-i18n="audience.eyebrow">Zielgruppe</span>
       <h2 class="h2" data-i18n="audience.h2">AI-native Unternehmen<br>entstehen jetzt.</h2>
       <p class="lede" data-i18n="audience.lede">Kleine Firmen, die schnell wachsen, leiden bereits unter Fragmentierung. Entscheider: Founder oder COO.</p>
     </div>
-    <div class="audience-layout">
-      <div class="market-funnel">
-        <div class="market-layer l-som">
-          <div><div class="ml-key" data-i18n="audience.som.key">SOM · 24 Mon.</div><div class="ml-name" data-i18n="audience.som.name">2.000 Pilotkunden, DACH</div></div>
-          <div class="ml-val">€ 7 M</div>
-        </div>
-        <div class="market-layer l-sam">
-          <div><div class="ml-key" data-i18n="audience.sam.key">SAM</div><div class="ml-name" data-i18n="audience.sam.name">400.000 Firmen × 150 €/Mon., DACH</div></div>
-          <div class="ml-val">€ 720 M</div>
-        </div>
-        <div class="market-layer l-tam">
-          <div><div class="ml-key" data-i18n="audience.tam.key">TAM</div><div class="ml-name" data-i18n="audience.tam.name">Operative Infrastruktur, weltweit</div></div>
-          <div class="ml-val" data-i18n="audience.tam.val">Mrd. €</div>
-        </div>
-      </div>
-      <div class="audience-items">
-        <div class="audience-item"><span class="ai-num">01</span><div><strong data-i18n="audience.a1.title">Founder mit 1–20 Mitarbeitern</strong><p data-i18n="audience.a1.p">Du willst dein Wissen aus dem Kopf bringen — sodass die Firma auch ohne dich einen Tag funktioniert.</p></div></div>
-        <div class="audience-item"><span class="ai-num">02</span><div><strong data-i18n="audience.a2.title">IT-Dienstleister</strong><p data-i18n="audience.a2.p">Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.</p></div></div>
-        <div class="audience-item"><span class="ai-num">03</span><div><strong data-i18n="audience.a3.title">Kleine SaaS- und Agenturteams</strong><p data-i18n="audience.a3.p">Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.</p></div></div>
-        <div class="audience-item"><span class="ai-num">04</span><div><strong data-i18n="audience.a4.title">Teams mit zu vielen Tools</strong><p data-i18n="audience.a4.p">Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Wahrheit, viel Doppelarbeit.</p></div></div>
-      </div>
+    <div class="audience-items">
+      <div class="audience-item"><span class="ai-num">01</span><div><strong data-i18n="audience.a1.title">Founder mit 1–20 Mitarbeitern</strong><p data-i18n="audience.a1.p">Du willst dein Wissen aus dem Kopf bringen — sodass die Firma auch ohne dich einen Tag funktioniert.</p></div></div>
+      <div class="audience-item"><span class="ai-num">02</span><div><strong data-i18n="audience.a2.title">IT-Dienstleister</strong><p data-i18n="audience.a2.p">Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.</p></div></div>
+      <div class="audience-item"><span class="ai-num">03</span><div><strong data-i18n="audience.a3.title">Kleine SaaS- und Agenturteams</strong><p data-i18n="audience.a3.p">Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.</p></div></div>
+      <div class="audience-item"><span class="ai-num">04</span><div><strong data-i18n="audience.a4.title">Teams mit zu vielen Tools</strong><p data-i18n="audience.a4.p">Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Wahrheit, viel Doppelarbeit.</p></div></div>
     </div>
   </div>
 </section>
@@ -1159,12 +1129,9 @@ const LANG = {
     "competition.row1": "Tickets &amp; Arbeit", "competition.row2": "Dokumente &amp; Wissen", "competition.row3": "CRM &amp; Forecast",
     "competition.row4": "Runway als Live-Signal", "competition.row5": "Mitarbeiter, Assets, Vault", "competition.row6": "Gemeinsames Datenmodell", "competition.row7": "AI-lesbarer Kontext",
     "competition.erp3": "teils", "competition.erp4": "Report", "competition.erp5": "teils", "competition.live": "Live", "competition.native": "Native",
-    "audience.eyebrow": "Markt &amp; Zielgruppe",
+    "audience.eyebrow": "Zielgruppe",
     "audience.h2": "AI-native Unternehmen<br>entstehen jetzt.",
     "audience.lede": "Kleine Firmen, die schnell wachsen, leiden bereits unter Fragmentierung. Entscheider: Founder oder COO.",
-    "audience.som.key": "SOM · 24 Mon.", "audience.som.name": "2.000 Pilotkunden, DACH",
-    "audience.sam.key": "SAM", "audience.sam.name": "400.000 Firmen × 150 €/Mon., DACH",
-    "audience.tam.key": "TAM", "audience.tam.name": "Operative Infrastruktur, weltweit", "audience.tam.val": "Mrd. €",
     "audience.a1.title": "Founder mit 1–20 Mitarbeitern", "audience.a1.p": "Du willst dein Wissen aus dem Kopf bringen — sodass die Firma auch ohne dich einen Tag funktioniert.",
     "audience.a2.title": "IT-Dienstleister", "audience.a2.p": "Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.",
     "audience.a3.title": "Kleine SaaS- und Agenturteams", "audience.a3.p": "Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.",
@@ -1283,12 +1250,9 @@ const LANG = {
     "competition.row1": "Tickets &amp; Work", "competition.row2": "Documents &amp; Knowledge", "competition.row3": "CRM &amp; Forecast",
     "competition.row4": "Runway as Live Signal", "competition.row5": "People, Assets, Vault", "competition.row6": "Shared Data Model", "competition.row7": "AI-readable Context",
     "competition.erp3": "partly", "competition.erp4": "Report", "competition.erp5": "partly", "competition.live": "Live", "competition.native": "Native",
-    "audience.eyebrow": "Market &amp; Audience",
+    "audience.eyebrow": "Audience",
     "audience.h2": "AI-native companies<br>are forming now.",
     "audience.lede": "Small companies growing fast already suffer from fragmentation. Decision-makers: founder or COO.",
-    "audience.som.key": "SOM · 24 mo.", "audience.som.name": "2,000 pilot customers, DACH",
-    "audience.sam.key": "SAM", "audience.sam.name": "400,000 companies × €150/mo., DACH",
-    "audience.tam.key": "TAM", "audience.tam.name": "Operational infrastructure, worldwide", "audience.tam.val": "Bn. €",
     "audience.a1.title": "Founders with 1–20 employees", "audience.a1.p": "Get knowledge out of your head — so the company runs for a day without you.",
     "audience.a2.title": "IT service providers", "audience.a2.p": "Multiple client projects in parallel, thin margins, clear delivery. Tickets need to talk to costs and pipeline.",
     "audience.a3.title": "Small SaaS and agency teams", "audience.a3.p": "Building a product and a company simultaneously. Neither should devour the other.",
