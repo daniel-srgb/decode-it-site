@@ -111,13 +111,16 @@ section { padding:96px 0; border-bottom:1px solid var(--line); }
 /* ───── HERO SCENE ───── */
 .hero-scene { display:grid; grid-template-columns:172px 1fr; background:var(--bg); }
 .hs-nav { background:var(--surface); border-right:1px solid var(--line); padding:0; display:flex; flex-direction:column; }
-.hs-ctx { padding:16px 14px; border-bottom:1px solid var(--line); }
-.hs-ctx:last-child { border-bottom:0; }
-.hs-ctx-label { font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted-2); font-weight:700; margin-bottom:7px; font-family:var(--font-mono); }
-.hs-ctx-val { font-size:17px; font-weight:720; letter-spacing:-.02em; line-height:1.1; color:var(--text); }
-.hs-ctx-val.amber { color:var(--amber); }
-.hs-ctx-val.blue { color:var(--blue); }
-.hs-ctx-sub { font-size:11px; color:var(--muted); margin-top:4px; }
+.hs-status-head { font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted-2); font-weight:700; padding:14px 14px 10px; font-family:var(--font-mono); border-bottom:1px solid var(--line); }
+.hs-si { display:flex; align-items:flex-start; gap:8px; padding:7px 14px; font-size:11px; color:var(--muted); font-family:var(--font-mono); line-height:1.4; }
+.hs-si + .hs-si { border-top:1px solid var(--line); }
+.hs-si-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; margin-top:4px; background:var(--line-strong); }
+.hs-si-dot.amber { background:var(--amber); }
+.hs-si-dot.pink { background:var(--pink); }
+.hs-si-dot.blue { background:var(--blue); }
+.hs-scene-head { display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--line); }
+.hs-scene-eyebrow { font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-2); font-weight:700; font-family:var(--font-mono); }
+.hs-scene-date { font-size:11px; color:var(--muted-2); font-family:var(--font-mono); }
 .hs-main { padding:22px 26px; display:flex; flex-direction:column; }
 .hs-kpis { display:grid; grid-template-columns:repeat(4,1fr); padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line); align-items:end; }
 .hs-kpi-num { font-size:24px; font-weight:720; letter-spacing:-.025em; line-height:1; }
@@ -540,9 +543,6 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
     <h1 class="h1" data-i18n="hero.h1">Operative Realität<br>als System.</h1>
     <div class="hero-slogan">Context creates clarity.</div>
     <p class="lede hero-lede" data-i18n="hero.lede">Company OS verbindet operative Ausführung, finanzielle Realität und organisatorischen Kontext in einem gemeinsamen System.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary btn-lg" href="mailto:daniel@decode-it.net" data-i18n="hero.cta1">Demo anfragen</a>
-    </div>
     <div class="hero-frame">
       <div class="frame">
         <div class="frame-bar">
@@ -551,44 +551,17 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
         </div>
         <div class="hero-scene">
           <div class="hs-nav">
-            <div class="hs-ctx">
-              <div class="hs-ctx-label">Runway</div>
-              <div class="hs-ctx-val amber" data-i18n="hs.ctx1.val">4.7 Mon.</div>
-              <div class="hs-ctx-sub" data-i18n="hs.ctx1.sub">−12% vs. Plan</div>
-            </div>
-            <div class="hs-ctx">
-              <div class="hs-ctx-label">Critical Queue</div>
-              <div class="hs-ctx-val" data-i18n="hs.ctx2.val">3 Items</div>
-              <div class="hs-ctx-sub" data-i18n="hs.ctx2.sub">offen</div>
-            </div>
-            <div class="hs-ctx">
-              <div class="hs-ctx-label">AI Signal</div>
-              <div class="hs-ctx-val blue" data-i18n="hs.ctx3.val">Aktiv</div>
-              <div class="hs-ctx-sub" data-i18n="hs.ctx3.sub">1 Warnung</div>
-            </div>
-            <div class="hs-ctx">
-              <div class="hs-ctx-label">Procurement</div>
-              <div class="hs-ctx-val amber" data-i18n="hs.ctx4.val">2 offen</div>
-              <div class="hs-ctx-sub" data-i18n="hs.ctx4.sub">nicht verknüpft</div>
-            </div>
+            <div class="hs-status-head" data-i18n="hs.status.head">System Status</div>
+            <div class="hs-si"><span class="hs-si-dot amber"></span><span data-i18n="hs.si1">Runway 4.7 Mon.</span></div>
+            <div class="hs-si"><span class="hs-si-dot pink"></span><span data-i18n="hs.si2">3 kritische Abhängigkeiten</span></div>
+            <div class="hs-si"><span class="hs-si-dot amber"></span><span data-i18n="hs.si3">1 blockierte Entscheidung</span></div>
+            <div class="hs-si"><span class="hs-si-dot amber"></span><span data-i18n="hs.si4">2 Procurement-Lücken</span></div>
+            <div class="hs-si"><span class="hs-si-dot blue"></span><span data-i18n="hs.si5">AI Signal aktiv</span></div>
           </div>
           <div class="hs-main">
-            <div class="hs-kpis">
-              <div>
-                <div class="hs-kpi-num amber">4.7</div>
-                <div class="hs-kpi-label" data-i18n="hs.runway.label">Runway · Monate</div>
-              </div>
-              <div>
-                <div class="hs-kpi-num">€ 85.000</div>
-                <div class="hs-kpi-label">Cash on Hand</div>
-              </div>
-              <div>
-                <div class="hs-kpi-num">−€ 18.000</div>
-                <div class="hs-kpi-label" data-i18n="hs.burn.label">Burn / Monat</div>
-              </div>
-              <div style="display:flex;align-items:center;justify-content:flex-end;">
-                <span class="hs-signal amber">−12% vs. Plan</span>
-              </div>
+            <div class="hs-scene-head">
+              <span class="hs-scene-eyebrow">Financial Operations Control</span>
+              <span class="hs-scene-date" data-i18n="hs.scene.date">Mon · 01:14</span>
             </div>
             <div class="hs-queue-label" data-i18n="hs.queue.label">Critical Queue</div>
             <div class="hs-qi">
@@ -623,15 +596,15 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
     <div class="hb-grid">
       <div class="hb-item">
         <span class="hb-tag amber" data-i18n="hb.t1.tag">Finance</span>
-        <span class="hb-text" data-i18n="hb.t1.text">Runway sinkt — 2 unverknüpfte Procurement-Positionen erhöhen Burn-Rate.</span>
+        <span class="hb-text" data-i18n="hb.t1.text">Zwei Procurement-Positionen sind aktuell nicht mit genehmigtem Budget verknüpft.</span>
       </div>
       <div class="hb-item">
         <span class="hb-tag blue" data-i18n="hb.t2.tag">Operations</span>
-        <span class="hb-text" data-i18n="hb.t2.text">Q2-Budget-Entscheidung blockiert aktive Hiring-Pipeline.</span>
+        <span class="hb-text" data-i18n="hb.t2.text">Hiring-Ausführung blockiert durch offene Lieferantenabhängigkeiten.</span>
       </div>
       <div class="hb-item">
         <span class="hb-tag violet" data-i18n="hb.t3.tag">AI Signal</span>
-        <span class="hb-text" data-i18n="hb.t3.text">Burn +12% MoM — Kurskorrektur empfohlen vor Q3.</span>
+        <span class="hb-text" data-i18n="hb.t3.text">Aktuelle Operationsstruktur erhöht Runway-Volatilität um 12%.</span>
       </div>
     </div>
   </div>
@@ -1157,13 +1130,12 @@ const LANG = {
     "hs.runway.label":"Runway · Monate", "hs.burn.label":"Burn / Monat", "hs.queue.label":"Critical Queue",
     "hs.q1.tag":"3 Tage", "hs.q2.tag":"ausstehend", "hs.q3.tag":"12 Tage", "hs.q3.name":"Steuer · Vorauszahlung",
     "hs.ai.text":"Runway −0.4 Mon. durch 2 offene Procurement-Positionen. Design Agency nicht mit Q2-Entscheidung verknüpft.",
-    "hs.ctx1.val":"4.7 Mon.", "hs.ctx1.sub":"−12% vs. Plan",
-    "hs.ctx2.val":"3 Items", "hs.ctx2.sub":"offen",
-    "hs.ctx3.val":"Aktiv", "hs.ctx3.sub":"1 Warnung",
-    "hs.ctx4.val":"2 offen", "hs.ctx4.sub":"nicht verknüpft",
-    "hb.t1.tag":"Finance", "hb.t1.text":"Runway sinkt — 2 unverknüpfte Procurement-Positionen erhöhen Burn-Rate.",
-    "hb.t2.tag":"Operations", "hb.t2.text":"Q2-Budget-Entscheidung blockiert aktive Hiring-Pipeline.",
-    "hb.t3.tag":"AI Signal", "hb.t3.text":"Burn +12% MoM — Kurskorrektur empfohlen vor Q3.",
+    "hs.status.head":"System Status", "hs.scene.date":"Mon · 01:14",
+    "hs.si1":"Runway 4.7 Mon.", "hs.si2":"3 kritische Abhängigkeiten",
+    "hs.si3":"1 blockierte Entscheidung", "hs.si4":"2 Procurement-Lücken", "hs.si5":"AI Signal aktiv",
+    "hb.t1.tag":"Finance", "hb.t1.text":"Zwei Procurement-Positionen sind aktuell nicht mit genehmigtem Budget verknüpft.",
+    "hb.t2.tag":"Operations", "hb.t2.text":"Hiring-Ausführung blockiert durch offene Lieferantenabhängigkeiten.",
+    "hb.t3.tag":"AI Signal", "hb.t3.text":"Aktuelle Operationsstruktur erhöht Runway-Volatilität um 12%.",
     "problem.eyebrow": "Das Problem",
     "problem.h2": "Operative Komplexität<br>übersteigt menschliche Koordination.",
     "problem.lede": "Kleine Firmen führen 8–12 Tools parallel. Menschen werden zur manuellen Integrationsschicht — und das skaliert nicht.",
@@ -1280,13 +1252,12 @@ const LANG = {
     "hs.runway.label":"Runway · months", "hs.burn.label":"Burn / month", "hs.queue.label":"Critical Queue",
     "hs.q1.tag":"3 days", "hs.q2.tag":"pending", "hs.q3.tag":"12 days", "hs.q3.name":"Tax · Prepayment",
     "hs.ai.text":"Runway −0.4 mo. from 2 open procurement positions. Design Agency not linked to Q2 decision.",
-    "hs.ctx1.val":"4.7 mo.", "hs.ctx1.sub":"−12% vs. plan",
-    "hs.ctx2.val":"3 items", "hs.ctx2.sub":"open",
-    "hs.ctx3.val":"Active", "hs.ctx3.sub":"1 warning",
-    "hs.ctx4.val":"2 open", "hs.ctx4.sub":"not linked",
-    "hb.t1.tag":"Finance", "hb.t1.text":"Runway declining — 2 unlinked procurement positions increasing burn rate.",
-    "hb.t2.tag":"Operations", "hb.t2.text":"Q2 budget decision blocking active hiring pipeline.",
-    "hb.t3.tag":"AI Signal", "hb.t3.text":"Burn +12% MoM — course correction recommended before Q3.",
+    "hs.status.head":"System Status", "hs.scene.date":"Mon · 01:14",
+    "hs.si1":"Runway 4.7 mo.", "hs.si2":"3 dependencies critical",
+    "hs.si3":"1 blocked decision", "hs.si4":"2 procurement gaps", "hs.si5":"AI signal active",
+    "hb.t1.tag":"Finance", "hb.t1.text":"Two procurement positions are currently disconnected from approved budget allocation.",
+    "hb.t2.tag":"Operations", "hb.t2.text":"Hiring execution is blocked by unresolved supplier dependencies.",
+    "hb.t3.tag":"AI Signal", "hb.t3.text":"Current operational structure increases runway volatility by 12%.",
     "problem.eyebrow": "The Problem",
     "problem.h2": "Operational complexity<br>outpaces human coordination.",
     "problem.lede": "Small companies run 8–12 tools in parallel. People become the manual integration layer — and that doesn't scale.",
