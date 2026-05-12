@@ -108,6 +108,29 @@ section { padding:96px 0; border-bottom:1px solid var(--line); }
 .hero-actions { display:flex; gap:10px; margin-top:32px; flex-wrap:wrap; }
 .hero-frame { margin-top:60px; }
 
+/* ───── HERO SCENE ───── */
+.hero-scene { display:grid; grid-template-columns:172px 1fr; background:var(--bg); }
+.hs-nav { background:var(--surface); border-right:1px solid var(--line); padding:10px 0; display:flex; flex-direction:column; gap:1px; }
+.hs-nav-item { display:flex; align-items:center; gap:9px; padding:7px 14px; font-size:12px; color:var(--muted); font-family:var(--font-mono); white-space:nowrap; }
+.hs-nav-item.active { color:var(--text); font-weight:600; background:var(--surface-2); }
+.hs-nav-dot { width:5px; height:5px; border-radius:50%; background:var(--line-strong); flex-shrink:0; }
+.hs-nav-item.active .hs-nav-dot { background:var(--blue); }
+.hs-main { padding:22px 26px; display:flex; flex-direction:column; }
+.hs-kpis { display:grid; grid-template-columns:repeat(4,1fr); padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line); align-items:end; }
+.hs-kpi-num { font-size:24px; font-weight:720; letter-spacing:-.025em; line-height:1; }
+.hs-kpi-num.amber { color:var(--amber); }
+.hs-kpi-label { font-size:11px; color:var(--muted); margin-top:5px; }
+.hs-signal { display:inline-flex; align-items:center; padding:5px 10px; border-radius:4px; font-size:12px; font-weight:600; }
+.hs-signal.amber { background:var(--amber-soft); color:var(--amber-text); }
+.hs-queue-label { font-size:10px; letter-spacing:.11em; text-transform:uppercase; color:var(--muted-2); font-weight:700; margin-bottom:10px; }
+.hs-qi { display:flex; align-items:center; gap:10px; padding:8px 0; }
+.hs-qi + .hs-qi { border-top:1px solid var(--line); }
+.hs-qi-name { flex:1; font-size:13px; color:var(--text); font-weight:500; }
+.hs-qi-amount { font-size:13px; font-weight:600; color:var(--text); font-variant-numeric:tabular-nums; }
+.hs-ai { margin-top:14px; padding:11px 14px; background:var(--surface-2); border-left:2px solid var(--blue); border-radius:0 5px 5px 0; display:flex; gap:10px; align-items:flex-start; }
+.hs-ai-tag { font-size:9px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--blue); flex-shrink:0; margin-top:2px; font-family:var(--font-mono); }
+.hs-ai-text { font-size:12px; color:var(--text); line-height:1.55; }
+
 /* ───── PROBLEM ───── */
 .problem-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
 .stat-card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:36px 32px; display:flex; flex-direction:column; gap:12px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
@@ -497,7 +520,7 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
     </div>
     <h1 class="h1" data-i18n="hero.h1">Operative Realität<br>als System.</h1>
     <div class="hero-slogan">Context creates clarity.</div>
-    <p class="lede hero-lede" data-i18n="hero.lede">Tickets, Strategie, CRM, Wissen, Mitarbeiter und Kosten in einer einzigen steuerbaren Oberfläche. Kein weiteres Tool — ein Zusammenhang.</p>
+    <p class="lede hero-lede" data-i18n="hero.lede">Company OS verbindet operative Ausführung, finanzielle Realität und organisatorischen Kontext in einem gemeinsamen System.</p>
     <div class="hero-actions">
       <a class="btn btn-primary btn-lg" href="mailto:daniel@decode-it.net" data-i18n="hero.cta1">Demo anfragen</a>
     </div>
@@ -507,9 +530,54 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
           <span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span>
           <span class="furl">company-os.app/cockpit/runway</span>
         </div>
-        <div style="position:relative;overflow:hidden;">
-          <img src="assets/screenshots/Finance.png" alt="Runway Cockpit" loading="lazy" draggable="false" oncontextmenu="return false" style="display:block;width:100%;pointer-events:none;user-select:none;-webkit-user-drag:none;">
-          <div style="position:absolute;inset:0;cursor:default;"></div>
+        <div class="hero-scene">
+          <div class="hs-nav">
+            <div class="hs-nav-item active"><span class="hs-nav-dot"></span>Runway</div>
+            <div class="hs-nav-item"><span class="hs-nav-dot"></span>Pipeline</div>
+            <div class="hs-nav-item"><span class="hs-nav-dot"></span>Decisions</div>
+            <div class="hs-nav-item"><span class="hs-nav-dot"></span>Structures</div>
+            <div class="hs-nav-item"><span class="hs-nav-dot"></span>Documents</div>
+            <div class="hs-nav-item"><span class="hs-nav-dot"></span>Team</div>
+          </div>
+          <div class="hs-main">
+            <div class="hs-kpis">
+              <div>
+                <div class="hs-kpi-num amber">4.7</div>
+                <div class="hs-kpi-label" data-i18n="hs.runway.label">Runway · Monate</div>
+              </div>
+              <div>
+                <div class="hs-kpi-num">€ 85.000</div>
+                <div class="hs-kpi-label">Cash on Hand</div>
+              </div>
+              <div>
+                <div class="hs-kpi-num">−€ 18.000</div>
+                <div class="hs-kpi-label" data-i18n="hs.burn.label">Burn / Monat</div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:flex-end;">
+                <span class="hs-signal amber">−12% vs. Plan</span>
+              </div>
+            </div>
+            <div class="hs-queue-label" data-i18n="hs.queue.label">Critical Queue</div>
+            <div class="hs-qi">
+              <span class="sc-tag a" data-i18n="hs.q1.tag">3 Tage</span>
+              <span class="hs-qi-name">AWS Infrastructure · Rechnung</span>
+              <span class="hs-qi-amount">€ 1.840</span>
+            </div>
+            <div class="hs-qi">
+              <span class="sc-tag m" data-i18n="hs.q2.tag">ausstehend</span>
+              <span class="hs-qi-name">Design Agency · Q2 Budget</span>
+              <span class="hs-qi-amount">€ 4.200</span>
+            </div>
+            <div class="hs-qi">
+              <span class="sc-tag a" data-i18n="hs.q3.tag">12 Tage</span>
+              <span class="hs-qi-name" data-i18n="hs.q3.name">Steuer · Vorauszahlung</span>
+              <span class="hs-qi-amount">€ 9.500</span>
+            </div>
+            <div class="hs-ai">
+              <span class="hs-ai-tag">AI</span>
+              <span class="hs-ai-text" data-i18n="hs.ai.text">Runway −0.4 Mon. durch 2 offene Procurement-Positionen. Design Agency nicht mit Q2-Entscheidung verknüpft.</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1031,8 +1099,11 @@ const LANG = {
     "brand.by": "by Decode IT",
     "nav.problem": "Problem", "nav.product": "Produkt", "nav.audience": "Für wen", "nav.story": "Story", "nav.cta": "Demo anfragen",
     "hero.h1": "Operative Realität<br>als System.",
-    "hero.lede": "Tickets, Strategie, CRM, Wissen, Mitarbeiter und Kosten in einer einzigen steuerbaren Oberfläche. Kein weiteres Tool — ein Zusammenhang.",
+    "hero.lede": "Company OS verbindet operative Ausführung, finanzielle Realität und organisatorischen Kontext in einem gemeinsamen System.",
     "hero.cta1": "Demo anfragen", "hero.cta2": "Produkt ansehen",
+    "hs.runway.label":"Runway · Monate", "hs.burn.label":"Burn / Monat", "hs.queue.label":"Critical Queue",
+    "hs.q1.tag":"3 Tage", "hs.q2.tag":"ausstehend", "hs.q3.tag":"12 Tage", "hs.q3.name":"Steuer · Vorauszahlung",
+    "hs.ai.text":"Runway −0.4 Mon. durch 2 offene Procurement-Positionen. Design Agency nicht mit Q2-Entscheidung verknüpft.",
     "problem.eyebrow": "Das Problem",
     "problem.h2": "Operative Komplexität<br>übersteigt menschliche Koordination.",
     "problem.lede": "Kleine Firmen führen 8–12 Tools parallel. Menschen werden zur manuellen Integrationsschicht — und das skaliert nicht.",
@@ -1144,8 +1215,11 @@ const LANG = {
     "brand.by": "by Decode IT",
     "nav.problem": "Problem", "nav.product": "Product", "nav.audience": "Who it's for", "nav.story": "Story", "nav.cta": "Request demo",
     "hero.h1": "Operational Reality<br>as a System.",
-    "hero.lede": "Tickets, strategy, CRM, knowledge, people, and costs in a single controllable interface. Not another tool — a connected whole.",
+    "hero.lede": "Company OS connects operational execution, financial reality and organizational context into one shared system.",
     "hero.cta1": "Request demo", "hero.cta2": "See the product",
+    "hs.runway.label":"Runway · months", "hs.burn.label":"Burn / month", "hs.queue.label":"Critical Queue",
+    "hs.q1.tag":"3 days", "hs.q2.tag":"pending", "hs.q3.tag":"12 days", "hs.q3.name":"Tax · Prepayment",
+    "hs.ai.text":"Runway −0.4 mo. from 2 open procurement positions. Design Agency not linked to Q2 decision.",
     "problem.eyebrow": "The Problem",
     "problem.h2": "Operational complexity<br>outpaces human coordination.",
     "problem.lede": "Small companies run 8–12 tools in parallel. People become the manual integration layer — and that doesn't scale.",
