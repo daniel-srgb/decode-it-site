@@ -255,7 +255,8 @@ img { -webkit-user-drag:none; -moz-user-drag:none; user-drag:none; -webkit-user-
 .sc-feed-item { display:flex; gap:12px; padding:3px 0; font-size:11px; line-height:1.4; }
 .sc-feed-time { color:var(--muted-2); min-width:28px; font-family:var(--font-mono); flex-shrink:0; }
 .sc-feed-text { color:var(--muted); }
-.sc-feed-item.now .sc-feed-time { color:var(--pink-text); font-weight:700; }
+@keyframes pulse-now { 0%,100%{opacity:1} 50%{opacity:.4} }
+.sc-feed-item.now .sc-feed-time { color:var(--pink-text); font-weight:700; animation:pulse-now 1.8s ease-in-out infinite; }
 .sc-feed-item.now .sc-feed-text { color:var(--text); font-weight:500; }
 /* Relation chips */
 .sc-rels { padding:11px 20px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:5px; align-items:center; }
@@ -696,57 +697,58 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
     </div>
 
     <div class="scene-nav" id="scene-nav">
-      <button class="scene-btn active" data-scene="0">Decision</button>
-      <button class="scene-btn" data-scene="1">Procurement</button>
-      <button class="scene-btn" data-scene="2">Documents</button>
-      <button class="scene-btn" data-scene="3">Finance</button>
+      <button class="scene-btn active" data-scene="0"></button>
+      <button class="scene-btn" data-scene="1"></button>
+      <button class="scene-btn" data-scene="2"></button>
+      <button class="scene-btn" data-scene="3"></button>
+      <button class="scene-btn" data-scene="4"></button>
     </div>
 
     <div class="scene-layout">
       <div class="scene-copy">
         <div class="scene-copy-label" id="scene-label">Strategy Layer</div>
-        <h3 class="scene-copy-h3" id="scene-h3">Entscheidungen erzeugen operative Ketten.</h3>
-        <p class="scene-copy-p" id="scene-p">Jede strategische Entscheidung schreibt sich automatisch in Procurement, Dokumente und Runway ein.</p>
+        <h3 class="scene-copy-h3" id="scene-h3">Eine Entscheidung. Eine operative Kette.</h3>
+        <p class="scene-copy-p" id="scene-p">Q2 Hiring ist beschlossen. Company OS setzt die Konsequenzen automatisch um — in Procurement, Budget und Runway.</p>
       </div>
       <div id="scene-display">
 
         <!-- ── Scene 0: Decision ── -->
         <div class="scene-card" id="sc-0">
           <div class="sc-head">
-            <span class="sc-eyebrow">Executive Decision</span>
+            <span class="sc-eyebrow" data-si18n="eyebrow">Strategische Entscheidung</span>
             <span class="sc-meta">Montag · 09:14</span>
           </div>
           <div class="sc-section">
-            <div class="sc-section-label">Q2 Hiring Plan — Freigegeben</div>
+            <div class="sc-section-label" data-si18n="sec1">Q2 Hiring Plan — Freigegeben</div>
             <div class="sc-decision">
-              <span class="sc-decision-name">Design Team · 2 New Hires</span>
-              <span class="sc-tag g">Approved</span>
+              <span class="sc-decision-name" data-si18n="d1name">Design Team · 2 neue Mitarbeiter</span>
+              <span class="sc-tag g" data-si18n="d1tag">Freigegeben</span>
             </div>
             <div class="sc-decision">
-              <span class="sc-decision-name">MacBook Procurement · Design Team</span>
-              <span class="sc-tag b">Gestartet</span>
+              <span class="sc-decision-name" data-si18n="d2name">MacBook Beschaffung · Design Team</span>
+              <span class="sc-tag b" data-si18n="d2tag">Gestartet</span>
             </div>
             <div class="sc-decision">
-              <span class="sc-decision-name">Q2 Software Licenses</span>
-              <span class="sc-tag m">Ausstehend</span>
+              <span class="sc-decision-name" data-si18n="d3name">Q2 Software-Lizenzen</span>
+              <span class="sc-tag m" data-si18n="d3tag">Ausstehend</span>
             </div>
           </div>
           <div class="sc-div"></div>
           <div class="sc-section">
             <div class="sc-section-label">Runway Signal</div>
             <div class="sc-kpis n3" style="padding:6px 0 0;">
-              <div class="sc-kpi warn"><div class="sc-kpi-num">4.7 Mon.</div><div class="sc-kpi-label">Runway</div></div>
-              <div class="sc-kpi"><div class="sc-kpi-num">16.220 €</div><div class="sc-kpi-label">Monatl. Burn</div></div>
-              <div class="sc-kpi"><div class="sc-kpi-num">2 offen</div><div class="sc-kpi-label">Entscheidungen</div></div>
+              <div class="sc-kpi"><div class="sc-kpi-num">4.7 Mon.</div><div class="sc-kpi-label">Runway</div></div>
+              <div class="sc-kpi"><div class="sc-kpi-num">16.220 €</div><div class="sc-kpi-label" data-si18n="kpi2lbl">Monatl. Burn</div></div>
+              <div class="sc-kpi"><div class="sc-kpi-num" data-si18n="kpi3num">2 offen</div><div class="sc-kpi-label" data-si18n="kpi3lbl">Entscheidungen</div></div>
             </div>
           </div>
           <div class="sc-ai">
             <div class="sc-ai-label">AI Signal</div>
-            <div class="sc-ai-text">Hiring approval triggers procurement chain. MacBook Procurement — Design Team requires vendor invoice before budget release.</div>
+            <div class="sc-ai-text" data-si18n="ai">Hiring-Entscheidung löst Beschaffungskette aus. MacBook-Bestellung erfordert Lieferantenrechnung vor Budgetfreigabe.</div>
           </div>
           <div class="sc-rels">
-            <span class="sc-rels-label">Related</span>
-            <span class="sc-rel">Procurement</span>
+            <span class="sc-rels-label" data-si18n="relslbl">Verknüpft</span>
+            <span class="sc-rel" data-si18n="rel1">Beschaffung</span>
             <span class="sc-rel">Design Team</span>
             <span class="sc-rel">Finance</span>
             <span class="sc-rel">Runway</span>
@@ -756,81 +758,81 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
         <!-- ── Scene 1: Procurement ── -->
         <div class="scene-card" id="sc-1" style="display:none">
           <div class="sc-head">
-            <span class="sc-eyebrow">Procurement Request</span>
-            <span class="sc-badge">Q2 · Offen</span>
+            <span class="sc-eyebrow" data-si18n="eyebrow">Beschaffungsantrag</span>
+            <span class="sc-badge" data-si18n="badge">Q2 · Offen</span>
           </div>
-          <div class="sc-title">MacBook Procurement — Design Team</div>
+          <div class="sc-title" data-si18n="title">MacBook Beschaffung — Design Team</div>
           <div class="sc-div" style="margin-top:14px"></div>
           <div class="sc-section">
-            <div class="sc-section-label">Expected Documents</div>
-            <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name">Supplier Quote</span><span class="sc-doc-status ok">erhalten</span></div>
-            <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name">Delivery Note</span><span class="sc-doc-status ok">erhalten</span></div>
-            <div class="sc-doc"><span class="sc-doc-icon crit">!</span><span class="sc-doc-name">Invoice — Design Agency</span><span class="sc-doc-status crit">fehlt · blockiert</span></div>
+            <div class="sc-section-label" data-si18n="secdocs">Erwartete Dokumente</div>
+            <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name" data-si18n="doc1name">Lieferantenofferte</span><span class="sc-doc-status ok" data-si18n="doc1st">erhalten</span></div>
+            <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name" data-si18n="doc2name">Lieferschein</span><span class="sc-doc-status ok" data-si18n="doc2st">erhalten</span></div>
+            <div class="sc-doc"><span class="sc-doc-icon crit">!</span><span class="sc-doc-name" data-si18n="doc3name">Rechnung — Design Agentur</span><span class="sc-doc-status crit" data-si18n="doc3st">fehlt · blockiert</span></div>
           </div>
           <div class="sc-chain">
-            <div class="sc-chain-item"><span class="sc-chain-icon">↓</span>Vendor invoice missing</div>
-            <div class="sc-chain-item blocked"><span class="sc-chain-icon">↓</span>Budget approval paused</div>
-            <div class="sc-chain-item blocked"><span class="sc-chain-icon">↓</span>Onboarding delayed</div>
-            <div class="sc-chain-item blocked"><span class="sc-chain-icon">↓</span>Runway impact detected</div>
+            <div class="sc-chain-item"><span class="sc-chain-icon">↓</span><span data-si18n="ch1">Lieferantenrechnung fehlt</span></div>
+            <div class="sc-chain-item blocked"><span class="sc-chain-icon">↓</span><span data-si18n="ch2">Budgetfreigabe pausiert</span></div>
+            <div class="sc-chain-item blocked"><span class="sc-chain-icon">↓</span><span data-si18n="ch3">Onboarding verzögert</span></div>
+            <div class="sc-chain-item blocked"><span class="sc-chain-icon">↓</span><span data-si18n="ch4">Runway-Impact erkannt</span></div>
           </div>
           <div class="sc-ai">
             <div class="sc-ai-label">AI Signal</div>
-            <div class="sc-ai-text">Hiring approval paused automatically. Missing supplier invoice affects procurement compliance and blocks Q2 onboarding.</div>
+            <div class="sc-ai-text" data-si18n="ai">Hiring-Genehmigung pausiert. Fehlende Rechnung blockiert Beschaffung und Q2-Onboarding.</div>
           </div>
           <div class="sc-feed">
-            <div class="sc-feed-item"><span class="sc-feed-time">12m</span><span class="sc-feed-text">Supplier quote uploaded</span></div>
-            <div class="sc-feed-item"><span class="sc-feed-time">8m</span><span class="sc-feed-text">AI extracted procurement data</span></div>
-            <div class="sc-feed-item"><span class="sc-feed-time">3m</span><span class="sc-feed-text">Missing invoice detected</span></div>
-            <div class="sc-feed-item now"><span class="sc-feed-time">Now</span><span class="sc-feed-text">Hiring approval paused</span></div>
+            <div class="sc-feed-item"><span class="sc-feed-time">12m</span><span class="sc-feed-text" data-si18n="f1">Lieferantenofferte hochgeladen</span></div>
+            <div class="sc-feed-item"><span class="sc-feed-time">8m</span><span class="sc-feed-text" data-si18n="f2">AI extrahiert Beschaffungsdaten</span></div>
+            <div class="sc-feed-item"><span class="sc-feed-time">3m</span><span class="sc-feed-text" data-si18n="f3">Fehlende Rechnung erkannt</span></div>
+            <div class="sc-feed-item now"><span class="sc-feed-time" data-si18n="f4time">Jetzt</span><span class="sc-feed-text" data-si18n="f4">Hiring-Genehmigung pausiert</span></div>
           </div>
           <div class="sc-rels">
-            <span class="sc-rels-label">Related</span>
+            <span class="sc-rels-label" data-si18n="relslbl">Verknüpft</span>
             <span class="sc-rel">Q2 Hiring</span>
             <span class="sc-rel">Finance</span>
             <span class="sc-rel">MacBook Asset</span>
             <span class="sc-rel">Design Team</span>
-            <span class="sc-rel">Supplier Risk</span>
+            <span class="sc-rel" data-si18n="rel5">Lieferantenrisiko</span>
           </div>
         </div>
 
         <!-- ── Scene 2: Documents ── -->
         <div class="scene-card" id="sc-2" style="display:none">
           <div class="sc-head">
-            <span class="sc-eyebrow">Invoice · Design Agency</span>
-            <span class="sc-badge crit">Fehlt · Kritisch</span>
+            <span class="sc-eyebrow" data-si18n="eyebrow">Rechnung · Design Agentur</span>
+            <span class="sc-badge crit" data-si18n="badge">Fehlt · Kritisch</span>
           </div>
           <div class="sc-section">
-            <div class="sc-section-label">Operative Konsequenz</div>
+            <div class="sc-section-label" data-si18n="sec1">Operative Konsequenz</div>
             <div class="sc-decision">
-              <span class="sc-decision-name">Budget Approval — Q2 Hiring</span>
-              <span class="sc-tag a">Pausiert</span>
+              <span class="sc-decision-name" data-si18n="d1name">Budgetfreigabe — Q2 Hiring</span>
+              <span class="sc-tag a" data-si18n="d1tag">Pausiert</span>
             </div>
             <div class="sc-decision">
               <span class="sc-decision-name">Onboarding — Design Team</span>
-              <span class="sc-tag a">Verzögert</span>
+              <span class="sc-tag a" data-si18n="d2tag">Verzögert</span>
             </div>
             <div class="sc-decision">
-              <span class="sc-decision-name">Procurement Chain</span>
-              <span class="sc-tag a">Unresolved</span>
+              <span class="sc-decision-name" data-si18n="d3name">Beschaffungskette</span>
+              <span class="sc-tag a" data-si18n="d3tag">Ungelöst</span>
             </div>
           </div>
           <div class="sc-div"></div>
           <div class="sc-section">
-            <div class="sc-section-label">Linked Objects</div>
-            <div class="sc-kv"><span class="sc-kv-key">Procurement</span><span class="sc-kv-val">MacBook · Design Team</span></div>
-            <div class="sc-kv"><span class="sc-kv-key">Decision</span><span class="sc-kv-val">Q2 Hiring · Approved</span></div>
+            <div class="sc-section-label" data-si18n="sec2">Verknüpfte Objekte</div>
+            <div class="sc-kv"><span class="sc-kv-key" data-si18n="kv1key">Beschaffung</span><span class="sc-kv-val">MacBook · Design Team</span></div>
+            <div class="sc-kv"><span class="sc-kv-key" data-si18n="kv2key">Entscheidung</span><span class="sc-kv-val" data-si18n="kv2val">Q2 Hiring · Freigegeben</span></div>
             <div class="sc-kv"><span class="sc-kv-key">Runway Impact</span><span class="sc-kv-val warn">−0.4 Mon.</span></div>
           </div>
           <div class="sc-ai">
             <div class="sc-ai-label">AI Signal</div>
-            <div class="sc-ai-text">Procurement chain unresolved. Runway forecast adjusted. Onboarding cannot proceed until vendor invoice is received.</div>
+            <div class="sc-ai-text" data-si18n="ai">Beschaffungskette ungelöst. Runway angepasst. Onboarding pausiert bis Rechnung eintrifft.</div>
           </div>
           <div class="sc-rels">
-            <span class="sc-rels-label">Related</span>
-            <span class="sc-rel">Procurement</span>
+            <span class="sc-rels-label" data-si18n="relslbl">Verknüpft</span>
+            <span class="sc-rel" data-si18n="rel1">Beschaffung</span>
             <span class="sc-rel">Finance</span>
             <span class="sc-rel">Q2 Hiring</span>
-            <span class="sc-rel">Supplier</span>
+            <span class="sc-rel" data-si18n="rel4">Lieferant</span>
             <span class="sc-rel">Runway</span>
           </div>
         </div>
@@ -838,37 +840,86 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
         <!-- ── Scene 3: Finance ── -->
         <div class="scene-card" id="sc-3" style="display:none">
           <div class="sc-head">
-            <span class="sc-eyebrow">Invoice Management</span>
+            <span class="sc-eyebrow" data-si18n="eyebrow">Rechnungsverwaltung</span>
             <span class="sc-meta">Mai 2026</span>
           </div>
           <div class="sc-kpis n3">
-            <div class="sc-kpi"><div class="sc-kpi-num">€ 8.400</div><div class="sc-kpi-label">Offen</div></div>
-            <div class="sc-kpi green"><div class="sc-kpi-num">€ 22.800</div><div class="sc-kpi-label">Genehmigt</div></div>
-            <div class="sc-kpi warn"><div class="sc-kpi-num">€ 1.200</div><div class="sc-kpi-label">Überfällig</div></div>
+            <div class="sc-kpi"><div class="sc-kpi-num">€ 8.400</div><div class="sc-kpi-label" data-si18n="kpi1lbl">Offen</div></div>
+            <div class="sc-kpi green"><div class="sc-kpi-num">€ 22.800</div><div class="sc-kpi-label" data-si18n="kpi2lbl">Genehmigt</div></div>
+            <div class="sc-kpi warn"><div class="sc-kpi-num">€ 1.200</div><div class="sc-kpi-label" data-si18n="kpi3lbl">Überfällig</div></div>
           </div>
           <div class="sc-div"></div>
           <div class="sc-section">
-            <div class="sc-section-label">Aktuell</div>
-            <div class="sc-inv"><span class="sc-inv-name">Design Agency</span><span class="sc-inv-amount">€ 4.200</span><span class="sc-tag a">Fehlt · Kritisch</span></div>
-            <div class="sc-inv"><span class="sc-inv-name">AWS Infrastructure</span><span class="sc-inv-amount">€ 1.840</span><span class="sc-tag g">✓ Genehmigt</span></div>
-            <div class="sc-inv"><span class="sc-inv-name">Vercel Pro</span><span class="sc-inv-amount">€ 280</span><span class="sc-tag m">3 Tage</span></div>
+            <div class="sc-section-label" data-si18n="sec1">Aktuell</div>
+            <div class="sc-inv"><span class="sc-inv-name" data-si18n="inv1name">Design Agentur</span><span class="sc-inv-amount">€ 4.200</span><span class="sc-tag a" data-si18n="inv1tag">Fehlt · Kritisch</span></div>
+            <div class="sc-inv"><span class="sc-inv-name">AWS Infrastructure</span><span class="sc-inv-amount">€ 1.840</span><span class="sc-tag g" data-si18n="inv2tag">✓ Genehmigt</span></div>
+            <div class="sc-inv"><span class="sc-inv-name">Vercel Pro</span><span class="sc-inv-amount">€ 280</span><span class="sc-tag m" data-si18n="inv3tag">3 Tage</span></div>
           </div>
           <div class="sc-div"></div>
           <div class="sc-section">
-            <div class="sc-section-label">Operative Verbindungen</div>
+            <div class="sc-section-label" data-si18n="sec2">Operative Verbindungen</div>
             <div class="sc-kv"><span class="sc-kv-key">Runway Impact</span><span class="sc-kv-val warn">−0.4 Mon.</span></div>
-            <div class="sc-kv"><span class="sc-kv-key">Linked Procurement</span><span class="sc-kv-val">MacBook · Design Team</span></div>
-            <div class="sc-kv"><span class="sc-kv-key">Linked Decision</span><span class="sc-kv-val">Q2 Hiring · Approved</span></div>
+            <div class="sc-kv"><span class="sc-kv-key" data-si18n="kv2key">Verknüpfte Beschaffung</span><span class="sc-kv-val">MacBook · Design Team</span></div>
+            <div class="sc-kv"><span class="sc-kv-key" data-si18n="kv3key">Verknüpfte Entscheidung</span><span class="sc-kv-val" data-si18n="kv3val">Q2 Hiring · Freigegeben</span></div>
+            <div class="sc-kv"><span class="sc-kv-key" data-si18n="affkey">Betroffen durch</span><span class="sc-kv-val warn" data-si18n="affval">Q2 Hiring → Beschaffungsverzug</span></div>
           </div>
           <div class="sc-ai">
             <div class="sc-ai-label">AI Signal</div>
-            <div class="sc-ai-text">Runway forecast adjusted due to unresolved procurement chain. Design Agency invoice missing — budget pool and onboarding affected.</div>
+            <div class="sc-ai-text" data-si18n="ai">Runway angepasst. Beschaffungskette ungelöst.</div>
           </div>
           <div class="sc-rels">
-            <span class="sc-rels-label">Related</span>
+            <span class="sc-rels-label" data-si18n="relslbl">Verknüpft</span>
             <span class="sc-rel">MacBook · Design Team</span>
             <span class="sc-rel">Q2 Hiring</span>
             <span class="sc-rel">Budget Pool</span>
+            <span class="sc-rel">Runway</span>
+          </div>
+        </div>
+
+        <!-- ── Scene 4: Daily ── -->
+        <div class="scene-card" id="sc-4" style="display:none">
+          <div class="sc-head">
+            <span class="sc-eyebrow" data-si18n="eyebrow">Tagesübersicht</span>
+            <span class="sc-meta" data-si18n="meta">Di · 13. Mai</span>
+          </div>
+          <div class="sc-section">
+            <div class="sc-section-label" data-si18n="sec1">Priorität heute</div>
+            <div class="sc-decision">
+              <span class="sc-decision-name" data-si18n="t1name">Design Agentur Rechnung hochladen</span>
+              <span class="sc-tag a" data-si18n="t1tag">Kritisch</span>
+            </div>
+            <div class="sc-decision">
+              <span class="sc-decision-name" data-si18n="t2name">Q2 Hiring Budgetfreigabe</span>
+              <span class="sc-tag a" data-si18n="t2tag">Blockiert</span>
+            </div>
+            <div class="sc-decision">
+              <span class="sc-decision-name" data-si18n="t3name">AWS Rechnung prüfen</span>
+              <span class="sc-tag m" data-si18n="t3tag">Ausstehend</span>
+            </div>
+          </div>
+          <div class="sc-div"></div>
+          <div class="sc-section">
+            <div class="sc-section-label" data-si18n="sec2">Operative Lage</div>
+            <div class="sc-kpis n3" style="padding:6px 0 0;">
+              <div class="sc-kpi warn"><div class="sc-kpi-num">3</div><div class="sc-kpi-label" data-si18n="kpi1lbl">Offen</div></div>
+              <div class="sc-kpi warn"><div class="sc-kpi-num">1</div><div class="sc-kpi-label" data-si18n="kpi2lbl">Kritisch</div></div>
+              <div class="sc-kpi"><div class="sc-kpi-num">4.3 Mon.</div><div class="sc-kpi-label">Runway</div></div>
+            </div>
+          </div>
+          <div class="sc-ai">
+            <div class="sc-ai-label">AI Signal</div>
+            <div class="sc-ai-text" data-si18n="ai">Rechnung hochladen entsperrt Hiring, Onboarding und Runway.</div>
+          </div>
+          <div class="sc-feed">
+            <div class="sc-feed-item"><span class="sc-feed-time">09:14</span><span class="sc-feed-text" data-si18n="f1">Q2 Hiring freigegeben</span></div>
+            <div class="sc-feed-item"><span class="sc-feed-time">11:30</span><span class="sc-feed-text" data-si18n="f2">MacBook Bestellung gestartet</span></div>
+            <div class="sc-feed-item now"><span class="sc-feed-time" data-si18n="f3time">Jetzt</span><span class="sc-feed-text" data-si18n="f3">Rechnung fehlt — 3 Prozesse blockiert</span></div>
+          </div>
+          <div class="sc-rels">
+            <span class="sc-rels-label" data-si18n="relslbl">Verknüpft</span>
+            <span class="sc-rel" data-si18n="rel1">Beschaffung</span>
+            <span class="sc-rel">Design Team</span>
+            <span class="sc-rel">Finance</span>
             <span class="sc-rel">Runway</span>
           </div>
         </div>
@@ -1383,28 +1434,137 @@ const LANG = {
 
 const SCENES = [
   {
-    label: { de:"Strategy Layer",  en:"Strategy Layer" },
-    h3:    { de:"Entscheidungen erzeugen operative Ketten.", en:"Decisions trigger operational chains." },
-    p:     { de:"Jede strategische Entscheidung schreibt sich automatisch in Procurement, Dokumente und Runway ein.",
-             en:"Every strategic decision automatically propagates into procurement, documents, and runway." }
+    btn:   { de:"Entscheidung", en:"Decision" },
+    label: { de:"Strategy Layer", en:"Strategy Layer" },
+    h3:    { de:"Eine Entscheidung. Eine operative Kette.", en:"One decision. One operational chain." },
+    p:     { de:"Q2 Hiring ist beschlossen. Company OS setzt die Konsequenzen automatisch um — in Procurement, Budget und Runway.",
+             en:"Q2 Hiring is approved. Company OS automatically propagates the consequences — into procurement, budget, and runway." },
+    ui: {
+      "eyebrow": { de:"Strategische Entscheidung", en:"Executive Decision" },
+      "sec1":    { de:"Q2 Hiring Plan — Freigegeben", en:"Q2 Hiring Plan — Approved" },
+      "d1name":  { de:"Design Team · 2 neue Mitarbeiter", en:"Design Team · 2 New Hires" },
+      "d1tag":   { de:"Freigegeben", en:"Approved" },
+      "d2name":  { de:"MacBook Beschaffung · Design Team", en:"MacBook Procurement · Design Team" },
+      "d2tag":   { de:"Gestartet", en:"Started" },
+      "d3name":  { de:"Q2 Software-Lizenzen", en:"Q2 Software Licenses" },
+      "d3tag":   { de:"Ausstehend", en:"Pending" },
+      "kpi2lbl": { de:"Monatl. Burn", en:"Monthly Burn" },
+      "kpi3num": { de:"2 offen", en:"2 open" },
+      "kpi3lbl": { de:"Entscheidungen", en:"Decisions" },
+      "ai":      { de:"Hiring-Entscheidung löst Beschaffungskette aus. MacBook-Bestellung erfordert Lieferantenrechnung vor Budgetfreigabe.", en:"Hiring approval triggers procurement chain. MacBook order requires vendor invoice before budget release." },
+      "relslbl": { de:"Verknüpft", en:"Related" },
+      "rel1":    { de:"Beschaffung", en:"Procurement" }
+    }
   },
   {
+    btn:   { de:"Beschaffung", en:"Procurement" },
     label: { de:"Procurement Layer", en:"Procurement Layer" },
-    h3:    { de:"Beschaffung als operatives Objekt.", en:"Procurement as an operational object." },
-    p:     { de:"Jede Beschaffung ist mit Entscheidung, Dokumenten, Budget und Runway verbunden — nicht isoliert verwaltet.",
-             en:"Every procurement is linked to a decision, documents, budget, and runway — not managed in isolation." }
+    h3:    { de:"Ein fehlendes Dokument stoppt alles.", en:"One missing document stops everything." },
+    p:     { de:"Die Rechnung fehlt. Company OS erkennt es — und pausiert Hiring, Budget und Onboarding automatisch.",
+             en:"The invoice is missing. Company OS detects it — and automatically pauses hiring, budget, and onboarding." },
+    ui: {
+      "eyebrow":  { de:"Beschaffungsantrag", en:"Procurement Request" },
+      "badge":    { de:"Q2 · Offen", en:"Q2 · Open" },
+      "title":    { de:"MacBook Beschaffung — Design Team", en:"MacBook Procurement — Design Team" },
+      "secdocs":  { de:"Erwartete Dokumente", en:"Expected Documents" },
+      "doc1name": { de:"Lieferantenofferte", en:"Supplier Quote" },
+      "doc1st":   { de:"erhalten", en:"received" },
+      "doc2name": { de:"Lieferschein", en:"Delivery Note" },
+      "doc2st":   { de:"erhalten", en:"received" },
+      "doc3name": { de:"Rechnung — Design Agentur", en:"Invoice — Design Agency" },
+      "doc3st":   { de:"fehlt · blockiert", en:"missing · blocked" },
+      "ch1":      { de:"Lieferantenrechnung fehlt", en:"Vendor invoice missing" },
+      "ch2":      { de:"Budgetfreigabe pausiert", en:"Budget approval paused" },
+      "ch3":      { de:"Onboarding verzögert", en:"Onboarding delayed" },
+      "ch4":      { de:"Runway-Impact erkannt", en:"Runway impact detected" },
+      "ai":       { de:"Hiring-Genehmigung pausiert. Fehlende Rechnung blockiert Beschaffung und Q2-Onboarding.", en:"Hiring approval paused. Missing invoice blocks procurement and Q2 onboarding." },
+      "f1":       { de:"Lieferantenofferte hochgeladen", en:"Supplier quote uploaded" },
+      "f2":       { de:"AI extrahiert Beschaffungsdaten", en:"AI extracted procurement data" },
+      "f3":       { de:"Fehlende Rechnung erkannt", en:"Missing invoice detected" },
+      "f4time":   { de:"Jetzt", en:"Now" },
+      "f4":       { de:"Hiring-Genehmigung pausiert", en:"Hiring approval paused" },
+      "relslbl":  { de:"Verknüpft", en:"Related" },
+      "rel5":     { de:"Lieferantenrisiko", en:"Supplier Risk" }
+    }
   },
   {
+    btn:   { de:"Dokumente", en:"Documents" },
     label: { de:"Document Intelligence", en:"Document Intelligence" },
-    h3:    { de:"Fehlende Dokumente blockieren reale Vorgänge.", en:"Missing documents block real operations." },
-    p:     { de:"Dokumente sind operative Objekte — mit direkten Konsequenzen für Entscheidungen, Budget und Runway.",
-             en:"Documents are operational objects — with direct consequences for decisions, budget, and runway." }
+    h3:    { de:"Ein Dokument fehlt. Drei Prozesse stehen still.", en:"One document missing. Three processes blocked." },
+    p:     { de:"Fehlende Rechnungen sind keine Admin-Aufgabe — sie blockieren Budget, Onboarding und Runway in Echtzeit.",
+             en:"Missing invoices aren't an admin task — they block budget, onboarding, and runway in real time." },
+    ui: {
+      "eyebrow": { de:"Rechnung · Design Agentur", en:"Invoice · Design Agency" },
+      "badge":   { de:"Fehlt · Kritisch", en:"Missing · Critical" },
+      "sec1":    { de:"Operative Konsequenz", en:"Operational Consequence" },
+      "d1name":  { de:"Budgetfreigabe — Q2 Hiring", en:"Budget Approval — Q2 Hiring" },
+      "d1tag":   { de:"Pausiert", en:"Paused" },
+      "d2tag":   { de:"Verzögert", en:"Delayed" },
+      "d3name":  { de:"Beschaffungskette", en:"Procurement Chain" },
+      "d3tag":   { de:"Ungelöst", en:"Unresolved" },
+      "sec2":    { de:"Verknüpfte Objekte", en:"Linked Objects" },
+      "kv1key":  { de:"Beschaffung", en:"Procurement" },
+      "kv2key":  { de:"Entscheidung", en:"Decision" },
+      "kv2val":  { de:"Q2 Hiring · Freigegeben", en:"Q2 Hiring · Approved" },
+      "ai":      { de:"Beschaffungskette ungelöst. Runway angepasst. Onboarding pausiert bis Rechnung eintrifft.", en:"Procurement chain unresolved. Runway adjusted. Onboarding paused until invoice arrives." },
+      "relslbl": { de:"Verknüpft", en:"Related" },
+      "rel1":    { de:"Beschaffung", en:"Procurement" },
+      "rel4":    { de:"Lieferant", en:"Supplier" }
+    }
   },
   {
+    btn:   { de:"Finance", en:"Finance" },
     label: { de:"Finance Layer", en:"Finance Layer" },
-    h3:    { de:"Finanzielle Realität entsteht in der Execution.", en:"Financial reality emerges from execution." },
-    p:     { de:"Cash, Burn und Runway sind keine Reports — sie entstehen aus jedem Ticket, jeder Entscheidung, jeder Rechnung.",
-             en:"Cash, burn, and runway aren't reports — they emerge from every ticket, decision, and invoice." }
+    h3:    { de:"Jede Entscheidung schreibt den Runway.", en:"Every decision writes the runway." },
+    p:     { de:"Cash ist kein Report. Er entsteht live — aus Rechnungen, Beschaffungen und Entscheidungen, die gerade getroffen werden.",
+             en:"Cash isn't a report. It emerges live — from invoices, procurement, and decisions being made right now." },
+    ui: {
+      "eyebrow": { de:"Rechnungsverwaltung", en:"Invoice Management" },
+      "kpi1lbl": { de:"Offen", en:"Open" },
+      "kpi2lbl": { de:"Genehmigt", en:"Approved" },
+      "kpi3lbl": { de:"Überfällig", en:"Overdue" },
+      "sec1":    { de:"Aktuell", en:"Current" },
+      "inv1name":{ de:"Design Agentur", en:"Design Agency" },
+      "inv1tag": { de:"Fehlt · Kritisch", en:"Missing · Critical" },
+      "inv2tag": { de:"✓ Genehmigt", en:"✓ Approved" },
+      "inv3tag": { de:"3 Tage", en:"3 days" },
+      "sec2":    { de:"Operative Verbindungen", en:"Operational Connections" },
+      "kv2key":  { de:"Verknüpfte Beschaffung", en:"Linked Procurement" },
+      "kv3key":  { de:"Verknüpfte Entscheidung", en:"Linked Decision" },
+      "kv3val":  { de:"Q2 Hiring · Freigegeben", en:"Q2 Hiring · Approved" },
+      "affkey":  { de:"Betroffen durch", en:"Affected by" },
+      "affval":  { de:"Q2 Hiring → Beschaffungsverzug", en:"Q2 Hiring → Procurement Delay" },
+      "ai":      { de:"Runway angepasst. Beschaffungskette ungelöst.", en:"Runway adjusted. Procurement chain unresolved." },
+      "relslbl": { de:"Verknüpft", en:"Related" }
+    }
+  },
+  {
+    btn:   { de:"Tagesansicht", en:"Daily" },
+    label: { de:"Command Center", en:"Command Center" },
+    h3:    { de:"Alles, was heute zählt — in einer Ansicht.", en:"Everything that matters today — in one view." },
+    p:     { de:"Kein Tab-Wechsel, keine Suche. Company OS zeigt, was offen ist, was blockiert und was jetzt entschieden werden muss.",
+             en:"No tab switching, no searching. Company OS shows what's open, what's blocked, and what needs a decision now." },
+    ui: {
+      "eyebrow": { de:"Tagesübersicht", en:"Daily Overview" },
+      "meta":    { de:"Di · 13. Mai", en:"Tue · May 13" },
+      "sec1":    { de:"Priorität heute", en:"Priority today" },
+      "t1name":  { de:"Design Agentur Rechnung hochladen", en:"Upload Design Agency invoice" },
+      "t1tag":   { de:"Kritisch", en:"Critical" },
+      "t2name":  { de:"Q2 Hiring Budgetfreigabe", en:"Q2 Hiring budget approval" },
+      "t2tag":   { de:"Blockiert", en:"Blocked" },
+      "t3name":  { de:"AWS Rechnung prüfen", en:"Review AWS invoice" },
+      "t3tag":   { de:"Ausstehend", en:"Pending" },
+      "sec2":    { de:"Operative Lage", en:"Operational Status" },
+      "kpi1lbl": { de:"Offen", en:"Open" },
+      "kpi2lbl": { de:"Kritisch", en:"Critical" },
+      "ai":      { de:"Rechnung hochladen entsperrt Hiring, Onboarding und Runway.", en:"Upload invoice to unblock hiring, onboarding, and runway." },
+      "f1":      { de:"Q2 Hiring freigegeben", en:"Q2 Hiring approved" },
+      "f2":      { de:"MacBook Bestellung gestartet", en:"MacBook order started" },
+      "f3time":  { de:"Jetzt", en:"Now" },
+      "f3":      { de:"Rechnung fehlt — 3 Prozesse blockiert", en:"Invoice missing — 3 processes blocked" },
+      "relslbl": { de:"Verknüpft", en:"Related" },
+      "rel1":    { de:"Beschaffung", en:"Procurement" }
+    }
   }
 ];
 
@@ -1412,12 +1572,25 @@ let currentLang = localStorage.getItem('cos-lang') || 'de';
 let currentScene = 0;
 
 function applyScene(idx) {
-  for (let i = 0; i < SCENES.length; i++) document.getElementById('sc-'+i).style.display = i === idx ? '' : 'none';
+  for (let i = 0; i < SCENES.length; i++) {
+    const el = document.getElementById('sc-'+i);
+    if (el) el.style.display = i === idx ? '' : 'none';
+  }
   const s = SCENES[idx];
   document.getElementById('scene-label').textContent = s.label[currentLang];
   document.getElementById('scene-h3').textContent   = s.h3[currentLang];
   document.getElementById('scene-p').textContent    = s.p[currentLang];
-  document.querySelectorAll('.scene-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+  const card = document.getElementById('sc-'+idx);
+  if (card && s.ui) {
+    card.querySelectorAll('[data-si18n]').forEach(el => {
+      const t = s.ui[el.dataset.si18n];
+      if (t) el.textContent = t[currentLang];
+    });
+  }
+  document.querySelectorAll('.scene-btn').forEach((b, i) => {
+    b.classList.toggle('active', i === idx);
+    if (SCENES[i]) b.textContent = SCENES[i].btn[currentLang];
+  });
   currentScene = idx;
 }
 
