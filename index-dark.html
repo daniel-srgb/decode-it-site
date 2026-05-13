@@ -195,32 +195,28 @@ img { -webkit-user-drag:none; -moz-user-drag:none; user-drag:none; -webkit-user-
 .scene-copy-label { font-size:11px; letter-spacing:.11em; text-transform:uppercase; color:var(--blue); font-weight:700; margin-bottom:14px; }
 .scene-copy-h3 { font-size:28px; line-height:1.15; font-weight:720; letter-spacing:-.016em; margin-bottom:14px; }
 .scene-copy-p { color:var(--muted); font-size:15px; line-height:1.7; }
-.scene-card { border:1px solid rgba(255,255,255,.07); background:var(--surface); border-radius:12px; overflow:hidden; box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 1px 3px rgba(0,0,0,.15),0 4px 16px rgba(0,0,0,.25),0 20px 60px rgba(0,0,0,.35); }
+.scene-card { border:1px solid rgba(255,255,255,.07); background:var(--surface); border-radius:12px; overflow:hidden; box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 1px 3px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.2),0 16px 48px rgba(0,0,0,.28); }
 .sc-head { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid var(--line); }
 .sc-eyebrow { font-size:10px; letter-spacing:.13em; text-transform:uppercase; font-weight:700; color:var(--muted); font-family:var(--font-mono); }
 .sc-meta { font-size:11px; color:var(--muted-2); font-family:var(--font-mono); }
 .sc-badge { font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px; background:var(--blue-soft); color:var(--blue-text); border:1px solid rgba(74,163,255,.25); }
+.sc-badge.crit { background:var(--pink-soft); color:var(--pink-text); border-color:rgba(248,113,113,.25); }
 .sc-title { padding:14px 20px 0; font-size:14px; font-weight:600; color:var(--text); }
 .sc-kpis { display:grid; padding:16px 20px; }
-.sc-kpis.n4 { grid-template-columns:repeat(4,1fr); }
 .sc-kpis.n3 { grid-template-columns:repeat(3,1fr); }
 .sc-kpi { padding-right:16px; }
 .sc-kpi-num { font-size:19px; font-weight:700; letter-spacing:-.02em; line-height:1.2; }
 .sc-kpi-label { font-size:11px; color:var(--muted); margin-top:3px; }
 .sc-kpi.green .sc-kpi-num { color:var(--green); }
-.sc-kpi.amber .sc-kpi-num { color:var(--amber); }
-.sc-kpi.red .sc-kpi-num { color:var(--pink); }
+.sc-kpi.warn .sc-kpi-num { color:var(--pink-text); }
 .sc-div { height:1px; background:var(--line); }
 .sc-section { padding:14px 20px; }
 .sc-section-label { font-size:10px; letter-spacing:.11em; text-transform:uppercase; color:var(--muted-2); font-weight:700; margin-bottom:10px; }
-.sc-bar-wrap { height:5px; background:var(--surface-3); border-radius:99px; overflow:hidden; margin-bottom:5px; }
-.sc-bar-fill { height:100%; border-radius:99px; background:var(--amber); }
+.sc-bar-wrap { height:4px; background:var(--surface-3); border-radius:99px; overflow:hidden; margin-bottom:5px; }
+.sc-bar-fill { height:100%; border-radius:99px; background:var(--blue); }
 .sc-bar-note { font-size:11px; color:var(--muted-2); }
-.sc-qi { display:flex; align-items:center; justify-content:space-between; padding:7px 0; font-size:13px; }
-.sc-qi+.sc-qi { border-top:1px solid var(--line); }
-.sc-qi-name { color:var(--text); font-weight:500; }
 .sc-tag { font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px; white-space:nowrap; }
-.sc-tag.a { background:var(--amber-soft); color:var(--amber-text); }
+.sc-tag.a { background:var(--pink-soft); color:var(--pink-text); }
 .sc-tag.g { background:var(--green-soft); color:var(--green-text); }
 .sc-tag.b { background:var(--blue-soft); color:var(--blue-text); }
 .sc-tag.m { background:var(--surface-2); color:var(--muted); }
@@ -228,30 +224,43 @@ img { -webkit-user-drag:none; -moz-user-drag:none; user-drag:none; -webkit-user-
 .sc-doc+.sc-doc { border-top:1px solid var(--line); }
 .sc-doc-icon { width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:9px; flex-shrink:0; font-weight:800; }
 .sc-doc-icon.ok { background:var(--green-soft); color:var(--green-text); }
-.sc-doc-icon.warn { background:var(--amber-soft); color:var(--amber-text); }
+.sc-doc-icon.crit { background:var(--pink-soft); color:var(--pink-text); }
 .sc-doc-name { flex:1; font-size:13px; color:var(--text); font-weight:500; }
 .sc-doc-status { font-size:11px; }
 .sc-doc-status.ok { color:var(--green-text); }
-.sc-doc-status.warn { color:var(--amber-text); font-weight:600; }
+.sc-doc-status.crit { color:var(--pink-text); font-weight:600; }
 .sc-ai { padding:13px 20px; background:var(--surface-2); border-top:1px solid var(--line); }
 .sc-ai-label { font-size:10px; letter-spacing:.11em; text-transform:uppercase; color:var(--blue); font-weight:700; margin-bottom:4px; }
 .sc-ai-text { font-size:12px; color:var(--text); line-height:1.55; }
-.sc-dept { display:flex; align-items:center; justify-content:space-between; padding:9px 0; }
-.sc-dept+.sc-dept { border-top:1px solid var(--line); padding-top:14px; margin-top:5px; }
-.sc-dept-name { font-size:14px; font-weight:700; color:var(--text); }
-.sc-dept-count { font-size:11px; color:var(--muted); }
-.sc-children { border-left:2px solid var(--line); margin:5px 0 0 4px; padding-left:14px; }
-.sc-child { display:flex; align-items:center; justify-content:space-between; padding:4px 0; font-size:12px; color:var(--muted); }
-.sc-child-tag { color:var(--muted-2); font-size:11px; }
 .sc-kv { display:flex; align-items:center; justify-content:space-between; padding:6px 0; font-size:12px; }
 .sc-kv+.sc-kv { border-top:1px solid var(--line); }
 .sc-kv-key { color:var(--muted); }
 .sc-kv-val { font-weight:600; color:var(--text); }
-.sc-kv-val.a { color:var(--amber-text); }
+.sc-kv-val.warn { color:var(--pink-text); }
 .sc-inv { display:flex; align-items:center; gap:10px; padding:8px 0; }
 .sc-inv+.sc-inv { border-top:1px solid var(--line); }
 .sc-inv-name { flex:1; font-size:13px; color:var(--text); font-weight:500; }
 .sc-inv-amount { font-weight:700; font-size:13px; color:var(--text); font-variant-numeric:tabular-nums; }
+/* Decision items */
+.sc-decision { display:flex; align-items:center; justify-content:space-between; padding:8px 0; gap:12px; }
+.sc-decision+.sc-decision { border-top:1px solid var(--line); }
+.sc-decision-name { font-size:13px; font-weight:500; color:var(--text); flex:1; }
+/* Causal chain */
+.sc-chain { padding:12px 20px; border-top:1px solid var(--line); }
+.sc-chain-item { display:flex; align-items:baseline; gap:8px; padding:3px 0; font-size:12px; color:var(--muted); line-height:1.35; }
+.sc-chain-item.blocked { color:var(--pink-text); font-weight:500; }
+.sc-chain-icon { font-size:10px; color:var(--muted-2); flex-shrink:0; }
+/* Activity feed */
+.sc-feed { padding:11px 20px; border-top:1px solid var(--line); }
+.sc-feed-item { display:flex; gap:12px; padding:3px 0; font-size:11px; line-height:1.4; }
+.sc-feed-time { color:var(--muted-2); min-width:28px; font-family:var(--font-mono); flex-shrink:0; }
+.sc-feed-text { color:var(--muted); }
+.sc-feed-item.now .sc-feed-time { color:var(--pink-text); font-weight:700; }
+.sc-feed-item.now .sc-feed-text { color:var(--text); font-weight:500; }
+/* Relation chips */
+.sc-rels { padding:11px 20px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:5px; align-items:center; }
+.sc-rels-label { font-size:9px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--muted-2); margin-right:4px; flex-shrink:0; }
+.sc-rel { font-size:11px; padding:2px 8px; border-radius:4px; background:var(--surface-2); color:var(--muted); border:1px solid var(--line); font-weight:500; white-space:nowrap; }
 
 /* ───── COMPETITION ───── */
 .comp-wrap { border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:48px; }
@@ -687,51 +696,64 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
     </div>
 
     <div class="scene-nav" id="scene-nav">
-      <button class="scene-btn active" data-scene="0">Runway</button>
-      <button class="scene-btn" data-scene="1">Documents</button>
-      <button class="scene-btn" data-scene="2">Structures</button>
-      <button class="scene-btn" data-scene="3">Invoice</button>
+      <button class="scene-btn active" data-scene="0">Decision</button>
+      <button class="scene-btn" data-scene="1">Procurement</button>
+      <button class="scene-btn" data-scene="2">Documents</button>
+      <button class="scene-btn" data-scene="3">Finance</button>
     </div>
 
     <div class="scene-layout">
       <div class="scene-copy">
-        <div class="scene-copy-label" id="scene-label">Financial Operations</div>
-        <h3 class="scene-copy-h3" id="scene-h3">Runway als Live-Signal.</h3>
-        <p class="scene-copy-p" id="scene-p">Cash, Burn und operative Entscheidungen in einem Datenmodell — kein Report, kein Tab.</p>
+        <div class="scene-copy-label" id="scene-label">Strategy Layer</div>
+        <h3 class="scene-copy-h3" id="scene-h3">Entscheidungen erzeugen operative Ketten.</h3>
+        <p class="scene-copy-p" id="scene-p">Jede strategische Entscheidung schreibt sich automatisch in Procurement, Dokumente und Runway ein.</p>
       </div>
       <div id="scene-display">
 
-        <!-- ── Scene 0: Runway ── -->
+        <!-- ── Scene 0: Decision ── -->
         <div class="scene-card" id="sc-0">
           <div class="sc-head">
-            <span class="sc-eyebrow">Financial Operations Control</span>
+            <span class="sc-eyebrow">Executive Decision</span>
             <span class="sc-meta">Montag · 09:14</span>
           </div>
-          <div class="sc-kpis n4">
-            <div class="sc-kpi amber"><div class="sc-kpi-num">4.7 Mon.</div><div class="sc-kpi-label">Runway</div></div>
-            <div class="sc-kpi"><div class="sc-kpi-num">16.220 €</div><div class="sc-kpi-label">Monatl. Burn</div></div>
-            <div class="sc-kpi green"><div class="sc-kpi-num">+2.458 €</div><div class="sc-kpi-label">MoM Delta</div></div>
-            <div class="sc-kpi"><div class="sc-kpi-num">2</div><div class="sc-kpi-label">Entscheidungen</div></div>
+          <div class="sc-section">
+            <div class="sc-section-label">Q2 Hiring Plan — Freigegeben</div>
+            <div class="sc-decision">
+              <span class="sc-decision-name">Design Team · 2 New Hires</span>
+              <span class="sc-tag g">Approved</span>
+            </div>
+            <div class="sc-decision">
+              <span class="sc-decision-name">MacBook Procurement · Design Team</span>
+              <span class="sc-tag b">Gestartet</span>
+            </div>
+            <div class="sc-decision">
+              <span class="sc-decision-name">Q2 Software Licenses</span>
+              <span class="sc-tag m">Ausstehend</span>
+            </div>
           </div>
           <div class="sc-div"></div>
           <div class="sc-section">
             <div class="sc-section-label">Runway Signal</div>
-            <div class="sc-bar-wrap"><div class="sc-bar-fill" style="width:47%"></div></div>
-            <div class="sc-bar-note">47% bis kritischem Schwellwert · Ziel: 6 Monate</div>
-          </div>
-          <div class="sc-div"></div>
-          <div class="sc-section">
-            <div class="sc-section-label">Critical Queue</div>
-            <div class="sc-qi"><span class="sc-qi-name">Hire Backend Engineer</span><span class="sc-tag a">−1.2 Mon. Runway</span></div>
-            <div class="sc-qi"><span class="sc-qi-name">License Renewal Q3</span><span class="sc-tag a">−0.3 Mon. Runway</span></div>
+            <div class="sc-kpis n3" style="padding:6px 0 0;">
+              <div class="sc-kpi warn"><div class="sc-kpi-num">4.7 Mon.</div><div class="sc-kpi-label">Runway</div></div>
+              <div class="sc-kpi"><div class="sc-kpi-num">16.220 €</div><div class="sc-kpi-label">Monatl. Burn</div></div>
+              <div class="sc-kpi"><div class="sc-kpi-num">2 offen</div><div class="sc-kpi-label">Entscheidungen</div></div>
+            </div>
           </div>
           <div class="sc-ai">
             <div class="sc-ai-label">AI Signal</div>
-            <div class="sc-ai-text">Burn rate +12% MoM. Hiring decision blocked — missing supplier invoice unresolved.</div>
+            <div class="sc-ai-text">Hiring approval triggers procurement chain. MacBook Procurement — Design Team requires vendor invoice before budget release.</div>
+          </div>
+          <div class="sc-rels">
+            <span class="sc-rels-label">Related</span>
+            <span class="sc-rel">Procurement</span>
+            <span class="sc-rel">Design Team</span>
+            <span class="sc-rel">Finance</span>
+            <span class="sc-rel">Runway</span>
           </div>
         </div>
 
-        <!-- ── Scene 1: Documents ── -->
+        <!-- ── Scene 1: Procurement ── -->
         <div class="scene-card" id="sc-1" style="display:none">
           <div class="sc-head">
             <span class="sc-eyebrow">Procurement Request</span>
@@ -743,45 +765,77 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
             <div class="sc-section-label">Expected Documents</div>
             <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name">Supplier Quote</span><span class="sc-doc-status ok">erhalten</span></div>
             <div class="sc-doc"><span class="sc-doc-icon ok">✓</span><span class="sc-doc-name">Delivery Note</span><span class="sc-doc-status ok">erhalten</span></div>
-            <div class="sc-doc"><span class="sc-doc-icon warn">⚠</span><span class="sc-doc-name">Invoice</span><span class="sc-doc-status warn">fehlt</span></div>
+            <div class="sc-doc"><span class="sc-doc-icon crit">!</span><span class="sc-doc-name">Invoice — Design Agency</span><span class="sc-doc-status crit">fehlt · blockiert</span></div>
+          </div>
+          <div class="sc-chain">
+            <div class="sc-chain-item"><span class="sc-chain-icon">↓</span>Vendor invoice missing</div>
+            <div class="sc-chain-item blocked"><span class="sc-chain-icon">↓</span>Budget approval paused</div>
+            <div class="sc-chain-item blocked"><span class="sc-chain-icon">↓</span>Onboarding delayed</div>
+            <div class="sc-chain-item blocked"><span class="sc-chain-icon">↓</span>Runway impact detected</div>
           </div>
           <div class="sc-ai">
             <div class="sc-ai-label">AI Signal</div>
-            <div class="sc-ai-text">Missing supplier invoice detected. Hiring decision blocked until resolved.</div>
+            <div class="sc-ai-text">Hiring approval paused automatically. Missing supplier invoice affects procurement compliance and blocks Q2 onboarding.</div>
           </div>
-          <div class="sc-section" style="border-top:1px solid var(--line)">
-            <div class="sc-section-label">Verknüpfte Entscheidung</div>
-            <div class="sc-qi"><span class="sc-qi-name">Budget approved — Q2 Hiring</span><span class="sc-tag b">Offen</span></div>
+          <div class="sc-feed">
+            <div class="sc-feed-item"><span class="sc-feed-time">12m</span><span class="sc-feed-text">Supplier quote uploaded</span></div>
+            <div class="sc-feed-item"><span class="sc-feed-time">8m</span><span class="sc-feed-text">AI extracted procurement data</span></div>
+            <div class="sc-feed-item"><span class="sc-feed-time">3m</span><span class="sc-feed-text">Missing invoice detected</span></div>
+            <div class="sc-feed-item now"><span class="sc-feed-time">Now</span><span class="sc-feed-text">Hiring approval paused</span></div>
+          </div>
+          <div class="sc-rels">
+            <span class="sc-rels-label">Related</span>
+            <span class="sc-rel">Q2 Hiring</span>
+            <span class="sc-rel">Finance</span>
+            <span class="sc-rel">MacBook Asset</span>
+            <span class="sc-rel">Design Team</span>
+            <span class="sc-rel">Supplier Risk</span>
           </div>
         </div>
 
-        <!-- ── Scene 2: Structures ── -->
+        <!-- ── Scene 2: Documents ── -->
         <div class="scene-card" id="sc-2" style="display:none">
           <div class="sc-head">
-            <span class="sc-eyebrow">Operational Structure</span>
-            <span class="sc-meta">6 Members · 3 Departments</span>
+            <span class="sc-eyebrow">Invoice · Design Agency</span>
+            <span class="sc-badge crit">Fehlt · Kritisch</span>
           </div>
           <div class="sc-section">
-            <div class="sc-dept"><span class="sc-dept-name">Engineering</span><span class="sc-dept-count">4 Members</span></div>
-            <div class="sc-children">
-              <div class="sc-child"><span>Backend Development</span><span class="sc-child-tag">2 aktive Tickets</span></div>
-              <div class="sc-child"><span>Infrastructure</span><span class="sc-child-tag">1 aktives Ticket</span></div>
-              <div class="sc-child"><span>Product</span><span class="sc-child-tag">3 aktive Tickets</span></div>
+            <div class="sc-section-label">Operative Konsequenz</div>
+            <div class="sc-decision">
+              <span class="sc-decision-name">Budget Approval — Q2 Hiring</span>
+              <span class="sc-tag a">Pausiert</span>
             </div>
-            <div class="sc-dept"><span class="sc-dept-name">Design</span><span class="sc-dept-count">2 Members</span></div>
-            <div class="sc-children">
-              <div class="sc-child"><span>UX/UI</span><span class="sc-child-tag">1 aktives Ticket</span></div>
+            <div class="sc-decision">
+              <span class="sc-decision-name">Onboarding — Design Team</span>
+              <span class="sc-tag a">Verzögert</span>
+            </div>
+            <div class="sc-decision">
+              <span class="sc-decision-name">Procurement Chain</span>
+              <span class="sc-tag a">Unresolved</span>
             </div>
           </div>
+          <div class="sc-div"></div>
+          <div class="sc-section">
+            <div class="sc-section-label">Linked Objects</div>
+            <div class="sc-kv"><span class="sc-kv-key">Procurement</span><span class="sc-kv-val">MacBook · Design Team</span></div>
+            <div class="sc-kv"><span class="sc-kv-key">Decision</span><span class="sc-kv-val">Q2 Hiring · Approved</span></div>
+            <div class="sc-kv"><span class="sc-kv-key">Runway Impact</span><span class="sc-kv-val warn">−0.4 Mon.</span></div>
+          </div>
           <div class="sc-ai">
-            <div class="sc-ai-label">Shared Context</div>
-            <div class="sc-kv"><span class="sc-kv-key">Budget Pool · Engineering</span><span class="sc-kv-val">€ 12.400 / Mon.</span></div>
-            <div class="sc-kv"><span class="sc-kv-key">Runway Impact</span><span class="sc-kv-val a">−0.8 Mon.</span></div>
-            <div class="sc-kv"><span class="sc-kv-key">AI Observation</span><span class="sc-kv-val">Engineering over-indexed</span></div>
+            <div class="sc-ai-label">AI Signal</div>
+            <div class="sc-ai-text">Procurement chain unresolved. Runway forecast adjusted. Onboarding cannot proceed until vendor invoice is received.</div>
+          </div>
+          <div class="sc-rels">
+            <span class="sc-rels-label">Related</span>
+            <span class="sc-rel">Procurement</span>
+            <span class="sc-rel">Finance</span>
+            <span class="sc-rel">Q2 Hiring</span>
+            <span class="sc-rel">Supplier</span>
+            <span class="sc-rel">Runway</span>
           </div>
         </div>
 
-        <!-- ── Scene 3: Invoice ── -->
+        <!-- ── Scene 3: Finance ── -->
         <div class="scene-card" id="sc-3" style="display:none">
           <div class="sc-head">
             <span class="sc-eyebrow">Invoice Management</span>
@@ -790,18 +844,32 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
           <div class="sc-kpis n3">
             <div class="sc-kpi"><div class="sc-kpi-num">€ 8.400</div><div class="sc-kpi-label">Offen</div></div>
             <div class="sc-kpi green"><div class="sc-kpi-num">€ 22.800</div><div class="sc-kpi-label">Genehmigt</div></div>
-            <div class="sc-kpi red"><div class="sc-kpi-num">€ 1.200</div><div class="sc-kpi-label">Überfällig</div></div>
+            <div class="sc-kpi warn"><div class="sc-kpi-num">€ 1.200</div><div class="sc-kpi-label">Überfällig</div></div>
           </div>
           <div class="sc-div"></div>
           <div class="sc-section">
             <div class="sc-section-label">Aktuell</div>
-            <div class="sc-inv"><span class="sc-inv-name">Vercel Pro</span><span class="sc-inv-amount">€ 280</span><span class="sc-tag a">3 Tage</span></div>
-            <div class="sc-inv"><span class="sc-inv-name">AWS Infrastructure</span><span class="sc-inv-amount">€ 1.840</span><span class="sc-tag g">✓ genehmigt</span></div>
-            <div class="sc-inv"><span class="sc-inv-name">Design Agency</span><span class="sc-inv-amount">€ 4.200</span><span class="sc-tag m">in Prüfung</span></div>
+            <div class="sc-inv"><span class="sc-inv-name">Design Agency</span><span class="sc-inv-amount">€ 4.200</span><span class="sc-tag a">Fehlt · Kritisch</span></div>
+            <div class="sc-inv"><span class="sc-inv-name">AWS Infrastructure</span><span class="sc-inv-amount">€ 1.840</span><span class="sc-tag g">✓ Genehmigt</span></div>
+            <div class="sc-inv"><span class="sc-inv-name">Vercel Pro</span><span class="sc-inv-amount">€ 280</span><span class="sc-tag m">3 Tage</span></div>
+          </div>
+          <div class="sc-div"></div>
+          <div class="sc-section">
+            <div class="sc-section-label">Operative Verbindungen</div>
+            <div class="sc-kv"><span class="sc-kv-key">Runway Impact</span><span class="sc-kv-val warn">−0.4 Mon.</span></div>
+            <div class="sc-kv"><span class="sc-kv-key">Linked Procurement</span><span class="sc-kv-val">MacBook · Design Team</span></div>
+            <div class="sc-kv"><span class="sc-kv-key">Linked Decision</span><span class="sc-kv-val">Q2 Hiring · Approved</span></div>
           </div>
           <div class="sc-ai">
-            <div class="sc-ai-label">Budget Signal</div>
-            <div class="sc-ai-text">Cost run-rate +12% vs. plan. 2 Rechnungen nicht mit Procurement verknüpft.</div>
+            <div class="sc-ai-label">AI Signal</div>
+            <div class="sc-ai-text">Runway forecast adjusted due to unresolved procurement chain. Design Agency invoice missing — budget pool and onboarding affected.</div>
+          </div>
+          <div class="sc-rels">
+            <span class="sc-rels-label">Related</span>
+            <span class="sc-rel">MacBook · Design Team</span>
+            <span class="sc-rel">Q2 Hiring</span>
+            <span class="sc-rel">Budget Pool</span>
+            <span class="sc-rel">Runway</span>
           </div>
         </div>
 
@@ -1315,28 +1383,28 @@ const LANG = {
 
 const SCENES = [
   {
-    label: { de:"Financial Operations",   en:"Financial Operations" },
-    h3:    { de:"Runway als Live-Signal.", en:"Runway as a live signal." },
-    p:     { de:"Cash, Burn und operative Entscheidungen in einem Datenmodell — kein Report, kein Tab.",
-             en:"Cash, burn, and operational decisions in one data model — no report, no extra tab." }
+    label: { de:"Strategy Layer",  en:"Strategy Layer" },
+    h3:    { de:"Entscheidungen erzeugen operative Ketten.", en:"Decisions trigger operational chains." },
+    p:     { de:"Jede strategische Entscheidung schreibt sich automatisch in Procurement, Dokumente und Runway ein.",
+             en:"Every strategic decision automatically propagates into procurement, documents, and runway." }
   },
   {
-    label: { de:"Document Intelligence",          en:"Document Intelligence" },
-    h3:    { de:"Dokumente als operative Objekte.", en:"Documents as operational objects." },
-    p:     { de:"Jedes Dokument ist mit einem Procurement, einer Entscheidung und einer Kostenstelle verknüpft — nicht nur abgelegt.",
-             en:"Every document is linked to a procurement, a decision, a cost centre — not just filed away." }
+    label: { de:"Procurement Layer", en:"Procurement Layer" },
+    h3:    { de:"Beschaffung als operatives Objekt.", en:"Procurement as an operational object." },
+    p:     { de:"Jede Beschaffung ist mit Entscheidung, Dokumenten, Budget und Runway verbunden — nicht isoliert verwaltet.",
+             en:"Every procurement is linked to a decision, documents, budget, and runway — not managed in isolation." }
   },
   {
-    label: { de:"Operational Structure",     en:"Operational Structure" },
-    h3:    { de:"Struktur als gemeinsame Schicht.", en:"Structure as a shared layer." },
-    p:     { de:"Departments, Rollen und Verantwortlichkeiten teilen ein Datenmodell mit Tickets, Kosten und Runway.",
-             en:"Departments, roles, and responsibilities share one data model with tickets, costs, and runway." }
+    label: { de:"Document Intelligence", en:"Document Intelligence" },
+    h3:    { de:"Fehlende Dokumente blockieren reale Vorgänge.", en:"Missing documents block real operations." },
+    p:     { de:"Dokumente sind operative Objekte — mit direkten Konsequenzen für Entscheidungen, Budget und Runway.",
+             en:"Documents are operational objects — with direct consequences for decisions, budget, and runway." }
   },
   {
-    label: { de:"Invoice Management",           en:"Invoice Management" },
-    h3:    { de:"Rechnungen im operativen Kontext.", en:"Invoices in operational context." },
-    p:     { de:"Jede Rechnung ist mit einem Procurement, einem Budget und einem Runway-Signal verbunden — nicht isoliert in einem PDF.",
-             en:"Every invoice is linked to a procurement, a budget, and a runway signal — not isolated in a PDF." }
+    label: { de:"Finance Layer", en:"Finance Layer" },
+    h3:    { de:"Finanzielle Realität entsteht in der Execution.", en:"Financial reality emerges from execution." },
+    p:     { de:"Cash, Burn und Runway sind keine Reports — sie entstehen aus jedem Ticket, jeder Entscheidung, jeder Rechnung.",
+             en:"Cash, burn, and runway aren't reports — they emerge from every ticket, decision, and invoice." }
   }
 ];
 
