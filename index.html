@@ -338,11 +338,10 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
 .why-card .why-signal { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-2); }
 .why-card h4 { font-size:15px; font-weight:700; line-height:1.3; }
 .why-card p { font-size:13px; color:var(--muted); line-height:1.6; }
-.why-card.why-hero { grid-column:1/-1; flex-direction:row; gap:48px; align-items:center; padding:36px 44px; background:var(--blue-soft); border-color:rgba(21,112,205,.25); }
-.why-hero-left { flex-shrink:0; display:flex; flex-direction:column; gap:10px; min-width:180px; }
-.why-hero-left .why-signal { color:var(--blue); }
-.why-hero-left h4 { font-size:24px; font-weight:700; line-height:1.15; letter-spacing:-0.012em; color:var(--blue-text); }
-.why-hero-right p { font-size:15px; color:var(--blue-text); line-height:1.75; opacity:.85; max-width:54ch; }
+.why-card.why-hero { grid-column:1/-1; gap:10px; padding:36px 44px; background:var(--blue-soft); border-color:rgba(21,112,205,.25); }
+.why-card.why-hero .why-signal { color:var(--blue); }
+.why-card.why-hero h4 { font-size:24px; font-weight:700; line-height:1.15; letter-spacing:-0.012em; color:var(--blue-text); }
+.why-card.why-hero p { font-size:15px; color:var(--blue-text); line-height:1.75; opacity:.85; max-width:54ch; }
 .story-tl { display:flex; flex-direction:column; }
 .tl-item { display:grid; grid-template-columns:140px 1px 1fr; gap:0 24px; }
 .tl-left { text-align:right; padding:18px 0; }
@@ -483,9 +482,8 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
   .why-card { padding:20px; }
   .why-card h4 { font-size:16px; }
   .why-card p { font-size:14px; line-height:1.65; }
-  .why-card.why-hero { padding:24px; gap:18px; }
-  .why-hero-left h4 { font-size:19px; }
-  .why-hero-right p { font-size:15px; }
+  .why-card.why-hero { padding:24px; gap:10px; }
+  .why-card.why-hero h4 { font-size:19px; }
   .tl-item { grid-template-columns:88px 1px 1fr; gap:0 14px; }
   .tl-label { font-size:10px; }
   .tl-content h4 { font-size:14px; }
@@ -624,7 +622,7 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
     <div class="section-head">
       <span class="eyebrow" data-i18n="problem.eyebrow">Das Problem</span>
       <h2 class="h2" data-i18n="problem.h2">Operative Komplexität<br>übersteigt menschliche Koordination.</h2>
-      <p class="lede" data-i18n="problem.lede">Kleine Firmen führen 8–12 Tools parallel. Menschen werden zur manuellen Integrationsschicht — und das skaliert nicht.</p>
+      <p class="lede" data-i18n="problem.lede">Kleine Firmen führen zu viele Tools parallel. Menschen werden zur manuellen Integrationsschicht.</p>
     </div>
     <div class="problem-stats">
       <div class="stat-card amber">
@@ -700,7 +698,7 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
       <div class="fc fc-violet">
         <div class="fc-num" data-i18n="solution.fc3.num">03 · AI-lesbare Realität</div>
         <h3 data-i18n="solution.fc3.h3">Strukturierte Zusammen­hänge<br>für AI.</h3>
-        <p data-i18n="solution.fc3.p">Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert die Schicht.</p>
+        <p data-i18n="solution.fc3.p">Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert genau diese Struktur.</p>
       </div>
       <div class="fc fc-amber">
         <div class="fc-num" data-i18n="solution.fc4.num">04 · Runway als Signal</div>
@@ -923,7 +921,7 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
       <div class="audience-item ai-amber"><span class="ai-num">01</span><div><strong data-i18n="audience.a1.title">Founder mit 1–20 Mitarbeitern</strong><p data-i18n="audience.a1.p">Du willst dein Wissen aus dem Kopf bringen — sodass die Firma auch ohne dich einen Tag funktioniert.</p></div></div>
       <div class="audience-item ai-blue"><span class="ai-num">02</span><div><strong data-i18n="audience.a2.title">IT-Dienstleister</strong><p data-i18n="audience.a2.p">Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.</p></div></div>
       <div class="audience-item ai-violet"><span class="ai-num">03</span><div><strong data-i18n="audience.a3.title">Kleine SaaS- und Agenturteams</strong><p data-i18n="audience.a3.p">Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.</p></div></div>
-      <div class="audience-item ai-pink"><span class="ai-num">04</span><div><strong data-i18n="audience.a4.title">Teams mit zu vielen Tools</strong><p data-i18n="audience.a4.p">Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Wahrheit, viel Doppelarbeit.</p></div></div>
+      <div class="audience-item ai-pink"><span class="ai-num">04</span><div><strong data-i18n="audience.a4.title">Teams mit zu vielen Tools</strong><p data-i18n="audience.a4.p">Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Datenbasis, viel Doppelarbeit.</p></div></div>
     </div>
   </div>
 </section>
@@ -960,7 +958,7 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
         <p class="sp-highlight" data-i18n="founder.prose.p1">Während operativer Arbeit in schnell wachsenden Startup-Umgebungen wurde immer wieder dasselbe Problem sichtbar.</p>
         <p data-i18n="founder.prose.p2">Teams bewegten sich schneller als ihre operative Struktur. Execution lebte in Tickets, Chats, Spreadsheets, Dokumenten und in den Köpfen der Menschen. Der Founder war die einzige Integrationsschicht — hielt alles manuell zusammen.</p>
         <p data-i18n="founder.prose.p3">Company OS entstand aus der Idee, dass <em>operative Realität selbst eine bessere Strukturschicht braucht.</em></p>
-        <p data-i18n="founder.prose.p4">Kein weiteres Tool. Ein anderes Modell.</p>
+        <p data-i18n="founder.prose.p4">Kein weiteres Tool - ein anderes Modell.</p>
       </div>
     </div>
 
@@ -976,7 +974,7 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
       <div class="manifesto-item m-accent">
         <div class="manifesto-num">02</div>
         <h4 data-i18n="founder.phil.2.h">AI wird mächtig, wenn operative Realität strukturiert ist.</h4>
-        <p data-i18n="founder.phil.2.p">Reasoning-Modelle können interpretieren und handeln — aber nur wenn die Daten darunter Form haben. Company OS baut diese Schicht.</p>
+        <p data-i18n="founder.phil.2.p">Reasoning-Modelle können interpretieren und handeln — aber nur wenn die Daten darunter Form haben. Company OS baut diese Infrastruktur.</p>
       </div>
       <div class="manifesto-item">
         <div class="manifesto-num">03</div>
@@ -985,8 +983,8 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
       </div>
       <div class="manifesto-item">
         <div class="manifesto-num">04</div>
-        <h4 data-i18n="founder.phil.4.h">Der Founder sollte nicht die Integrationsschicht sein.</h4>
-        <p data-i18n="founder.phil.4.p">Wenn eine Person das operative Bild im Kopf hält, skaliert die Firma nicht — sie nimmt sich selbst in Geiselhaft.</p>
+        <h4 data-i18n="founder.phil.4.h">Operative Klarheit gehört ins System, nicht in einen Kopf.</h4>
+        <p data-i18n="founder.phil.4.p">Wenn nur eine Person weiß, wie alles zusammenhängt, hängt alles an dieser Person. Struktur macht Unternehmen resilient und skalierbar.</p>
       </div>
     </div>
 
@@ -1002,7 +1000,7 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
       <div class="why-card">
         <div class="why-signal" data-i18n="founder.why.s2">Signal 02</div>
         <h4 data-i18n="founder.why.2.h">Tool-Fragmentierung explodiert</h4>
-        <p data-i18n="founder.why.2.p">Die durchschnittliche 10-Personen-Firma führt 8–12 Tools. Kein gemeinsames Datenmodell. Kein gemeinsamer Kontext.</p>
+        <p data-i18n="founder.why.2.p">Die durchschnittliche 10-Personen-Firma führt 8–12 Tools. Kein gemeinsames Datenmodell - kein gemeinsamer Kontext.</p>
       </div>
       <div class="why-card">
         <div class="why-signal" data-i18n="founder.why.s3">Signal 03</div>
@@ -1015,13 +1013,9 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
         <p data-i18n="founder.why.4.p">Geschwindigkeit ohne Struktur erzeugt operativen Debt. Je schneller du dich bewegst, desto mehr brauchst du ein System.</p>
       </div>
       <div class="why-card why-hero">
-        <div class="why-hero-left">
-          <div class="why-signal" data-i18n="founder.why.s5">Signal 05</div>
-          <h4 data-i18n="founder.why.5.h">AI braucht Zusammenhang.</h4>
-        </div>
-        <div class="why-hero-right">
-          <p data-i18n="founder.why.5.p">Isolierte Informationen erzeugen keine operative Intelligenz.</p>
-        </div>
+        <div class="why-signal" data-i18n="founder.why.s5">Signal 05</div>
+        <h4 data-i18n="founder.why.5.h">AI braucht Zusammenhang.</h4>
+        <p data-i18n="founder.why.5.p">Isolierte Informationen erzeugen keine operative Intelligenz.</p>
       </div>
     </div>
 
@@ -1132,7 +1126,7 @@ const LANG = {
     "hb.t3.tag":"AI ANALYSIS", "hb.t3.text":"Mehrere operative Abhängigkeiten erhöhen aktuell die Forecast-Unsicherheit.",
     "problem.eyebrow": "Das Problem",
     "problem.h2": "Operative Komplexität<br>übersteigt menschliche Koordination.",
-    "problem.lede": "Kleine Firmen führen 8–12 Tools parallel. Menschen werden zur manuellen Integrationsschicht — und das skaliert nicht.",
+    "problem.lede": "Kleine Firmen führen zu viele Tools parallel. Menschen werden zur manuellen Integrationsschicht.",
     "problem.stat1.num": "8–12", "problem.stat1.label": "Tools laufen parallel in einer Firma mit 10 Mitarbeitern. Tickets, Docs, CRM, HR, Finanzen, Wiki — alles getrennt.",
     "problem.stat2.num": "0",    "problem.stat2.label": "Systeme teilen einen gemeinsamen operativen Kontext. Verantwortung, Kosten und Risiken sind überall fragmentiert.",
     "problem.stat3.num": "Founder", "problem.stat3.label": "ist die einzige Person, die alles im Kopf zusammenhält. Strukturell — und das skaliert nicht.",
@@ -1147,7 +1141,7 @@ const LANG = {
     "solution.lede": "Vier Bausteine, ein zusammenhängendes Modell. Kein weiteres Tool — eine operative Infrastruktur.",
     "solution.fc1.num": "01 · Work Items",           "solution.fc1.h3": "Arbeit, Kosten,<br>Verantwortung vereint.",          "solution.fc1.p": "Jedes Ticket trägt Department, Kostentreiber, Owner und Runway-Impact. Strukturell verbunden — nicht nachträglich verlinkt.",
     "solution.fc2.num": "02 · Operational Context",  "solution.fc2.h3": "Die richtige Information<br>zur richtigen Zeit.",      "solution.fc2.p": "Tickets, Docs, CRM, SOPs, Kosten und Mitarbeiter teilen ein Datenmodell. Kontext entsteht durch Struktur, nicht durch Suche.",
-    "solution.fc3.num": "03 · AI-lesbare Realität",  "solution.fc3.h3": "Strukturierte Zusammen­hänge<br>für AI.",             "solution.fc3.p": "Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert die Schicht.",
+    "solution.fc3.num": "03 · AI-lesbare Realität",  "solution.fc3.h3": "Strukturierte Zusammen­hänge<br>für AI.",             "solution.fc3.p": "Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert genau diese Struktur.",
     "solution.fc4.num": "04 · Runway als Signal",    "solution.fc4.h3": "Finanzielle Realität<br>immer im Blick.",             "solution.fc4.p": "Cash, Burn, Tax und Runway als Signal-Pills. Nicht in einem Report — als operative Wahrnehmungsschicht über jeder Entscheidung.",
     "preview.eyebrow": "Produkt", "preview.h2": "Von Vision bis Daily Work.",
     "sc0.meta":"Montag · 09:14", "sc0.kpi.burn":"Monatl. Burn", "sc0.kpi.decisions":"Entscheidungen",
@@ -1176,7 +1170,7 @@ const LANG = {
     "audience.a1.title": "Founder mit 1–20 Mitarbeitern", "audience.a1.p": "Du willst dein Wissen aus dem Kopf bringen — sodass die Firma auch ohne dich einen Tag funktioniert.",
     "audience.a2.title": "IT-Dienstleister", "audience.a2.p": "Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.",
     "audience.a3.title": "Kleine SaaS- und Agenturteams", "audience.a3.p": "Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.",
-    "audience.a4.title": "Teams mit zu vielen Tools", "audience.a4.p": "Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Wahrheit, viel Doppelarbeit.",
+    "audience.a4.title": "Teams mit zu vielen Tools", "audience.a4.p": "Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Datenbasis, viel Doppelarbeit.",
     "founder.eyebrow": "Story",
     "founder.h2": "Nicht theoretisch.<br>Operativ entstanden.",
     "founder.subtitle": "Company OS entstand beim Aufbau von Decode IT — aus echter operativer Arbeit, nicht aus theoretischer Produktplanung.",
@@ -1186,23 +1180,23 @@ const LANG = {
     "founder.prose.p1": "Während operativer Arbeit in schnell wachsenden Startup-Umgebungen wurde immer wieder dasselbe Problem sichtbar.",
     "founder.prose.p2": "Teams bewegten sich schneller als ihre operative Struktur. Execution lebte in Tickets, Chats, Spreadsheets, Dokumenten und in den Köpfen der Menschen. Der Founder war die einzige Integrationsschicht — hielt alles manuell zusammen.",
     "founder.prose.p3": "Company OS entstand aus der Idee, dass <em>operative Realität selbst eine bessere Strukturschicht braucht.</em>",
-    "founder.prose.p4": "Kein weiteres Tool. Ein anderes Modell.",
+    "founder.prose.p4": "Kein weiteres Tool - ein anderes Modell.",
     "founder.phil.label": "Philosophie",
     "founder.phil.1.h": "Unternehmen haben kein Tool-Problem. Sie haben ein Struktur-Problem.",
     "founder.phil.1.p": "Mehr Tools reduzieren keine Komplexität — sie fragmentieren sie weiter. Struktur reduziert Komplexität. Tools folgen der Struktur.",
     "founder.phil.2.h": "AI wird mächtig, wenn operative Realität strukturiert ist.",
-    "founder.phil.2.p": "Reasoning-Modelle können interpretieren und handeln — aber nur wenn die Daten darunter Form haben. Company OS baut diese Schicht.",
+    "founder.phil.2.p": "Reasoning-Modelle können interpretieren und handeln — aber nur wenn die Daten darunter Form haben. Company OS baut diese Infrastruktur.",
     "founder.phil.3.h": "Runway und Execution können nicht in getrennten Systemen leben.",
     "founder.phil.3.p": "Jedes Ticket ist eine Kostenentscheidung. Jede Einstellung beeinflusst den Runway. Jede Verzögerung hat ein finanzielles Signal. Das ist dasselbe System.",
-    "founder.phil.4.h": "Der Founder sollte nicht die Integrationsschicht sein.",
-    "founder.phil.4.p": "Wenn eine Person das operative Bild im Kopf hält, skaliert die Firma nicht — sie nimmt sich selbst in Geiselhaft.",
+    "founder.phil.4.h": "Operative Klarheit gehört ins System, nicht in einen Kopf.",
+    "founder.phil.4.p": "Wenn nur eine Person weiß, wie alles zusammenhängt, hängt alles an dieser Person. Struktur macht Unternehmen resilient und skalierbar.",
     "founder.why.label": "Warum Jetzt",
     "founder.why.s1": "Signal 01", "founder.why.s2": "Signal 02", "founder.why.s3": "Signal 03",
     "founder.why.s4": "Signal 04", "founder.why.s5": "Signal 05", "founder.why.s6": "Signal 06",
     "founder.why.1.h": "AI-native Unternehmen entstehen jetzt",
     "founder.why.1.p": "Eine neue Generation baut mit AI von Anfang an — und braucht operative Struktur, die AI lesen kann.",
     "founder.why.2.h": "Tool-Fragmentierung explodiert",
-    "founder.why.2.p": "Die durchschnittliche 10-Personen-Firma führt 8–12 Tools. Kein gemeinsames Datenmodell. Kein gemeinsamer Kontext.",
+    "founder.why.2.p": "Die durchschnittliche 10-Personen-Firma führt 8–12 Tools. Kein gemeinsames Datenmodell - kein gemeinsamer Kontext.",
     "founder.why.3.h": "Investoren fordern operative Transparenz",
     "founder.why.3.p": "Runway-Klarheit, Execution-Sichtbarkeit und Governance sind von Nice-to-have zu Mindestanforderungen geworden.",
     "founder.why.4.h": "Founder bewegen sich schneller — nicht klarer",
@@ -1315,8 +1309,8 @@ const LANG = {
     "founder.phil.2.p": "Reasoning models can interpret, suggest, and act — but only when the underlying data has shape. Company OS builds that layer.",
     "founder.phil.3.h": "Runway and execution cannot live in separate systems.",
     "founder.phil.3.p": "Every ticket is a cost decision. Every hire affects runway. Every delay has a financial signal. These are the same system.",
-    "founder.phil.4.h": "The Founder shouldn't be the integration layer.",
-    "founder.phil.4.p": "When one person holds the full operational picture in their head, the company doesn't scale — it hostages itself to one mind.",
+    "founder.phil.4.h": "Operational clarity belongs in the system, not in one person's head.",
+    "founder.phil.4.p": "When only one person knows how everything fits together, everything depends on that person. Structure makes companies resilient and scalable.",
     "founder.why.label": "Why Now",
     "founder.why.s1": "Signal 01", "founder.why.s2": "Signal 02", "founder.why.s3": "Signal 03",
     "founder.why.s4": "Signal 04", "founder.why.s5": "Signal 05", "founder.why.s6": "Signal 06",
