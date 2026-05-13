@@ -264,6 +264,7 @@ img { -webkit-user-drag:none; -moz-user-drag:none; user-drag:none; -webkit-user-
 .sc-status-item.s-warn::before { background:var(--amber); }
 .sc-status-item.s-muted { color:var(--muted); background:var(--surface-2); }
 .sc-status-item.s-muted::before { background:var(--muted-2); }
+.sc-status-arrow { font-size:10px; font-family:var(--font-mono); color:var(--muted-2); padding:1px 0 1px 9px; line-height:1; }
 /* Activity feed */
 .sc-feed { padding:11px 20px; border-top:1px solid var(--line); }
 .sc-feed-item { display:flex; gap:12px; padding:3px 0; font-size:11px; line-height:1.4; }
@@ -948,7 +949,9 @@ footer { padding:56px 0 48px; border-top:1px solid var(--line); }
             <div class="sc-section-label" data-si18n="sec2">Operative Lage</div>
             <div class="sc-status-list">
               <div class="sc-status-item s-crit" data-si18n="s1">Hiring blockiert</div>
+              <div class="sc-status-arrow">↓</div>
               <div class="sc-status-item s-warn" data-si18n="s2">Runway angepasst</div>
+              <div class="sc-status-arrow">↓</div>
               <div class="sc-status-item s-muted" data-si18n="s3">Budgetfreigabe ausstehend</div>
             </div>
           </div>
