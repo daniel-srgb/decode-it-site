@@ -565,8 +565,8 @@ footer { padding:64px 0 48px; border-top:1px solid var(--line); }
   <div class="container">
     <div class="section-head">
       <p class="eyebrow section-eyebrow">How Companies Operate Today</p>
-      <h2 class="h2">Fragmentierte Systeme. Menschliche Synchronisation.</h2>
-      <p class="lede" style="margin-top:14px;">Jede Funktion hat ein eigenes Werkzeug. ERP. CRM. Tickets. Finance. Slack. Excel. Kein gemeinsamer Kontext — der Mensch überbrückt manuell.</p>
+      <h2 class="h2" data-i18n="today.h2">Fragmentierte Systeme. Menschliche Synchronisation.</h2>
+      <p class="lede" data-i18n="today.lede" style="margin-top:14px;">Jede Funktion hat ein eigenes Werkzeug. ERP. CRM. Tickets. Finance. Slack. Excel. Kein gemeinsamer Kontext — der Mensch überbrückt manuell.</p>
     </div>
     <div class="today-grid">
       <div>
@@ -585,17 +585,17 @@ footer { padding:64px 0 48px; border-top:1px solid var(--line); }
       <div>
         <p class="section-eyebrow" style="margin-bottom:14px;">Manual Synchronisation</p>
         <div class="today-sync">
-          <div class="sync-row"><span class="sync-icon">↔</span><span class="sync-text">Copy-paste zwischen Systemen</span><span class="sync-cost">täglich</span></div>
-          <div class="sync-row"><span class="sync-icon">📋</span><span class="sync-text">Status-Meetings zur Synchronisation</span><span class="sync-cost">3–5h/Woche</span></div>
-          <div class="sync-row"><span class="sync-icon">✉</span><span class="sync-text">Approval-E-Mails ohne Kontext</span><span class="sync-cost">kritisch</span></div>
-          <div class="sync-row"><span class="sync-icon">🔍</span><span class="sync-text">Status-Chasing quer durch Teams</span><span class="sync-cost">unklar</span></div>
-          <div class="sync-row"><span class="sync-icon">⚠</span><span class="sync-text">Versteckte Abhängigkeiten</span><span class="sync-cost">unsichtbar</span></div>
-          <div class="sync-row"><span class="sync-icon">🧠</span><span class="sync-text">Kontext lebt im Kopf von Menschen</span><span class="sync-cost">fragil</span></div>
+          <div class="sync-row"><span class="sync-icon">↔</span><span class="sync-text" data-i18n="today.sync1">Copy-paste zwischen Systemen</span><span class="sync-cost" data-i18n="today.sync1.freq">täglich</span></div>
+          <div class="sync-row"><span class="sync-icon">📋</span><span class="sync-text" data-i18n="today.sync2">Status-Meetings zur Synchronisation</span><span class="sync-cost" data-i18n="today.sync2.freq">3–5h/Woche</span></div>
+          <div class="sync-row"><span class="sync-icon">✉</span><span class="sync-text" data-i18n="today.sync3">Approval-E-Mails ohne Kontext</span><span class="sync-cost" data-i18n="today.sync3.freq">kritisch</span></div>
+          <div class="sync-row"><span class="sync-icon">🔍</span><span class="sync-text" data-i18n="today.sync4">Status-Chasing quer durch Teams</span><span class="sync-cost" data-i18n="today.sync4.freq">unklar</span></div>
+          <div class="sync-row"><span class="sync-icon">⚠</span><span class="sync-text" data-i18n="today.sync5">Versteckte Abhängigkeiten</span><span class="sync-cost" data-i18n="today.sync5.freq">unsichtbar</span></div>
+          <div class="sync-row"><span class="sync-icon">🧠</span><span class="sync-text" data-i18n="today.sync6">Kontext lebt im Kopf von Menschen</span><span class="sync-cost" data-i18n="today.sync6.freq">fragil</span></div>
         </div>
       </div>
     </div>
     <div class="today-bridge">
-      <p>Operative Objekte sollten <strong>nicht isoliert existieren.</strong><br>Sie sind voneinander abhängig — und genau das bleibt unsichtbar.</p>
+      <p data-i18n="today.bridge">Operative Objekte sollten <strong>nicht isoliert existieren.</strong><br>Sie sind voneinander abhängig — und genau das bleibt unsichtbar.</p>
     </div>
   </div>
 </section>
@@ -605,8 +605,8 @@ footer { padding:64px 0 48px; border-top:1px solid var(--line); }
   <div class="container">
     <div class="section-head">
       <p class="eyebrow section-eyebrow">Connected Operations</p>
-      <h2 class="h2">So verbindet Company OS operative Realität.</h2>
-      <p class="lede" style="margin-top:14px;">Kein Kopieren. Keine Synchronisations-Meetings. Jedes operative Objekt trägt seinen Kontext und seine Relationen — automatisch.</p>
+      <h2 class="h2" data-i18n="chain.h2">So verbindet Company OS operative Realität.</h2>
+      <p class="lede" data-i18n="chain.lede" style="margin-top:14px;">Kein Kopieren. Keine Synchronisations-Meetings. Jedes operative Objekt trägt seinen Kontext und seine Relationen — automatisch.</p>
     </div>
     <div class="chain-label">Procurement Flow · Supplier Onboarding · Tech Supply GmbH</div>
     <div class="chain-flow">
@@ -614,46 +614,46 @@ footer { padding:64px 0 48px; border-top:1px solid var(--line); }
         <p class="chain-step-type t-blue">Work Item</p>
         <h4>Supplier Onboarding</h4>
         <p>Tech Supply GmbH · €4.200 · D. Sobiak</p>
-        <span class="cs-badge cs-b-blue">Offen</span>
+        <span class="cs-badge cs-b-blue" data-i18n="badge.open">Offen</span>
       </div>
       <div class="chain-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
       <div class="chain-step">
         <p class="chain-step-type t-violet">Approval</p>
         <h4>Budget Approval pending</h4>
         <p>Limit: €5.000 · Entscheider: J. Müller</p>
-        <span class="cs-badge cs-b-violet">Ausstehend</span>
+        <span class="cs-badge cs-b-violet" data-i18n="badge.pending">Ausstehend</span>
       </div>
       <div class="chain-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
       <div class="chain-step">
         <p class="chain-step-type t-amber">Finance</p>
         <h4>Budget Impact +€504</h4>
-        <p>Angebot +12% — automatisch verknüpft</p>
-        <span class="cs-badge cs-b-amber">Abweichung</span>
+        <p data-i18n="chain.step3.body">Angebot +12% — automatisch verknüpft</p>
+        <span class="cs-badge cs-b-amber" data-i18n="badge.deviation">Abweichung</span>
       </div>
       <div class="chain-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
       <div class="chain-step">
         <p class="chain-step-type t-pink">Signal</p>
         <h4>Delivery Dependency detected</h4>
-        <p>Folgeauftrag F-09 betroffen</p>
-        <span class="cs-badge cs-b-pink">Aktiv</span>
+        <p data-i18n="chain.step4.body">Folgeauftrag F-09 betroffen</p>
+        <span class="cs-badge cs-b-pink" data-i18n="badge.active">Aktiv</span>
       </div>
       <div class="chain-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
       <div class="chain-step">
         <p class="chain-step-type t-amber">Risk</p>
         <h4>Project Delay Risk</h4>
         <p>12. → 16. Mai · F-09 blockiert</p>
-        <span class="cs-badge cs-b-amber">Eskalation</span>
+        <span class="cs-badge cs-b-amber" data-i18n="badge.escalation">Eskalation</span>
       </div>
       <div class="chain-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
       <div class="chain-step">
         <p class="chain-step-type t-violet">Decision</p>
         <h4>Escalation Required</h4>
-        <p>CEO-Entscheidung offen · Kontext vollständig</p>
-        <span class="cs-badge cs-b-violet">Ausstehend</span>
+        <p data-i18n="chain.step6.body">CEO-Entscheidung offen · Kontext vollständig</p>
+        <span class="cs-badge cs-b-violet" data-i18n="badge.pending">Ausstehend</span>
       </div>
     </div>
     <div class="chain-insight">
-      <strong>Das ist der Unterschied.</strong> Nicht Features. Nicht Dashboards. Jede operative Aktion erzeugt automatisch Kontext für die nächste. Company OS verbindet, was zusammengehört.
+      <span data-i18n="chain.insight"><strong>Das ist der Unterschied.</strong> Nicht Features. Nicht Dashboards. Jede operative Aktion erzeugt automatisch Kontext für die nächste. Company OS verbindet, was zusammengehört.</span>
     </div>
   </div>
 </section>
@@ -663,8 +663,8 @@ footer { padding:64px 0 48px; border-top:1px solid var(--line); }
   <div class="container">
     <div class="section-head">
       <p class="eyebrow section-eyebrow">Signal Emergence</p>
-      <h2 class="h2">Relationen erzeugen Intelligenz.</h2>
-      <p class="lede" style="margin-top:14px;">Keine KI-Magie. Kein Chatbot. Risiken, Abhängigkeiten und Forecasts entstehen, weil operative Objekte verbunden sind — strukturell.</p>
+      <h2 class="h2" data-i18n="signals.h2">Relationen erzeugen Intelligenz.</h2>
+      <p class="lede" data-i18n="signals.lede" style="margin-top:14px;">Keine KI-Magie. Kein Chatbot. Risiken, Abhängigkeiten und Forecasts entstehen, weil operative Objekte verbunden sind — strukturell.</p>
     </div>
     <div class="signals-layout">
       <div class="event-col">
@@ -699,44 +699,44 @@ footer { padding:64px 0 48px; border-top:1px solid var(--line); }
     <div class="story-grid">
       <div class="story-left">
         <p class="eyebrow section-eyebrow">Activity Story</p>
-        <h2 class="h2">Jedes Objekt führt sein eigenes Journal.</h2>
-        <p class="lede" style="margin-top:14px;">Nicht als System-Log. Als lesbare operative Geschichte — mit vollständigem Kontext und Impact-Propagation.</p>
+        <h2 class="h2" data-i18n="story.h2">Jedes Objekt führt sein eigenes Journal.</h2>
+        <p class="lede" data-i18n="story.lede" style="margin-top:14px;">Nicht als System-Log. Als lesbare operative Geschichte — mit vollständigem Kontext und Impact-Propagation.</p>
         <div class="story-impact">
-          <h4>Impact: Supplier delayed → 12. Mai</h4>
-          <div class="impact-row"><span class="imp-label">Affected Tickets</span><span class="imp-val warn">3 blockiert</span></div>
+          <h4 data-i18n="story.impact.h">Impact: Supplier delayed → 12. Mai</h4>
+          <div class="impact-row"><span class="imp-label">Affected Tickets</span><span class="imp-val warn" data-i18n="story.impact.v1">3 blockiert</span></div>
           <div class="impact-row"><span class="imp-label">Budget Delta</span><span class="imp-val neg">+€504</span></div>
-          <div class="impact-row"><span class="imp-label">Customer Delivery</span><span class="imp-val neg">−4 Tage</span></div>
-          <div class="impact-row"><span class="imp-label">Runway Impact</span><span class="imp-val warn">−0.3 Monate</span></div>
-          <div class="impact-row"><span class="imp-label">Open Decisions</span><span class="imp-val warn">1 eskaliert</span></div>
+          <div class="impact-row"><span class="imp-label">Customer Delivery</span><span class="imp-val neg" data-i18n="story.impact.v3">−4 Tage</span></div>
+          <div class="impact-row"><span class="imp-label">Runway Impact</span><span class="imp-val warn" data-i18n="story.impact.v4">−0.3 Monate</span></div>
+          <div class="impact-row"><span class="imp-label">Open Decisions</span><span class="imp-val warn" data-i18n="story.impact.v5">1 eskaliert</span></div>
         </div>
       </div>
       <div>
-        <p class="section-eyebrow" style="margin-bottom:20px;">Beschaffungsauftrag #B-2047 · Tech Supply GmbH</p>
+        <p class="section-eyebrow" data-i18n="story.tl.label" style="margin-bottom:20px;">Beschaffungsauftrag #B-2047 · Tech Supply GmbH</p>
         <div class="tl-list">
           <div class="tl-row">
             <span class="tl-time">09.05<br>09:14</span>
             <div class="tl-line ev-blue"></div>
             <div class="tl-body">
-              <div class="tl-title">Auftrag erstellt. Lieferant zugewiesen.</div>
+              <div class="tl-title" data-i18n="story.tl1.title">Auftrag erstellt. Lieferant zugewiesen.</div>
               <div class="tl-desc">Tech Supply GmbH · Wert: €4.200 · Ersteller: D. Sobiak</div>
-              <span class="tl-badge b-blue">Erstellt</span>
+              <span class="tl-badge b-blue" data-i18n="story.tl1.badge">Erstellt</span>
             </div>
           </div>
           <div class="tl-row">
             <span class="tl-time">09.05<br>11:02</span>
             <div class="tl-line ev-green"></div>
             <div class="tl-body">
-              <div class="tl-title">Freigabe erteilt von J. Müller.</div>
-              <div class="tl-desc">Freigabelimit: €5.000 · Entscheidung dokumentiert.</div>
-              <span class="tl-badge b-green">Genehmigt</span>
+              <div class="tl-title" data-i18n="story.tl2.title">Freigabe erteilt von J. Müller.</div>
+              <div class="tl-desc" data-i18n="story.tl2.desc">Freigabelimit: €5.000 · Entscheidung dokumentiert.</div>
+              <span class="tl-badge b-green" data-i18n="story.tl2.badge">Genehmigt</span>
             </div>
           </div>
           <div class="tl-row">
             <span class="tl-time">10.05<br>14:37</span>
             <div class="tl-line ev-amber"></div>
             <div class="tl-body">
-              <div class="tl-title">Angebot abweichend +12% vom Budget.</div>
-              <div class="tl-desc">Budget: €4.200 · Angebot: €4.704 · Signal automatisch ausgelöst.</div>
+              <div class="tl-title" data-i18n="story.tl3.title">Angebot abweichend +12% vom Budget.</div>
+              <div class="tl-desc" data-i18n="story.tl3.desc">Budget: €4.200 · Angebot: €4.704 · Signal automatisch ausgelöst.</div>
               <span class="tl-badge b-amber">Signal</span>
             </div>
           </div>
@@ -778,8 +778,8 @@ footer { padding:64px 0 48px; border-top:1px solid var(--line); }
   <div class="container">
     <div class="section-head">
       <p class="eyebrow section-eyebrow">Operational Graph</p>
-      <h2 class="h2">Alles verbunden durch operativen Kontext.</h2>
-      <p class="lede" style="margin-top:14px;">Acht Objekttypen. Ein gemeinsames Modell. Jetzt versteht man warum — weil man die Ketten gesehen hat.</p>
+      <h2 class="h2" data-i18n="graph.h2">Alles verbunden durch operativen Kontext.</h2>
+      <p class="lede" data-i18n="graph.lede" style="margin-top:14px;">Acht Objekttypen. Ein gemeinsames Modell. Jetzt versteht man warum — weil man die Ketten gesehen hat.</p>
     </div>
     <div class="graph-wrap">
       <svg class="graph-svg" viewBox="0 0 1160 500" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -830,28 +830,28 @@ footer { padding:64px 0 48px; border-top:1px solid var(--line); }
   <div class="container">
     <div class="section-head">
       <p class="eyebrow section-eyebrow">Command Center</p>
-      <h2 class="h2">Operative Realität. Auf einen Blick.</h2>
-      <p class="lede" style="margin-top:14px;">Zwei Ansichten, die in jedem Unternehmen täglich relevant sind — vollständig aus operativem Kontext generiert, nicht manuell zusammengestellt.</p>
+      <h2 class="h2" data-i18n="command.h2">Operative Realität. Auf einen Blick.</h2>
+      <p class="lede" data-i18n="command.lede" style="margin-top:14px;">Zwei Ansichten, die in jedem Unternehmen täglich relevant sind — vollständig aus operativem Kontext generiert, nicht manuell zusammengestellt.</p>
     </div>
     <div class="command-grid">
       <div class="command-scene">
         <h3>Runway Dashboard</h3>
-        <p class="cs-sub">Finance · Live · Echtzeit-propagiert aus Procurement &amp; Signals</p>
-        <div class="scene-row"><span class="sr-label">Current Runway</span><span class="sr-val warn">8.4 Monate</span></div>
+        <p class="cs-sub" data-i18n="command.scene1.sub">Finance · Live · Echtzeit-propagiert aus Procurement &amp; Signals</p>
+        <div class="scene-row"><span class="sr-label">Current Runway</span><span class="sr-val warn" data-i18n="command.scene1.r1">8.4 Monate</span></div>
         <div class="scene-row"><span class="sr-label">Procurement Pipeline</span><span class="sr-val down">+€18.200 committed</span></div>
-        <div class="scene-row"><span class="sr-label">Open Risk Signals</span><span class="sr-val down">3 aktiv</span></div>
-        <div class="scene-row"><span class="sr-label">Runway nach Signals</span><span class="sr-val down">7.8 Monate</span></div>
+        <div class="scene-row"><span class="sr-label">Open Risk Signals</span><span class="sr-val down" data-i18n="command.scene1.r3">3 aktiv</span></div>
+        <div class="scene-row"><span class="sr-label" data-i18n="command.scene1.r4l">Runway nach Signals</span><span class="sr-val down" data-i18n="command.scene1.r4">7.8 Monate</span></div>
         <div class="scene-row"><span class="sr-label">MRR Trend</span><span class="sr-val up">+12% MoM</span></div>
         <div class="scene-row"><span class="sr-label">Break-Even Projection</span><span class="sr-val warn">Q4 2026</span></div>
       </div>
       <div class="command-scene">
         <h3>CEO Daily View</h3>
-        <p class="cs-sub">Intelligence · Automatisch aus operativem Kontext generiert</p>
-        <div class="scene-row"><span class="sr-label">Pending Decisions</span><span class="sr-val down">4 eskaliert</span></div>
+        <p class="cs-sub" data-i18n="command.scene2.sub">Intelligence · Automatisch aus operativem Kontext generiert</p>
+        <div class="scene-row"><span class="sr-label">Pending Decisions</span><span class="sr-val down" data-i18n="command.scene2.r1">4 eskaliert</span></div>
         <div class="scene-row"><span class="sr-label">Active Risk Signals</span><span class="sr-val down">Project delay · Finance</span></div>
-        <div class="scene-row"><span class="sr-label">Delivery Blockers</span><span class="sr-val warn">F-09 verschoben</span></div>
-        <div class="scene-row"><span class="sr-label">Budget Deviations</span><span class="sr-val down">2 Abweichungen</span></div>
-        <div class="scene-row"><span class="sr-label">Approval Queue</span><span class="sr-val warn">3 ausstehend</span></div>
+        <div class="scene-row"><span class="sr-label">Delivery Blockers</span><span class="sr-val warn" data-i18n="command.scene2.r3">F-09 verschoben</span></div>
+        <div class="scene-row"><span class="sr-label">Budget Deviations</span><span class="sr-val down" data-i18n="command.scene2.r4">2 Abweichungen</span></div>
+        <div class="scene-row"><span class="sr-label">Approval Queue</span><span class="sr-val warn" data-i18n="command.scene2.r5">3 ausstehend</span></div>
         <div class="scene-row"><span class="sr-label">Anomalies detected</span><span class="sr-val down">Workload Spike · Team A</span></div>
       </div>
     </div>
@@ -863,16 +863,16 @@ footer { padding:64px 0 48px; border-top:1px solid var(--line); }
   <div class="container">
     <div class="section-head">
       <p class="eyebrow section-eyebrow">Governance &amp; Trust</p>
-      <h2 class="h2">Operative Systeme brauchen Vertrauen.</h2>
-      <p class="lede" style="margin-top:14px;">Auditierbarkeit ist keine Funktion. Sie ist Voraussetzung. Company OS ist so gebaut, dass operative Integrität strukturell verankert ist.</p>
+      <h2 class="h2" data-i18n="trust.h2">Operative Systeme brauchen Vertrauen.</h2>
+      <p class="lede" data-i18n="trust.lede" style="margin-top:14px;">Auditierbarkeit ist keine Funktion. Sie ist Voraussetzung. Company OS ist so gebaut, dass operative Integrität strukturell verankert ist.</p>
     </div>
     <div class="trust-grid">
-      <div class="trust-card"><p class="tc-tag">Zugriff</p><h3>Single Sign-On</h3><p>SAML 2.0 und OIDC. Nahtlose Integration in bestehende Identity-Provider.</p></div>
-      <div class="trust-card"><p class="tc-tag">Sicherheit</p><h3>Mehrfaktor-Authentifizierung</h3><p>MFA für alle Nutzer. Optional erzwingbar pro Organisation.</p></div>
-      <div class="trust-card"><p class="tc-tag">Berechtigungen</p><h3>Objekt-Level-Zugriffskontrolle</h3><p>Granulare Berechtigungen pro Objekt, Abteilung und Nutzerrolle.</p></div>
-      <div class="trust-card"><p class="tc-tag">Nachverfolgung</p><h3>Unveränderliches Audit Log</h3><p>Lückenlose Nachverfolgung aller Aktionen und Zustandsänderungen. Exportierbar.</p></div>
-      <div class="trust-card"><p class="tc-tag">Deployment</p><h3>Volle Datensouveränität</h3><p>On-Premise, Hybrid oder Cloud. Kein Lock-in beim Deployment-Modell.</p></div>
-      <div class="trust-card"><p class="tc-tag">Architektur</p><h3>DSGVO-native Architektur</h3><p>Strikte Datenisolation. DSGVO-konform von Grund auf. Kein Datenleck zwischen Mandanten.</p></div>
+      <div class="trust-card"><p class="tc-tag" data-i18n="trust.c1.tag">Zugriff</p><h3>Single Sign-On</h3><p data-i18n="trust.c1.body">SAML 2.0 und OIDC. Nahtlose Integration in bestehende Identity-Provider.</p></div>
+      <div class="trust-card"><p class="tc-tag" data-i18n="trust.c2.tag">Sicherheit</p><h3 data-i18n="trust.c2.h">Mehrfaktor-Authentifizierung</h3><p data-i18n="trust.c2.body">MFA für alle Nutzer. Optional erzwingbar pro Organisation.</p></div>
+      <div class="trust-card"><p class="tc-tag" data-i18n="trust.c3.tag">Berechtigungen</p><h3 data-i18n="trust.c3.h">Objekt-Level-Zugriffskontrolle</h3><p data-i18n="trust.c3.body">Granulare Berechtigungen pro Objekt, Abteilung und Nutzerrolle.</p></div>
+      <div class="trust-card"><p class="tc-tag" data-i18n="trust.c4.tag">Nachverfolgung</p><h3 data-i18n="trust.c4.h">Unveränderliches Audit Log</h3><p data-i18n="trust.c4.body">Lückenlose Nachverfolgung aller Aktionen und Zustandsänderungen. Exportierbar.</p></div>
+      <div class="trust-card"><p class="tc-tag" data-i18n="trust.c5.tag">Deployment</p><h3 data-i18n="trust.c5.h">Volle Datensouveränität</h3><p data-i18n="trust.c5.body">On-Premise, Hybrid oder Cloud. Kein Lock-in beim Deployment-Modell.</p></div>
+      <div class="trust-card"><p class="tc-tag" data-i18n="trust.c6.tag">Architektur</p><h3 data-i18n="trust.c6.h">DSGVO-native Architektur</h3><p data-i18n="trust.c6.body">Strikte Datenisolation. DSGVO-konform von Grund auf. Kein Datenleck zwischen Mandanten.</p></div>
     </div>
   </div>
 </section>
@@ -881,16 +881,16 @@ footer { padding:64px 0 48px; border-top:1px solid var(--line); }
 <section id="founder">
   <div class="container">
     <div class="founder-inner">
-      <p class="eyebrow section-eyebrow">Gründer</p>
-      <h2 class="h2">Warum ich das gebaut habe.</h2>
+      <p class="eyebrow section-eyebrow" data-i18n="founder.eyebrow">Gründer</p>
+      <h2 class="h2" data-i18n="founder.h2">Warum ich das gebaut habe.</h2>
       <blockquote class="founder-quote">
-        „Das eigentliche Betriebssystem war häufig der Mensch selbst."
+        <span data-i18n="founder.quote">„Das eigentliche Betriebssystem war häufig der Mensch selbst."</span>
       </blockquote>
       <p class="founder-body">
-        Über Jahre hinweg zeigte sich in verschiedenen Rollen und Industrien dasselbe Muster: Menschen wurden zur Schnittstelle zwischen fragmentierten Systemen. Auftragsabwicklung. Messeorganisation. Lieferkettenkoordination. Startups in Paris. Überall das gleiche strukturelle Problem — und immer eine menschliche Brücke als Lösung.
+        <span data-i18n="founder.body1">Über Jahre hinweg zeigte sich in verschiedenen Rollen und Industrien dasselbe Muster: Menschen wurden zur Schnittstelle zwischen fragmentierten Systemen. Auftragsabwicklung. Messeorganisation. Lieferkettenkoordination. Startups in Paris. Überall das gleiche strukturelle Problem — und immer eine menschliche Brücke als Lösung.</span>
       </p>
       <p class="founder-body" style="margin-top:16px;">
-        Company OS ist nicht das Ergebnis einer Feature-Roadmap. Es ist die Antwort auf ein strukturelles Problem, das ich zu oft gesehen habe. Operative Realität muss modelliert werden — bevor AI sie nutzen kann.
+        <span data-i18n="founder.body2">Company OS ist nicht das Ergebnis einer Feature-Roadmap. Es ist die Antwort auf ein strukturelles Problem, das ich zu oft gesehen habe. Operative Realität muss modelliert werden — bevor AI sie nutzen kann.</span>
       </p>
       <div class="founder-meta">
         <div class="founder-avatar">DS</div>
@@ -981,6 +981,77 @@ const i18n = {
     'footer.prod.h':'Product','footer.prod.l1':'Operations','footer.prod.l2':'Data model','footer.prod.l3':'Security',
     'footer.comp.h':'Company','footer.comp.l1':'Story','footer.comp.l2':'Contact',
     'footer.bottom':'© 2026 Decode IT GmbH. Company OS.',
+
+    // ── Today ──
+    'today.h2':'Fragmented Systems. Human Synchronisation.',
+    'today.lede':'Every function has its own tool. ERP. CRM. Tickets. Finance. Slack. Excel. No shared context — people bridge the gap manually.',
+    'today.sync1':'Copy-paste between systems','today.sync1.freq':'daily',
+    'today.sync2':'Status meetings for synchronisation','today.sync2.freq':'3–5h/week',
+    'today.sync3':'Approval emails without context','today.sync3.freq':'critical',
+    'today.sync4':'Status chasing across teams','today.sync4.freq':'unclear',
+    'today.sync5':'Hidden dependencies','today.sync5.freq':'invisible',
+    'today.sync6':'Context lives in people's heads','today.sync6.freq':'fragile',
+    'today.bridge':'Operational objects should <strong>not exist in isolation.</strong><br>They are interdependent — and that's exactly what remains invisible.',
+
+    // ── Chain ──
+    'chain.h2':'How Company OS connects operational reality.',
+    'chain.lede':'No copying. No sync meetings. Every operational object carries its context and relations — automatically.',
+    'chain.step3.body':'Quote +12% — linked automatically',
+    'chain.step4.body':'Follow-up order F-09 affected',
+    'chain.step6.body':'CEO decision open · Full context available',
+    'chain.insight':'<strong>That's the difference.</strong> Not features. Not dashboards. Every operational action automatically creates context for the next. Company OS connects what belongs together.',
+    'badge.open':'Open','badge.pending':'Pending','badge.active':'Active',
+    'badge.deviation':'Deviation','badge.escalation':'Escalation',
+
+    // ── Signals ──
+    'signals.h2':'Relations generate intelligence.',
+    'signals.lede':'No AI magic. No chatbot. Risks, dependencies and forecasts emerge because operational objects are connected — structurally.',
+
+    // ── Story ──
+    'story.h2':'Every object keeps its own journal.',
+    'story.lede':'Not as a system log. As a readable operational story — with full context and impact propagation.',
+    'story.impact.h':'Impact: Supplier delayed → May 12',
+    'story.impact.v1':'3 blocked','story.impact.v3':'−4 days',
+    'story.impact.v4':'−0.3 months','story.impact.v5':'1 escalated',
+    'story.tl.label':'Procurement Order #B-2047 · Tech Supply GmbH',
+    'story.tl1.title':'Order created. Supplier assigned.',
+    'story.tl1.badge':'Created',
+    'story.tl2.title':'Approval granted by J. Müller.',
+    'story.tl2.desc':'Approval limit: €5,000 · Decision documented.',
+    'story.tl2.badge':'Approved',
+    'story.tl3.title':'Quote deviates +12% from budget.',
+    'story.tl3.desc':'Budget: €4,200 · Quote: €4,704 · Signal triggered automatically.',
+
+    // ── Graph ──
+    'graph.h2':'Everything connected through operational context.',
+    'graph.lede':'Eight object types. One shared model. Now you understand why — because you've seen the chains.',
+
+    // ── Command ──
+    'command.h2':'Operational reality. At a glance.',
+    'command.lede':'Two views relevant in every company every day — fully generated from operational context, not assembled manually.',
+    'command.scene1.sub':'Finance · Live · Real-time propagated from Procurement & Signals',
+    'command.scene1.r1':'8.4 months','command.scene1.r3':'3 active',
+    'command.scene1.r4l':'Runway after Signals','command.scene1.r4':'7.8 months',
+    'command.scene2.sub':'Intelligence · Automatically generated from operational context',
+    'command.scene2.r1':'4 escalated','command.scene2.r3':'F-09 postponed',
+    'command.scene2.r4':'2 deviations','command.scene2.r5':'3 pending',
+
+    // ── Trust ──
+    'trust.h2':'Operational systems require trust.',
+    'trust.lede':'Auditability is not a feature. It is a prerequisite. Company OS is built so that operational integrity is structurally anchored.',
+    'trust.c1.tag':'Access','trust.c1.body':'SAML 2.0 and OIDC. Seamless integration with existing identity providers.',
+    'trust.c2.tag':'Security','trust.c2.h':'Multi-Factor Authentication','trust.c2.body':'MFA for all users. Optionally enforceable per organisation.',
+    'trust.c3.tag':'Permissions','trust.c3.h':'Object-Level Access Control','trust.c3.body':'Granular permissions per object, department and user role.',
+    'trust.c4.tag':'Tracking','trust.c4.h':'Immutable Audit Log','trust.c4.body':'Complete tracking of all actions and state changes. Exportable.',
+    'trust.c5.tag':'Deployment','trust.c5.h':'Full Data Sovereignty','trust.c5.body':'On-premise, hybrid or cloud. No lock-in on deployment model.',
+    'trust.c6.tag':'Architecture','trust.c6.h':'GDPR-native Architecture','trust.c6.body':'Strict data isolation. GDPR-compliant by design. No data leakage between tenants.',
+
+    // ── Founder ──
+    'founder.eyebrow':'Founder',
+    'founder.h2':'Why I built this.',
+    'founder.quote':'"The real operating system was often the human themselves."',
+    'founder.body1':'Over the years, the same pattern emerged across different roles and industries: people became the interface between fragmented systems. Order processing. Trade show logistics. Supply chain coordination. Startups in Paris. Everywhere the same structural problem — and always a human bridge as the solution.',
+    'founder.body2':'Company OS is not the result of a feature roadmap. It is the answer to a structural problem I have seen too often. Operational reality must be modelled — before AI can use it.',
   }
 };
 let currentTheme = localStorage.getItem('cos-theme') || 'light';
@@ -991,7 +1062,7 @@ function applyLang(lang) {
   document.documentElement.lang = lang === 'de' ? 'de' : 'en';
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.dataset.i18n;
-    if (i18n[lang][k] !== undefined) el.textContent = i18n[lang][k];
+    if (i18n[lang][k] !== undefined) { const v=i18n[lang][k]; if(v.includes("<"))el.innerHTML=v; else el.textContent=v; }
   });
   document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
 }
