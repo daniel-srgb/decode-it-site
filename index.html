@@ -13,9 +13,9 @@
 /* ── DESIGN SYSTEM TOKENS (exact from pitch appendix) ── */
 :root{
   --bg:#060609;--bg-2:#0a0a0e;
-  --surface:rgba(255,255,255,0.035);--surface-2:rgba(255,255,255,0.055);
-  --border:rgba(255,255,255,0.07);--border-2:rgba(255,255,255,0.13);
-  --text:#e6e6e1;--muted:#7c7c74;--faint:#4a4a44;
+  --surface:rgba(255,255,255,0.06);--surface-2:rgba(255,255,255,0.10);
+  --border:rgba(255,255,255,0.11);--border-2:rgba(255,255,255,0.22);
+  --text:#e6e6e1;--muted:#9c9c94;--faint:#4a4a44;
   --blue:#4aa3ff;--green:#3ed277;--amber:#ffb340;--violet:#b4a6ff;--pink:#ff6577;
   --blue-dim:rgba(74,163,255,0.12);--green-dim:rgba(62,210,119,0.12);
   --amber-dim:rgba(255,179,64,0.12);--violet-dim:rgba(180,166,255,0.12);--pink-dim:rgba(255,101,119,0.12);
@@ -34,7 +34,8 @@ html{scroll-behavior:smooth;}
 body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transition:background .2s,color .2s;}
 
 /* ── TYPOGRAPHY (exact from design system) ── */
-.eyebrow{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:4px 10px;border:1px solid var(--border);border-radius:999px;background:var(--surface);}
+.eyebrow{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:4px 12px;border:1px solid rgba(255,255,255,0.18);border-radius:999px;background:rgba(255,255,255,0.07);}
+[data-theme="light"] .eyebrow{border-color:rgba(0,0,0,0.16);background:rgba(0,0,0,0.06);}
 .h1{font-size:38px;font-weight:300;line-height:1.1;letter-spacing:-.025em;color:var(--text);}
 .h3{font-size:16px;font-weight:500;line-height:1.3;letter-spacing:-.01em;color:var(--text);}
 .body{font-size:14px;font-weight:400;line-height:1.7;color:var(--muted);}
@@ -236,6 +237,20 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .comp-table td.us-cell{color:var(--blue);font-weight:600;background:var(--blue-dim);border-left:2px solid var(--blue);}
 .ck{color:var(--green);font-weight:700;}.da{color:var(--faint);}
 
+/* ── CAUSAL CHAIN ── */
+.chain-flow{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;gap:0;align-items:start;margin-top:48px;}
+.chain-col{display:flex;flex-direction:column;}
+.chain-domain{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:10px;height:20px;display:flex;align-items:center;}
+.chain-node{background:var(--surface-2);border:1px solid var(--border);border-radius:7px;padding:18px 20px;flex:1;}
+.chain-trigger{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:8px;}
+.chain-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.35;margin-bottom:6px;}
+.chain-sub{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:12px;}
+.chain-delta{font-size:15px;font-weight:700;letter-spacing:-.01em;}
+.chain-arr{display:flex;align-items:center;justify-content:center;color:var(--faint);font-size:18px;margin-top:30px;opacity:.6;}
+.chain-impact{margin-top:28px;padding-top:24px;border-top:1px solid var(--border);}
+.chain-impact-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:12px;}
+.chain-pills{display:flex;gap:8px;flex-wrap:wrap;}
+
 /* ── AUDIENCE (V1) ── */
 .audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .aud-item{padding:18px 20px;display:flex;gap:14px;align-items:flex-start;}
@@ -281,6 +296,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
   .era-row{flex-wrap:wrap;gap:14px;}
   .era-arrow{display:none;}
   .era-card{flex-basis:calc(50% - 7px);}
+  .chain-flow{grid-template-columns:1fr;}.chain-arr{display:none;}
   .problem-grid{grid-template-columns:1fr;}
   .monday-grid{grid-template-columns:1fr;gap:32px;}
   .fc-grid{grid-template-columns:1fr;}
@@ -315,6 +331,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
       <circle cx="2" cy="20" r="2" fill="currentColor"/><circle cx="7.27" cy="7.27" r="2" fill="currentColor"/>
     </svg>
     <span class="nav-logo-text" data-i18n="nav.brand">Company OS</span>
+    <span style="font-size:10px;font-weight:400;color:var(--faint);letter-spacing:.06em;" data-i18n="nav.by">by Decode IT</span>
   </a>
   <div class="nav-right">
     <ul class="nav-links">
@@ -428,7 +445,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 </section>
 
 <!-- M. MONDAY MORNING -->
-<section class="section dot-grid" id="monday">
+<section class="section" id="monday">
   <div class="section-inner">
     <div class="section-header">
       <p class="eyebrow" data-i18n="mon.eyebrow">Montag, 9:00 Uhr</p>
@@ -489,6 +506,67 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
         <div class="fc-num" data-i18n="sol.c4.num">04 · Runway als Signal</div>
         <h3 data-i18n="sol.c4.h3">Finanzielle Realität<br>immer im Blick.</h3>
         <p data-i18n="sol.c4.p">Cash, Burn, Tax und Runway als Signal-Pills. Nicht in einem Report — als operative Wahrnehmungsschicht über jeder Entscheidung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- K. OPERATIONAL CAUSALITY -->
+<section class="section dot-grid" id="chain">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="eyebrow" data-i18n="chain.eyebrow">Operative Kausalität</p>
+      <h2 class="h1" data-i18n="chain.h1">Eine Entscheidung. Systemweite Konsequenzen.</h2>
+      <p class="body" style="max-width:58ch;margin-top:12px;" data-i18n="chain.lede">Beschaffungsauftrag #B-2047 — wie ein einziger operativer Vorfall den Zustand der gesamten Firma verändert.</p>
+    </div>
+    <div class="chain-flow">
+      <div class="chain-col">
+        <p class="chain-domain" data-i18n="chain.d1">Execution</p>
+        <div class="chain-node" style="border-left:3px solid var(--amber);">
+          <p class="chain-trigger" data-i18n="chain.t1">01 · Auslöser</p>
+          <p class="chain-title" data-i18n="chain.n1.title">Angebot weicht ab</p>
+          <p class="chain-sub" data-i18n="chain.n1.sub">Tech Supply GmbH · #B-2047 · +12% über vereinbartem Budget</p>
+          <p class="chain-delta" style="color:var(--amber);" data-i18n="chain.n1.delta">+€504</p>
+        </div>
+      </div>
+      <div class="chain-arr">→</div>
+      <div class="chain-col">
+        <p class="chain-domain" data-i18n="chain.d2">Finance</p>
+        <div class="chain-node" style="border-left:3px solid var(--amber);">
+          <p class="chain-trigger" data-i18n="chain.t2">02 · Auswirkung</p>
+          <p class="chain-title" data-i18n="chain.n2.title">Forecast korrigiert</p>
+          <p class="chain-sub" data-i18n="chain.n2.sub">Q2 Burn Rate angepasst · Gesamtkosten steigen um einen Monat</p>
+          <p class="chain-delta" style="color:var(--amber);" data-i18n="chain.n2.delta">+€504 / Monat</p>
+        </div>
+      </div>
+      <div class="chain-arr">→</div>
+      <div class="chain-col">
+        <p class="chain-domain" data-i18n="chain.d3">Intelligence</p>
+        <div class="chain-node" style="border-left:3px solid var(--pink);">
+          <p class="chain-trigger" data-i18n="chain.t3">03 · Signal</p>
+          <p class="chain-title" data-i18n="chain.n3.title">Runway-Signal ausgelöst</p>
+          <p class="chain-sub" data-i18n="chain.n3.sub">Runway sinkt unter kritische Schwelle · CEO wird automatisch benachrichtigt</p>
+          <p class="chain-delta" style="color:var(--pink);" data-i18n="chain.n3.delta">4.7 → 4.4 Monate</p>
+        </div>
+      </div>
+      <div class="chain-arr">→</div>
+      <div class="chain-col">
+        <p class="chain-domain" data-i18n="chain.d4">Decision</p>
+        <div class="chain-node" style="border-left:3px solid var(--blue);">
+          <p class="chain-trigger" data-i18n="chain.t4">04 · Konsequenz</p>
+          <p class="chain-title" data-i18n="chain.n4.title">3 Prozesse blockiert</p>
+          <p class="chain-sub" data-i18n="chain.n4.sub">Hiring · MacBook · Onboarding · Freigabe durch CEO erforderlich</p>
+          <p class="chain-delta" style="color:var(--blue);" data-i18n="chain.n4.delta">1 Entscheidung ausstehend</p>
+        </div>
+      </div>
+    </div>
+    <div class="chain-impact">
+      <span class="chain-impact-label" data-i18n="chain.impact.label">Gesamtauswirkung · Auftrag #B-2047</span>
+      <div class="chain-pills">
+        <span class="pill pa"><span class="pd"></span><span data-i18n="chain.ip1">+€504 Mehrkosten</span></span>
+        <span class="pill pp"><span class="pd"></span><span data-i18n="chain.ip2">Runway −0.3 Monate</span></span>
+        <span class="pill pp"><span class="pd"></span><span data-i18n="chain.ip3">3 Prozesse blockiert</span></span>
+        <span class="pill pb"><span class="pd"></span><span data-i18n="chain.ip4">1 CEO-Entscheidung ausstehend</span></span>
       </div>
     </div>
   </div>
@@ -620,7 +698,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 </section>
 
 <!-- 6. AI CONTEXT (a05) -->
-<section class="section dot-grid" id="ai">
+<section class="section" id="ai">
   <div class="section-inner">
     <div class="section-header">
       <p class="eyebrow" data-i18n="ai.eyebrow">AI-Architektur</p>
@@ -745,7 +823,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 </section>
 
 <!-- A. AUDIENCE -->
-<section class="section dot-grid" id="audience">
+<section class="section" id="audience">
   <div class="section-inner">
     <div class="section-header">
       <p class="eyebrow" data-i18n="aud.eyebrow">Zielgruppe</p>
@@ -774,7 +852,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 </section>
 
 <!-- 8. FOUNDER (a12) -->
-<section class="section dot-grid" id="founder">
+<section class="section" id="founder">
   <div class="section-inner">
     <div class="two-col">
       <div class="col-intro">
@@ -850,7 +928,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 <script>
 const i18n = {
   de: {
-    'nav.brand':'Company OS','nav.problem':'Problem','nav.solution':'Lösung','nav.signals':'Signale','nav.competition':'Vergleich','nav.founder':'Gründer','nav.cta':'Demo anfragen',
+    'nav.brand':'Company OS','nav.by':'by Decode IT','nav.problem':'Problem','nav.solution':'Lösung','nav.signals':'Signale','nav.competition':'Vergleich','nav.founder':'Gründer','nav.cta':'Demo anfragen',
     'prob.eyebrow':'The Problem','prob.h1':'Operative Komplexität übersteigt menschliche Koordination.','prob.lede':'Kleine Firmen führen 8–12 Tools parallel. Menschen werden zur manuellen Integrationsschicht — und das skaliert nicht.',
     'prob.s1.num':'8–12','prob.s1.label':'Tools laufen parallel in einer Firma mit 10 Mitarbeitern. Tickets, Docs, CRM, HR, Finanzen, Wiki — alles getrennt.',
     'prob.s2.num':'0','prob.s2.label':'Systeme teilen einen gemeinsamen operativen Kontext. Verantwortung, Kosten und Risiken sind überall fragmentiert.',
@@ -865,6 +943,16 @@ const i18n = {
     'sol.c2.num':'02 · Operational Context','sol.c2.h3':'Die richtige Information<br>zur richtigen Zeit.','sol.c2.p':'Tickets, Docs, CRM, SOPs, Kosten und Mitarbeiter teilen ein Datenmodell. Kontext entsteht durch Struktur, nicht durch Suche.',
     'sol.c3.num':'03 · AI-lesbare Realität','sol.c3.h3':'Strukturierte Zusammenhänge<br>für AI.','sol.c3.p':'Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert genau diese Struktur.',
     'sol.c4.num':'04 · Runway als Signal','sol.c4.h3':'Finanzielle Realität<br>immer im Blick.','sol.c4.p':'Cash, Burn, Tax und Runway als Signal-Pills. Nicht in einem Report — als operative Wahrnehmungsschicht über jeder Entscheidung.',
+    'chain.eyebrow':'Operative Kausalität','chain.h1':'Eine Entscheidung. Systemweite Konsequenzen.',
+    'chain.lede':'Beschaffungsauftrag #B-2047 — wie ein einziger operativer Vorfall den Zustand der gesamten Firma verändert.',
+    'chain.d1':'Execution','chain.d2':'Finance','chain.d3':'Intelligence','chain.d4':'Decision',
+    'chain.t1':'01 · Auslöser','chain.t2':'02 · Auswirkung','chain.t3':'03 · Signal','chain.t4':'04 · Konsequenz',
+    'chain.n1.title':'Angebot weicht ab','chain.n1.sub':'Tech Supply GmbH · #B-2047 · +12% über vereinbartem Budget','chain.n1.delta':'+€504',
+    'chain.n2.title':'Forecast korrigiert','chain.n2.sub':'Q2 Burn Rate angepasst · Gesamtkosten steigen um einen Monat','chain.n2.delta':'+€504 / Monat',
+    'chain.n3.title':'Runway-Signal ausgelöst','chain.n3.sub':'Runway sinkt unter kritische Schwelle · CEO wird automatisch benachrichtigt','chain.n3.delta':'4.7 → 4.4 Monate',
+    'chain.n4.title':'3 Prozesse blockiert','chain.n4.sub':'Hiring · MacBook · Onboarding · Freigabe durch CEO erforderlich','chain.n4.delta':'1 Entscheidung ausstehend',
+    'chain.impact.label':'Gesamtauswirkung · Auftrag #B-2047',
+    'chain.ip1':'+€504 Mehrkosten','chain.ip2':'Runway −0.3 Monate','chain.ip3':'3 Prozesse blockiert','chain.ip4':'1 CEO-Entscheidung ausstehend',
     'comp.eyebrow':'Warum anders','comp.h1':'Linear plant Arbeit. Notion archiviert Wissen.<br>Company OS verbindet beides — operativ.','comp.lede':'Jedes Tool löst sein Problem isoliert. Company OS verbindet die Probleme — weil sie im echten Betrieb auch verbunden sind.',
     'comp.col.linear':'Linear','comp.col.notion':'Notion','comp.col.erp':'ERP / DATEV','comp.col.us':'Company OS',
     'comp.r1':'Tickets &amp; Arbeit','comp.r2':'Dokumente &amp; Wissen','comp.r3':'CRM &amp; Forecast','comp.r4':'Runway als Live-Signal','comp.r5':'Mitarbeiter, Assets, Vault','comp.r6':'Gemeinsames Datenmodell','comp.r7':'AI-lesbarer Kontext',
@@ -938,7 +1026,7 @@ const i18n = {
     'footer.brand':'Company OS','footer.impressum':'Impressum','footer.datenschutz':'Datenschutz','footer.copy':'© 2026 Decode IT',
   },
   en: {
-    'nav.brand':'Company OS','nav.problem':'Problem','nav.solution':'Solution','nav.signals':'Signals','nav.competition':'Compare','nav.founder':'Founder','nav.cta':'Request demo',
+    'nav.brand':'Company OS','nav.by':'by Decode IT','nav.problem':'Problem','nav.solution':'Solution','nav.signals':'Signals','nav.competition':'Compare','nav.founder':'Founder','nav.cta':'Request demo',
     'prob.eyebrow':'The Problem','prob.h1':'Operational complexity outpaces human coordination.','prob.lede':'Small companies run 8–12 tools in parallel. People become the manual integration layer — and that doesn\'t scale.',
     'prob.s1.num':'8–12','prob.s1.label':'Tools running in parallel in a 10-person company. Tickets, docs, CRM, HR, finance, wiki — all separate.',
     'prob.s2.num':'0','prob.s2.label':'Systems share a common operational context. Responsibility, costs, and risks are fragmented everywhere.',
@@ -953,6 +1041,16 @@ const i18n = {
     'sol.c2.num':'02 · Operational Context','sol.c2.h3':'The right information<br>at the right time.','sol.c2.p':'Tickets, docs, CRM, SOPs, costs, and people share one data model. Context emerges through structure, not search.',
     'sol.c3.num':'03 · AI-readable Reality','sol.c3.h3':'Structured connections<br>for AI.','sol.c3.p':'Reasoning models can finally interpret operational reality — when it\'s structured. Company OS delivers that layer.',
     'sol.c4.num':'04 · Runway as Signal','sol.c4.h3':'Financial reality<br>always visible.','sol.c4.p':'Cash, burn, tax, and runway as signal pills. Not in a report — as an operational perception layer above every decision.',
+    'chain.eyebrow':'Operational Causality','chain.h1':'One decision. System-wide consequences.',
+    'chain.lede':'Procurement order #B-2047 — how a single operational event changes the state of the entire company.',
+    'chain.d1':'Execution','chain.d2':'Finance','chain.d3':'Intelligence','chain.d4':'Decision',
+    'chain.t1':'01 · Trigger','chain.t2':'02 · Impact','chain.t3':'03 · Signal','chain.t4':'04 · Consequence',
+    'chain.n1.title':'Quote deviates','chain.n1.sub':'Tech Supply GmbH · #B-2047 · +12% over agreed budget','chain.n1.delta':'+€504',
+    'chain.n2.title':'Forecast revised','chain.n2.sub':'Q2 burn rate adjusted · Total costs increase for one month','chain.n2.delta':'+€504 / month',
+    'chain.n3.title':'Runway signal triggered','chain.n3.sub':'Runway drops below critical threshold · CEO notified automatically','chain.n3.delta':'4.7 → 4.4 months',
+    'chain.n4.title':'3 processes blocked','chain.n4.sub':'Hiring · MacBook · Onboarding · CEO approval required','chain.n4.delta':'1 decision pending',
+    'chain.impact.label':'Total impact · Order #B-2047',
+    'chain.ip1':'+€504 additional cost','chain.ip2':'Runway −0.3 months','chain.ip3':'3 processes blocked','chain.ip4':'1 CEO decision pending',
     'comp.eyebrow':'Why Different','comp.h1':'Linear plans work. Notion archives knowledge.<br>Company OS connects both — operationally.','comp.lede':'Every tool solves its problem in isolation. Company OS connects the problems — because in real operations, they\'re connected too.',
     'comp.col.linear':'Linear','comp.col.notion':'Notion','comp.col.erp':'ERP / Accounting','comp.col.us':'Company OS',
     'comp.r1':'Tickets &amp; Work','comp.r2':'Documents &amp; Knowledge','comp.r3':'CRM &amp; Forecast','comp.r4':'Runway as Live Signal','comp.r5':'People, Assets, Vault','comp.r6':'Shared Data Model','comp.r7':'AI-readable Context',
