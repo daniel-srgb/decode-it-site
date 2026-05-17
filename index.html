@@ -291,9 +291,9 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
   .nav{padding:0 28px;}
   .nav-links{display:none;}
   .hero{grid-template-columns:1fr;}
-  .hero-left{justify-content:flex-start;padding:72px 28px 36px;}
+  .hero-left{justify-content:flex-start;padding:32px 28px 56px;order:2;}
   .hero-left-inner{max-width:100%;}
-  .hero-right{padding:0 28px 72px;}
+  .hero-right{padding:72px 28px 0;order:1;}
   .hero-h1{font-size:40px;}
   .two-col{grid-template-columns:1fr;}
   .obj-grid{grid-template-columns:1fr;}
@@ -376,53 +376,67 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
     </div>
   </div>
   <div class="hero-right">
-    <!-- DARK graph -->
-    <svg class="hero-svg graph-dark" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-      <defs><radialGradient id="hgd" cx="50%" cy="61%" r="56%"><stop offset="0%" stop-color="rgba(74,163,255,0.18)"/><stop offset="60%" stop-color="rgba(74,163,255,0.04)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs>
-      <rect width="1280" height="720" fill="url(#hgd)"/>
-      <circle cx="640" cy="440" r="115" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-      <circle cx="640" cy="440" r="228" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    <!-- DARK graph — nodes equidistant r=360, 7×51.4° from top -->
+    <svg class="hero-svg graph-dark" viewBox="0 0 1280 870" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <defs><radialGradient id="hgd" cx="50%" cy="54%" r="46%"><stop offset="0%" stop-color="rgba(74,163,255,0.18)"/><stop offset="60%" stop-color="rgba(74,163,255,0.04)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs>
+      <rect width="1280" height="870" fill="url(#hgd)"/>
+      <circle cx="640" cy="440" r="115" fill="none" stroke="rgba(255,255,255,0.06)"  stroke-width="1"/>
+      <circle cx="640" cy="440" r="228" fill="none" stroke="rgba(255,255,255,0.04)"  stroke-width="1"/>
       <circle cx="640" cy="440" r="360" fill="none" stroke="rgba(255,255,255,0.028)" stroke-width="1"/>
-      <line x1="640" y1="348" x2="640" y2="154" stroke="rgba(74,163,255,0.36)" stroke-width="1.25"/>
-      <line x1="721" y1="390" x2="939" y2="257" stroke="rgba(74,163,255,0.28)" stroke-width="1"/>
-      <line x1="732" y1="444" x2="1058" y2="459" stroke="rgba(62,210,119,0.28)" stroke-width="1"/>
-      <line x1="713" y1="496" x2="903" y2="642" stroke="rgba(62,210,119,0.22)" stroke-width="1"/>
-      <line x1="567" y1="496" x2="377" y2="642" stroke="rgba(255,179,64,0.22)" stroke-width="1"/>
-      <line x1="548" y1="444" x2="222" y2="459" stroke="rgba(180,166,255,0.28)" stroke-width="1"/>
-      <line x1="559" y1="390" x2="341" y2="257" stroke="rgba(180,166,255,0.22)" stroke-width="1"/>
-      <circle cx="640" cy="120" r="34" fill="rgba(74,163,255,0.08)" stroke="rgba(74,163,255,0.55)" stroke-width="1.25"/>
-      <circle cx="966" cy="240" r="28" fill="rgba(74,163,255,0.06)" stroke="rgba(74,163,255,0.38)" stroke-width="1.25"/>
-      <circle cx="1086" cy="460" r="28" fill="rgba(62,210,119,0.06)" stroke="rgba(62,210,119,0.42)" stroke-width="1.25"/>
-      <circle cx="926" cy="660" r="28" fill="rgba(62,210,119,0.05)" stroke="rgba(62,210,119,0.28)" stroke-width="1.25"/>
-      <circle cx="354" cy="660" r="28" fill="rgba(255,179,64,0.05)" stroke="rgba(255,179,64,0.32)" stroke-width="1.25"/>
-      <circle cx="194" cy="460" r="28" fill="rgba(180,166,255,0.06)" stroke="rgba(180,166,255,0.42)" stroke-width="1.25"/>
-      <circle cx="314" cy="240" r="28" fill="rgba(180,166,255,0.05)" stroke="rgba(180,166,255,0.32)" stroke-width="1.25"/>
-      <circle cx="640" cy="440" r="92" fill="rgba(74,163,255,0.07)" stroke="rgba(74,163,255,0.42)" stroke-width="1.5"/>
-      <circle cx="640" cy="440" r="57" fill="rgba(74,163,255,0.10)" stroke="rgba(74,163,255,0.22)" stroke-width="1"/>
+      <line x1="640" y1="348" x2="640" y2="114" stroke="rgba(74,163,255,0.36)"  stroke-width="1.25"/>
+      <line x1="712" y1="383" x2="899" y2="234" stroke="rgba(74,163,255,0.28)"  stroke-width="1"/>
+      <line x1="730" y1="461" x2="963" y2="514" stroke="rgba(74,163,255,0.28)"  stroke-width="1"/>
+      <line x1="680" y1="523" x2="784" y2="739" stroke="rgba(74,163,255,0.22)"  stroke-width="1"/>
+      <line x1="600" y1="523" x2="496" y2="739" stroke="rgba(74,163,255,0.22)"  stroke-width="1"/>
+      <line x1="550" y1="461" x2="316" y2="514" stroke="rgba(74,163,255,0.28)"  stroke-width="1"/>
+      <line x1="568" y1="383" x2="381" y2="234" stroke="rgba(74,163,255,0.22)"  stroke-width="1"/>
+      <circle cx="640" cy="80"  r="34" fill="rgba(74,163,255,0.18)"  stroke="rgba(74,163,255,0.75)"  stroke-width="1.25"/>
+      <circle cx="921" cy="216" r="28" fill="rgba(74,163,255,0.15)"  stroke="rgba(74,163,255,0.62)"  stroke-width="1.25"/>
+      <circle cx="991" cy="520" r="28" fill="rgba(74,163,255,0.15)"  stroke="rgba(74,163,255,0.62)"  stroke-width="1.25"/>
+      <circle cx="796" cy="764" r="28" fill="rgba(74,163,255,0.14)"  stroke="rgba(74,163,255,0.55)"  stroke-width="1.25"/>
+      <circle cx="484" cy="764" r="28" fill="rgba(74,163,255,0.14)"  stroke="rgba(74,163,255,0.55)"  stroke-width="1.25"/>
+      <circle cx="289" cy="520" r="28" fill="rgba(74,163,255,0.15)"  stroke="rgba(74,163,255,0.62)"  stroke-width="1.25"/>
+      <circle cx="359" cy="216" r="28" fill="rgba(74,163,255,0.14)"  stroke="rgba(74,163,255,0.55)"  stroke-width="1.25"/>
+      <circle cx="640" cy="440" r="92" fill="rgba(74,163,255,0.07)"  stroke="rgba(74,163,255,0.42)" stroke-width="1.5"/>
+      <circle cx="640" cy="440" r="57" fill="rgba(74,163,255,0.10)"  stroke="rgba(74,163,255,0.22)" stroke-width="1"/>
+      <text x="640"  y="34"  text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(255,255,255,0.45)">CEO</text>
+      <text x="921"  y="176" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(255,255,255,0.45)">FINANCE</text>
+      <text x="1031" y="524" text-anchor="start"  font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(255,255,255,0.45)">EXECUTION</text>
+      <text x="796"  y="820" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(255,255,255,0.45)">PROCUREMENT</text>
+      <text x="484"  y="820" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(255,255,255,0.45)">PEOPLE</text>
+      <text x="249"  y="524" text-anchor="end"    font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(255,255,255,0.45)">SIGNALS</text>
+      <text x="359"  y="176" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(255,255,255,0.45)">CRM</text>
     </svg>
-    <!-- LIGHT graph -->
-    <svg class="hero-svg graph-light" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-      <defs><radialGradient id="hgl" cx="50%" cy="61%" r="56%"><stop offset="0%" stop-color="rgba(24,112,208,0.14)"/><stop offset="60%" stop-color="rgba(24,112,208,0.04)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs>
-      <rect width="1280" height="720" fill="url(#hgl)"/>
+    <!-- LIGHT graph — nodes equidistant r=360, 7×51.4° from top -->
+    <svg class="hero-svg graph-light" viewBox="0 0 1280 870" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <defs><radialGradient id="hgl" cx="50%" cy="54%" r="46%"><stop offset="0%" stop-color="rgba(24,112,208,0.14)"/><stop offset="60%" stop-color="rgba(24,112,208,0.04)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs>
+      <rect width="1280" height="870" fill="url(#hgl)"/>
       <circle cx="640" cy="440" r="115" fill="none" stroke="rgba(24,112,208,0.20)" stroke-width="1.5"/>
-      <circle cx="640" cy="440" r="228" fill="none" stroke="rgba(0,0,0,0.09)" stroke-width="1.5"/>
-      <circle cx="640" cy="440" r="360" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="1.5"/>
-      <line x1="640" y1="348" x2="640" y2="154" stroke="rgba(24,112,208,0.55)" stroke-width="1.5"/>
-      <line x1="721" y1="390" x2="939" y2="257" stroke="rgba(24,112,208,0.42)" stroke-width="1.25"/>
-      <line x1="732" y1="444" x2="1058" y2="459" stroke="rgba(24,140,72,0.46)" stroke-width="1.25"/>
-      <line x1="713" y1="496" x2="903" y2="642" stroke="rgba(24,140,72,0.34)" stroke-width="1.25"/>
-      <line x1="567" y1="496" x2="377" y2="642" stroke="rgba(184,114,0,0.34)" stroke-width="1.25"/>
-      <line x1="548" y1="444" x2="222" y2="459" stroke="rgba(96,64,192,0.46)" stroke-width="1.25"/>
-      <line x1="559" y1="390" x2="341" y2="257" stroke="rgba(96,64,192,0.34)" stroke-width="1.25"/>
-      <circle cx="640" cy="120" r="34" fill="rgba(24,112,208,0.10)" stroke="rgba(24,112,208,0.65)" stroke-width="1.5"/>
-      <circle cx="966" cy="240" r="28" fill="rgba(24,112,208,0.08)" stroke="rgba(24,112,208,0.48)" stroke-width="1.5"/>
-      <circle cx="1086" cy="460" r="28" fill="rgba(24,140,72,0.08)" stroke="rgba(24,140,72,0.54)" stroke-width="1.5"/>
-      <circle cx="926" cy="660" r="28" fill="rgba(24,140,72,0.06)" stroke="rgba(24,140,72,0.36)" stroke-width="1.5"/>
-      <circle cx="354" cy="660" r="28" fill="rgba(184,114,0,0.06)" stroke="rgba(184,114,0,0.38)" stroke-width="1.5"/>
-      <circle cx="194" cy="460" r="28" fill="rgba(96,64,192,0.08)" stroke="rgba(96,64,192,0.54)" stroke-width="1.5"/>
-      <circle cx="314" cy="240" r="28" fill="rgba(96,64,192,0.06)" stroke="rgba(96,64,192,0.38)" stroke-width="1.5"/>
-      <circle cx="640" cy="440" r="92" fill="rgba(24,112,208,0.09)" stroke="rgba(24,112,208,0.55)" stroke-width="2"/>
-      <circle cx="640" cy="440" r="57" fill="rgba(24,112,208,0.12)" stroke="rgba(24,112,208,0.32)" stroke-width="1.5"/>
+      <circle cx="640" cy="440" r="228" fill="none" stroke="rgba(0,0,0,0.09)"       stroke-width="1.5"/>
+      <circle cx="640" cy="440" r="360" fill="none" stroke="rgba(0,0,0,0.06)"       stroke-width="1.5"/>
+      <line x1="640" y1="348" x2="640" y2="114" stroke="rgba(24,112,208,0.55)"  stroke-width="1.5"/>
+      <line x1="712" y1="383" x2="899" y2="234" stroke="rgba(24,112,208,0.42)"  stroke-width="1.25"/>
+      <line x1="730" y1="461" x2="963" y2="514" stroke="rgba(24,112,208,0.42)"  stroke-width="1.25"/>
+      <line x1="680" y1="523" x2="784" y2="739" stroke="rgba(24,112,208,0.34)"  stroke-width="1.25"/>
+      <line x1="600" y1="523" x2="496" y2="739" stroke="rgba(24,112,208,0.34)"  stroke-width="1.25"/>
+      <line x1="550" y1="461" x2="316" y2="514" stroke="rgba(24,112,208,0.42)"  stroke-width="1.25"/>
+      <line x1="568" y1="383" x2="381" y2="234" stroke="rgba(24,112,208,0.34)"  stroke-width="1.25"/>
+      <circle cx="640" cy="80"  r="34" fill="rgba(24,112,208,0.18)"  stroke="rgba(24,112,208,0.80)" stroke-width="1.5"/>
+      <circle cx="921" cy="216" r="28" fill="rgba(24,112,208,0.16)"  stroke="rgba(24,112,208,0.68)" stroke-width="1.5"/>
+      <circle cx="991" cy="520" r="28" fill="rgba(24,112,208,0.16)"  stroke="rgba(24,112,208,0.68)" stroke-width="1.5"/>
+      <circle cx="796" cy="764" r="28" fill="rgba(24,112,208,0.14)"  stroke="rgba(24,112,208,0.60)" stroke-width="1.5"/>
+      <circle cx="484" cy="764" r="28" fill="rgba(24,112,208,0.14)"  stroke="rgba(24,112,208,0.60)" stroke-width="1.5"/>
+      <circle cx="289" cy="520" r="28" fill="rgba(24,112,208,0.16)"  stroke="rgba(24,112,208,0.68)" stroke-width="1.5"/>
+      <circle cx="359" cy="216" r="28" fill="rgba(24,112,208,0.14)"  stroke="rgba(24,112,208,0.60)" stroke-width="1.5"/>
+      <circle cx="640" cy="440" r="92" fill="rgba(24,112,208,0.09)"  stroke="rgba(24,112,208,0.55)" stroke-width="2"/>
+      <circle cx="640" cy="440" r="57" fill="rgba(24,112,208,0.12)"  stroke="rgba(24,112,208,0.32)" stroke-width="1.5"/>
+      <text x="640"  y="34"  text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(0,0,0,0.45)">CEO</text>
+      <text x="921"  y="176" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(0,0,0,0.45)">FINANCE</text>
+      <text x="1031" y="524" text-anchor="start"  font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(0,0,0,0.45)">EXECUTION</text>
+      <text x="796"  y="820" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(0,0,0,0.45)">PROCUREMENT</text>
+      <text x="484"  y="820" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(0,0,0,0.45)">PEOPLE</text>
+      <text x="249"  y="524" text-anchor="end"    font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(0,0,0,0.45)">SIGNALS</text>
+      <text x="359"  y="176" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="rgba(0,0,0,0.45)">CRM</text>
     </svg>
   </div>
 </section>
