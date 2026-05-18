@@ -99,8 +99,8 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .section-header .eyebrow{margin-bottom:16px;}
 
 /* ── HERO ── */
-.hero{min-height:100vh;padding-top:var(--nav-h);display:grid;grid-template-columns:1fr 1.6fr;border-bottom:1px solid var(--border);overflow:hidden;}
-.hero-left{display:flex;align-items:center;justify-content:flex-end;padding:80px 52px 80px max(28px,calc((100vw - 1160px)/2 + 28px));}
+.hero{min-height:100vh;padding-top:var(--nav-h);display:grid;grid-template-columns:1fr 2.2fr;border-bottom:1px solid var(--border);overflow:hidden;}
+.hero-left{display:flex;align-items:center;justify-content:flex-end;padding:80px 20px 80px max(28px,calc((100vw - 1160px)/2 + 28px));}
 .hero-left-inner{max-width:500px;width:100%;}
 .hero-eyebrow{margin-bottom:28px;white-space:nowrap;}
 .hero-h1{font-size:52px;font-weight:300;line-height:1.05;letter-spacing:-.03em;color:var(--text);margin-bottom:8px;}
@@ -115,10 +115,10 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .btn-ghost:hover{border-color:var(--blue);color:var(--blue);}
 .hero-right{display:flex;align-items:center;padding:16px 0 16px 0;}
 .hero-svg{width:100%;height:auto;display:block;}
-.graph-dark{display:block;}
+.graph-dark{display:block;filter:saturate(1.5) contrast(1.18) drop-shadow(0 0 56px rgba(74,163,255,0.22));}
 .graph-light{display:none;}
 [data-theme="light"] .graph-dark{display:none;}
-[data-theme="light"] .graph-light{display:block;}
+[data-theme="light"] .graph-light{display:block;filter:saturate(1.3) contrast(1.12);}
 
 /* ── ERA ROW (The Shift) ── */
 .era-row{display:flex;align-items:stretch;gap:0;}
@@ -385,7 +385,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
     <div class="hero-left-inner">
       <p class="eyebrow hero-eyebrow" data-i18n="hero.eyebrow">Operative Intelligenz · Verbundene Realität</p>
       <h1 class="hero-h1" data-i18n="hero.h1">Company OS</h1>
-      <p class="hero-tagline" data-i18n="hero.tagline">Die operative Kontextschicht.</p>
+      <p class="hero-tagline" data-i18n="hero.tagline">Ein Betriebssystem<br>für operative Realität.</p>
       <div class="hero-divider"></div>
       <p class="hero-sub" data-i18n="hero.sub">Die meisten Unternehmen laufen auf fragmentierten Tools und menschlicher Koordination.<span style="display:block;margin-top:12px;color:var(--text);font-weight:500;">Company OS verbindet operative Realität zu strukturierter Intelligenz.</span></p>
       <div class="hero-actions">
@@ -396,7 +396,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
   </div>
   <div class="hero-right">
     <!-- DARK graph - animated radial network -->
-    <svg class="hero-svg graph-dark" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <svg class="hero-svg graph-dark" viewBox="150 100 980 560" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
       <defs>
         <radialGradient id="hco-dark" cx="50%" cy="54%" r="58%">
           <stop offset="0%" stop-color="rgba(74,163,255,0.09)"/>
@@ -420,12 +420,12 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
       <circle cx="860" cy="390" r="22" fill="rgba(255,179,64,0.07)" stroke="rgba(255,179,64,0.35)" stroke-width="1" class="hng"/>
       <circle cx="860" cy="390" r="6" fill="rgba(255,179,64,0.7)"/>
       <text x="900" y="388" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(255,179,64,0.72)" letter-spacing="0.1em">FINANCE</text>
-      <text x="900" y="402" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(255,179,64,0.4)" letter-spacing="0.06em">Runway Â· Costs</text>
+      <text x="900" y="402" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(255,179,64,0.4)" letter-spacing="0.06em">Runway · Costs</text>
       <circle cx="777" cy="218" r="36" fill="rgba(74,163,255,0.05)" class="hng2"/>
       <circle cx="777" cy="218" r="22" fill="rgba(74,163,255,0.08)" stroke="rgba(74,163,255,0.38)" stroke-width="1" class="hng2"/>
       <circle cx="777" cy="218" r="6" fill="rgba(74,163,255,0.75)"/>
       <text x="808" y="210" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(74,163,255,0.72)" letter-spacing="0.1em">EXECUTION</text>
-      <text x="808" y="224" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(74,163,255,0.4)" letter-spacing="0.06em">Tasks Â· Projects</text>
+      <text x="808" y="224" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(74,163,255,0.4)" letter-spacing="0.06em">Tasks · Projects</text>
       <circle cx="591" cy="176" r="32" fill="rgba(74,163,255,0.05)" class="hng3"/>
       <circle cx="591" cy="176" r="20" fill="rgba(74,163,255,0.07)" stroke="rgba(74,163,255,0.3)" stroke-width="1" class="hng3"/>
       <circle cx="591" cy="176" r="5" fill="rgba(74,163,255,0.65)"/>
@@ -435,22 +435,22 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
       <circle cx="442" cy="295" r="21" fill="rgba(180,166,255,0.07)" stroke="rgba(180,166,255,0.33)" stroke-width="1" class="hng4"/>
       <circle cx="442" cy="295" r="5.5" fill="rgba(180,166,255,0.68)"/>
       <text x="400" y="288" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(180,166,255,0.68)" letter-spacing="0.1em">DOCS</text>
-      <text x="400" y="302" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(180,166,255,0.38)" letter-spacing="0.06em">SOPs Â· Contracts</text>
+      <text x="400" y="302" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(180,166,255,0.38)" letter-spacing="0.06em">SOPs · Contracts</text>
       <circle cx="442" cy="485" r="36" fill="rgba(62,210,119,0.05)" class="hng5"/>
       <circle cx="442" cy="485" r="22" fill="rgba(62,210,119,0.07)" stroke="rgba(62,210,119,0.35)" stroke-width="1" class="hng5"/>
       <circle cx="442" cy="485" r="6" fill="rgba(62,210,119,0.72)"/>
       <text x="400" y="479" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(62,210,119,0.7)" letter-spacing="0.1em">SIGNALS</text>
-      <text x="400" y="493" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(62,210,119,0.38)" letter-spacing="0.06em">Alerts Â· Status</text>
+      <text x="400" y="493" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(62,210,119,0.38)" letter-spacing="0.06em">Alerts · Status</text>
       <circle cx="591" cy="604" r="32" fill="rgba(74,163,255,0.04)" class="hng6"/>
       <circle cx="591" cy="604" r="20" fill="rgba(74,163,255,0.07)" stroke="rgba(74,163,255,0.28)" stroke-width="1" class="hng6"/>
       <circle cx="591" cy="604" r="5" fill="rgba(74,163,255,0.6)"/>
       <text x="591" y="636" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(74,163,255,0.62)" letter-spacing="0.1em">PEOPLE</text>
-      <text x="591" y="649" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(74,163,255,0.36)" letter-spacing="0.06em">Roles Â· Capacity</text>
+      <text x="591" y="649" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(74,163,255,0.36)" letter-spacing="0.06em">Roles · Capacity</text>
       <circle cx="777" cy="562" r="34" fill="rgba(255,179,64,0.05)" class="hng7"/>
       <circle cx="777" cy="562" r="21" fill="rgba(255,179,64,0.07)" stroke="rgba(255,179,64,0.3)" stroke-width="1" class="hng7"/>
       <circle cx="777" cy="562" r="5.5" fill="rgba(255,179,64,0.65)"/>
       <text x="808" y="556" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(255,179,64,0.65)" letter-spacing="0.1em">PROCUREMENT</text>
-      <text x="808" y="570" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(255,179,64,0.38)" letter-spacing="0.06em">Suppliers Â· Flow</text>
+      <text x="808" y="570" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(255,179,64,0.38)" letter-spacing="0.06em">Suppliers · Flow</text>
       <circle cx="640" cy="390" r="78" fill="rgba(74,163,255,0.04)" class="hcb"/>
       <circle cx="640" cy="390" r="56" fill="rgba(74,163,255,0.06)" stroke="rgba(74,163,255,0.14)" stroke-width="0.75" class="hcb"/>
       <circle cx="640" cy="390" r="36" fill="rgba(74,163,255,0.1)" stroke="rgba(74,163,255,0.35)" stroke-width="1.25" class="hcb"/>
@@ -459,7 +459,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
       <text x="640" y="399" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(74,163,255,0.92)" letter-spacing="0.1em">OS</text>
     </svg>
     <!-- LIGHT graph - animated radial network -->
-    <svg class="hero-svg graph-light" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <svg class="hero-svg graph-light" viewBox="150 100 980 560" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
       <defs>
         <radialGradient id="hco-light" cx="50%" cy="54%" r="58%">
           <stop offset="0%" stop-color="rgba(41,128,232,0.07)"/>
@@ -483,12 +483,12 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
       <circle cx="860" cy="390" r="22" fill="rgba(217,136,32,0.10)" stroke="rgba(217,136,32,0.45)" stroke-width="1" class="hng"/>
       <circle cx="860" cy="390" r="6" fill="rgba(217,136,32,0.80)"/>
       <text x="900" y="388" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(217,136,32,0.85)" letter-spacing="0.1em">FINANCE</text>
-      <text x="900" y="402" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(217,136,32,0.52)" letter-spacing="0.06em">Runway Â· Costs</text>
+      <text x="900" y="402" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(217,136,32,0.52)" letter-spacing="0.06em">Runway · Costs</text>
       <circle cx="777" cy="218" r="36" fill="rgba(41,128,232,0.07)" class="hng2"/>
       <circle cx="777" cy="218" r="22" fill="rgba(41,128,232,0.10)" stroke="rgba(41,128,232,0.48)" stroke-width="1" class="hng2"/>
       <circle cx="777" cy="218" r="6" fill="rgba(41,128,232,0.82)"/>
       <text x="808" y="210" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(41,128,232,0.85)" letter-spacing="0.1em">EXECUTION</text>
-      <text x="808" y="224" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(41,128,232,0.52)" letter-spacing="0.06em">Tasks Â· Projects</text>
+      <text x="808" y="224" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(41,128,232,0.52)" letter-spacing="0.06em">Tasks · Projects</text>
       <circle cx="591" cy="176" r="32" fill="rgba(41,128,232,0.07)" class="hng3"/>
       <circle cx="591" cy="176" r="20" fill="rgba(41,128,232,0.09)" stroke="rgba(41,128,232,0.40)" stroke-width="1" class="hng3"/>
       <circle cx="591" cy="176" r="5" fill="rgba(41,128,232,0.78)"/>
@@ -498,22 +498,22 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
       <circle cx="442" cy="295" r="21" fill="rgba(124,107,212,0.10)" stroke="rgba(124,107,212,0.42)" stroke-width="1" class="hng4"/>
       <circle cx="442" cy="295" r="5.5" fill="rgba(124,107,212,0.80)"/>
       <text x="400" y="288" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(124,107,212,0.84)" letter-spacing="0.1em">DOCS</text>
-      <text x="400" y="302" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(124,107,212,0.50)" letter-spacing="0.06em">SOPs Â· Contracts</text>
+      <text x="400" y="302" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(124,107,212,0.50)" letter-spacing="0.06em">SOPs · Contracts</text>
       <circle cx="442" cy="485" r="36" fill="rgba(34,181,90,0.07)" class="hng5"/>
       <circle cx="442" cy="485" r="22" fill="rgba(34,181,90,0.09)" stroke="rgba(34,181,90,0.44)" stroke-width="1" class="hng5"/>
       <circle cx="442" cy="485" r="6" fill="rgba(34,181,90,0.80)"/>
       <text x="400" y="479" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(34,181,90,0.84)" letter-spacing="0.1em">SIGNALS</text>
-      <text x="400" y="493" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(34,181,90,0.50)" letter-spacing="0.06em">Alerts Â· Status</text>
+      <text x="400" y="493" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(34,181,90,0.50)" letter-spacing="0.06em">Alerts · Status</text>
       <circle cx="591" cy="604" r="32" fill="rgba(41,128,232,0.06)" class="hng6"/>
       <circle cx="591" cy="604" r="20" fill="rgba(41,128,232,0.09)" stroke="rgba(41,128,232,0.38)" stroke-width="1" class="hng6"/>
       <circle cx="591" cy="604" r="5" fill="rgba(41,128,232,0.76)"/>
       <text x="591" y="636" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(41,128,232,0.82)" letter-spacing="0.1em">PEOPLE</text>
-      <text x="591" y="649" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(41,128,232,0.48)" letter-spacing="0.06em">Roles Â· Capacity</text>
+      <text x="591" y="649" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(41,128,232,0.48)" letter-spacing="0.06em">Roles · Capacity</text>
       <circle cx="777" cy="562" r="34" fill="rgba(217,136,32,0.07)" class="hng7"/>
       <circle cx="777" cy="562" r="21" fill="rgba(217,136,32,0.09)" stroke="rgba(217,136,32,0.40)" stroke-width="1" class="hng7"/>
       <circle cx="777" cy="562" r="5.5" fill="rgba(217,136,32,0.78)"/>
       <text x="808" y="556" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600" fill="rgba(217,136,32,0.84)" letter-spacing="0.1em">PROCUREMENT</text>
-      <text x="808" y="570" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(217,136,32,0.50)" letter-spacing="0.06em">Suppliers Â· Flow</text>
+      <text x="808" y="570" font-family="Inter,system-ui,sans-serif" font-size="8" fill="rgba(217,136,32,0.50)" letter-spacing="0.06em">Suppliers · Flow</text>
       <circle cx="640" cy="390" r="78" fill="rgba(41,128,232,0.05)" class="hcb"/>
       <circle cx="640" cy="390" r="56" fill="rgba(41,128,232,0.08)" stroke="rgba(41,128,232,0.18)" stroke-width="0.75" class="hcb"/>
       <circle cx="640" cy="390" r="36" fill="rgba(41,128,232,0.12)" stroke="rgba(41,128,232,0.42)" stroke-width="1.25" class="hcb"/>
@@ -1099,7 +1099,7 @@ const i18n = {
     'aud.a2.title':'IT-Dienstleister','aud.a2.p':'Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.',
     'aud.a3.title':'Kleine SaaS- und Agenturteams','aud.a3.p':'Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.',
     'aud.a4.title':'Teams mit zu vielen Tools','aud.a4.p':'Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Datenbasis, viel Doppelarbeit.',
-    'hero.eyebrow':'Operative Intelligenz · Verbundene Realität','hero.h1':'Company OS','hero.tagline':'Die operative Kontextschicht.',
+    'hero.eyebrow':'Operative Intelligenz · Verbundene Realität','hero.h1':'Company OS','hero.tagline':'Ein Betriebssystem<br>für operative Realität.',
     'hero.sub':'Die meisten Unternehmen laufen auf fragmentierten Tools und menschlicher Koordination.<span style="display:block;margin-top:12px;color:var(--text);font-weight:500;">Company OS verbindet operative Realität zu strukturierter Intelligenz.</span>',
     'hero.cta':'System erkunden','hero.secondary':'Demo anfragen',
     'shift.eyebrow':'Die Evolution','shift.h1':'Von der Fragmentierung zur verbundenen operativen Realität.',
@@ -1197,7 +1197,7 @@ const i18n = {
     'aud.a2.title':'IT service providers','aud.a2.p':'Multiple client projects in parallel, thin margins, clear delivery. Tickets need to talk to costs and pipeline.',
     'aud.a3.title':'Small SaaS and agency teams','aud.a3.p':'Building a product and a company simultaneously. Neither should devour the other.',
     'aud.a4.title':'Teams with too many tools','aud.a4.p':'Jira plus Notion plus HubSpot plus accounting plus Slack. No unified truth, lots of duplicate work.',
-    'hero.eyebrow':'Operational Intelligence · Connected Reality','hero.h1':'Company OS','hero.tagline':'The operational context layer.',
+    'hero.eyebrow':'Operational Intelligence · Connected Reality','hero.h1':'Company OS','hero.tagline':'An operating system<br>for operational reality.',
     'hero.sub':'Most companies run on disconnected tools and human coordination.<span style="display:block;margin-top:12px;color:var(--text);font-weight:500;">Company OS connects operational reality into structured intelligence.</span>',
     'hero.cta':'Explore system','hero.secondary':'Request demo',
     'shift.eyebrow':'The Evolution','shift.h1':'From fragmentation to connected operational reality.',
