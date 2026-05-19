@@ -152,13 +152,63 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .tl-body p:last-child{font-size:11px;color:var(--muted);}
 .tl-pill{flex-shrink:0;align-self:flex-start;margin-top:2px;}
 
-/* ── SIGNAL GRID (a06) ── */
-.signal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:14px;}
-.sig-card{padding:20px 22px;display:flex;flex-direction:column;}
-.sig-card .pill{margin-bottom:14px;align-self:flex-start;}
-.sig-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:8px;line-height:1.3;}
-.sig-body{font-size:11px;color:var(--muted);line-height:1.55;flex:1;}
-.sig-source{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:12px;}
+/* ── SIGNAL EVENT GRID (a06) ── */
+.sig-event-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;}
+.sig-hero-card{grid-column:1;grid-row:1/3;padding:26px 28px;display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s cubic-bezier(.22,1,.36,1);background:rgba(255,255,255,0.035);border-color:rgba(255,255,255,0.22);box-shadow:0 4px 22px rgba(0,0,0,.32);}
+.sig-hero-card:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,0,0,.42);}
+[data-theme="light"] .sig-hero-card{background:rgba(0,0,0,0.07);border-color:rgba(0,0,0,0.20);box-shadow:0 4px 22px rgba(0,0,0,.08);}
+.sig-event-id{font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.04em;margin-bottom:10px;}
+.sig-event-h{font-size:22px;font-weight:300;line-height:1.15;color:var(--text);letter-spacing:-.02em;margin-bottom:6px;}
+.sig-event-sub{font-size:13px;color:rgba(255,101,119,.88);font-weight:400;margin-bottom:24px;}
+.sig-event-meta{display:flex;flex-direction:column;}
+.sig-meta-row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--border);padding:8px 0;}
+.sig-meta-key{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+.sig-meta-val{font-size:11px;font-weight:500;color:var(--text);}
+.sig-timeline{margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;gap:5px;flex:1;}
+.sig-tl-item{display:flex;align-items:baseline;gap:10px;}
+.sig-tl-date{font-size:9px;font-weight:600;letter-spacing:.05em;color:var(--faint);flex-shrink:0;width:38px;}
+.sig-tl-label{font-size:10px;color:var(--muted);line-height:1.35;}
+[data-theme="light"] .sig-timeline{border-top-color:rgba(0,0,0,.07);}
+.sig-event-caption{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:14px;}
+.sig-persp-card{padding:18px 20px;display:flex;flex-direction:column;border-left:2px solid var(--persp-border,var(--border));transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s cubic-bezier(.22,1,.36,1);}
+.sig-persp-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.22);}
+.sig-persp-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--persp-color,var(--muted));margin-bottom:8px;}
+.sig-persp-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.3;}
+.sig-customer-card{grid-column:4;}
+.sig-chain{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.07);list-style:none;display:flex;flex-direction:column;gap:3px;}
+.sig-chain li{font-size:10px;color:var(--muted);padding-left:14px;position:relative;line-height:1.45;}
+.sig-chain li::before{content:'→';position:absolute;left:0;color:var(--faint);font-size:9px;}
+[data-theme="light"] .sig-chain{border-top-color:rgba(0,0,0,.08);}
+/* ── ESCALATION STATES ── */
+.sig-chain li.esc,.sig-tl-item.esc{max-height:0;opacity:0;overflow:hidden;transition:max-height .42s cubic-bezier(.22,1,.36,1),opacity .32s ease;}
+.sig-event-grid.escalated .sig-chain li.esc{max-height:60px;opacity:1;}
+.sig-event-grid.escalated .sig-tl-item.esc{max-height:40px;opacity:1;}
+.sig-delay-esc{display:none;}
+.sig-event-grid.escalated .sig-delay-norm{display:none;}
+.sig-event-grid.escalated .sig-delay-esc{display:inline;color:rgba(255,40,60,1);}
+.sig-event-grid.escalated .sig-persp-card{border-left-width:3px;box-shadow:0 0 18px rgba(255,40,60,.07);transition:border-left-width .3s ease,box-shadow .4s ease,transform .28s cubic-bezier(.22,1,.36,1);}
+.sig-event-grid.escalated .sig-persp-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.22),0 0 22px rgba(255,40,60,.12);}
+.sig-persp-card--alert{box-shadow:0 0 0 1px rgba(255,50,70,.30),0 0 26px rgba(255,40,60,.18),0 4px 16px rgba(0,0,0,.28);transition:box-shadow .4s ease,transform .28s cubic-bezier(.22,1,.36,1);}
+.sig-event-grid.escalated .sig-persp-card--alert{box-shadow:0 0 0 1px rgba(255,40,60,.55),0 0 44px rgba(255,30,55,.36),0 6px 22px rgba(0,0,0,.38);}
+[data-theme="light"] .sig-persp-card--alert{box-shadow:0 0 0 1px rgba(200,30,50,.28),0 0 22px rgba(200,30,50,.14),0 4px 14px rgba(0,0,0,.10);}
+[data-theme="light"] .sig-event-grid.escalated .sig-persp-card--alert{box-shadow:0 0 0 1px rgba(200,30,50,.5),0 0 32px rgba(200,30,50,.22),0 6px 18px rgba(0,0,0,.12);}
+.sig-esc-toggle{align-self:flex-start;margin-top:12px;padding:5px 11px;font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,101,119,.08);border:1px solid rgba(255,101,119,.22);border-radius:4px;color:rgba(255,101,119,.72);cursor:pointer;font-family:inherit;transition:background .2s,border-color .2s,color .2s;}
+.sig-esc-toggle:hover{background:rgba(255,101,119,.15);border-color:rgba(255,101,119,.38);color:rgba(255,101,119,.92);}
+.sig-event-grid.escalated .sig-esc-toggle{background:rgba(255,101,119,.18);border-color:rgba(255,101,119,.52);color:rgba(255,101,119,1);}
+[data-theme="light"] .sig-esc-toggle{background:rgba(200,40,60,.05);border-color:rgba(200,40,60,.18);color:rgba(200,40,60,.75);}
+[data-theme="light"] .sig-event-grid.escalated .sig-esc-toggle{background:rgba(200,40,60,.12);border-color:rgba(200,40,60,.35);color:rgba(200,40,60,1);}
+.sig-status-bar{margin-top:18px;padding:12px 20px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.sig-counts{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.sig-count-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);}
+.sig-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.sig-dot-a{background:rgba(62,210,119,.85);box-shadow:0 0 5px rgba(62,210,119,.45);}
+.sig-dot-c{background:rgba(255,101,119,.85);}
+.sig-dot-w{background:rgba(255,179,64,.85);}
+.sig-dot-h{background:rgba(74,163,255,.85);}
+.sig-bar-sep{color:var(--border);font-size:13px;line-height:1;user-select:none;}
+.sig-cta-link{font-size:10px;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:.04em;white-space:nowrap;transition:color .2s;}
+.sig-cta-link:hover{color:var(--text);}
+[data-theme="light"] .sig-status-bar{background:rgba(0,0,0,.02);}
 
 /* ── AI COMPARISON (a05) ── */
 .ai-cols{display:grid;grid-template-columns:1fr 1px 1fr;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
@@ -302,7 +352,9 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
   .hero-h1{font-size:40px;}
   .two-col{grid-template-columns:1fr;}
   .obj-grid{grid-template-columns:1fr;}
-  .signal-grid{grid-template-columns:1fr;}
+  .sig-event-grid{grid-template-columns:1fr;}
+  .sig-hero-card{grid-row:auto;}
+  .sig-customer-card{grid-column:auto;grid-row:auto;}
   .ai-cols{grid-template-columns:1fr;}
   .ai-divider-v{display:none;}
   .layer-grid{grid-template-columns:1fr;}
@@ -911,15 +963,135 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
   <div class="section-inner">
     <div class="section-header">
       <p class="eyebrow" data-i18n="sig.eyebrow">Signal-Layer</p>
-      <h2 class="h1" data-i18n="sig.h1">Operative Realität generiert Signale.</h2>
+      <h2 class="h1" data-i18n="sig.h1">Zusammenhänge erzeugen Signale.</h2>
+      <p class="body" style="max-width:58ch;margin-top:10px;" data-i18n="sig.lede">Risiken entstehen selten isoliert.</p>
     </div>
-    <div class="signal-grid">
-      <div class="card sig-card"><span class="pill pa" data-i18n="sig.c1.pill">Budget-Warnung</span><p class="sig-title" data-i18n="sig.c1.title">Projektkosten 18% über Budget</p><p class="sig-body" data-i18n="sig.c1.body">Auftrag #A-204. Ursprungsbudget: €5.000. Aktuell: €5.920. Differenz: +€920.</p><p class="sig-source" data-i18n="sig.c1.source">Ausgelöst von · Kostenrelation</p></div>
-      <div class="card sig-card"><span class="pill pa" data-i18n="sig.c2.pill">Lieferverzug</span><p class="sig-title" data-i18n="sig.c2.title">Lieferant 4 Tage hinter Zeitplan</p><p class="sig-body" data-i18n="sig.c2.body">Tech Supply GmbH. Vertraglich: 12. Mai. Aktuell bestätigt: 16. Mai. Folgeaufträge betroffen.</p><p class="sig-source" data-i18n="sig.c2.source">Ausgelöst von · Lieferanten-Relation</p></div>
-      <div class="card sig-card"><span class="pill pp" data-i18n="sig.c3.pill">Ressourcen-Engpass</span><p class="sig-title" data-i18n="sig.c3.title">Person auf 3 Teams gleichzeitig</p><p class="sig-body" data-i18n="sig.c3.body">J. Müller als Verantwortliche in Projekten A, B und C gleichzeitig eingetragen. Konflikt erkannt.</p><p class="sig-source" data-i18n="sig.c3.source">Ausgelöst von · Mitarbeiter-Relation</p></div>
-      <div class="card sig-card"><span class="pill pa" data-i18n="sig.c4.pill">Rechnungsabweichung</span><p class="sig-title" data-i18n="sig.c4.title">Rechnung weicht 12% vom Auftrag ab</p><p class="sig-body" data-i18n="sig.c4.body">Rechnung R-8812. Auftragsvolumen: €3.200. Rechnungsbetrag: €3.584. Abgleich erforderlich.</p><p class="sig-source" data-i18n="sig.c4.source">Ausgelöst von · Finanz-Relation</p></div>
-      <div class="card sig-card"><span class="pill pp" data-i18n="sig.c5.pill">Eskalationsrisiko</span><p class="sig-title" data-i18n="sig.c5.title">Entscheidung seit 8 Tagen blockiert</p><p class="sig-body" data-i18n="sig.c5.body">Projekt Alpha. Entscheidung über Lieferantenwechsel offen. Fortschritt blockiert. Deadline: 15. Mai.</p><p class="sig-source" data-i18n="sig.c5.source">Ausgelöst von · Entscheidungs-Relation</p></div>
-      <div class="card sig-card"><span class="pill pg" data-i18n="sig.c6.pill">Abschluss bereit</span><p class="sig-title" data-i18n="sig.c6.title">Alle Dokumente vollständig</p><p class="sig-body" data-i18n="sig.c6.body">Beschaffungsauftrag #B-2047. Angebot, AB, Lieferschein und Rechnung vorhanden. Freigabe möglich.</p><p class="sig-source" data-i18n="sig.c6.source">Ausgelöst von · Dokumenten-Relation</p></div>
+    <div class="sig-event-grid">
+
+      <!-- ZENTRALES EREIGNIS -->
+      <div class="card sig-hero-card">
+        <p class="eyebrow" style="margin-bottom:14px;align-self:flex-start;" data-i18n="sig.event.eyebrow">Beschaffungsvorgang</p>
+        <p class="sig-event-id" data-i18n="sig.event.id">Beschaffungsauftrag #B-2047</p>
+        <p class="sig-event-h" data-i18n="sig.event.h">Lieferung 4 Tage verspätet.</p>
+        <p class="sig-event-sub" data-i18n="sig.event.sub">Folgeaufträge betroffen.</p>
+        <div class="sig-event-meta">
+          <div class="sig-meta-row"><span class="sig-meta-key" data-i18n="sig.event.m1k">Lieferant</span><span class="sig-meta-val">Tech Supply GmbH</span></div>
+          <div class="sig-meta-row"><span class="sig-meta-key" data-i18n="sig.event.m2k">Betrag</span><span class="sig-meta-val">€14.200</span></div>
+          <div class="sig-meta-row"><span class="sig-meta-key" data-i18n="sig.event.m3k">Projekt</span><span class="sig-meta-val">Alpha Q2</span></div>
+          <div class="sig-meta-row" style="border-bottom:none;"><span class="sig-meta-key" data-i18n="sig.event.m4k">Verspätung</span><span class="sig-meta-val"><span class="sig-delay-norm" style="color:rgba(255,101,119,.92);" data-i18n="sig.delay.norm">+4 Tage</span><span class="sig-delay-esc" data-i18n="sig.delay.esc">+12 Tage</span></span></div>
+        </div>
+        <div class="sig-timeline">
+          <div class="sig-tl-item">
+            <span class="sig-tl-date" data-i18n="sig.tl.d1">12. Mai</span>
+            <span class="sig-tl-label" data-i18n="sig.tl.e1">Lieferverzug erkannt</span>
+          </div>
+          <div class="sig-tl-item">
+            <span class="sig-tl-date" data-i18n="sig.tl.d2">13. Mai</span>
+            <span class="sig-tl-label" data-i18n="sig.tl.e2">Forecast-Risiko eskaliert</span>
+          </div>
+          <div class="sig-tl-item">
+            <span class="sig-tl-date" data-i18n="sig.tl.d3">14. Mai</span>
+            <span class="sig-tl-label" data-i18n="sig.tl.e3">Sprint betroffen</span>
+          </div>
+          <div class="sig-tl-item esc">
+            <span class="sig-tl-date" data-i18n="sig.tl.d4">15. Mai</span>
+            <span class="sig-tl-label" data-i18n="sig.tl.e4">Eskalation ausgelöst</span>
+          </div>
+        </div>
+        <button class="sig-esc-toggle" onclick="toggleSigEsc()" data-i18n="sig.esc.off">Eskalation simulieren →</button>
+        <p class="sig-event-caption" data-i18n="sig.event.caption">Ausgelöst von · Lieferanten-Relation</p>
+      </div>
+
+      <!-- FINANCE -->
+      <div class="card sig-persp-card" style="--persp-color:rgba(74,163,255,.95);--persp-border:rgba(74,163,255,.28);">
+        <p class="sig-persp-label" data-i18n="sig.p1.label">Finance</p>
+        <p class="sig-persp-title" data-i18n="sig.p1.title">Forecast-Risiko erkannt</p>
+        <ul class="sig-chain">
+          <li data-i18n="sig.p1.r1">€12.000 späterer Zahlungseingang</li>
+          <li data-i18n="sig.p1.r2">Runway −0.2 Monate</li>
+          <li data-i18n="sig.p1.r3">Q2-Forecast betroffen</li>
+          <li class="esc" data-i18n="sig.p1.r4">Q2-Ziel gefährdet</li>
+          <li class="esc" data-i18n="sig.p1.r5">Investoren-Update notwendig</li>
+        </ul>
+      </div>
+
+      <!-- EXECUTION -->
+      <div class="card sig-persp-card" style="--persp-color:rgba(255,179,64,.95);--persp-border:rgba(255,179,64,.28);">
+        <p class="sig-persp-label" data-i18n="sig.p2.label">Execution</p>
+        <p class="sig-persp-title" data-i18n="sig.p2.title">2 Projekte in Verzug</p>
+        <ul class="sig-chain">
+          <li data-i18n="sig.p2.r1">Sprint verschiebt sich</li>
+          <li data-i18n="sig.p2.r2">1 Deadline gefährdet</li>
+          <li data-i18n="sig.p2.r3">Abhängigkeiten erkannt</li>
+          <li class="esc" data-i18n="sig.p2.r4">3 Kundentermine betroffen</li>
+          <li class="esc" data-i18n="sig.p2.r5">Projektabbruch möglich</li>
+        </ul>
+      </div>
+
+      <!-- CUSTOMER — Reihe 1, Spalte 4 -->
+      <div class="card sig-persp-card sig-customer-card" style="--persp-color:rgba(62,210,119,.95);--persp-border:rgba(62,210,119,.28);">
+        <p class="sig-persp-label" data-i18n="sig.p5.label">Customer</p>
+        <p class="sig-persp-title" data-i18n="sig.p5.title">Kundenkommunikation ausstehend</p>
+        <ul class="sig-chain">
+          <li data-i18n="sig.p5.r1">Liefertermin verschiebt sich</li>
+          <li data-i18n="sig.p5.r2">Key Account betroffen</li>
+          <li data-i18n="sig.p5.r3">Follow-up empfohlen</li>
+          <li class="esc" data-i18n="sig.p5.r4">Churn-Risiko 35%</li>
+          <li class="esc" data-i18n="sig.p5.r5">Vertrag gefährdet</li>
+        </ul>
+      </div>
+
+      <!-- PEOPLE -->
+      <div class="card sig-persp-card" style="--persp-color:rgba(255,101,119,.95);--persp-border:rgba(255,101,119,.28);">
+        <p class="sig-persp-label" data-i18n="sig.p3.label">People</p>
+        <p class="sig-persp-title" data-i18n="sig.p3.title">Kapazitätskonflikt erkannt</p>
+        <ul class="sig-chain">
+          <li data-i18n="sig.p3.r1">Projektleitung eskaliert</li>
+          <li data-i18n="sig.p3.r2">3 parallele Eskalationen</li>
+          <li data-i18n="sig.p3.r3">Teamlast steigt</li>
+          <li class="esc" data-i18n="sig.p3.r4">Burnout-Risiko erkannt</li>
+          <li class="esc" data-i18n="sig.p3.r5">2 Key-Personen überlastet</li>
+        </ul>
+      </div>
+
+      <!-- COMPLIANCE — critical alert -->
+      <div class="card sig-persp-card sig-persp-card--alert" style="--persp-color:rgba(180,166,255,.95);--persp-border:rgba(180,166,255,.28);">
+        <p class="sig-persp-label" data-i18n="sig.p4.label">Compliance</p>
+        <p class="sig-persp-title" data-i18n="sig.p4.title">Freigabe blockiert</p>
+        <ul class="sig-chain">
+          <li data-i18n="sig.p4.r1">ESG-Dokument fehlt</li>
+          <li data-i18n="sig.p4.r2">Lieferantenklassifizierung offen</li>
+          <li data-i18n="sig.p4.r3">Audit-Flag aktiv</li>
+          <li class="esc" data-i18n="sig.p4.r4">Behörden-Deadline in 3 Tagen</li>
+          <li class="esc" data-i18n="sig.p4.r5">Bußgeldrisiko aktiv</li>
+        </ul>
+      </div>
+
+      <!-- OPERATIONS — Reihe 2, Spalte 4 -->
+      <div class="card sig-persp-card" style="--persp-color:rgba(45,212,191,.95);--persp-border:rgba(45,212,191,.28);">
+        <p class="sig-persp-label" data-i18n="sig.p6.label">Operations</p>
+        <p class="sig-persp-title" data-i18n="sig.p6.title">Beschaffungsprozess gestört</p>
+        <ul class="sig-chain">
+          <li data-i18n="sig.p6.r1">Lagerbestand kritisch</li>
+          <li data-i18n="sig.p6.r2">Nachbestellung blockiert</li>
+          <li data-i18n="sig.p6.r3">Lieferkette unterbrochen</li>
+          <li class="esc" data-i18n="sig.p6.r4">Produktionsstopp droht</li>
+          <li class="esc" data-i18n="sig.p6.r5">Alternativlieferant gesucht</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="sig-status-bar">
+      <div class="sig-counts">
+        <span class="sig-count-item"><span class="sig-dot sig-dot-a"></span><span data-i18n="sig.bar.active">10 aktive Signale</span></span>
+        <span class="sig-bar-sep">·</span>
+        <span class="sig-count-item"><span class="sig-dot sig-dot-c"></span><span data-i18n="sig.bar.crit">3 Kritisch</span></span>
+        <span class="sig-bar-sep">·</span>
+        <span class="sig-count-item"><span class="sig-dot sig-dot-w"></span><span data-i18n="sig.bar.warn">6 Warnungen</span></span>
+        <span class="sig-bar-sep">·</span>
+        <span class="sig-count-item"><span class="sig-dot sig-dot-h"></span><span data-i18n="sig.bar.hint">4 Hinweise</span></span>
+      </div>
+      <a class="sig-cta-link" href="#" data-i18n="sig.bar.cta">Alle Signale im Command Center anzeigen →</a>
     </div>
   </div>
 </section>
@@ -984,6 +1156,7 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
   <div class="section-inner">
     <div class="section-header">
       <p class="eyebrow" data-i18n="sys.eyebrow">Was Company OS ist</p>
+      <h2 class="h1" data-i18n="sys.h1">Ein gemeinsames Modell<br>für Unternehmensrealität.</h2>
     </div>
     <div class="layer-grid">
       <div class="layer-col" data-rel-target="exec" style="background:rgba(74,163,255,0.04);border:1px solid rgba(74,163,255,0.18);">
@@ -1084,7 +1257,7 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
     <div class="two-col">
       <div class="col-intro">
         <p class="eyebrow" style="margin-bottom:16px;" data-i18n="founder.eyebrow">Gründer</p>
-        <h2 class="h1" style="margin-bottom:24px;" data-i18n="founder.h1">Aus operativem Schmerz entstand ein System.</h2>
+        <h2 class="h1" style="margin-bottom:24px;" data-i18n="founder.h1">Unternehmen hatten Software. Aber kein System.</h2>
         <div style="padding:16px 18px;border-left:3px solid rgba(74,163,255,0.6);background:rgba(74,163,255,0.07);border-radius:0 6px 6px 0;margin-bottom:22px;">
           <p style="font-size:14px;font-weight:400;color:var(--text);line-height:1.6;font-style:italic;" data-i18n="founder.quote">"Das eigentliche Betriebssystem war häufig der Mensch selbst."</p>
         </div>
@@ -1215,13 +1388,19 @@ const i18n = {
     'story.e4.time':'10. Mai · 11:10','story.e4.title':'Entscheidung: Angebot akzeptiert.','story.e4.body':'Kommentar: „Alternativlos in diesem Zeitfenster." · J. Müller','story.e4.pill':'Entscheidung',
     'story.e5.time':'11. Mai · 08:45','story.e5.title':'Liefertermin verschoben: 12. → 16. Mai.','story.e5.body':'Risiko-Signal ausgelöst. Folgeauftrag F-09 betroffen.','story.e5.pill':'Risiko',
     'story.e6.time':'12. Mai · 16:00','story.e6.title':'Abschluss: Alle Dokumente vollständig.','story.e6.body':'Rechnung freigegeben. Signal: Prozess abgeschlossen.','story.e6.pill':'Abgeschlossen',
-    'sig.eyebrow':'Signal-Layer','sig.h1':'Operative Realität generiert Signale.',
-    'sig.c1.pill':'Budget-Warnung','sig.c1.title':'Projektkosten 18% über Budget','sig.c1.body':'Auftrag #A-204. Ursprungsbudget: €5.000. Aktuell: €5.920. Differenz: +€920.','sig.c1.source':'Ausgelöst von · Kostenrelation',
-    'sig.c2.pill':'Lieferverzug','sig.c2.title':'Lieferant 4 Tage hinter Zeitplan','sig.c2.body':'Tech Supply GmbH. Vertraglich: 12. Mai. Aktuell bestätigt: 16. Mai. Folgeaufträge betroffen.','sig.c2.source':'Ausgelöst von · Lieferanten-Relation',
-    'sig.c3.pill':'Ressourcen-Engpass','sig.c3.title':'Person auf 3 Teams gleichzeitig','sig.c3.body':'J. Müller als Verantwortliche in Projekten A, B und C gleichzeitig eingetragen. Konflikt erkannt.','sig.c3.source':'Ausgelöst von · Mitarbeiter-Relation',
-    'sig.c4.pill':'Rechnungsabweichung','sig.c4.title':'Rechnung weicht 12% vom Auftrag ab','sig.c4.body':'Rechnung R-8812. Auftragsvolumen: €3.200. Rechnungsbetrag: €3.584. Abgleich erforderlich.','sig.c4.source':'Ausgelöst von · Finanz-Relation',
-    'sig.c5.pill':'Eskalationsrisiko','sig.c5.title':'Entscheidung seit 8 Tagen blockiert','sig.c5.body':'Projekt Alpha. Entscheidung über Lieferantenwechsel offen. Fortschritt blockiert. Deadline: 15. Mai.','sig.c5.source':'Ausgelöst von · Entscheidungs-Relation',
-    'sig.c6.pill':'Abschluss bereit','sig.c6.title':'Alle Dokumente vollständig','sig.c6.body':'Beschaffungsauftrag #B-2047. Angebot, AB, Lieferschein und Rechnung vorhanden. Freigabe möglich.','sig.c6.source':'Ausgelöst von · Dokumenten-Relation',
+    'sig.eyebrow':'Signal-Layer','sig.h1':'Zusammenhänge erzeugen Signale.','sig.lede':'Risiken entstehen selten isoliert.',
+    'sig.event.eyebrow':'Beschaffungsvorgang','sig.event.id':'Beschaffungsauftrag #B-2047','sig.event.h':'Lieferung 4 Tage verspätet.','sig.event.sub':'Folgeaufträge betroffen.',
+    'sig.event.m1k':'Lieferant','sig.event.m2k':'Betrag','sig.event.m3k':'Projekt','sig.event.m4k':'Verspätung','sig.event.caption':'Ausgelöst von · Lieferanten-Relation',
+    'sig.delay.norm':'+4 Tage','sig.delay.esc':'+12 Tage',
+    'sig.tl.d1':'12. Mai','sig.tl.e1':'Lieferverzug erkannt','sig.tl.d2':'13. Mai','sig.tl.e2':'Forecast-Risiko eskaliert','sig.tl.d3':'14. Mai','sig.tl.e3':'Sprint betroffen','sig.tl.d4':'15. Mai','sig.tl.e4':'Eskalation ausgelöst',
+    'sig.esc.off':'Eskalation simulieren →','sig.esc.on':'Zurück zu +4 Tage ←',
+    'sig.p1.label':'Finance','sig.p1.title':'Forecast-Risiko erkannt','sig.p1.r1':'€12.000 späterer Zahlungseingang','sig.p1.r2':'Runway −0.2 Monate','sig.p1.r3':'Q2-Forecast betroffen','sig.p1.r4':'Q2-Ziel gefährdet','sig.p1.r5':'Investoren-Update notwendig',
+    'sig.p2.label':'Execution','sig.p2.title':'2 Projekte in Verzug','sig.p2.r1':'Sprint verschiebt sich','sig.p2.r2':'1 Deadline gefährdet','sig.p2.r3':'Abhängigkeiten erkannt','sig.p2.r4':'3 Kundentermine betroffen','sig.p2.r5':'Projektabbruch möglich',
+    'sig.p3.label':'People','sig.p3.title':'Kapazitätskonflikt erkannt','sig.p3.r1':'Projektleitung eskaliert','sig.p3.r2':'3 parallele Eskalationen','sig.p3.r3':'Teamlast steigt','sig.p3.r4':'Burnout-Risiko erkannt','sig.p3.r5':'2 Key-Personen überlastet',
+    'sig.p4.label':'Compliance','sig.p4.title':'Freigabe blockiert','sig.p4.r1':'ESG-Dokument fehlt','sig.p4.r2':'Lieferantenklassifizierung offen','sig.p4.r3':'Audit-Flag aktiv','sig.p4.r4':'Behörden-Deadline in 3 Tagen','sig.p4.r5':'Bußgeldrisiko aktiv',
+    'sig.p5.label':'Customer','sig.p5.title':'Kundenkommunikation ausstehend','sig.p5.r1':'Liefertermin verschiebt sich','sig.p5.r2':'Key Account betroffen','sig.p5.r3':'Follow-up empfohlen','sig.p5.r4':'Churn-Risiko 35%','sig.p5.r5':'Vertrag gefährdet',
+    'sig.p6.label':'Operations','sig.p6.title':'Beschaffungsprozess gestört','sig.p6.r1':'Lagerbestand kritisch','sig.p6.r2':'Nachbestellung blockiert','sig.p6.r3':'Lieferkette unterbrochen','sig.p6.r4':'Produktionsstopp droht','sig.p6.r5':'Alternativlieferant gesucht',
+    'sig.bar.active':'10 aktive Signale','sig.bar.crit':'3 Kritisch','sig.bar.warn':'6 Warnungen','sig.bar.hint':'4 Hinweise','sig.bar.cta':'Alle Signale im Command Center anzeigen →',
     'ai.eyebrow':'AI-Architektur','ai.h1':'Struktur ist die Voraussetzung für Intelligenz.',
     'ai.left.label':'Ohne Company OS','ai.tool.crm':'CRM','ai.tool.docs':'Docs','ai.tool.chat':'Chat','ai.tool.erp':'ERP','ai.tool.iso':'isoliert',
     'ai.left.flow':'kein Zusammenhang','ai.model':'AI-Modell',
@@ -1231,12 +1410,12 @@ const i18n = {
     'ai.graph.sub':'+ Kontext · Status · Dokumente · Relationen · Geschichte',
     'ai.right.flow':'strukturierter Kontext','ai.right.result.label':'Strukturierter Kontext',
     'ai.right.result.body':'Operative Präzision. Kontextbewusste Ausgabe. Nachvollziehbar und handlungsrelevant.',
-    'sys.eyebrow':'Was Company OS ist',
+    'sys.eyebrow':'Was Company OS ist','sys.h1':'Ein gemeinsames Modell<br>für Unternehmensrealität.',
     'sys.exec.label':'Execution Layer','sys.exec.i1.title':'Tickets &amp; Tasks','sys.exec.i1.sub':'Status · Abhängigkeiten · Owner','sys.exec.i2.title':'Projekte','sys.exec.i2.sub':'Kosten · Zeitplan · Relationen','sys.exec.i3.title':'SOPs &amp; People','sys.exec.i3.sub':'Prozesse · Rollen · Verantwortung',
     'sys.fin.label':'Finance Layer','sys.fin.i1.title':'Rechnungen &amp; Kosten','sys.fin.i1.sub':'Verknüpft mit Projekten &amp; Delivery','sys.fin.i2.title':'Runway','sys.fin.i2.sub':'Dynamisch · Echtzeit · Operativ','sys.fin.i3.title':'Procurement','sys.fin.i3.sub':'Lieferanten · Risiko · Impact',
     'sys.int.label':'Intelligence Layer','sys.int.i1.title':'Signale','sys.int.i1.sub':'Aus Relationen · Automatisch','sys.int.i2.title':'Entscheidungen','sys.int.i2.sub':'Mit Kontext · Historisch','sys.int.i3.title':'AI Context Layer','sys.int.i3.sub':'Operative Zusammenhänge für AI',
     'sys.tagline':'Jedes Objekt kennt seinen Status · seinen Kontext · seine Relationen · seine Geschichte',
-    'founder.eyebrow':'Gründer','founder.h1':'Aus operativem Schmerz entstand ein System.',
+    'founder.eyebrow':'Gründer','founder.h1':'Unternehmen hatten Software. Aber kein System.',
     'founder.quote':'"Das eigentliche Betriebssystem war häufig der Mensch selbst."',
     'founder.body':'Die Idee hinter Company OS entstand nicht plötzlich. Über Jahre hinweg zeigte sich in verschiedenen Rollen und Industrien dasselbe Muster: Menschen wurden zur Schnittstelle zwischen fragmentierten Systemen.',
     'founder.name':'Daniel Sobiak','founder.role':'Founder &amp; CEO · Decode IT · daniel@decode-it.net',
@@ -1313,13 +1492,19 @@ const i18n = {
     'story.e4.time':'10 May · 11:10','story.e4.title':'Decision: Quote accepted.','story.e4.body':'Comment: "No alternative in this timeframe." · J. Müller','story.e4.pill':'Decision',
     'story.e5.time':'11 May · 08:45','story.e5.title':'Delivery date shifted: 12 → 16 May.','story.e5.body':'Risk signal triggered. Follow-up order F-09 affected.','story.e5.pill':'Risk',
     'story.e6.time':'12 May · 16:00','story.e6.title':'Close: All documents complete.','story.e6.body':'Invoice released. Signal: Process complete.','story.e6.pill':'Completed',
-    'sig.eyebrow':'Signal Layer','sig.h1':'Operational reality generates signals.',
-    'sig.c1.pill':'Budget Warning','sig.c1.title':'Project costs 18% over budget','sig.c1.body':'Order #A-204. Original budget: €5,000. Current: €5,920. Difference: +€920.','sig.c1.source':'Triggered by · Cost relation',
-    'sig.c2.pill':'Delivery Delay','sig.c2.title':'Supplier 4 days behind schedule','sig.c2.body':'Tech Supply GmbH. Contractual: 12 May. Confirmed: 16 May. Follow-up orders affected.','sig.c2.source':'Triggered by · Supplier relation',
-    'sig.c3.pill':'Resource Conflict','sig.c3.title':'Person assigned to 3 teams simultaneously','sig.c3.body':'J. Müller listed as responsible in projects A, B and C simultaneously. Conflict detected.','sig.c3.source':'Triggered by · Employee relation',
-    'sig.c4.pill':'Invoice Deviation','sig.c4.title':'Invoice deviates 12% from order','sig.c4.body':'Invoice R-8812. Order volume: €3,200. Invoice amount: €3,584. Reconciliation required.','sig.c4.source':'Triggered by · Finance relation',
-    'sig.c5.pill':'Escalation Risk','sig.c5.title':'Decision blocked for 8 days','sig.c5.body':'Project Alpha. Supplier switch decision pending. Progress blocked. Deadline: 15 May.','sig.c5.source':'Triggered by · Decision relation',
-    'sig.c6.pill':'Ready to close','sig.c6.title':'All documents complete','sig.c6.body':'Procurement order #B-2047. Quote, PO, delivery note and invoice present. Approval possible.','sig.c6.source':'Triggered by · Document relation',
+    'sig.eyebrow':'Signal Layer','sig.h1':'Connections generate signals.','sig.lede':'Risks rarely emerge in isolation.',
+    'sig.event.eyebrow':'Procurement event','sig.event.id':'Procurement order #B-2047','sig.event.h':'Delivery 4 days late.','sig.event.sub':'Follow-up orders affected.',
+    'sig.event.m1k':'Supplier','sig.event.m2k':'Amount','sig.event.m3k':'Project','sig.event.m4k':'Delay','sig.event.caption':'Triggered by · Supplier relation',
+    'sig.delay.norm':'+4 days','sig.delay.esc':'+12 days',
+    'sig.tl.d1':'12 May','sig.tl.e1':'Delivery delay detected','sig.tl.d2':'13 May','sig.tl.e2':'Forecast risk escalated','sig.tl.d3':'14 May','sig.tl.e3':'Sprint affected','sig.tl.d4':'15 May','sig.tl.e4':'Escalation triggered',
+    'sig.esc.off':'Simulate escalation →','sig.esc.on':'Reset to +4 days ←',
+    'sig.p1.label':'Finance','sig.p1.title':'Forecast risk detected','sig.p1.r1':'€12,000 later cash inflow','sig.p1.r2':'Runway −0.2 months','sig.p1.r3':'Q2 forecast affected','sig.p1.r4':'Q2 target at risk','sig.p1.r5':'Investor update required',
+    'sig.p2.label':'Execution','sig.p2.title':'2 projects delayed','sig.p2.r1':'Sprint shifts','sig.p2.r2':'1 deadline at risk','sig.p2.r3':'Dependencies detected','sig.p2.r4':'3 client dates affected','sig.p2.r5':'Project cancellation possible',
+    'sig.p3.label':'People','sig.p3.title':'Capacity conflict detected','sig.p3.r1':'Project lead escalating','sig.p3.r2':'3 parallel escalations','sig.p3.r3':'Team load increasing','sig.p3.r4':'Burnout risk detected','sig.p3.r5':'2 key people overloaded',
+    'sig.p4.label':'Compliance','sig.p4.title':'Approval blocked','sig.p4.r1':'ESG document missing','sig.p4.r2':'Supplier classification open','sig.p4.r3':'Audit flag active','sig.p4.r4':'Regulatory deadline in 3 days','sig.p4.r5':'Penalty risk active',
+    'sig.p5.label':'Customer','sig.p5.title':'Customer communication pending','sig.p5.r1':'Delivery date shifts','sig.p5.r2':'Key account affected','sig.p5.r3':'Follow-up recommended','sig.p5.r4':'Churn risk 35%','sig.p5.r5':'Contract at risk',
+    'sig.p6.label':'Operations','sig.p6.title':'Procurement process disrupted','sig.p6.r1':'Inventory critical','sig.p6.r2':'Reorder blocked','sig.p6.r3':'Supply chain interrupted','sig.p6.r4':'Production halt imminent','sig.p6.r5':'Alternative supplier needed',
+    'sig.bar.active':'10 active signals','sig.bar.crit':'3 Critical','sig.bar.warn':'6 Warnings','sig.bar.hint':'4 Info','sig.bar.cta':'View all signals in Command Center →',
     'ai.eyebrow':'AI Architecture','ai.h1':'Structure is the prerequisite for intelligence.',
     'ai.left.label':'Without Company OS','ai.tool.crm':'CRM','ai.tool.docs':'Docs','ai.tool.chat':'Chat','ai.tool.erp':'ERP','ai.tool.iso':'isolated',
     'ai.left.flow':'no context','ai.model':'AI Model',
@@ -1329,12 +1514,12 @@ const i18n = {
     'ai.graph.sub':'+ Context · Status · Documents · Relations · History',
     'ai.right.flow':'structured context','ai.right.result.label':'Structured context',
     'ai.right.result.body':'Operational precision. Context-aware output. Traceable and actionable.',
-    'sys.eyebrow':'What Company OS is',
+    'sys.eyebrow':'What Company OS is','sys.h1':'One shared model<br>for business reality.',
     'sys.exec.label':'Execution Layer','sys.exec.i1.title':'Tickets &amp; Tasks','sys.exec.i1.sub':'Status · Dependencies · Owner','sys.exec.i2.title':'Projects','sys.exec.i2.sub':'Costs · Schedule · Relations','sys.exec.i3.title':'SOPs &amp; People','sys.exec.i3.sub':'Processes · Roles · Responsibility',
     'sys.fin.label':'Finance Layer','sys.fin.i1.title':'Invoices &amp; Costs','sys.fin.i1.sub':'Linked to projects &amp; delivery','sys.fin.i2.title':'Runway','sys.fin.i2.sub':'Dynamic · Real-time · Operational','sys.fin.i3.title':'Procurement','sys.fin.i3.sub':'Suppliers · Risk · Impact',
     'sys.int.label':'Intelligence Layer','sys.int.i1.title':'Signals','sys.int.i1.sub':'From relations · Automatic','sys.int.i2.title':'Decisions','sys.int.i2.sub':'With context · Historical','sys.int.i3.title':'AI Context Layer','sys.int.i3.sub':'Operational relationships for AI',
     'sys.tagline':'Every object knows its status · its context · its relations · its history',
-    'founder.eyebrow':'Founder','founder.h1':'From operational pain came a system.',
+    'founder.eyebrow':'Founder','founder.h1':'Companies had software. But no system.',
     'founder.quote':'"The real operating system was often the human themselves."',
     'founder.body':"The idea behind Company OS didn't arise suddenly. Over years, the same pattern emerged across different roles and industries: people became the interface between fragmented systems.",
     'founder.name':'Daniel Sobiak','founder.role':'Founder &amp; CEO · Decode IT · daniel@decode-it.net',
@@ -1372,6 +1557,14 @@ function applyTheme(t) {
   document.getElementById('themeBtn').textContent = t === 'dark' ? '☀' : '☾';
 }
 
+function toggleSigEsc() {
+  var grid = document.querySelector('.sig-event-grid');
+  var btn = document.querySelector('.sig-esc-toggle');
+  var esc = grid.classList.toggle('escalated');
+  var key = esc ? 'sig.esc.on' : 'sig.esc.off';
+  btn.setAttribute('data-i18n', key);
+  btn.textContent = i18n[lang][key];
+}
 function toggleLang() { applyLang(lang === 'de' ? 'en' : 'de'); }
 function toggleTheme() { applyTheme(theme === 'dark' ? 'light' : 'dark'); }
 
@@ -1406,7 +1599,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Staggered child reveals (cards within grids)
-  ['.problem-grid', '.signal-grid', '.fc-grid', '.obj-grid', '.layer-grid', '.audience-grid', '.era-row', '.founder-cards'].forEach(function(sel) {
+  ['.problem-grid', '.sig-event-grid', '.fc-grid', '.obj-grid', '.layer-grid', '.audience-grid', '.era-row', '.founder-cards'].forEach(function(sel) {
     document.querySelectorAll(sel).forEach(function(grid) {
       Array.from(grid.children).forEach(function(c, i) {
         c.classList.add('rev');
