@@ -106,7 +106,8 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .hero-h1{font-size:52px;font-weight:300;line-height:1.05;letter-spacing:-.03em;color:var(--text);margin-bottom:8px;}
 .hero-tagline{font-size:20px;font-weight:300;color:var(--muted);letter-spacing:-.01em;margin-bottom:20px;}
 .hero-divider{width:40px;height:1px;background:var(--blue);opacity:.6;margin-bottom:24px;}
-.slogan{font-size:11px;font-weight:700;letter-spacing:.20em;text-transform:uppercase;color:var(--blue);}
+.slogan{font-size:11px;font-weight:700;letter-spacing:.20em;text-transform:uppercase;color:var(--blue);animation:slogan-pulse 5s ease-in-out infinite;}
+@keyframes slogan-pulse{0%,100%{opacity:.7;text-shadow:0 0 0px rgba(74,163,255,0);}50%{opacity:1;text-shadow:0 0 14px rgba(74,163,255,0.35);}}
 .hero-sub{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:36px;}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap;}
 .btn{display:inline-flex;align-items:center;padding:9px 20px;border-radius:5px;font-size:12px;font-weight:600;text-decoration:none;letter-spacing:.04em;cursor:pointer;border:none;font-family:inherit;}
@@ -122,7 +123,9 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 
 /* ── ERA ROW (The Shift) ── */
 .era-row{display:flex;align-items:stretch;gap:0;}
-.era-card{flex:1;border-radius:8px;padding:24px 20px;display:flex;flex-direction:column;}
+.era-card{flex:1;border-radius:8px;padding:24px 20px;display:flex;flex-direction:column;transition:transform .32s cubic-bezier(0.22,1,0.36,1),box-shadow .32s cubic-bezier(0.22,1,0.36,1);}
+.era-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.2);}
+[data-theme="light"] .era-card:hover{box-shadow:0 6px 18px rgba(0,0,0,.09);}
 .era-num{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:12px;}
 .era-era{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
 .era-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:8px;line-height:1.3;}
@@ -165,12 +168,12 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .ai-tools{display:flex;gap:8px;margin-bottom:14px;}
 .ai-tool{flex:1;padding:10px 8px;background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.12);border-radius:5px;text-align:center;}
 [data-theme="light"] .ai-tool{background:rgba(0,0,0,.02);border-color:rgba(0,0,0,.14);}
-.ai-tool-name{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.38);}
-[data-theme="light"] .ai-tool-name{color:rgba(0,0,0,.35);}
-.ai-tool-sub{font-size:9px;color:rgba(255,255,255,.22);margin-top:2px;}
-[data-theme="light"] .ai-tool-sub{color:rgba(0,0,0,.25);}
-.ai-flow{font-size:11px;text-align:center;color:rgba(255,255,255,.28);margin:6px 0;}
-[data-theme="light"] .ai-flow{color:rgba(0,0,0,.28);}
+.ai-tool-name{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72);}
+[data-theme="light"] .ai-tool-name{color:rgba(0,0,0,.62);}
+.ai-tool-sub{font-size:9px;color:rgba(255,255,255,.52);margin-top:2px;}
+[data-theme="light"] .ai-tool-sub{color:rgba(0,0,0,.48);}
+.ai-flow{font-size:11px;text-align:center;color:rgba(255,255,255,.58);margin:6px 0;}
+[data-theme="light"] .ai-flow{color:rgba(0,0,0,.52);}
 .ai-model-box{padding:12px 16px;border-radius:5px;text-align:center;margin:6px 0;}
 .ai-model-label{font-size:11px;font-weight:600;letter-spacing:.08em;}
 .ai-model-icon{font-size:20px;margin-top:2px;}
@@ -179,11 +182,11 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .ai-result-label{font-size:12px;font-weight:500;margin-bottom:4px;}
 .ai-result-body{font-size:11px;color:var(--muted);line-height:1.5;}
 .ai-graph-box{padding:14px 16px;background:rgba(74,163,255,.04);border:1px solid rgba(74,163,255,.1);border-radius:5px;margin-bottom:14px;}
-.ai-graph-label{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(74,163,255,.5);margin-bottom:10px;}
+.ai-graph-label{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(74,163,255,.88);margin-bottom:10px;}
 .ai-graph-nodes{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
 .ai-node{padding:4px 9px;background:rgba(74,163,255,.08);border:1px solid rgba(74,163,255,.2);border-radius:4px;font-size:10px;font-weight:500;color:rgba(74,163,255,.8);}
 .ai-edge{font-size:10px;color:rgba(74,163,255,.3);}
-.ai-graph-sub{font-size:10px;color:rgba(74,163,255,.4);margin-top:8px;}
+.ai-graph-sub{font-size:10px;color:rgba(74,163,255,.75);margin-top:8px;}
 
 /* ── SYSTEM LAYERS (a17) ── */
 .layer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
@@ -314,8 +317,10 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
   .monday-grid{grid-template-columns:1fr;gap:32px;}
   .fc-grid{grid-template-columns:1fr;}
   .audience-grid{grid-template-columns:1fr;}
-  .comp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  .comp-table{min-width:540px;}
+  .comp-wrap{overflow-x:visible;}
+  .comp-table{min-width:0;}
+  .comp-table th:nth-child(2),.comp-table th:nth-child(3),.comp-table th:nth-child(4),
+  .comp-table td:nth-child(2),.comp-table td:nth-child(3),.comp-table td:nth-child(4){display:none;}
 }
 /* -- HERO RADIAL NETWORK ANIMATIONS -- */
 @keyframes hnode-glow{0%,100%{opacity:0.45;}50%{opacity:0.9;}}
@@ -335,6 +340,93 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
   .era-card{flex-basis:100%;}
   .footer-inner{flex-direction:column;gap:20px;text-align:center;}
 }
+/* ── MICRO-INTERACTIONS ── */
+@keyframes rev-in{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+.rev{opacity:0;}.rev.on{animation:rev-in .85s cubic-bezier(0.22,1,0.36,1) forwards;}
+.stat-card{transition:transform .32s cubic-bezier(0.22,1,0.36,1),box-shadow .32s cubic-bezier(0.22,1,0.36,1);}
+.stat-card:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,.28);}
+[data-theme="light"] .stat-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.10);}
+.sig-card{transition:transform .32s cubic-bezier(0.22,1,0.36,1),box-shadow .32s cubic-bezier(0.22,1,0.36,1);}
+.sig-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.22);}
+.sig-card:hover .pill{filter:brightness(1.15);}
+.fc{transition:transform .32s cubic-bezier(0.22,1,0.36,1),box-shadow .32s cubic-bezier(0.22,1,0.36,1);}
+.fc:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.22);}
+.obj-card{transition:transform .32s cubic-bezier(0.22,1,0.36,1),box-shadow .32s cubic-bezier(0.22,1,0.36,1);}
+.obj-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18);}
+.aud-item{transition:transform .32s cubic-bezier(0.22,1,0.36,1),box-shadow .32s cubic-bezier(0.22,1,0.36,1);}
+.aud-item:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.16);}
+.tab-row{transition:background .28s ease,border-color .28s ease;}
+.tab-row:hover{background:var(--surface-2);border-color:var(--border-2);}
+.scen-dot{transition:box-shadow .35s cubic-bezier(0.22,1,0.36,1);}
+@keyframes node-pop{0%{opacity:0;transform:scale(.82);}65%{transform:scale(1.05);}100%{opacity:1;transform:scale(1);}}
+.ai-graph-nodes.ai-rdy .ai-node,.ai-graph-nodes.ai-rdy .ai-edge{opacity:0;}
+.ai-graph-nodes.ai-live .ai-node{animation:node-pop .6s cubic-bezier(0.22,1,0.36,1) forwards;}
+.ai-graph-nodes.ai-live .ai-node:nth-child(1){animation-delay:0s;}
+.ai-graph-nodes.ai-live .ai-node:nth-child(2){animation-delay:.13s;}
+.ai-graph-nodes.ai-live .ai-node:nth-child(3){animation-delay:.26s;}
+.ai-graph-nodes.ai-live .ai-node:nth-child(4){animation-delay:.39s;}
+.ai-graph-nodes.ai-live .ai-edge{opacity:1;transition:opacity .38s ease .56s;}
+.scen-step{transition:opacity .45s cubic-bezier(0.22,1,0.36,1);}
+.scen-flow.sc-live .scen-step:not(.sc-act){opacity:.42;}
+.sc-act .scen-dot{box-shadow:0 0 0 5px rgba(255,255,255,.15);}
+[data-theme="light"] .sc-act .scen-dot{box-shadow:0 0 0 5px rgba(0,0,0,.10);}
+@keyframes pill-pulse-a{0%,100%{opacity:1;}50%{opacity:.62;}}
+@keyframes pill-pulse-p{0%,100%{opacity:1;}50%{opacity:.58;}}
+.pill.pa{animation:pill-pulse-a 6.5s ease-in-out infinite;}
+.pill.pp{animation:pill-pulse-p 9s ease-in-out infinite;}
+/* ── RELATION HOVER POPUP ── */
+.rel-popup{position:fixed;background:#13131a;border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 14px;min-width:174px;pointer-events:none;opacity:0;transform:translateY(-4px);transition:opacity .28s cubic-bezier(0.22,1,0.36,1),transform .28s cubic-bezier(0.22,1,0.36,1);z-index:9999;box-shadow:0 10px 36px rgba(0,0,0,.6);}
+[data-theme="light"] .rel-popup{background:#ffffff;border-color:rgba(0,0,0,.14);box-shadow:0 8px 24px rgba(0,0,0,.15);}
+[data-theme="light"] .rel-popup .rel-header{color:rgba(0,0,0,.38);}
+[data-theme="light"] .rel-popup .rel-node{color:rgba(0,0,0,.65);}
+.rel-popup.active{opacity:1;transform:translateY(0);}
+.rel-header{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:9px;}
+.rel-nodes{display:flex;flex-direction:column;gap:6px;}
+.rel-node{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;color:var(--muted);}
+.rel-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.rel-dot.pa{background:var(--amber);}.rel-dot.pp{background:var(--pink);}.rel-dot.pb{background:var(--blue);}.rel-dot.pg{background:var(--green);}
+/* ── REACTIVE CROSS-SECTION ── */
+.layer-col{transition:opacity .45s cubic-bezier(0.22,1,0.36,1),box-shadow .45s cubic-bezier(0.22,1,0.36,1);}
+.layer-col.rel-dim{opacity:0.2;}
+.layer-col[data-rel-target="exec"].rel-lit{box-shadow:0 0 0 1px rgba(74,163,255,0.52),0 0 32px rgba(74,163,255,0.14);}
+.layer-col[data-rel-target="fin"].rel-lit{box-shadow:0 0 0 1px rgba(255,179,64,0.52),0 0 32px rgba(255,179,64,0.14);}
+.layer-col[data-rel-target="intel"].rel-lit{box-shadow:0 0 0 1px rgba(62,210,119,0.52),0 0 32px rgba(62,210,119,0.14);}
+/* ── FOUNDER CARDS ── */
+.founder-card{transition:transform .32s cubic-bezier(0.22,1,0.36,1),box-shadow .32s cubic-bezier(0.22,1,0.36,1);}
+.founder-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.2);}
+[data-theme="light"] .founder-card:hover{box-shadow:0 6px 18px rgba(0,0,0,.10);}
+/* ── STORY TIMELINE ROW HOVER ── */
+.tl-row{transition:opacity .3s cubic-bezier(0.22,1,0.36,1);}
+.tl-row:hover{opacity:1 !important;}
+div:has(> .tl-row:hover) .tl-row:not(:hover){opacity:.35;}
+/* ── COMPETITION ROW HOVER ── */
+.comp-table tbody tr{transition:opacity .3s cubic-bezier(0.22,1,0.36,1);}
+.comp-table tbody tr:hover{opacity:1 !important;}
+.comp-table tbody:has(tr:hover) tr:not(:hover){opacity:.3;}
+/* ── COMPETITION ROW REVEAL ── */
+@keyframes row-fade{from{opacity:0;}to{opacity:1;}}
+tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important;}
+/* ── AI TOOLS STAGGER ── */
+.ai-tools .ai-tool{opacity:0;}
+.ai-tools.tools-live .ai-tool{animation:rev-in .65s cubic-bezier(0.22,1,0.36,1) forwards;}
+.ai-tools.tools-live .ai-tool:nth-child(1){animation-delay:.9s;}
+.ai-tools.tools-live .ai-tool:nth-child(2){animation-delay:1.02s;}
+.ai-tools.tools-live .ai-tool:nth-child(3){animation-delay:1.14s;}
+.ai-tools.tools-live .ai-tool:nth-child(4){animation-delay:1.26s;}
+/* ── LAYER SECTION LIGHT-MODE FIXES ── */
+[data-theme="light"] .layer-col:nth-child(1) .layer-item-title{color:rgba(20,90,210,0.90) !important;}
+[data-theme="light"] .layer-col:nth-child(2) .layer-item-title{color:rgba(155,90,0,0.90) !important;}
+[data-theme="light"] .layer-col:nth-child(3) .layer-item-title{color:rgba(15,130,60,0.90) !important;}
+[data-theme="light"] .layer-item-sub{color:rgba(0,0,0,0.55);}
+/* ── AI SECTION REACTIVE HOVER ── */
+.ai-result{transition:background .35s cubic-bezier(0.22,1,0.36,1),border-color .35s cubic-bezier(0.22,1,0.36,1),box-shadow .35s cubic-bezier(0.22,1,0.36,1);}
+.ai-tool{cursor:pointer;transition:background .25s cubic-bezier(0.22,1,0.36,1),border-color .25s cubic-bezier(0.22,1,0.36,1),transform .25s cubic-bezier(0.22,1,0.36,1);}
+.ai-tool:hover{background:rgba(255,101,119,0.08);border-color:rgba(255,101,119,0.45);border-style:solid;transform:translateY(-2px);}
+[data-theme="light"] .ai-tool:hover{background:rgba(255,101,119,0.06);border-color:rgba(255,101,119,0.32);}
+.ai-col:has(.ai-tool:hover) .ai-result{background:rgba(255,101,119,0.10);border-color:rgba(255,101,119,0.40);box-shadow:0 0 0 1px rgba(255,101,119,0.14),0 0 28px rgba(255,101,119,0.12);}
+.ai-node{cursor:pointer;transition:transform .22s cubic-bezier(0.22,1,0.36,1),box-shadow .22s cubic-bezier(0.22,1,0.36,1);}
+.ai-node:hover{transform:translateY(-2px);box-shadow:0 3px 10px rgba(74,163,255,0.28);}
+.ai-col:has(.ai-node:hover) .ai-result{background:rgba(62,210,119,0.10);border-color:rgba(62,210,119,0.40);box-shadow:0 0 0 1px rgba(62,210,119,0.14),0 0 28px rgba(62,210,119,0.12);}
 </style>
 </head>
 <body>
@@ -571,11 +663,11 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
       <div class="monday-right">
         <p class="monday-arrow" data-i18n="mon.arrow">Mit Company OS →</p>
         <div class="monday-pills">
-          <span class="pill pa"><span class="pd"></span><span data-i18n="mon.p1">Runway 4.7 Mon. ↓</span></span>
-          <span class="pill pp"><span class="pd"></span><span data-i18n="mon.p2">1 blocked</span></span>
-          <span class="pill pa"><span class="pd"></span><span data-i18n="mon.p3">Tax 9.500 € · in 12 Tagen</span></span>
-          <span class="pill pb"><span class="pd"></span><span data-i18n="mon.p4">1 approval pending</span></span>
-          <span class="pill pg"><span class="pd"></span><span data-i18n="mon.p5">Cash 85.000 €</span></span>
+          <span class="pill pa" data-rel="fin"><span class="pd"></span><span data-i18n="mon.p1">Runway 4.7 Mon. ↓</span></span>
+          <span class="pill pp" data-rel="exec"><span class="pd"></span><span data-i18n="mon.p2">1 blocked</span></span>
+          <span class="pill pa" data-rel="fin"><span class="pd"></span><span data-i18n="mon.p3">Tax 9.500 € · in 12 Tagen</span></span>
+          <span class="pill pb" data-rel="intel"><span class="pd"></span><span data-i18n="mon.p4">1 approval pending</span></span>
+          <span class="pill pg" data-rel="fin"><span class="pd"></span><span data-i18n="mon.p5">Cash 85.000 €</span></span>
         </div>
         <p class="monday-body" data-i18n="mon.body">Eine Ansicht. Eine operative Wahrheit. Alles aus dem gleichen Datenmodell — ohne einen einzigen Tab mehr.</p>
       </div>
@@ -715,9 +807,9 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
       <h2 class="h1" data-i18n="shift.h1">Von der Fragmentierung zur verbundenen operativen Realität.</h2>
     </div>
     <div class="era-row">
-      <div class="era-card" style="background:var(--surface);border:1px solid var(--border);border-left:3px solid rgba(255,255,255,0.15);">
+      <div class="era-card" style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--violet);">
         <p class="era-num" data-i18n="shift.e1.num">01</p>
-        <p class="era-era" style="color:var(--muted);" data-i18n="shift.e1.era">ERP-Ära</p>
+        <p class="era-era" style="color:var(--violet);" data-i18n="shift.e1.era">ERP-Ära</p>
         <p class="era-title" data-i18n="shift.e1.title">Zentralisiert. Starr. Monolithisch.</p>
         <p class="era-body" data-i18n="shift.e1.body">Alle Prozesse in einem System — aber um die Software herum gebaut, nicht um das Unternehmen.</p>
       </div>
@@ -841,7 +933,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
     </div>
     <div class="ai-cols">
       <div class="ai-col" style="background:rgba(255,255,255,0.015);">
-        <p class="ai-col-label" style="color:rgba(255,255,255,0.3);" data-i18n="ai.left.label">Ohne Company OS</p>
+        <p class="ai-col-label" style="color:rgba(255,255,255,0.62);" data-i18n="ai.left.label">Ohne Company OS</p>
         <div class="ai-tools">
           <div class="ai-tool"><p class="ai-tool-name" data-i18n="ai.tool.crm">CRM</p><p class="ai-tool-sub" data-i18n="ai.tool.iso">isoliert</p></div>
           <div class="ai-tool"><p class="ai-tool-name" data-i18n="ai.tool.docs">Docs</p><p class="ai-tool-sub" data-i18n="ai.tool.iso">isoliert</p></div>
@@ -850,18 +942,18 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
         </div>
         <p class="ai-flow">↓ &nbsp;<span data-i18n="ai.left.flow">kein Zusammenhang</span>&nbsp; ↓</p>
         <div class="ai-model-box" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.1);">
-          <p class="ai-model-label" style="color:rgba(255,255,255,0.35);letter-spacing:.08em;" data-i18n="ai.model">AI-Modell</p>
-          <p class="ai-model-icon" style="color:rgba(255,255,255,0.25);">?</p>
+          <p class="ai-model-label" style="color:rgba(255,255,255,0.68);letter-spacing:.08em;" data-i18n="ai.model">AI-Modell</p>
+          <p class="ai-model-icon" style="color:rgba(255,255,255,0.52);">?</p>
         </div>
         <div class="ai-spacer"></div>
         <div class="ai-result" style="background:rgba(255,101,119,0.04);border:1px solid rgba(255,101,119,0.12);">
-          <p class="ai-result-label" style="color:rgba(255,101,119,0.7);" data-i18n="ai.left.result.label">Fragmentierter Kontext</p>
+          <p class="ai-result-label" style="color:rgba(255,101,119,0.95);" data-i18n="ai.left.result.label">Fragmentierter Kontext</p>
           <p class="ai-result-body" data-i18n="ai.left.result.body">Generische Ausgabe. Keine operative Relevanz. Fehlende Nachvollziehbarkeit.</p>
         </div>
       </div>
       <div class="ai-divider-v"></div>
       <div class="ai-col" style="background:rgba(74,163,255,0.025);">
-        <p class="ai-col-label" style="color:rgba(74,163,255,0.5);" data-i18n="ai.right.label">Mit Company OS</p>
+        <p class="ai-col-label" style="color:rgba(74,163,255,0.95);" data-i18n="ai.right.label">Mit Company OS</p>
         <div class="ai-graph-box">
           <p class="ai-graph-label" data-i18n="ai.graph.label">Operational Graph</p>
           <div class="ai-graph-nodes">
@@ -872,14 +964,14 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
           </div>
           <p class="ai-graph-sub" data-i18n="ai.graph.sub">+ Kontext · Status · Dokumente · Relationen · Geschichte</p>
         </div>
-        <p class="ai-flow" style="color:rgba(74,163,255,0.4);">↓ &nbsp;<span data-i18n="ai.right.flow">strukturierter Kontext</span>&nbsp; ↓</p>
+        <p class="ai-flow" style="color:rgba(74,163,255,0.82);">↓ &nbsp;<span data-i18n="ai.right.flow">strukturierter Kontext</span>&nbsp; ↓</p>
         <div class="ai-model-box" style="background:rgba(74,163,255,0.06);border:1px solid rgba(74,163,255,0.18);">
-          <p class="ai-model-label" style="color:rgba(74,163,255,0.7);letter-spacing:.08em;" data-i18n="ai.model">AI-Modell</p>
-          <p class="ai-model-icon" style="color:rgba(74,163,255,0.6);">✦</p>
+          <p class="ai-model-label" style="color:rgba(74,163,255,0.95);letter-spacing:.08em;" data-i18n="ai.model">AI-Modell</p>
+          <p class="ai-model-icon" style="color:rgba(74,163,255,0.88);">✦</p>
         </div>
         <div class="ai-spacer"></div>
         <div class="ai-result" style="background:rgba(62,210,119,0.04);border:1px solid rgba(62,210,119,0.12);">
-          <p class="ai-result-label" style="color:rgba(62,210,119,0.7);" data-i18n="ai.right.result.label">Strukturierter Kontext</p>
+          <p class="ai-result-label" style="color:rgba(62,210,119,0.92);" data-i18n="ai.right.result.label">Strukturierter Kontext</p>
           <p class="ai-result-body" data-i18n="ai.right.result.body">Operative Präzision. Kontextbewusste Ausgabe. Nachvollziehbar und handlungsrelevant.</p>
         </div>
       </div>
@@ -894,24 +986,24 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
       <p class="eyebrow" data-i18n="sys.eyebrow">Was Company OS ist</p>
     </div>
     <div class="layer-grid">
-      <div class="layer-col" style="background:rgba(74,163,255,0.04);border:1px solid rgba(74,163,255,0.18);">
-        <p class="layer-label" style="color:rgba(74,163,255,0.82);" data-i18n="sys.exec.label">Execution Layer</p>
+      <div class="layer-col" data-rel-target="exec" style="background:rgba(74,163,255,0.04);border:1px solid rgba(74,163,255,0.18);">
+        <p class="layer-label" style="color:rgba(74,163,255,0.95);" data-i18n="sys.exec.label">Execution Layer</p>
         <div class="layer-items">
           <div class="layer-item" style="background:rgba(74,163,255,0.06);border:1px solid rgba(74,163,255,0.15);"><p class="layer-item-title" style="color:rgba(180,210,255,0.94);" data-i18n="sys.exec.i1.title">Tickets &amp; Tasks</p><p class="layer-item-sub" data-i18n="sys.exec.i1.sub">Status · Abhängigkeiten · Owner</p></div>
           <div class="layer-item" style="background:rgba(74,163,255,0.06);border:1px solid rgba(74,163,255,0.15);"><p class="layer-item-title" style="color:rgba(180,210,255,0.94);" data-i18n="sys.exec.i2.title">Projekte</p><p class="layer-item-sub" data-i18n="sys.exec.i2.sub">Kosten · Zeitplan · Relationen</p></div>
           <div class="layer-item" style="background:rgba(74,163,255,0.06);border:1px solid rgba(74,163,255,0.15);"><p class="layer-item-title" style="color:rgba(180,210,255,0.94);" data-i18n="sys.exec.i3.title">SOPs &amp; People</p><p class="layer-item-sub" data-i18n="sys.exec.i3.sub">Prozesse · Rollen · Verantwortung</p></div>
         </div>
       </div>
-      <div class="layer-col" style="background:rgba(255,179,64,0.04);border:1px solid rgba(255,179,64,0.18);">
-        <p class="layer-label" style="color:rgba(255,179,64,0.82);" data-i18n="sys.fin.label">Finance Layer</p>
+      <div class="layer-col" data-rel-target="fin" style="background:rgba(255,179,64,0.04);border:1px solid rgba(255,179,64,0.18);">
+        <p class="layer-label" style="color:rgba(255,179,64,0.95);" data-i18n="sys.fin.label">Finance Layer</p>
         <div class="layer-items">
           <div class="layer-item" style="background:rgba(255,179,64,0.06);border:1px solid rgba(255,179,64,0.15);"><p class="layer-item-title" style="color:rgba(255,210,140,0.94);" data-i18n="sys.fin.i1.title">Rechnungen &amp; Kosten</p><p class="layer-item-sub" data-i18n="sys.fin.i1.sub">Verknüpft mit Projekten &amp; Delivery</p></div>
           <div class="layer-item" style="background:rgba(255,179,64,0.06);border:1px solid rgba(255,179,64,0.15);"><p class="layer-item-title" style="color:rgba(255,210,140,0.94);" data-i18n="sys.fin.i2.title">Runway</p><p class="layer-item-sub" data-i18n="sys.fin.i2.sub">Dynamisch · Echtzeit · Operativ</p></div>
           <div class="layer-item" style="background:rgba(255,179,64,0.06);border:1px solid rgba(255,179,64,0.15);"><p class="layer-item-title" style="color:rgba(255,210,140,0.94);" data-i18n="sys.fin.i3.title">Procurement</p><p class="layer-item-sub" data-i18n="sys.fin.i3.sub">Lieferanten · Risiko · Impact</p></div>
         </div>
       </div>
-      <div class="layer-col" style="background:rgba(62,210,119,0.04);border:1px solid rgba(62,210,119,0.18);">
-        <p class="layer-label" style="color:rgba(62,210,119,0.82);" data-i18n="sys.int.label">Intelligence Layer</p>
+      <div class="layer-col" data-rel-target="intel" style="background:rgba(62,210,119,0.04);border:1px solid rgba(62,210,119,0.18);">
+        <p class="layer-label" style="color:rgba(62,210,119,0.95);" data-i18n="sys.int.label">Intelligence Layer</p>
         <div class="layer-items">
           <div class="layer-item" style="background:rgba(62,210,119,0.06);border:1px solid rgba(62,210,119,0.15);"><p class="layer-item-title" style="color:rgba(140,240,180,0.94);" data-i18n="sys.int.i1.title">Signale</p><p class="layer-item-sub" data-i18n="sys.int.i1.sub">Aus Relationen · Automatisch</p></div>
           <div class="layer-item" style="background:rgba(62,210,119,0.06);border:1px solid rgba(62,210,119,0.15);"><p class="layer-item-title" style="color:rgba(140,240,180,0.94);" data-i18n="sys.int.i2.title">Entscheidungen</p><p class="layer-item-sub" data-i18n="sys.int.i2.sub">Mit Kontext · Historisch</p></div>
@@ -993,7 +1085,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
       <div class="col-intro">
         <p class="eyebrow" style="margin-bottom:16px;" data-i18n="founder.eyebrow">Gründer</p>
         <h2 class="h1" style="margin-bottom:24px;" data-i18n="founder.h1">Aus operativem Schmerz entstand ein System.</h2>
-        <div style="padding:16px 18px;border-left:3px solid rgba(74,163,255,0.35);background:rgba(74,163,255,0.04);border-radius:0 6px 6px 0;margin-bottom:22px;">
+        <div style="padding:16px 18px;border-left:3px solid rgba(74,163,255,0.6);background:rgba(74,163,255,0.07);border-radius:0 6px 6px 0;margin-bottom:22px;">
           <p style="font-size:14px;font-weight:400;color:var(--text);line-height:1.6;font-style:italic;" data-i18n="founder.quote">"Das eigentliche Betriebssystem war häufig der Mensch selbst."</p>
         </div>
         <p class="body" style="font-size:13px;margin-bottom:22px;" data-i18n="founder.body">Die Idee hinter Company OS entstand nicht plötzlich. Über Jahre hinweg zeigte sich in verschiedenen Rollen und Industrien dasselbe Muster: Menschen wurden zur Schnittstelle zwischen fragmentierten Systemen.</p>
@@ -1002,19 +1094,19 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
           <p style="font-size:11px;color:var(--muted);" data-i18n="founder.role">Founder &amp; CEO · Decode IT · daniel@decode-it.net</p>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:14px;justify-content:center;">
-        <div class="card cm" style="padding:20px 22px;">
-          <p style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;" data-i18n="founder.c1.label">Operative Erfahrung</p>
+      <div class="founder-cards" style="display:flex;flex-direction:column;gap:14px;justify-content:center;">
+        <div class="card ca founder-card" style="padding:20px 22px;">
+          <p style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,179,64,0.92);margin-bottom:10px;" data-i18n="founder.c1.label">Operative Erfahrung</p>
           <p style="font-size:14px;font-weight:400;color:var(--text);margin-bottom:10px;line-height:1.4;" data-i18n="founder.c1.title">Mehrere Industrien. Dasselbe Muster.</p>
           <p style="font-size:12px;color:var(--muted);line-height:1.55;" data-i18n="founder.c1.body">Auftragsabwicklung, Messeorganisation, Fulfillment, Lieferkettenkoordination, Organisationsentwicklung, internationale Startup-Umfelder. In jeder Umgebung: isolierte Systeme, menschliche Synchronisation.</p>
         </div>
-        <div class="card cb" style="padding:20px 22px;">
-          <p style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(74,163,255,0.6);margin-bottom:10px;" data-i18n="founder.c2.label">Station F · Paris</p>
+        <div class="card cb founder-card" style="padding:20px 22px;">
+          <p style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(74,163,255,0.92);margin-bottom:10px;" data-i18n="founder.c2.label">Station F · Paris</p>
           <p style="font-size:14px;font-weight:400;color:var(--text);margin-bottom:10px;line-height:1.4;" data-i18n="founder.c2.title">Technologisch reif. Organisatorisch improvisiert.</p>
           <p style="font-size:12px;color:var(--muted);line-height:1.55;" data-i18n="founder.c2.body">Moderne Startups arbeiteten mit neuester Technologie — aber operative Struktur entstand unter Druck, zufällig, und oft im Kopf einzelner Personen. Die strukturelle Überforderung war real.</p>
         </div>
-        <div class="card cv" style="padding:20px 22px;">
-          <p style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(180,166,255,0.6);margin-bottom:10px;" data-i18n="founder.c3.label">AI-Transformation</p>
+        <div class="card cv founder-card" style="padding:20px 22px;">
+          <p style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(180,166,255,0.92);margin-bottom:10px;" data-i18n="founder.c3.label">AI-Transformation</p>
           <p style="font-size:14px;font-weight:400;color:var(--text);margin-bottom:10px;line-height:1.4;" data-i18n="founder.c3.title">AI kann nur agieren, wenn Realität modelliert wurde.</p>
           <p style="font-size:12px;color:var(--muted);line-height:1.55;" data-i18n="founder.c3.body">Die bestehende Softwaregeneration wurde nicht für diese Zukunft gebaut. Company OS schafft die strukturelle Grundlage, die KI benötigt, um operative Zusammenhänge zu verstehen.</p>
         </div>
@@ -1284,6 +1376,233 @@ function toggleLang() { applyLang(lang === 'de' ? 'en' : 'de'); }
 function toggleTheme() { applyTheme(theme === 'dark' ? 'light' : 'dark'); }
 
 document.addEventListener('DOMContentLoaded', () => { applyTheme(theme); applyLang(lang); });
+
+// ── Micro-interactions ──
+document.addEventListener('DOMContentLoaded', function() {
+  // Scroll reveal
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('on');
+      var d = parseFloat(e.target.style.animationDelay || '0') * 1000;
+      setTimeout(function() { e.target.classList.remove('rev', 'on'); }, 900 + d);
+      obs.unobserve(e.target);
+    });
+  }, { threshold: 0.1 });
+
+  // Whole-unit reveals
+  ['.section-header', '.ai-cols', '.monday-grid'].forEach(function(sel) {
+    document.querySelectorAll(sel).forEach(function(el) { el.classList.add('rev'); obs.observe(el); });
+  });
+
+  // Competition table: stagger tbody rows (no transform — only fade)
+  var compTbody = document.querySelector('.comp-table tbody');
+  if (compTbody) {
+    Array.from(compTbody.rows).forEach(function(row, i) {
+      row.classList.add('rev');
+      row.style.animationDelay = (i * 0.09) + 's';
+      obs.observe(row);
+    });
+  }
+
+  // Staggered child reveals (cards within grids)
+  ['.problem-grid', '.signal-grid', '.fc-grid', '.obj-grid', '.layer-grid', '.audience-grid', '.era-row', '.founder-cards'].forEach(function(sel) {
+    document.querySelectorAll(sel).forEach(function(grid) {
+      Array.from(grid.children).forEach(function(c, i) {
+        c.classList.add('rev');
+        c.style.animationDelay = (i * 0.12) + 's';
+        obs.observe(c);
+      });
+    });
+  });
+
+  // AI node pop-in when section enters viewport
+  var aiObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('ai-live');
+      // Also trigger tool stagger on the left col
+      var aiTools = e.target.closest('.ai-cols');
+      if (aiTools) { aiTools = aiTools.querySelector('.ai-tools'); }
+      if (aiTools) aiTools.classList.add('tools-live');
+      aiObs.unobserve(e.target);
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('.ai-graph-nodes').forEach(function(el) {
+    el.classList.add('ai-rdy');
+    aiObs.observe(el);
+  });
+
+  // Scenario: highlight active step while scrolling (scroll-based, reliable)
+  var flow = document.querySelector('.scen-flow');
+  var steps = document.querySelectorAll('.scen-step');
+  if (flow && steps.length) {
+    var scTick = false;
+    function updateScenStep() {
+      var fr = flow.getBoundingClientRect();
+      if (fr.bottom < 0 || fr.top > window.innerHeight) {
+        flow.classList.remove('sc-live');
+        steps.forEach(function(s) { s.classList.remove('sc-act'); });
+        return;
+      }
+      flow.classList.add('sc-live');
+      var anchor = window.innerHeight * 0.4;
+      var best = null, bestDist = Infinity;
+      steps.forEach(function(s) {
+        var r = s.getBoundingClientRect();
+        var dist = Math.abs(r.top - anchor);
+        if (dist < bestDist) { bestDist = dist; best = s; }
+      });
+      if (best) {
+        steps.forEach(function(s) { s.classList.remove('sc-act'); });
+        best.classList.add('sc-act');
+      }
+    }
+    function onScenScroll() {
+      if (!scTick) {
+        requestAnimationFrame(function() { updateScenStep(); scTick = false; });
+        scTick = true;
+      }
+    }
+    window.addEventListener('scroll', onScenScroll, {passive: true});
+    window.addEventListener('resize', onScenScroll, {passive: true});
+    updateScenStep();
+  }
+
+});
+
+// ── Relation hover popups (Monday pills) ──
+document.addEventListener('DOMContentLoaded', function() {
+  var relDE = [
+    { header: 'Treiber · Runway', nodes: [
+      {cls:'pa', label:'Payroll & Gehälter'},
+      {cls:'pb', label:'SaaS-Kosten'},
+      {cls:'pp', label:'2 offene Risiken'},
+      {cls:'pa', label:'Procurement Delay'}
+    ]},
+    { header: 'Blockiert durch', nodes: [
+      {cls:'pp', label:'Projekt Alpha'},
+      {cls:'pa', label:'Entscheidung offen'},
+      {cls:'pa', label:'Deadline: 15. Mai'}
+    ]},
+    { header: 'Fälligkeit · Steuer', nodes: [
+      {cls:'pa', label:'USt-VA Q1'},
+      {cls:'pb', label:'DATEV-Export nötig'},
+      {cls:'pa', label:'Frist: 31. Mai'}
+    ]},
+    { header: 'Wartet auf Freigabe', nodes: [
+      {cls:'pb', label:'Beschaffung #B-2047'},
+      {cls:'pp', label:'J. Müller blockiert'},
+      {cls:'pa', label:'Seit 8 Tagen offen'}
+    ]},
+    null
+  ];
+  var relEN = [
+    { header: 'Drivers · Runway', nodes: [
+      {cls:'pa', label:'Payroll & Salaries'},
+      {cls:'pb', label:'SaaS Costs'},
+      {cls:'pp', label:'2 open risks'},
+      {cls:'pa', label:'Procurement Delay'}
+    ]},
+    { header: 'Blocked by', nodes: [
+      {cls:'pp', label:'Project Alpha'},
+      {cls:'pa', label:'Decision pending'},
+      {cls:'pa', label:'Deadline: May 15'}
+    ]},
+    { header: 'Due · Tax', nodes: [
+      {cls:'pa', label:'VAT return Q1'},
+      {cls:'pb', label:'DATEV export needed'},
+      {cls:'pa', label:'Due: May 31'}
+    ]},
+    { header: 'Waiting for approval', nodes: [
+      {cls:'pb', label:'Order #B-2047'},
+      {cls:'pp', label:'J. Müller blocked'},
+      {cls:'pa', label:'Open 8 days'}
+    ]},
+    null
+  ];
+
+  function buildRelPopups() {
+    // Remove all existing popups from body
+    document.querySelectorAll('.rel-popup').forEach(function(p) { p.remove(); });
+    var pills = document.querySelectorAll('.monday-pills .pill');
+    var data = lang === 'en' ? relEN : relDE;
+    pills.forEach(function(pill, i) {
+      pill._relPopup = null;
+      if (!data[i]) return;
+      var d = data[i];
+      var popup = document.createElement('div');
+      popup.className = 'rel-popup';
+      var html = '<div class="rel-header">' + d.header + '</div><div class="rel-nodes">';
+      d.nodes.forEach(function(n) {
+        html += '<div class="rel-node"><span class="rel-dot ' + n.cls + '"></span><span>' + n.label + '</span></div>';
+      });
+      html += '</div>';
+      popup.innerHTML = html;
+      document.body.appendChild(popup); // attached to body — never blocks other elements
+      pill._relPopup = popup;
+    });
+  }
+
+  // Single event delegation on container — no per-pill listeners
+  var mondayPills = document.querySelector('.monday-pills');
+  if (mondayPills) {
+    mondayPills.addEventListener('mouseover', function(e) {
+      var pill = e.target.closest && e.target.closest('.pill');
+      if (!pill || !pill._relPopup) return;
+      var r = pill.getBoundingClientRect();
+      pill._relPopup.style.top = (r.bottom + 8) + 'px';
+      pill._relPopup.style.left = r.left + 'px';
+      pill._relPopup.classList.add('active');
+    });
+    mondayPills.addEventListener('mouseout', function(e) {
+      var pill = e.target.closest && e.target.closest('.pill');
+      if (!pill || !pill._relPopup) return;
+      if (pill.contains(e.relatedTarget)) return;
+      pill._relPopup.classList.remove('active');
+    });
+  }
+
+  buildRelPopups();
+  new MutationObserver(function() { buildRelPopups(); }).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
+});
+
+// ── Reactive cross-section hover ──
+document.addEventListener('DOMContentLoaded', function() {
+  var layerCols = document.querySelectorAll('.layer-col[data-rel-target]');
+
+  function activateRel(rel) {
+    layerCols.forEach(function(col) {
+      var t = col.getAttribute('data-rel-target');
+      col.classList.remove('rel-dim', 'rel-lit');
+      col.classList.add(t === rel ? 'rel-lit' : 'rel-dim');
+    });
+  }
+  function clearRel() {
+    layerCols.forEach(function(col) { col.classList.remove('rel-dim', 'rel-lit'); });
+  }
+
+  // Monday pills → layer cols (semantic: pill type tells which layer it belongs to)
+  var mondayPills = document.querySelector('.monday-pills');
+  if (mondayPills) {
+    mondayPills.addEventListener('mouseover', function(e) {
+      var pill = e.target.closest && e.target.closest('.pill[data-rel]');
+      if (pill) activateRel(pill.getAttribute('data-rel'));
+    });
+    mondayPills.addEventListener('mouseleave', function() { clearRel(); });
+  }
+
+  // Layer cols ↔ each other (hover one → others recede)
+  var layerGrid = document.querySelector('.layer-grid');
+  if (layerGrid) {
+    layerGrid.addEventListener('mouseover', function(e) {
+      var col = e.target.closest && e.target.closest('.layer-col[data-rel-target]');
+      if (!col) return;
+      activateRel(col.getAttribute('data-rel-target'));
+    });
+    layerGrid.addEventListener('mouseleave', function() { clearRel(); });
+  }
+});
 </script>
 </body>
 </html>
