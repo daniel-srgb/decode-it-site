@@ -15,7 +15,7 @@
   --bg:#060609;--bg-2:#0a0a0e;
   --surface:rgba(255,255,255,0.06);--surface-2:rgba(255,255,255,0.10);
   --border:rgba(255,255,255,0.11);--border-2:rgba(255,255,255,0.22);
-  --text:#e6e6e1;--muted:#9c9c94;--faint:#4a4a44;
+  --text:#e6e6e1;--muted:#9c9c94;--faint:#686864;
   --blue:#4aa3ff;--green:#3ed277;--amber:#ffb340;--violet:#b4a6ff;--pink:#ff6577;
   --blue-dim:rgba(74,163,255,0.12);--green-dim:rgba(62,210,119,0.12);
   --amber-dim:rgba(255,179,64,0.12);--violet-dim:rgba(180,166,255,0.12);--pink-dim:rgba(255,101,119,0.12);
@@ -25,7 +25,7 @@
   --bg:#f8f8f5;--bg-2:#efefeb;
   --surface:rgba(0,0,0,0.04);--surface-2:rgba(0,0,0,0.07);
   --border:rgba(0,0,0,0.09);--border-2:rgba(0,0,0,0.18);
-  --text:#1a1a18;--muted:#6a6a62;--faint:#c0c0b8;
+  --text:#1a1a18;--muted:#6a6a62;--faint:#747468;
   --blue-dim:rgba(74,163,255,0.10);--green-dim:rgba(62,210,119,0.10);
   --amber-dim:rgba(255,179,64,0.10);--violet-dim:rgba(180,166,255,0.10);--pink-dim:rgba(255,101,119,0.10);
 }
@@ -141,6 +141,31 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .obj-card{padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;}
 .obj-pills{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+/* obj relation footer */
+.obj-relation{display:flex;align-items:center;gap:3px;flex-wrap:wrap;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:8px;color:var(--faint);letter-spacing:.04em;margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.05);}
+[data-theme="light"] .obj-relation{border-top-color:rgba(0,0,0,.05);}
+.obj-rel-cur{color:var(--muted);}
+.obj-rel-sep{opacity:.45;}
+.obj-rel-layer{font-weight:600;letter-spacing:.07em;text-transform:uppercase;}
+/* obj live indicator */
+.obj-live{display:flex;align-items:center;gap:5px;margin-bottom:7px;}
+.obj-live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(62,210,119,.55);animation:fc-pulse 2.4s ease-in-out infinite;flex-shrink:0;}
+.obj-live-label{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(62,210,119,.72);}
+[data-theme="light"] .obj-live-label{color:rgba(10,110,55,.82);}
+/* obj state indicators (paid / pending) */
+.obj-state{display:flex;align-items:center;gap:5px;margin-bottom:7px;}
+.obj-state-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.obj-state-label{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.obj-state--paid .obj-state-dot{background:var(--green);box-shadow:0 0 5px rgba(62,210,119,.4);}
+.obj-state--paid .obj-state-label{color:rgba(62,210,119,.72);}
+.obj-state--pending .obj-state-dot{background:var(--amber);}
+.obj-state--pending .obj-state-label{color:rgba(255,179,64,.72);}
+[data-theme="light"] .obj-state--paid .obj-state-label{color:rgba(10,110,55,.82);}
+[data-theme="light"] .obj-state--pending .obj-state-label{color:rgba(148,82,0,.82);}
+/* risk alert pulse */
+@keyframes obj-risk-glow{0%,100%{box-shadow:0 0 0 rgba(255,101,119,0);}50%{box-shadow:0 0 18px rgba(255,101,119,.13),0 0 0 1px rgba(255,101,119,.08);}}
+.obj-card--alert{animation:obj-risk-glow 3.5s ease-in-out infinite;}
+@media(prefers-reduced-motion:reduce){.obj-card--alert{animation:none;}.obj-live-dot{animation:none;}}
 
 /* ── TIMELINE (a09) ── */
 .tl-row{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border);}
@@ -172,7 +197,11 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .sig-event-caption{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:14px;}
 .sig-persp-card{padding:18px 20px;display:flex;flex-direction:column;border-left:2px solid var(--persp-border,var(--border));transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s cubic-bezier(.22,1,.36,1);}
 .sig-persp-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.22);}
-.sig-persp-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--persp-color,var(--muted));margin-bottom:8px;}
+.sig-persp-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--persp-color,var(--muted));margin-bottom:0;}
+.sig-persp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;}
+.sig-persp-icon{width:20px;height:20px;flex-shrink:0;color:var(--persp-color);filter:drop-shadow(0 0 5px var(--persp-color));opacity:0.82;margin-top:1px;}
+[data-theme="light"] .sig-persp-label{color:color-mix(in srgb,var(--persp-color) 52%,#000);}
+[data-theme="light"] .sig-persp-icon{color:color-mix(in srgb,var(--persp-color) 52%,#000);filter:drop-shadow(0 0 3px color-mix(in srgb,var(--persp-color) 38%,#000));}
 .sig-persp-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.3;}
 .sig-customer-card{grid-column:4;}
 .sig-chain{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.07);list-style:none;display:flex;flex-direction:column;gap:3px;}
@@ -260,22 +289,175 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 /* ── MONDAY (V1) ── */
 .monday-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
 .tab-list{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:8px;}
-.tab-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:5px;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:11px;color:var(--muted);gap:12px;}
-.tab-badge{font-size:10px;color:var(--faint);white-space:nowrap;flex-shrink:0;}
-.tab-legend{font-size:11px;color:var(--faint);margin-top:6px;text-align:center;}
+.tab-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:5px;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:11px;color:var(--text);gap:12px;}
+.tab-badge{font-size:10px;color:var(--muted);white-space:nowrap;flex-shrink:0;}
+.tab-legend{font-size:11px;color:var(--muted);margin-top:6px;text-align:center;font-style:italic;}
+.tab-list > div:nth-child(5) .tab-badge{color:rgba(255,179,64,.85);}
+.tab-list > div:nth-child(6) .tab-badge{color:rgba(255,101,119,.85);}
+.tab-list > div:nth-child(7) .tab-badge{color:rgba(255,101,119,.85);}
+[data-theme="light"] .tab-list > div:nth-child(5) .tab-badge{color:rgba(148,82,0,.9);}
+[data-theme="light"] .tab-list > div:nth-child(6) .tab-badge{color:rgba(180,25,45,.9);}
+[data-theme="light"] .tab-list > div:nth-child(7) .tab-badge{color:rgba(180,25,45,.9);}
 .monday-right{display:flex;flex-direction:column;gap:20px;}
 .monday-arrow{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;}
 .monday-pills{display:flex;flex-direction:column;gap:7px;align-items:flex-start;}
 .monday-body{font-size:14px;color:var(--muted);line-height:1.65;}
 
-/* ── SOLUTION (V1) ── */
-.fc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.fc{background:var(--surface-2);border:1px solid var(--border);border-top:3px solid var(--border);border-radius:8px;padding:28px 30px;display:flex;flex-direction:column;gap:10px;}
-.fc-blue{border-top-color:var(--blue);}.fc-green{border-top-color:var(--green);}.fc-violet{border-top-color:var(--violet);}.fc-amber{border-top-color:var(--amber);}
-.fc-num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:10px;letter-spacing:.08em;}
+/* ── SOLUTION (V2) ── */
+.fc-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:16px;align-items:stretch;}
+.fc{background:var(--surface-2);border:1px solid var(--border);border-top:2px solid rgba(255,255,255,.06);border-radius:8px;padding:26px 28px;display:flex;flex-direction:column;transition:border-color .32s ease,box-shadow .32s ease;}
+.fc-blue{border-top:2px solid var(--blue);background:rgba(74,163,255,.022);}
+.fc-green{border-top:2px solid var(--green);background:rgba(62,210,119,.022);}
+.fc-violet{border-top:2px solid var(--violet);background:rgba(180,166,255,.022);}
+.fc-amber{border-top:2px solid var(--amber);background:rgba(255,179,64,.022);}
+.fc-num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:10px;letter-spacing:.08em;margin-bottom:10px;}
 .fc-blue .fc-num{color:var(--blue);}.fc-green .fc-num{color:var(--green);}.fc-violet .fc-num{color:var(--violet);}.fc-amber .fc-num{color:var(--amber);}
-.fc h3{font-size:17px;font-weight:700;letter-spacing:-0.01em;line-height:1.25;color:var(--text);}
-.fc p{font-size:13px;color:var(--muted);line-height:1.6;}
+.fc h3{font-size:16px;font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--text);margin-bottom:8px;}
+.fc>p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px;}
+/* artifact */
+.fc-artifact{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:13px 15px;display:flex;flex-direction:column;gap:9px;}
+[data-theme="light"] .fc-artifact{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.08);}
+.fc-artifact-head{display:flex;align-items:center;gap:7px;}
+.fc-artifact-id{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:10px;color:var(--faint);letter-spacing:.06em;}
+.fc-artifact-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 5px rgba(62,210,119,.6);margin-left:auto;flex-shrink:0;}
+.fc-artifact-title{font-size:12px;font-weight:500;color:var(--text);line-height:1.3;}
+.fc-artifact-meta{display:flex;flex-direction:column;gap:5px;border-top:1px solid rgba(255,255,255,.06);padding-top:9px;}
+[data-theme="light"] .fc-artifact-meta{border-top-color:rgba(0,0,0,.06);}
+.fc-meta-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.fc-meta-key{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);}
+.fc-meta-val{font-size:11px;color:var(--muted);}
+.fc-meta-warn{color:rgba(255,101,119,.85);}
+.fc-meta-signal{color:rgba(255,179,64,.85);}
+.fc-rel-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.05);}
+[data-theme="light"] .fc-rel-row{border-top-color:rgba(0,0,0,.05);}
+.fc-rel-tag{font-size:9px;color:var(--faint);letter-spacing:.04em;}
+/* context chain */
+.fc-chain{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin-bottom:14px;}
+.fc-chain-node{font-size:10px;font-weight:500;color:rgba(62,210,119,.8);padding:3px 8px;background:rgba(62,210,119,.09);border:1px solid rgba(62,210,119,.2);border-radius:3px;}
+.fc-chain-arrow{font-size:10px;color:var(--faint);}
+.fc-metrics{display:flex;border:1px solid rgba(255,255,255,.06);border-radius:6px;overflow:hidden;}
+[data-theme="light"] .fc-metrics{border-color:rgba(0,0,0,.07);}
+.fc-metric{flex:1;padding:10px 12px;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;gap:3px;}
+.fc-metric:last-child{border-right:none;}
+[data-theme="light"] .fc-metric{border-right-color:rgba(0,0,0,.06);}
+.fc-metric-val{font-size:20px;font-weight:300;color:var(--text);letter-spacing:-.02em;line-height:1;}
+.fc-metric-label{font-size:9px;color:var(--faint);line-height:1.35;}
+/* ai box */
+.fc-ai-box{background:rgba(180,166,255,.05);border:1px solid rgba(180,166,255,.16);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
+.fc-ai-query{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:10px;color:rgba(180,166,255,.62);letter-spacing:.03em;}
+.fc-ai-response{font-size:11px;color:var(--muted);line-height:1.6;padding-top:7px;border-top:1px solid rgba(180,166,255,.1);}
+/* runway live */
+.fc-runway{display:flex;flex-direction:column;gap:4px;margin:14px 0 12px;}
+.fc-runway-val{font-size:40px;font-weight:300;letter-spacing:-.04em;color:var(--text);line-height:1;}
+.fc-runway-unit{font-size:14px;font-weight:300;color:var(--muted);margin-left:4px;}
+.fc-runway-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+.fc-runway-delta{font-size:11px;color:rgba(255,101,119,.82);margin-top:2px;}
+.fc-signal-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+.fc-live-indicator{display:flex;align-items:center;gap:7px;padding-top:12px;border-top:1px solid rgba(255,255,255,.05);}
+[data-theme="light"] .fc-live-indicator{border-top-color:rgba(0,0,0,.05);}
+.fc-live-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px var(--amber);animation:fc-pulse 2.4s ease-in-out infinite;flex-shrink:0;}
+.fc-live-indicator span{font-size:9px;color:var(--faint);letter-spacing:.06em;}
+@keyframes fc-pulse{0%,100%{opacity:1;box-shadow:0 0 8px var(--amber);}50%{opacity:.45;box-shadow:0 0 3px rgba(255,179,64,.4);}}
+/* status bar (card 01) */
+.fc-status-bar{display:flex;align-items:center;gap:7px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.05);}
+[data-theme="light"] .fc-status-bar{border-bottom-color:rgba(0,0,0,.05);}
+.fc-status-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(62,210,119,.55);flex-shrink:0;}
+.fc-status-label{font-size:9px;color:var(--faint);letter-spacing:.07em;}
+/* hub-spoke graph (card 02) */
+.fc-hub{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
+.fc-hub-center{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:11px;font-weight:600;padding:7px 13px;background:rgba(62,210,119,.11);border:1px solid rgba(62,210,119,.26);border-radius:5px;color:rgba(62,210,119,.9);display:inline-flex;align-items:center;gap:8px;}
+.fc-hub-center-dot{width:5px;height:5px;border-radius:50%;background:rgba(62,210,119,.75);box-shadow:0 0 6px rgba(62,210,119,.5);flex-shrink:0;}
+.fc-hub-line{width:1px;height:10px;background:rgba(62,210,119,.22);margin-left:19px;}
+.fc-hub-leaves{display:flex;gap:5px;flex-wrap:wrap;}
+.fc-hub-leaf{font-size:9px;font-weight:500;padding:4px 9px;background:rgba(62,210,119,.05);border:1px solid rgba(62,210,119,.13);border-radius:3px;color:rgba(62,210,119,.62);}
+/* terminal (card 03) */
+.fc-terminal{background:rgba(0,0,0,.52);border:1px solid rgba(180,166,255,.11);border-radius:6px;padding:13px 14px;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;display:flex;flex-direction:column;gap:8px;flex:1;min-height:0;}
+[data-theme="light"] .fc-terminal{background:rgba(0,0,0,.05);border-color:rgba(180,166,255,.2);}
+.fc-terminal-prompt{font-size:10px;color:rgba(180,166,255,.72);letter-spacing:.04em;}
+.fc-terminal-steps{display:flex;flex-direction:column;gap:5px;padding-top:8px;border-top:1px solid rgba(180,166,255,.07);}
+.fc-terminal-step{font-size:10px;color:rgba(255,255,255,.28);display:flex;gap:7px;align-items:baseline;}
+[data-theme="light"] .fc-terminal-step{color:rgba(0,0,0,.38);}
+.fc-terminal-check{color:rgba(62,210,119,.72);flex-shrink:0;}
+.fc-terminal-outputs{display:flex;flex-direction:column;gap:4px;padding-top:8px;border-top:1px solid rgba(180,166,255,.07);}
+.fc-terminal-out{font-size:10px;color:rgba(180,166,255,.5);}
+.fc-terminal-out-active{color:rgba(255,179,64,.72);}
+/* shared signal thread */
+.fc-shared-ref{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:9px;color:rgba(255,179,64,.28);letter-spacing:.07em;margin-top:auto;padding-top:10px;animation:fc-ref-pulse 4s ease-in-out infinite;transition:color .3s ease;}
+.fc-shared-role{margin-left:8px;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,179,64,.4);}
+/* semantic tags */
+.fc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
+.fc-tag{font-size:9px;font-weight:500;letter-spacing:.04em;padding:2px 7px;border-radius:3px;border:1px solid;line-height:1.6;}
+.fc-tag-amber{color:rgba(255,179,64,.8);background:rgba(255,179,64,.06);border-color:rgba(255,179,64,.16);}
+.fc-tag-red{color:rgba(255,101,119,.8);background:rgba(255,101,119,.06);border-color:rgba(255,101,119,.16);}
+.fc-tag-muted{color:var(--faint);background:transparent;border-color:var(--border);}
+[data-theme="light"] .fc-tag-amber{color:rgba(148,82,0,.9);background:rgba(148,82,0,.05);border-color:rgba(148,82,0,.15);}
+[data-theme="light"] .fc-tag-red{color:rgba(180,25,45,.9);background:rgba(180,25,45,.05);border-color:rgba(180,25,45,.15);}
+/* runway big (card 04) */
+.fc-runway-num{font-size:54px;font-weight:300;letter-spacing:-.04em;color:var(--text);line-height:1;display:flex;align-items:baseline;gap:5px;}
+.fc-runway-num .fc-runway-unit{font-size:16px;font-weight:300;color:var(--muted);}
+.fc-runway-context{display:flex;flex-direction:column;gap:3px;margin-bottom:14px;}
+/* solution section – light mode color overrides */
+[data-theme="light"] .fc-blue .fc-num{color:rgba(10,80,190,1);}
+[data-theme="light"] .fc-green .fc-num{color:rgba(10,110,55,1);}
+[data-theme="light"] .fc-violet .fc-num{color:rgba(75,50,185,1);}
+[data-theme="light"] .fc-amber .fc-num{color:rgba(148,82,0,1);}
+[data-theme="light"] .fc-meta-warn{color:rgba(180,25,45,1);}
+[data-theme="light"] .fc-meta-signal{color:rgba(148,82,0,1);}
+[data-theme="light"] .fc-chain-node{color:rgba(10,110,55,1);background:rgba(62,210,119,.08);border-color:rgba(10,110,55,.22);}
+[data-theme="light"] .fc-hub-center{color:rgba(10,110,55,1);background:rgba(62,210,119,.09);border-color:rgba(10,110,55,.24);}
+[data-theme="light"] .fc-hub-leaf{color:rgba(10,110,55,.72);}
+[data-theme="light"] .fc-terminal-prompt{color:rgba(75,50,185,.9);}
+[data-theme="light"] .fc-terminal-check{color:rgba(10,110,55,.9);}
+[data-theme="light"] .fc-terminal-out{color:rgba(75,50,185,.65);}
+[data-theme="light"] .fc-terminal-out-active{color:rgba(148,82,0,.95);}
+[data-theme="light"] .fc-shared-ref{color:rgba(148,82,0,.5);}
+[data-theme="light"] .fc-runway-delta{color:rgba(180,25,45,1);}
+[data-theme="light"] .fc-ai-query{color:rgba(75,50,185,.8);}
+[data-theme="light"] .fc-shared-role{color:rgba(148,82,0,.5);}
+/* thread bar */
+@keyframes fc-ref-pulse{0%,100%{opacity:.55;}50%{opacity:1;}}
+.fc-thread-bar{display:flex;align-items:center;gap:8px;padding:9px 14px;background:rgba(255,179,64,.04);border:1px solid rgba(255,179,64,.09);border-radius:5px;margin-bottom:14px;flex-wrap:wrap;}
+[data-theme="light"] .fc-thread-bar{background:rgba(148,82,0,.04);border-color:rgba(148,82,0,.1);}
+.fc-thread-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,179,64,.8);box-shadow:0 0 6px rgba(255,179,64,.45);animation:fc-pulse 2.4s ease-in-out infinite;flex-shrink:0;}
+[data-theme="light"] .fc-thread-dot{background:rgba(148,82,0,.8);box-shadow:none;}
+.fc-thread-id{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:10px;font-weight:600;color:rgba(255,179,64,.82);letter-spacing:.06em;}
+[data-theme="light"] .fc-thread-id{color:rgba(148,82,0,.9);}
+.fc-thread-sep{font-size:10px;color:var(--faint);}
+.fc-thread-name{font-size:10px;color:var(--muted);}
+.fc-thread-propagate{font-size:10px;color:var(--faint);margin-left:auto;}
+/* signal history (card 01) */
+.fc-history{display:flex;flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.05);}
+[data-theme="light"] .fc-history{border-top-color:rgba(0,0,0,.05);}
+.fc-history-label{font-size:8px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-bottom:3px;}
+.fc-history-row{display:flex;align-items:baseline;gap:8px;}
+.fc-history-date{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:9px;color:var(--faint);min-width:44px;flex-shrink:0;}
+.fc-history-event{font-size:10px;color:var(--muted);flex:1;}
+.fc-history-tag{font-size:8px;font-weight:600;letter-spacing:.05em;padding:1px 5px;border-radius:2px;}
+.fc-history-tag.ok{color:rgba(62,210,119,.82);background:rgba(62,210,119,.08);}
+.fc-history-tag.esc{color:rgba(255,179,64,.82);background:rgba(255,179,64,.08);}
+.fc-history-tag.crit{color:rgba(255,101,119,.82);background:rgba(255,101,119,.08);}
+[data-theme="light"] .fc-history-tag.ok{color:rgba(10,110,55,.9);}
+[data-theme="light"] .fc-history-tag.esc{color:rgba(148,82,0,.9);}
+[data-theme="light"] .fc-history-tag.crit{color:rgba(180,25,45,.9);}
+/* dependency conflict (card 01) */
+.fc-conflict{display:flex;align-items:center;gap:6px;padding:7px 10px;background:rgba(255,101,119,.05);border:1px solid rgba(255,101,119,.13);border-radius:4px;margin-top:10px;}
+.fc-conflict-bullet{width:4px;height:4px;border-radius:50%;background:rgba(255,101,119,.65);flex-shrink:0;}
+.fc-conflict-text{font-size:10px;color:rgba(255,101,119,.75);}
+[data-theme="light"] .fc-conflict-text{color:rgba(180,25,45,.9);}
+/* terminal cursor & step animations (card 03) */
+@keyframes fc-blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+@keyframes fc-step-in{from{opacity:0;transform:translateX(-3px);}to{opacity:1;transform:none;}}
+.fc-terminal-cursor{display:inline-block;width:5px;height:9px;background:rgba(255,179,64,.6);margin-left:2px;animation:fc-blink 1.1s step-end infinite;vertical-align:text-bottom;}
+.fc-terminal-step{animation:fc-step-in .32s ease both;}
+.fc-terminal-step:nth-child(1){animation-delay:.5s;}
+.fc-terminal-step:nth-child(2){animation-delay:.95s;}
+.fc-terminal-step:nth-child(3){animation-delay:1.4s;}
+.fc-terminal-step:nth-child(4){animation-delay:1.85s;}
+.fc-terminal-out{animation:fc-step-in .32s ease both;}
+.fc-terminal-out:nth-child(1){animation-delay:2.3s;}
+.fc-terminal-out:nth-child(2){animation-delay:2.72s;}
+.fc-terminal-out:nth-child(3){animation-delay:3.14s;}
+@media(prefers-reduced-motion:reduce){.fc-terminal-step,.fc-terminal-out{animation:none;}.fc-terminal-cursor{animation:none;opacity:1;}}
 
 /* ── COMPETITION (V1) ── */
 .comp-wrap{border:1px solid var(--border);border-radius:8px;overflow:hidden;}
@@ -349,7 +531,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
   .hero-h1{font-size:40px;}
   .two-col{grid-template-columns:1fr;}
   .obj-grid{grid-template-columns:1fr;}
-  .sig-event-grid{grid-template-columns:1fr;}
+  .sig-event-grid{grid-template-columns:1fr;grid-template-rows:auto;}
   .sig-hero-card{grid-row:auto;}
   .sig-customer-card{grid-column:auto;grid-row:auto;}
   .ai-cols{grid-template-columns:1fr;}
@@ -666,7 +848,7 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
 <section class="section" id="problem">
   <div class="section-inner">
     <div class="section-header">
-      <p class="eyebrow" data-i18n="prob.eyebrow">The Problem</p>
+      <p class="eyebrow" data-i18n="prob.eyebrow">Das Problem</p>
       <h2 class="h1" data-i18n="prob.h1">Operative Komplexität übersteigt menschliche Koordination.</h2>
       <p class="body" style="max-width:58ch;margin-top:12px;" data-i18n="prob.lede">Kleine Firmen führen 8–12 Tools parallel. Menschen werden zur manuellen Integrationsschicht — und das skaliert nicht.</p>
     </div>
@@ -729,30 +911,151 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
   <div class="section-inner">
     <div class="section-header">
       <p class="eyebrow" data-i18n="sol.eyebrow">Die Lösung</p>
-      <h2 class="h1" data-i18n="sol.h1">Ein Betriebssystem für operative Realität.</h2>
+      <h2 class="h1" data-i18n="sol.h1">Vier Systeme.<br>Ein Zusammenhang.</h2>
       <p class="body" style="max-width:60ch;margin-top:12px;" data-i18n="sol.lede">Vier Bausteine, ein zusammenhängendes Modell. Kein weiteres Tool — eine operative Infrastruktur.</p>
     </div>
+    <div class="fc-thread-bar">
+      <div class="fc-thread-dot"></div>
+      <span class="fc-thread-id">#B-2047</span>
+      <span class="fc-thread-sep">·</span>
+      <span class="fc-thread-name">Enterprise Deal Sync — Alpha Q2</span>
+      <span class="fc-thread-sep fc-thread-propagate" data-i18n="sol.thread.propagate">propagiert in 4 Systeme</span>
+    </div>
     <div class="fc-grid">
+
+      <!-- 01 WORK ITEMS — groß, mit echtem Artefakt -->
       <div class="fc fc-blue">
         <div class="fc-num" data-i18n="sol.c1.num">01 · Work Items</div>
-        <h3 data-i18n="sol.c1.h3">Arbeit, Kosten,<br>Verantwortung vereint.</h3>
-        <p data-i18n="sol.c1.p">Jedes Ticket trägt Department, Kostentreiber, Owner und Runway-Impact. Strukturell verbunden — nicht nachträglich verlinkt.</p>
+        <h3 data-i18n="sol.c1.h3">Arbeit kennt<br>ihren Kontext.</h3>
+        <p data-i18n="sol.c1.p">Jedes Ticket trägt Department, Kostentreiber, Owner und Runway-Impact — strukturell verbunden, nicht nachträglich verlinkt.</p>
+        <div class="fc-status-bar">
+          <div class="fc-status-dot"></div>
+          <span class="fc-status-label">Aktiv · Beschaffung · Alpha Q2</span>
+        </div>
+        <div class="fc-artifact">
+          <div class="fc-artifact-head">
+            <span class="fc-artifact-id">#B-2047</span>
+            <span class="pill pb" style="font-size:9px;padding:2px 7px;">Revenue</span>
+            <div class="fc-artifact-dot"></div>
+          </div>
+          <p class="fc-artifact-title">Enterprise Deal Sync — Alpha Q2</p>
+          <div class="fc-artifact-meta">
+            <div class="fc-meta-row"><span class="fc-meta-key">Owner</span><span class="fc-meta-val">Daniel S.</span></div>
+            <div class="fc-meta-row"><span class="fc-meta-key">Cost Impact</span><span class="fc-meta-val fc-meta-warn">+€2.400</span></div>
+            <div class="fc-meta-row"><span class="fc-meta-key">Due Date</span><span class="fc-meta-val">16. Mai 2026</span></div>
+            <div class="fc-meta-row"><span class="fc-meta-key">Signal</span><span class="fc-meta-val fc-meta-signal">Runway −0.2 Monate</span></div>
+          </div>
+          <div class="fc-tags" style="padding-top:8px;">
+            <span class="fc-tag fc-tag-amber" data-i18n="sol.c1.tag1">supplier risk · medium</span>
+            <span class="fc-tag fc-tag-amber" data-i18n="sol.c1.tag2">2 approvals waiting</span>
+          </div>
+        </div>
+        <div class="fc-conflict">
+          <div class="fc-conflict-bullet"></div>
+          <span class="fc-conflict-text">Konflikt · F-09 blockiert Finance-Freigabe</span>
+        </div>
+        <div class="fc-history">
+          <div class="fc-history-label">Signal History</div>
+          <div class="fc-history-row">
+            <span class="fc-history-date">12. Mai</span>
+            <span class="fc-history-event">Work Item erstellt</span>
+            <span class="fc-history-tag ok">neu</span>
+          </div>
+          <div class="fc-history-row">
+            <span class="fc-history-date">14. Mai</span>
+            <span class="fc-history-event">Kostenabweichung +12%</span>
+            <span class="fc-history-tag esc">eskaliert</span>
+          </div>
+          <div class="fc-history-row">
+            <span class="fc-history-date">16. Mai</span>
+            <span class="fc-history-event">Freigabe blockiert · F-09</span>
+            <span class="fc-history-tag crit">blockiert</span>
+          </div>
+        </div>
+        <div class="fc-rel-row">
+          <span class="fc-rel-tag">→ Tech Supply GmbH</span>
+          <span class="fc-rel-tag">→ Finance Layer</span>
+          <span class="fc-rel-tag">→ Runway</span>
+          <span class="fc-rel-tag">→ F-09</span>
+        </div>
+        <div class="fc-shared-ref">● #B-2047<span class="fc-shared-role">Quelle</span></div>
       </div>
+
+      <!-- 02 OPERATIONAL CONTEXT -->
       <div class="fc fc-green">
         <div class="fc-num" data-i18n="sol.c2.num">02 · Operational Context</div>
-        <h3 data-i18n="sol.c2.h3">Die richtige Information<br>zur richtigen Zeit.</h3>
+        <h3 data-i18n="sol.c2.h3">Kontext entsteht<br>aus Struktur.</h3>
         <p data-i18n="sol.c2.p">Tickets, Docs, CRM, SOPs, Kosten und Mitarbeiter teilen ein Datenmodell. Kontext entsteht durch Struktur, nicht durch Suche.</p>
+        <div class="fc-hub">
+          <div class="fc-hub-center"><div class="fc-hub-center-dot"></div>#B-2047</div>
+          <div class="fc-hub-line"></div>
+          <div class="fc-hub-leaves">
+            <span class="fc-hub-leaf">CRM</span>
+            <span class="fc-hub-leaf">SOP</span>
+            <span class="fc-hub-leaf">Finance</span>
+            <span class="fc-hub-leaf">Procurement</span>
+            <span class="fc-hub-leaf">People</span>
+          </div>
+        </div>
+        <div class="fc-metrics">
+          <div class="fc-metric"><span class="fc-metric-val">3</span><span class="fc-metric-label">verknüpfte<br>Systeme</span></div>
+          <div class="fc-metric"><span class="fc-metric-val">2</span><span class="fc-metric-label">offene<br>Freigaben</span></div>
+          <div class="fc-metric"><span class="fc-metric-val">1</span><span class="fc-metric-label">Finanz-<br>abhängigkeit</span></div>
+        </div>
+        <div class="fc-tags">
+          <span class="fc-tag fc-tag-amber" data-i18n="sol.c2.tag1">investor update pending</span>
+          <span class="fc-tag fc-tag-muted" data-i18n="sol.c2.tag2">SOP-Revision fällig</span>
+        </div>
+        <div class="fc-shared-ref">● #B-2047<span class="fc-shared-role">Kontext</span></div>
       </div>
+
+      <!-- 03 AI-READABLE REALITY -->
       <div class="fc fc-violet">
         <div class="fc-num" data-i18n="sol.c3.num">03 · AI-lesbare Realität</div>
-        <h3 data-i18n="sol.c3.h3">Strukturierte Zusammenhänge<br>für AI.</h3>
+        <h3 data-i18n="sol.c3.h3">AI kann operative<br>Realität interpretieren.</h3>
         <p data-i18n="sol.c3.p">Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert genau diese Struktur.</p>
+        <div class="fc-terminal">
+          <div class="fc-terminal-prompt">→ analyse #B-2047 --deep<span class="fc-terminal-cursor"></span></div>
+          <div class="fc-terminal-steps">
+            <div class="fc-terminal-step"><span class="fc-terminal-check">✓</span>Lieferverzug erkannt: +4 Tage</div>
+            <div class="fc-terminal-step"><span class="fc-terminal-check">✓</span>Forecast-Abweichung: −€2.400</div>
+            <div class="fc-terminal-step"><span class="fc-terminal-check">✓</span>Runway-Delta: −0.2 Monate</div>
+            <div class="fc-terminal-step"><span class="fc-terminal-check">✓</span>Freigabe ausstehend: 1</div>
+          </div>
+          <div class="fc-terminal-outputs">
+            <div class="fc-terminal-out">■ Impact erkannt</div>
+            <div class="fc-terminal-out">■ Forecast aktualisiert</div>
+            <div class="fc-terminal-out fc-terminal-out-active">■ Signal ausgelöst</div>
+          </div>
+        </div>
+        <div class="fc-shared-ref">● #B-2047<span class="fc-shared-role">Analyse</span></div>
       </div>
+
+      <!-- 04 RUNWAY AS SIGNAL — live -->
       <div class="fc fc-amber">
         <div class="fc-num" data-i18n="sol.c4.num">04 · Runway als Signal</div>
-        <h3 data-i18n="sol.c4.h3">Finanzielle Realität<br>immer im Blick.</h3>
-        <p data-i18n="sol.c4.p">Cash, Burn, Tax und Runway als Signal-Pills. Nicht in einem Report — als operative Wahrnehmungsschicht über jeder Entscheidung.</p>
+        <h3 data-i18n="sol.c4.h3">Runway wird<br>operativ sichtbar.</h3>
+        <div class="fc-runway">
+          <div class="fc-runway-num">4.4<span class="fc-runway-unit" data-i18n="sol.c4.unit"> Monate</span></div>
+          <div class="fc-runway-context">
+            <span class="fc-runway-label">Aktueller Runway</span>
+            <span class="fc-runway-delta">↓ −0.2 vs. Vorwoche · #B-2047</span>
+          </div>
+        </div>
+        <div class="fc-signal-pills">
+          <span class="pill pa">Cash: €18.200</span>
+          <span class="pill pp">Burn +€504</span>
+        </div>
+        <div class="fc-tags">
+          <span class="fc-tag fc-tag-red" data-i18n="sol.c4.tag1">forecast confidence reduced</span>
+        </div>
+        <div class="fc-live-indicator">
+          <div class="fc-live-dot"></div>
+          <span>Live · Echtzeit-Signal</span>
+        </div>
+        <div class="fc-shared-ref">● #B-2047<span class="fc-shared-role">Impact</span></div>
       </div>
+
     </div>
   </div>
 </section>
@@ -900,28 +1203,46 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
       </div>
       <div class="obj-grid">
         <div class="card obj-card">
-          <div><p class="h3" style="margin-bottom:6px;" data-i18n="obj.c1.title">Projekt</p><p class="small" style="font-size:11px;" data-i18n="obj.c1.body">Strategische Einheit mit Zeitraum, Budget und Team-Zuordnungen.</p></div>
+          <div>
+            <div class="obj-live"><div class="obj-live-dot"></div><span class="obj-live-label" data-i18n="obj.c1.live">Live · Alpha Q2</span></div>
+            <p class="h3" style="margin-bottom:6px;" data-i18n="obj.c1.title">Projekt</p>
+            <p class="small" style="font-size:11px;" data-i18n="obj.c1.body">Strategische Einheit mit Zeitraum, Budget und Team-Zuordnungen.</p>
+          </div>
           <div class="obj-pills"><span class="pill pb" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c1.p1">Zeitraum</span><span class="pill pm" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c1.p2">Team</span><span class="pill pg" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c1.p3">Budget</span></div>
+          <div class="obj-relation" data-i18n="obj.c1.rel">verbunden mit Procurement & Finance</div>
         </div>
         <div class="card obj-card">
-          <div><p class="h3" style="margin-bottom:6px;" data-i18n="obj.c2.title">Auftrag</p><p class="small" style="font-size:11px;" data-i18n="obj.c2.body">Verbindliche operative Transaktion mit Lieferant, Dokumenten, Zahlungen.</p></div>
+          <div>
+            <div class="obj-state obj-state--pending"><div class="obj-state-dot"></div><span class="obj-state-label" data-i18n="obj.c2.state">Freigabe ausstehend</span></div>
+            <p class="h3" style="margin-bottom:6px;" data-i18n="obj.c2.title">Auftrag</p>
+            <p class="small" style="font-size:11px;" data-i18n="obj.c2.body">Verbindliche operative Transaktion mit Lieferant, Dokumenten, Zahlungen.</p>
+          </div>
           <div class="obj-pills"><span class="pill pa" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c2.p1">Status</span><span class="pill pm" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c2.p2">Lieferant</span></div>
+          <div class="obj-relation" data-i18n="obj.c2.rel">zentrale operative Transaktion</div>
         </div>
         <div class="card obj-card">
           <div><p class="h3" style="margin-bottom:6px;" data-i18n="obj.c3.title">Lieferant</p><p class="small" style="font-size:11px;" data-i18n="obj.c3.body">Externe Entität mit Verträgen, Leistungshistorie und Risikoprofil.</p></div>
           <div class="obj-pills"><span class="pill pm" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c3.p1">Vertragspartner</span><span class="pill pv" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c3.p2">Risiken</span></div>
+          <div class="obj-relation" data-i18n="obj.c3.rel">Risikoprofil aktiv</div>
         </div>
         <div class="card obj-card">
-          <div><p class="h3" style="margin-bottom:6px;" data-i18n="obj.c4.title">Rechnung</p><p class="small" style="font-size:11px;" data-i18n="obj.c4.body">Finanzdokument mit Fälligkeitsverfolgung und Abgleich gegen Aufträge.</p></div>
+          <div>
+            <div class="obj-state obj-state--paid"><div class="obj-state-dot"></div><span class="obj-state-label" data-i18n="obj.c4.state">Bezahlt</span></div>
+            <p class="h3" style="margin-bottom:6px;" data-i18n="obj.c4.title">Rechnung</p>
+            <p class="small" style="font-size:11px;" data-i18n="obj.c4.body">Finanzdokument mit Fälligkeitsverfolgung und Abgleich gegen Aufträge.</p>
+          </div>
           <div class="obj-pills"><span class="pill pa" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c4.p1">Fälligkeit</span><span class="pill pg" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c4.p2">Bezahlt</span></div>
+          <div class="obj-relation" data-i18n="obj.c4.rel">beeinflusst Cashflow & Runway</div>
         </div>
-        <div class="card obj-card">
+        <div class="card obj-card cp obj-card--alert">
           <div><p class="h3" style="margin-bottom:6px;" data-i18n="obj.c5.title">Risiko</p><p class="small" style="font-size:11px;" data-i18n="obj.c5.body">Erkanntes Risiko mit Wahrscheinlichkeit, Schwere und Gegenmaßnahmen.</p></div>
           <div class="obj-pills"><span class="pill pp" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c5.p1">Hoch</span><span class="pill pm" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c5.p2">Offen</span></div>
+          <div class="obj-relation" data-i18n="obj.c5.rel">propagiert in 2 Systeme</div>
         </div>
         <div class="card obj-card">
           <div><p class="h3" style="margin-bottom:6px;" data-i18n="obj.c6.title">Mitarbeiter</p><p class="small" style="font-size:11px;" data-i18n="obj.c6.body">Person mit Rollen, Aufgaben, Kostenzuordnung und Aktivitätshistorie.</p></div>
           <div class="obj-pills"><span class="pill pb" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c6.p1">Projekte</span><span class="pill pm" style="font-size:9px;padding:2px 8px;" data-i18n="obj.c6.p2">Verfügbar</span></div>
+          <div class="obj-relation" data-i18n="obj.c6.rel">3 aktive Projektabhängigkeiten</div>
         </div>
       </div>
     </div>
@@ -1001,7 +1322,10 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
 
       <!-- FINANCE -->
       <div class="card sig-persp-card" style="--persp-color:rgba(74,163,255,.95);--persp-border:rgba(74,163,255,.28);">
-        <p class="sig-persp-label" data-i18n="sig.p1.label">Finance</p>
+        <div class="sig-persp-head">
+          <p class="sig-persp-label" data-i18n="sig.p1.label">Finance</p>
+          <svg class="sig-persp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+        </div>
         <p class="sig-persp-title" data-i18n="sig.p1.title">Forecast-Risiko erkannt</p>
         <ul class="sig-chain">
           <li data-i18n="sig.p1.r1">€12.000 späterer Zahlungseingang</li>
@@ -1014,7 +1338,10 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
 
       <!-- EXECUTION -->
       <div class="card sig-persp-card" style="--persp-color:rgba(255,179,64,.95);--persp-border:rgba(255,179,64,.28);">
-        <p class="sig-persp-label" data-i18n="sig.p2.label">Execution</p>
+        <div class="sig-persp-head">
+          <p class="sig-persp-label" data-i18n="sig.p2.label">Execution</p>
+          <svg class="sig-persp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
         <p class="sig-persp-title" data-i18n="sig.p2.title">2 Projekte in Verzug</p>
         <ul class="sig-chain">
           <li data-i18n="sig.p2.r1">Sprint verschiebt sich</li>
@@ -1027,7 +1354,10 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
 
       <!-- CUSTOMER — Reihe 1, Spalte 4 -->
       <div class="card sig-persp-card sig-customer-card" style="--persp-color:rgba(62,210,119,.95);--persp-border:rgba(62,210,119,.28);">
-        <p class="sig-persp-label" data-i18n="sig.p5.label">Customer</p>
+        <div class="sig-persp-head">
+          <p class="sig-persp-label" data-i18n="sig.p5.label">Customer</p>
+          <svg class="sig-persp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
         <p class="sig-persp-title" data-i18n="sig.p5.title">Kundenkommunikation ausstehend</p>
         <ul class="sig-chain">
           <li data-i18n="sig.p5.r1">Liefertermin verschiebt sich</li>
@@ -1040,7 +1370,10 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
 
       <!-- PEOPLE -->
       <div class="card sig-persp-card" style="--persp-color:rgba(255,101,119,.95);--persp-border:rgba(255,101,119,.28);">
-        <p class="sig-persp-label" data-i18n="sig.p3.label">People</p>
+        <div class="sig-persp-head">
+          <p class="sig-persp-label" data-i18n="sig.p3.label">People</p>
+          <svg class="sig-persp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <p class="sig-persp-title" data-i18n="sig.p3.title">Kapazitätskonflikt erkannt</p>
         <ul class="sig-chain">
           <li data-i18n="sig.p3.r1">Projektleitung eskaliert</li>
@@ -1053,7 +1386,10 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
 
       <!-- COMPLIANCE — critical alert -->
       <div class="card sig-persp-card sig-persp-card--alert" style="--persp-color:rgba(180,166,255,.95);--persp-border:rgba(180,166,255,.28);">
-        <p class="sig-persp-label" data-i18n="sig.p4.label">Compliance</p>
+        <div class="sig-persp-head">
+          <p class="sig-persp-label" data-i18n="sig.p4.label">Compliance</p>
+          <svg class="sig-persp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>
+        </div>
         <p class="sig-persp-title" data-i18n="sig.p4.title">Freigabe blockiert</p>
         <ul class="sig-chain">
           <li data-i18n="sig.p4.r1">ESG-Dokument fehlt</li>
@@ -1066,7 +1402,10 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
 
       <!-- OPERATIONS — Reihe 2, Spalte 4 -->
       <div class="card sig-persp-card" style="--persp-color:rgba(45,212,191,.95);--persp-border:rgba(45,212,191,.28);">
-        <p class="sig-persp-label" data-i18n="sig.p6.label">Operations</p>
+        <div class="sig-persp-head">
+          <p class="sig-persp-label" data-i18n="sig.p6.label">Operations</p>
+          <svg class="sig-persp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
         <p class="sig-persp-title" data-i18n="sig.p6.title">Beschaffungsprozess gestört</p>
         <ul class="sig-chain">
           <li data-i18n="sig.p6.r1">Lagerbestand kritisch</li>
@@ -1325,7 +1664,7 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
 const i18n = {
   de: {
     'nav.brand':'Company OS','nav.by':'by Decode IT','nav.problem':'Problem','nav.solution':'Lösung','nav.signals':'Signale','nav.competition':'Vergleich','nav.founder':'Gründer','nav.cta':'Demo anfragen',
-    'prob.eyebrow':'The Problem','prob.h1':'Operative Komplexität übersteigt menschliche Koordination.','prob.lede':'Kleine Firmen führen 8–12 Tools parallel. Menschen werden zur manuellen Integrationsschicht — und das skaliert nicht.',
+    'prob.eyebrow':'Das Problem','prob.h1':'Operative Komplexität übersteigt menschliche Koordination.','prob.lede':'Kleine Firmen führen 8–12 Tools parallel. Menschen werden zur manuellen Integrationsschicht — und das skaliert nicht.',
     'prob.s1.num':'8–12','prob.s1.label':'Tools laufen parallel in einer Firma mit 10 Mitarbeitern. Tickets, Docs, CRM, HR, Finanzen, Wiki — alles getrennt.',
     'prob.s2.num':'0','prob.s2.label':'Systeme teilen einen gemeinsamen operativen Kontext. Verantwortung, Kosten und Risiken sind überall fragmentiert.',
     'prob.s3.num':'Founder','prob.s3.label':'ist die einzige Person, die alles im Kopf zusammenhält. Strukturell — und das skaliert nicht.',
@@ -1334,11 +1673,11 @@ const i18n = {
     'mon.legend':'Sieben Tabs. Keine einheitliche Sicht. Keine Priorität.','mon.arrow':'Mit Company OS →',
     'mon.p1':'Runway 4.7 Mon. ↓','mon.p2':'1 blocked','mon.p3':'Tax 9.500 € · in 12 Tagen','mon.p4':'1 approval pending','mon.p5':'Cash 85.000 €',
     'mon.body':'Eine Ansicht. Eine operative Wahrheit. Alles aus dem gleichen Datenmodell — ohne einen einzigen Tab mehr.',
-    'sol.eyebrow':'Die Lösung','sol.h1':'Ein Betriebssystem für operative Realität.','sol.lede':'Vier Bausteine, ein zusammenhängendes Modell. Kein weiteres Tool — eine operative Infrastruktur.',
-    'sol.c1.num':'01 · Work Items','sol.c1.h3':'Arbeit, Kosten,<br>Verantwortung vereint.','sol.c1.p':'Jedes Ticket trägt Department, Kostentreiber, Owner und Runway-Impact. Strukturell verbunden — nicht nachträglich verlinkt.',
-    'sol.c2.num':'02 · Operational Context','sol.c2.h3':'Die richtige Information<br>zur richtigen Zeit.','sol.c2.p':'Tickets, Docs, CRM, SOPs, Kosten und Mitarbeiter teilen ein Datenmodell. Kontext entsteht durch Struktur, nicht durch Suche.',
-    'sol.c3.num':'03 · AI-lesbare Realität','sol.c3.h3':'Strukturierte Zusammenhänge<br>für AI.','sol.c3.p':'Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert genau diese Struktur.',
-    'sol.c4.num':'04 · Runway als Signal','sol.c4.h3':'Finanzielle Realität<br>immer im Blick.','sol.c4.p':'Cash, Burn, Tax und Runway als Signal-Pills. Nicht in einem Report — als operative Wahrnehmungsschicht über jeder Entscheidung.',
+    'sol.eyebrow':'Die Lösung','sol.h1':'Vier Systeme.<br>Ein Zusammenhang.','sol.lede':'Vier Bausteine, ein zusammenhängendes Modell. Kein weiteres Tool — eine operative Infrastruktur.','sol.thread.propagate':'propagiert in 4 Systeme',
+    'sol.c1.num':'01 · Work Items','sol.c1.h3':'Arbeit kennt<br>ihren Kontext.','sol.c1.p':'Jedes Ticket trägt Department, Kostentreiber, Owner und Runway-Impact — strukturell verbunden, nicht nachträglich verlinkt.','sol.c1.tag1':'supplier risk · medium','sol.c1.tag2':'2 approvals waiting',
+    'sol.c2.num':'02 · Operational Context','sol.c2.h3':'Kontext entsteht<br>aus Struktur.','sol.c2.p':'Tickets, Docs, CRM, SOPs, Kosten und Mitarbeiter teilen ein Datenmodell. Kontext entsteht durch Struktur, nicht durch Suche.','sol.c2.tag1':'investor update pending','sol.c2.tag2':'SOP-Revision fällig',
+    'sol.c3.num':'03 · AI-lesbare Realität','sol.c3.h3':'AI kann operative<br>Realität interpretieren.','sol.c3.p':'Reasoning-Modelle können erstmals operative Realität interpretieren — wenn diese strukturiert vorliegt. Company OS liefert genau diese Struktur.',
+    'sol.c4.num':'04 · Runway als Signal','sol.c4.h3':'Runway wird<br>operativ sichtbar.','sol.c4.p':'Cash, Burn, Tax und Runway als Signal-Pills. Nicht in einem Report — als operative Wahrnehmungsschicht über jeder Entscheidung.','sol.c4.unit':' Monate','sol.c4.tag1':'forecast confidence reduced',
     'scen.eyebrow':'Ein Szenario','scen.h1':'Lieferant meldet Verzug.<br>Was passiert?',
     'scen.lede':'Ohne Company OS: 7 manuelle Schritte, mehrere Tage. Mit Company OS: ein einziger propagierender Moment — automatisch, vollständig, nachvollziehbar.',
     'scen.s1.num':'01 · Execution','scen.s1.title':'Delay entsteht.','scen.s1.desc':'Tech Supply GmbH bestätigt +4 Tage Verschiebung. Neuer Liefertermin: 16. Mai.','scen.s1.sys':'Folgeauftrag F-09 automatisch als gefährdet markiert. Keine manuelle Meldung nötig.',
@@ -1367,14 +1706,14 @@ const i18n = {
     'shift.e3.num':'03','shift.e3.era':'KI-Problem','shift.e3.title':'KI braucht Kontext. Fragmentierung liefert keinen.','shift.e3.body':'KI kann fragmentierte operative Realität nicht verstehen. Ohne Struktur entsteht Rauschen, keine Intelligenz.',
     'shift.e4.num':'04','shift.e4.era':'Company OS','shift.e4.title':'Verbundene operative Kontextschicht.','shift.e4.body':'Operative Realität strukturiert als verbundenes Objekt-Modell. Die Grundlage, die KI benötigt.',
     'obj.eyebrow':'Operational Objects','obj.h1':'Alles Operative ist ein Objekt.',
-    'obj.body1':'Operational Objects sind die atomaren Einheiten des Systems. Jedes Objekt trägt Kontext, Status, Relationen und Dokumente.',
-    'obj.body2':'Sie sind nicht isoliert — sie existieren in einem gemeinsamen operativen Modell, das allen Perspektiven zugrunde liegt.',
-    'obj.c1.title':'Projekt','obj.c1.body':'Strategische Einheit mit Zeitraum, Budget und Team-Zuordnungen.','obj.c1.p1':'Zeitraum','obj.c1.p2':'Team','obj.c1.p3':'Budget',
-    'obj.c2.title':'Auftrag','obj.c2.body':'Verbindliche operative Transaktion mit Lieferant, Dokumenten, Zahlungen.','obj.c2.p1':'Status','obj.c2.p2':'Lieferant',
-    'obj.c3.title':'Lieferant','obj.c3.body':'Externe Entität mit Verträgen, Leistungshistorie und Risikoprofil.','obj.c3.p1':'Vertragspartner','obj.c3.p2':'Risiken',
-    'obj.c4.title':'Rechnung','obj.c4.body':'Finanzdokument mit Fälligkeitsverfolgung und Abgleich gegen Aufträge.','obj.c4.p1':'Fälligkeit','obj.c4.p2':'Bezahlt',
-    'obj.c5.title':'Risiko','obj.c5.body':'Erkanntes Risiko mit Wahrscheinlichkeit, Schwere und Gegenmaßnahmen.','obj.c5.p1':'Hoch','obj.c5.p2':'Offen',
-    'obj.c6.title':'Mitarbeiter','obj.c6.body':'Person mit Rollen, Aufgaben, Kostenzuordnung und Aktivitätshistorie.','obj.c6.p1':'Projekte','obj.c6.p2':'Verfügbar',
+    'obj.body1':'Jedes Objekt trägt Kontext, Relationen und operative Auswirkungen — strukturell verknüpft, nicht nachträglich.',
+    'obj.body2':'Nicht isoliert. Vernetzt. Teil eines gemeinsamen Modells, das allen Perspektiven zugrunde liegt.',
+    'obj.c1.title':'Projekt','obj.c1.body':'Strategische Einheit mit Zeitraum, Budget und Team-Zuordnungen.','obj.c1.p1':'Zeitraum','obj.c1.p2':'Team','obj.c1.p3':'Budget','obj.c1.live':'Live · Alpha Q2','obj.c1.rel':'verbunden mit Procurement & Finance',
+    'obj.c2.title':'Auftrag','obj.c2.body':'Verbindliche operative Transaktion mit Lieferant, Dokumenten, Zahlungen.','obj.c2.p1':'Status','obj.c2.p2':'Lieferant','obj.c2.state':'Freigabe ausstehend','obj.c2.rel':'zentrale operative Transaktion',
+    'obj.c3.title':'Lieferant','obj.c3.body':'Externe Entität mit Verträgen, Leistungshistorie und Risikoprofil.','obj.c3.p1':'Vertragspartner','obj.c3.p2':'Risiken','obj.c3.rel':'Risikoprofil aktiv',
+    'obj.c4.title':'Rechnung','obj.c4.body':'Finanzdokument mit Fälligkeitsverfolgung und Abgleich gegen Aufträge.','obj.c4.p1':'Fälligkeit','obj.c4.p2':'Bezahlt','obj.c4.state':'Bezahlt','obj.c4.rel':'beeinflusst Cashflow & Runway',
+    'obj.c5.title':'Risiko','obj.c5.body':'Erkanntes Risiko mit Wahrscheinlichkeit, Schwere und Gegenmaßnahmen.','obj.c5.p1':'Hoch','obj.c5.p2':'Offen','obj.c5.rel':'propagiert in 2 Systeme',
+    'obj.c6.title':'Mitarbeiter','obj.c6.body':'Person mit Rollen, Aufgaben, Kostenzuordnung und Aktivitätshistorie.','obj.c6.p1':'Projekte','obj.c6.p2':'Verfügbar','obj.c6.rel':'3 aktive Projektabhängigkeiten',
     'story.eyebrow':'Operative Geschichte','story.h1':'Die operative Geschichte eines Objekts.',
     'story.body1':'Jedes Objekt führt ein vollständiges Journal: nicht als System-Log, sondern als lesbare operative Geschichte.',
     'story.body2':'Wer hat was entschieden? Wann? Warum? Was hat sich verändert?',
@@ -1438,11 +1777,11 @@ const i18n = {
     'mon.legend':'Seven tabs. No unified view. No priority.','mon.arrow':'With Company OS →',
     'mon.p1':'Runway 4.7 Mon. ↓','mon.p2':'1 blocked','mon.p3':'Tax 9,500 € · in 12 days','mon.p4':'1 approval pending','mon.p5':'Cash 85,000 €',
     'mon.body':'One view. One operational truth. Everything from the same data model — without a single extra tab.',
-    'sol.eyebrow':'The Solution','sol.h1':'An operating system for operational reality.','sol.lede':'Four building blocks, one connected model. Not another tool — an operational infrastructure.',
-    'sol.c1.num':'01 · Work Items','sol.c1.h3':'Work, costs,<br>responsibility unified.','sol.c1.p':'Every ticket carries department, cost driver, owner, and runway impact. Structurally connected — not retroactively linked.',
-    'sol.c2.num':'02 · Operational Context','sol.c2.h3':'The right information<br>at the right time.','sol.c2.p':'Tickets, docs, CRM, SOPs, costs, and people share one data model. Context emerges through structure, not search.',
-    'sol.c3.num':'03 · AI-readable Reality','sol.c3.h3':'Structured connections<br>for AI.','sol.c3.p':'Reasoning models can finally interpret operational reality — when it\'s structured. Company OS delivers that layer.',
-    'sol.c4.num':'04 · Runway as Signal','sol.c4.h3':'Financial reality<br>always visible.','sol.c4.p':'Cash, burn, tax, and runway as signal pills. Not in a report — as an operational perception layer above every decision.',
+    'sol.eyebrow':'The Solution','sol.h1':'Four systems.<br>One connection.','sol.lede':'Four building blocks, one connected model. Not another tool — an operational infrastructure.','sol.thread.propagate':'propagates through 4 systems',
+    'sol.c1.num':'01 · Work Items','sol.c1.h3':'Work knows<br>its context.','sol.c1.p':'Every ticket carries department, cost driver, owner, and runway impact — structurally connected, not retroactively linked.','sol.c1.tag1':'supplier risk · medium','sol.c1.tag2':'2 approvals waiting',
+    'sol.c2.num':'02 · Operational Context','sol.c2.h3':'Context emerges<br>from structure.','sol.c2.p':'Tickets, docs, CRM, SOPs, costs, and people share one data model. Context emerges through structure, not search.','sol.c2.tag1':'investor update pending','sol.c2.tag2':'SOP revision due',
+    'sol.c3.num':'03 · AI-readable Reality','sol.c3.h3':'AI can interpret<br>operational reality.','sol.c3.p':'Reasoning models can finally interpret operational reality — when it\'s structured. Company OS delivers that layer.',
+    'sol.c4.num':'04 · Runway as Signal','sol.c4.h3':'Runway becomes<br>operationally visible.','sol.c4.p':'Cash, burn, tax, and runway as signal pills. Not in a report — as an operational perception layer above every decision.','sol.c4.unit':' months','sol.c4.tag1':'forecast confidence reduced',
     'scen.eyebrow':'One Scenario','scen.h1':'Supplier reports delay.<br>What happens?',
     'scen.lede':'Without Company OS: 7 manual steps, several days. With Company OS: a single propagating moment — automatic, complete, traceable.',
     'scen.s1.num':'01 · Execution','scen.s1.title':'Delay occurs.','scen.s1.desc':'Tech Supply GmbH confirms +4 day shift. New delivery date: May 16.','scen.s1.sys':'Follow-up order F-09 automatically flagged as at risk. No manual notification needed.',
@@ -1471,14 +1810,14 @@ const i18n = {
     'shift.e3.num':'03','shift.e3.era':'AI Problem','shift.e3.title':'AI needs context. Fragmentation provides none.','shift.e3.body':'AI cannot understand fragmented operational reality. Without structure comes noise, not intelligence.',
     'shift.e4.num':'04','shift.e4.era':'Company OS','shift.e4.title':'Connected operational context layer.','shift.e4.body':'Operational reality structured as a connected object model. The foundation AI requires.',
     'obj.eyebrow':'Operational Objects','obj.h1':'Everything operational is an object.',
-    'obj.body1':'Operational Objects are the atomic units of the system. Every object carries context, status, relations and documents.',
-    'obj.body2':'They are not isolated — they exist in a shared operational model that underlies all perspectives.',
-    'obj.c1.title':'Project','obj.c1.body':'Strategic unit with timeline, budget and team assignments.','obj.c1.p1':'Timeline','obj.c1.p2':'Team','obj.c1.p3':'Budget',
-    'obj.c2.title':'Order','obj.c2.body':'Binding operational transaction with supplier, documents, payments.','obj.c2.p1':'Status','obj.c2.p2':'Supplier',
-    'obj.c3.title':'Supplier','obj.c3.body':'External entity with contracts, performance history and risk profile.','obj.c3.p1':'Contract party','obj.c3.p2':'Risks',
-    'obj.c4.title':'Invoice','obj.c4.body':'Financial document with due date tracking and reconciliation against orders.','obj.c4.p1':'Due date','obj.c4.p2':'Paid',
-    'obj.c5.title':'Risk','obj.c5.body':'Identified risk with probability, severity and countermeasures.','obj.c5.p1':'High','obj.c5.p2':'Open',
-    'obj.c6.title':'Employee','obj.c6.body':'Person with roles, tasks, cost allocation and activity history.','obj.c6.p1':'Projects','obj.c6.p2':'Available',
+    'obj.body1':'Every object carries context, relations and operational consequences — structurally connected, not retroactively.',
+    'obj.body2':'Not isolated. Connected. Part of a shared model that underlies all perspectives.',
+    'obj.c1.title':'Project','obj.c1.body':'Strategic unit with timeline, budget and team assignments.','obj.c1.p1':'Timeline','obj.c1.p2':'Team','obj.c1.p3':'Budget','obj.c1.live':'Live · Alpha Q2','obj.c1.rel':'linked to Procurement & Finance',
+    'obj.c2.title':'Order','obj.c2.body':'Binding operational transaction with supplier, documents, payments.','obj.c2.p1':'Status','obj.c2.p2':'Supplier','obj.c2.state':'Approval pending','obj.c2.rel':'central operational transaction',
+    'obj.c3.title':'Supplier','obj.c3.body':'External entity with contracts, performance history and risk profile.','obj.c3.p1':'Contract party','obj.c3.p2':'Risks','obj.c3.rel':'risk profile active',
+    'obj.c4.title':'Invoice','obj.c4.body':'Financial document with due date tracking and reconciliation against orders.','obj.c4.p1':'Due date','obj.c4.p2':'Paid','obj.c4.state':'Paid','obj.c4.rel':'affects cash flow & runway',
+    'obj.c5.title':'Risk','obj.c5.body':'Identified risk with probability, severity and countermeasures.','obj.c5.p1':'High','obj.c5.p2':'Open','obj.c5.rel':'propagates into 2 systems',
+    'obj.c6.title':'Employee','obj.c6.body':'Person with roles, tasks, cost allocation and activity history.','obj.c6.p1':'Projects','obj.c6.p2':'Available','obj.c6.rel':'3 active project dependencies',
     'story.eyebrow':'Operational Story','story.h1':'The operational story of an object.',
     'story.body1':'Every object maintains a complete journal: not as a system log, but as a readable operational story.',
     'story.body2':'Who decided what? When? Why? What changed?',
@@ -1833,6 +2172,7 @@ document.addEventListener('DOMContentLoaded', function() {
     layerGrid.addEventListener('mouseleave', function() { clearRel(); });
   }
 });
+
 </script>
 </body>
 </html>
