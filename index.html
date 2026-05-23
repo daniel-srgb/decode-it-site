@@ -80,9 +80,9 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 60px;background:rgba(6,6,9,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);z-index:100;transition:background .2s;}
 [data-theme="light"] .nav{background:rgba(248,248,245,.92);}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-icon{width:18px;height:18px;color:rgba(255,255,255,.5);}
+.nav-logo-icon{width:20px;height:20px;color:rgba(255,255,255,.5);}
 [data-theme="light"] .nav-logo-icon{color:rgba(0,0,0,.45);}
-.nav-logo-text{font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
+.nav-logo-text{font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
 .nav-right{display:flex;align-items:center;gap:20px;}
 .nav-links{display:flex;gap:28px;list-style:none;}
 .nav-links a{font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:.02em;}
@@ -90,6 +90,8 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .nav-controls{display:flex;align-items:center;gap:8px;}
 .ctrl-btn{background:none;border:1px solid var(--border);border-radius:5px;padding:5px 9px;cursor:pointer;color:var(--muted);font-size:10px;font-weight:600;letter-spacing:.08em;font-family:inherit;}
 .ctrl-btn:hover{border-color:var(--border-2);color:var(--text);}
+[data-theme="dark"] .ctrl-btn{border-color:rgba(255,255,255,0.28);color:rgba(255,255,255,0.72);}
+[data-theme="dark"] .ctrl-btn:hover{border-color:rgba(255,255,255,0.50);color:#fff;}
 .nav-cta{padding:6px 16px;background:var(--blue);color:#fff;border:none;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;text-decoration:none;letter-spacing:.04em;font-family:inherit;}
 
 /* ── SECTION ── */
@@ -523,6 +525,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 @media(max-width:960px){
   .nav{padding:0 28px;}
   .nav-links{display:none;}
+  .nav-by{display:none;}
   .hero{grid-template-columns:1fr;min-height:auto;}
   .hero-left{justify-content:flex-start;padding:22px 28px 56px;order:2;}
   .hero-left-inner{max-width:100%;}
@@ -681,7 +684,7 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
       <circle cx="2" cy="20" r="2" fill="currentColor"/><circle cx="7.27" cy="7.27" r="2" fill="currentColor"/>
     </svg>
     <span class="nav-logo-text" data-i18n="nav.brand">Company OS</span>
-    <span style="font-size:10px;font-weight:400;color:var(--faint);letter-spacing:.06em;" data-i18n="nav.by">by Decode IT</span>
+    <span class="nav-by" style="font-size:10px;font-weight:400;color:var(--faint);letter-spacing:.06em;" data-i18n="nav.by">by Decode IT</span>
   </a>
   <div class="nav-right">
     <ul class="nav-links">
@@ -730,45 +733,45 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
       <line x1="440" y1="520" x2="640" y2="520" stroke="rgba(255,179,64,0.32)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
       <line x1="440" y1="520" x2="566" y2="366" stroke="rgba(74,163,255,0.35)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
       <line x1="440" y1="520" x2="396" y2="322" stroke="rgba(74,163,255,0.30)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="260" y2="430" stroke="rgba(180,166,255,0.35)" stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="260" y2="430" stroke="rgba(74,163,255,0.30)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
       <line x1="440" y1="520" x2="260" y2="610" stroke="rgba(62,210,119,0.35)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="396" y2="718" stroke="rgba(74,163,255,0.30)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="396" y2="718" stroke="rgba(180,166,255,0.35)" stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
       <line x1="440" y1="520" x2="566" y2="674" stroke="rgba(255,179,64,0.30)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
       <circle cx="640" cy="520" r="38" fill="rgba(255,179,64,0.10)" class="hng"/>
       <circle cx="640" cy="520" r="24" fill="rgba(255,179,64,0.14)" stroke="rgba(255,179,64,0.70)" stroke-width="3" class="hng"/>
       <circle cx="640" cy="520" r="8"  fill="rgba(255,179,64,0.85)"/>
-      <text x="686" y="513" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(255,179,64,0.96)" letter-spacing=".08em">FINANZEN</text>
-      <text x="686" y="535" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(255,179,64,0.70)" letter-spacing=".04em">Runway · Kosten</text>
+      <text x="686" y="513" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(255,179,64,0.96)" letter-spacing=".08em" data-i18n="graph.finance">FINANZEN</text>
+      <text x="686" y="535" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(255,179,64,0.70)" letter-spacing=".04em" data-i18n="graph.finance.sub">Runway · Kosten</text>
       <circle cx="566" cy="366" r="38" fill="rgba(74,163,255,0.11)" class="hng2"/>
       <circle cx="566" cy="366" r="24" fill="rgba(74,163,255,0.15)" stroke="rgba(74,163,255,0.73)" stroke-width="3" class="hng2"/>
       <circle cx="566" cy="366" r="8"  fill="rgba(74,163,255,0.90)"/>
-      <text x="612" y="358" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(74,163,255,0.96)" letter-spacing=".08em">UMSETZUNG</text>
-      <text x="612" y="380" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(74,163,255,0.68)" letter-spacing=".04em">Aufgaben · Projekte</text>
+      <text x="612" y="358" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(74,163,255,0.96)" letter-spacing=".08em" data-i18n="graph.execution">UMSETZUNG</text>
+      <text x="612" y="380" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(74,163,255,0.68)" letter-spacing=".04em" data-i18n="graph.execution.sub">Aufgaben · Projekte</text>
       <circle cx="396" cy="322" r="34" fill="rgba(74,163,255,0.11)" class="hng3"/>
       <circle cx="396" cy="322" r="22" fill="rgba(74,163,255,0.14)" stroke="rgba(74,163,255,0.64)" stroke-width="3" class="hng3"/>
       <circle cx="396" cy="322" r="7"  fill="rgba(74,163,255,0.82)"/>
-      <text x="396" y="250" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(74,163,255,0.96)" letter-spacing=".08em">CRM</text>
-      <text x="396" y="272" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(74,163,255,0.68)" letter-spacing=".04em">Kontakte</text>
-      <circle cx="260" cy="430" r="36" fill="rgba(180,166,255,0.11)" class="hng4"/>
-      <circle cx="260" cy="430" r="23" fill="rgba(180,166,255,0.14)" stroke="rgba(180,166,255,0.68)" stroke-width="3" class="hng4"/>
-      <circle cx="260" cy="430" r="7"  fill="rgba(180,166,255,0.86)"/>
-      <text x="212" y="423" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(180,166,255,0.96)" letter-spacing=".08em">DOKUMENTE</text>
-      <text x="212" y="445" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(180,166,255,0.68)" letter-spacing=".04em">SOPs · Verträge</text>
+      <text x="396" y="250" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(74,163,255,0.96)" letter-spacing=".08em" data-i18n="graph.crm">CRM</text>
+      <text x="396" y="272" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(74,163,255,0.68)" letter-spacing=".04em" data-i18n="graph.crm.sub">Kontakte</text>
+      <circle cx="260" cy="430" r="34" fill="rgba(74,163,255,0.10)" class="hng6"/>
+      <circle cx="260" cy="430" r="22" fill="rgba(74,163,255,0.14)" stroke="rgba(74,163,255,0.60)" stroke-width="3" class="hng6"/>
+      <circle cx="260" cy="430" r="7"  fill="rgba(74,163,255,0.78)"/>
+      <text x="212" y="423" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(74,163,255,0.96)" letter-spacing=".08em" data-i18n="graph.people">PEOPLE</text>
+      <text x="212" y="445" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(74,163,255,0.68)" letter-spacing=".04em" data-i18n="graph.people.sub">Rollen · Kapazität</text>
       <circle cx="260" cy="610" r="38" fill="rgba(62,210,119,0.11)" class="hng5"/>
       <circle cx="260" cy="610" r="24" fill="rgba(62,210,119,0.14)" stroke="rgba(62,210,119,0.70)" stroke-width="3" class="hng5"/>
       <circle cx="260" cy="610" r="8"  fill="rgba(62,210,119,0.88)"/>
-      <text x="212" y="603" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(62,210,119,0.96)" letter-spacing=".08em">SIGNALE</text>
-      <text x="212" y="625" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(62,210,119,0.70)" letter-spacing=".04em">Alarme · Status</text>
-      <circle cx="396" cy="718" r="34" fill="rgba(74,163,255,0.10)" class="hng6"/>
-      <circle cx="396" cy="718" r="22" fill="rgba(74,163,255,0.14)" stroke="rgba(74,163,255,0.60)" stroke-width="3" class="hng6"/>
-      <circle cx="396" cy="718" r="7"  fill="rgba(74,163,255,0.78)"/>
-      <text x="396" y="778" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(74,163,255,0.96)" letter-spacing=".08em">PEOPLE</text>
-      <text x="396" y="800" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(74,163,255,0.68)" letter-spacing=".04em">Rollen · Kapazität</text>
+      <text x="212" y="603" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(62,210,119,0.96)" letter-spacing=".08em" data-i18n="graph.signals">SIGNALE</text>
+      <text x="212" y="625" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(62,210,119,0.70)" letter-spacing=".04em" data-i18n="graph.signals.sub">Alarme · Status</text>
+      <circle cx="396" cy="718" r="36" fill="rgba(180,166,255,0.11)" class="hng4"/>
+      <circle cx="396" cy="718" r="23" fill="rgba(180,166,255,0.14)" stroke="rgba(180,166,255,0.68)" stroke-width="3" class="hng4"/>
+      <circle cx="396" cy="718" r="7"  fill="rgba(180,166,255,0.86)"/>
+      <text x="396" y="778" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(180,166,255,0.96)" letter-spacing=".08em" data-i18n="graph.docs">DOKUMENTE</text>
+      <text x="396" y="800" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(180,166,255,0.68)" letter-spacing=".04em" data-i18n="graph.docs.sub">SOPs · Verträge</text>
       <circle cx="566" cy="674" r="36" fill="rgba(255,179,64,0.11)" class="hng7"/>
       <circle cx="566" cy="674" r="23" fill="rgba(255,179,64,0.14)" stroke="rgba(255,179,64,0.66)" stroke-width="3" class="hng7"/>
       <circle cx="566" cy="674" r="7"  fill="rgba(255,179,64,0.82)"/>
-      <text x="610" y="667" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(255,179,64,0.96)" letter-spacing=".08em">EINKAUF</text>
-      <text x="610" y="689" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(255,179,64,0.68)" letter-spacing=".04em">Lieferanten · Ablauf</text>
+      <text x="610" y="667" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(255,179,64,0.96)" letter-spacing=".08em" data-i18n="graph.procurement">EINKAUF</text>
+      <text x="610" y="689" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(255,179,64,0.68)" letter-spacing=".04em" data-i18n="graph.procurement.sub">Lieferanten · Ablauf</text>
       <circle cx="440" cy="520" r="78" fill="rgba(74,163,255,0.10)" class="hcb"/>
       <circle cx="440" cy="520" r="56" fill="rgba(74,163,255,0.14)" stroke="rgba(74,163,255,0.32)" stroke-width="1.5" class="hcb"/>
       <circle cx="440" cy="520" r="36" fill="rgba(74,163,255,0.24)" stroke="rgba(74,163,255,0.70)" stroke-width="2.5" class="hcb"/>
@@ -791,45 +794,45 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
       <line x1="440" y1="520" x2="640" y2="520" stroke="rgba(217,136,32,0.35)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
       <line x1="440" y1="520" x2="566" y2="366" stroke="rgba(41,128,232,0.38)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
       <line x1="440" y1="520" x2="396" y2="322" stroke="rgba(41,128,232,0.32)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="260" y2="430" stroke="rgba(124,107,212,0.38)" stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="260" y2="430" stroke="rgba(41,128,232,0.32)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
       <line x1="440" y1="520" x2="260" y2="610" stroke="rgba(34,181,90,0.38)"   stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="396" y2="718" stroke="rgba(41,128,232,0.32)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="396" y2="718" stroke="rgba(124,107,212,0.38)" stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
       <line x1="440" y1="520" x2="566" y2="674" stroke="rgba(217,136,32,0.32)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
       <circle cx="640" cy="520" r="38" fill="rgba(217,136,32,0.12)" class="hng"/>
       <circle cx="640" cy="520" r="24" fill="rgba(217,136,32,0.16)" stroke="rgba(217,136,32,0.76)" stroke-width="3" class="hng"/>
       <circle cx="640" cy="520" r="8"  fill="rgba(217,136,32,0.90)"/>
-      <text x="686" y="513" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(217,136,32,0.98)" letter-spacing=".08em">FINANZEN</text>
-      <text x="686" y="535" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(217,136,32,0.76)" letter-spacing=".04em">Runway · Kosten</text>
+      <text x="686" y="513" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(217,136,32,0.98)" letter-spacing=".08em" data-i18n="graph.finance">FINANZEN</text>
+      <text x="686" y="535" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(217,136,32,0.76)" letter-spacing=".04em" data-i18n="graph.finance.sub">Runway · Kosten</text>
       <circle cx="566" cy="366" r="38" fill="rgba(41,128,232,0.12)" class="hng2"/>
       <circle cx="566" cy="366" r="24" fill="rgba(41,128,232,0.16)" stroke="rgba(41,128,232,0.78)" stroke-width="3" class="hng2"/>
       <circle cx="566" cy="366" r="8"  fill="rgba(41,128,232,0.92)"/>
-      <text x="612" y="358" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(41,128,232,0.98)" letter-spacing=".08em">UMSETZUNG</text>
-      <text x="612" y="380" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(41,128,232,0.74)" letter-spacing=".04em">Aufgaben · Projekte</text>
+      <text x="612" y="358" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(41,128,232,0.98)" letter-spacing=".08em" data-i18n="graph.execution">UMSETZUNG</text>
+      <text x="612" y="380" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(41,128,232,0.74)" letter-spacing=".04em" data-i18n="graph.execution.sub">Aufgaben · Projekte</text>
       <circle cx="396" cy="322" r="34" fill="rgba(41,128,232,0.12)" class="hng3"/>
       <circle cx="396" cy="322" r="22" fill="rgba(41,128,232,0.16)" stroke="rgba(41,128,232,0.70)" stroke-width="3" class="hng3"/>
       <circle cx="396" cy="322" r="7"  fill="rgba(41,128,232,0.86)"/>
-      <text x="396" y="250" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(41,128,232,0.98)" letter-spacing=".08em">CRM</text>
-      <text x="396" y="272" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(41,128,232,0.72)" letter-spacing=".04em">Kontakte</text>
-      <circle cx="260" cy="430" r="36" fill="rgba(124,107,212,0.12)" class="hng4"/>
-      <circle cx="260" cy="430" r="23" fill="rgba(124,107,212,0.16)" stroke="rgba(124,107,212,0.73)" stroke-width="3" class="hng4"/>
-      <circle cx="260" cy="430" r="7"  fill="rgba(124,107,212,0.90)"/>
-      <text x="212" y="423" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(124,107,212,0.98)" letter-spacing=".08em">DOKUMENTE</text>
-      <text x="212" y="445" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(124,107,212,0.74)" letter-spacing=".04em">SOPs · Verträge</text>
+      <text x="396" y="250" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(41,128,232,0.98)" letter-spacing=".08em" data-i18n="graph.crm">CRM</text>
+      <text x="396" y="272" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(41,128,232,0.72)" letter-spacing=".04em" data-i18n="graph.crm.sub">Kontakte</text>
+      <circle cx="260" cy="430" r="34" fill="rgba(41,128,232,0.11)" class="hng6"/>
+      <circle cx="260" cy="430" r="22" fill="rgba(41,128,232,0.16)" stroke="rgba(41,128,232,0.66)" stroke-width="3" class="hng6"/>
+      <circle cx="260" cy="430" r="7"  fill="rgba(41,128,232,0.82)"/>
+      <text x="212" y="423" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(41,128,232,0.98)" letter-spacing=".08em" data-i18n="graph.people">PEOPLE</text>
+      <text x="212" y="445" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(41,128,232,0.70)" letter-spacing=".04em" data-i18n="graph.people.sub">Rollen · Kapazität</text>
       <circle cx="260" cy="610" r="38" fill="rgba(34,181,90,0.12)" class="hng5"/>
       <circle cx="260" cy="610" r="24" fill="rgba(34,181,90,0.16)" stroke="rgba(34,181,90,0.76)" stroke-width="3" class="hng5"/>
       <circle cx="260" cy="610" r="8"  fill="rgba(34,181,90,0.92)"/>
-      <text x="212" y="603" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(34,181,90,0.98)" letter-spacing=".08em">SIGNALE</text>
-      <text x="212" y="625" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(34,181,90,0.76)" letter-spacing=".04em">Alarme · Status</text>
-      <circle cx="396" cy="718" r="34" fill="rgba(41,128,232,0.11)" class="hng6"/>
-      <circle cx="396" cy="718" r="22" fill="rgba(41,128,232,0.16)" stroke="rgba(41,128,232,0.66)" stroke-width="3" class="hng6"/>
-      <circle cx="396" cy="718" r="7"  fill="rgba(41,128,232,0.82)"/>
-      <text x="396" y="778" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(41,128,232,0.98)" letter-spacing=".08em">PEOPLE</text>
-      <text x="396" y="800" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(41,128,232,0.70)" letter-spacing=".04em">Rollen · Kapazität</text>
+      <text x="212" y="603" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(34,181,90,0.98)" letter-spacing=".08em" data-i18n="graph.signals">SIGNALE</text>
+      <text x="212" y="625" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(34,181,90,0.76)" letter-spacing=".04em" data-i18n="graph.signals.sub">Alarme · Status</text>
+      <circle cx="396" cy="718" r="36" fill="rgba(124,107,212,0.12)" class="hng4"/>
+      <circle cx="396" cy="718" r="23" fill="rgba(124,107,212,0.16)" stroke="rgba(124,107,212,0.73)" stroke-width="3" class="hng4"/>
+      <circle cx="396" cy="718" r="7"  fill="rgba(124,107,212,0.90)"/>
+      <text x="396" y="778" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(124,107,212,0.98)" letter-spacing=".08em" data-i18n="graph.docs">DOKUMENTE</text>
+      <text x="396" y="800" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(124,107,212,0.74)" letter-spacing=".04em" data-i18n="graph.docs.sub">SOPs · Verträge</text>
       <circle cx="566" cy="674" r="36" fill="rgba(217,136,32,0.12)" class="hng7"/>
       <circle cx="566" cy="674" r="23" fill="rgba(217,136,32,0.16)" stroke="rgba(217,136,32,0.72)" stroke-width="3" class="hng7"/>
       <circle cx="566" cy="674" r="7"  fill="rgba(217,136,32,0.88)"/>
-      <text x="610" y="667" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(217,136,32,0.98)" letter-spacing=".08em">EINKAUF</text>
-      <text x="610" y="689" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(217,136,32,0.72)" letter-spacing=".04em">Lieferanten · Ablauf</text>
+      <text x="610" y="667" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="rgba(217,136,32,0.98)" letter-spacing=".08em" data-i18n="graph.procurement">EINKAUF</text>
+      <text x="610" y="689" font-family="Inter,system-ui,sans-serif" font-size="16" fill="rgba(217,136,32,0.72)" letter-spacing=".04em" data-i18n="graph.procurement.sub">Lieferanten · Ablauf</text>
       <circle cx="440" cy="520" r="78" fill="rgba(41,128,232,0.10)" class="hcb"/>
       <circle cx="440" cy="520" r="56" fill="rgba(41,128,232,0.14)" stroke="rgba(41,128,232,0.32)" stroke-width="1.5" class="hcb"/>
       <circle cx="440" cy="520" r="36" fill="rgba(41,128,232,0.24)" stroke="rgba(41,128,232,0.70)" stroke-width="2.5" class="hcb"/>
@@ -1760,6 +1763,13 @@ const i18n = {
     'cta.h1':'Wer die Realität strukturiert, besitzt die Grundlage für KI.',
     'cta.sub':'Company OS ist diese Grundlage. Nicht eine weitere Anwendung. Ein neues operatives Fundament.',
     'cta.primary':'Demo anfragen','cta.secondary':'System erkunden',
+    'graph.finance':'FINANZEN','graph.finance.sub':'Runway · Kosten',
+    'graph.execution':'UMSETZUNG','graph.execution.sub':'Aufgaben · Projekte',
+    'graph.crm':'CRM','graph.crm.sub':'Kontakte',
+    'graph.docs':'DOKUMENTE','graph.docs.sub':'SOPs · Verträge',
+    'graph.signals':'SIGNALE','graph.signals.sub':'Alarme · Status',
+    'graph.people':'PEOPLE','graph.people.sub':'Rollen · Kapazität',
+    'graph.procurement':'EINKAUF','graph.procurement.sub':'Lieferanten · Ablauf',
     'footer.brand':'Company OS','footer.impressum':'Impressum','footer.datenschutz':'Datenschutz','footer.copy':'© 2026 Decode IT',
   },
   en: {
@@ -1864,6 +1874,13 @@ const i18n = {
     'cta.h1':'Those who structure reality own the foundation for AI.',
     'cta.sub':'Company OS is that foundation. Not another application. A new operational foundation.',
     'cta.primary':'Request demo','cta.secondary':'Explore system',
+    'graph.finance':'FINANCE','graph.finance.sub':'Runway · Costs',
+    'graph.execution':'EXECUTION','graph.execution.sub':'Tasks · Projects',
+    'graph.crm':'CRM','graph.crm.sub':'Relations',
+    'graph.docs':'DOCS','graph.docs.sub':'SOPs · Contracts',
+    'graph.signals':'SIGNALS','graph.signals.sub':'Alerts · Status',
+    'graph.people':'PEOPLE','graph.people.sub':'Roles · Capacity',
+    'graph.procurement':'PROCUREMENT','graph.procurement.sub':'Suppliers · Flow',
     'footer.brand':'Company OS','footer.impressum':'Legal Notice','footer.datenschutz':'Privacy Policy','footer.copy':'© 2026 Decode IT',
   }
 };
