@@ -1,5 +1,9 @@
 {
   "rewrites": [
-    { "source": "/:path*", "destination": "/V6/:path*" }
+    { "source": "/", "destination": "/V6/index.html" },
+    { "source": "/robots.txt", "destination": "/V6/robots.txt" },
+    { "source": "/sitemap.xml", "destination": "/V6/sitemap.xml" },
+    { "source": "/datenschutz.html", "destination": "/V6/datenschutz.html" },
+    { "source": "/impressum.html", "destination": "/V6/impressum.html" }
   ]
 }
