@@ -1,3 +1,5 @@
 {
-  "rootDirectory": "V6"
+  "rewrites": [
+    { "source": "/:path*", "destination": "/V6/:path*" }
+  ]
 }
