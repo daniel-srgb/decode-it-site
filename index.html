@@ -186,7 +186,8 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 [data-theme="light"] .sig-hero-card{background:rgba(0,0,0,0.07);border-color:rgba(0,0,0,0.20);box-shadow:0 4px 22px rgba(0,0,0,.08);}
 .sig-event-id{font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.04em;margin-bottom:10px;}
 .sig-event-h{font-size:22px;font-weight:300;line-height:1.15;color:var(--text);letter-spacing:-.02em;margin-bottom:6px;}
-.sig-event-sub{font-size:13px;color:rgba(255,101,119,.88);font-weight:400;margin-bottom:24px;}
+.sig-event-sub{font-size:13px;color:rgba(255,101,119,.88);font-weight:400;max-height:0;opacity:0;overflow:hidden;margin-bottom:0;transition:max-height .42s cubic-bezier(.22,1,.36,1),opacity .32s ease,margin-bottom .32s ease,text-shadow .6s ease;}
+.sig-event-grid.escalated .sig-event-sub{max-height:40px;opacity:1;margin-bottom:24px;text-shadow:0 0 8px rgba(255,30,55,.45),0 0 18px rgba(255,30,55,.2);}
 .sig-event-meta{display:flex;flex-direction:column;}
 .sig-meta-row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--border);padding:8px 0;}
 .sig-meta-key{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
@@ -211,9 +212,14 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 .sig-chain li::before{content:'→';position:absolute;left:0;color:var(--faint);font-size:9px;}
 [data-theme="light"] .sig-chain{border-top-color:rgba(0,0,0,.08);}
 /* ── ESCALATION STATES ── */
+.sig-event-grid.sig-measuring .sig-chain li.esc,
+.sig-event-grid.sig-measuring .sig-tl-item.esc,
+.sig-event-grid.sig-measuring .sig-event-sub{max-height:100px!important;opacity:1!important;margin-bottom:24px!important;transition:none!important;}
 .sig-chain li.esc,.sig-tl-item.esc{max-height:0;opacity:0;overflow:hidden;transition:max-height .42s cubic-bezier(.22,1,.36,1),opacity .32s ease;}
 .sig-event-grid.escalated .sig-chain li.esc{max-height:60px;opacity:1;}
 .sig-event-grid.escalated .sig-tl-item.esc{max-height:40px;opacity:1;}
+.sig-delay-val{transition:text-shadow .6s ease,font-weight .3s ease;}
+.sig-event-grid.escalated .sig-delay-val{text-shadow:0 0 8px rgba(255,30,55,.45),0 0 18px rgba(255,30,55,.2);font-weight:700;}
 .sig-event-grid.escalated .sig-persp-card{border-left-width:3px;box-shadow:0 0 18px rgba(255,40,60,.07);transition:border-left-width .4s ease,box-shadow .5s ease,transform .28s cubic-bezier(.22,1,.36,1);}
 .sig-event-grid.escalated .sig-persp-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.22),0 0 22px rgba(255,40,60,.12);}
 .sig-persp-card--alert{box-shadow:0 0 0 1px rgba(255,50,70,.30),0 0 26px rgba(255,40,60,.18),0 4px 16px rgba(0,0,0,.28);transition:box-shadow .4s ease,transform .28s cubic-bezier(.22,1,.36,1);}
@@ -250,7 +256,7 @@ body{font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;backgroun
 [data-theme="light"] .ai-tool-name{color:rgba(0,0,0,.62);}
 .ai-tool-sub{font-size:9px;color:rgba(255,255,255,.52);margin-top:2px;}
 [data-theme="light"] .ai-tool-sub{color:rgba(0,0,0,.48);}
-.ai-flow{font-size:11px;text-align:center;color:rgba(255,255,255,.58);margin:6px 0;}
+.ai-flow{font-size:13px;text-align:center;color:rgba(255,255,255,.58);margin:10px 0;}
 [data-theme="light"] .ai-flow{color:rgba(0,0,0,.52);}
 .ai-model-box{padding:12px 16px;border-radius:5px;text-align:center;margin:6px 0;}
 .ai-model-label{font-size:11px;font-weight:600;letter-spacing:.08em;}
@@ -640,13 +646,7 @@ div:has(> .tl-row:hover) .tl-row:not(:hover){opacity:.35;}
 /* ── COMPETITION ROW REVEAL ── */
 @keyframes row-fade{from{opacity:0;}to{opacity:1;}}
 tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important;}
-/* ── AI TOOLS STAGGER ── */
-.ai-tools .ai-tool{opacity:0;}
-.ai-tools.tools-live .ai-tool{animation:rev-in .65s cubic-bezier(0.22,1,0.36,1) forwards;}
-.ai-tools.tools-live .ai-tool:nth-child(1){animation-delay:.9s;}
-.ai-tools.tools-live .ai-tool:nth-child(2){animation-delay:1.02s;}
-.ai-tools.tools-live .ai-tool:nth-child(3){animation-delay:1.14s;}
-.ai-tools.tools-live .ai-tool:nth-child(4){animation-delay:1.26s;}
+/* ── AI TOOLS STAGGER (disabled — tools always visible) ── */
 /* ── LAYER SECTION LIGHT-MODE FIXES ── */
 [data-theme="light"] .layer-col:nth-child(1) .layer-item-title{color:rgba(20,90,210,0.90) !important;}
 [data-theme="light"] .layer-col:nth-child(2) .layer-item-title{color:rgba(155,90,0,0.90) !important;}
@@ -655,8 +655,10 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
 /* ── AI SECTION REACTIVE HOVER ── */
 .ai-result{transition:background .35s cubic-bezier(0.22,1,0.36,1),border-color .35s cubic-bezier(0.22,1,0.36,1),box-shadow .35s cubic-bezier(0.22,1,0.36,1);}
 .ai-tool{cursor:pointer;transition:background .25s cubic-bezier(0.22,1,0.36,1),border-color .25s cubic-bezier(0.22,1,0.36,1),transform .25s cubic-bezier(0.22,1,0.36,1);}
-.ai-tool:hover{background:rgba(255,101,119,0.08);border-color:rgba(255,101,119,0.45);border-style:solid;transform:translateY(-2px);}
-[data-theme="light"] .ai-tool:hover{background:rgba(255,101,119,0.06);border-color:rgba(255,101,119,0.32);}
+.ai-tool:hover,.ai-tool--lit{background:rgba(255,101,119,0.08);border-color:rgba(255,101,119,0.45);border-style:solid;transform:translateY(-2px);}
+[data-theme="light"] .ai-tool:hover,[data-theme="light"] .ai-tool--lit{background:rgba(255,101,119,0.06);border-color:rgba(255,101,119,0.32);}
+.ai-tool--lit-green{background:rgba(62,210,119,0.08);border-color:rgba(62,210,119,0.45);border-style:solid;transform:translateY(-2px);}
+[data-theme="light"] .ai-tool--lit-green{background:rgba(62,210,119,0.06);border-color:rgba(62,210,119,0.32);}
 .ai-col:has(.ai-tool:hover) .ai-result{background:rgba(255,101,119,0.10);border-color:rgba(255,101,119,0.40);box-shadow:0 0 0 1px rgba(255,101,119,0.14),0 0 28px rgba(255,101,119,0.12);}
 .ai-node{cursor:pointer;transition:transform .22s cubic-bezier(0.22,1,0.36,1),box-shadow .22s cubic-bezier(0.22,1,0.36,1);}
 .ai-node:hover{transform:translateY(-2px);box-shadow:0 3px 10px rgba(74,163,255,0.28);}
@@ -706,7 +708,7 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
 <section class="hero dot-grid" id="hero">
   <div class="hero-left">
     <div class="hero-left-inner">
-      <p class="eyebrow hero-eyebrow" data-i18n="hero.eyebrow">Strukturierte Unternehmenssteuerung</p>
+      <p class="eyebrow hero-eyebrow" data-i18n="hero.eyebrow">Die nächste Generation operativer Systeme</p>
       <h1 class="hero-h1" data-i18n="hero.h1">Company OS</h1>
       <p class="hero-tagline" data-i18n="hero.tagline">Wer die Realität strukturiert,<br>besitzt die Grundlage für KI.</p>
       <div class="hero-divider"></div>
@@ -728,15 +730,15 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
       </defs>
       <rect x="0" y="0" width="900" height="1100" fill="url(#hco-dark)"/>
       <circle cx="440" cy="520" r="100" stroke="rgba(255,255,255,0.12)" stroke-width="2" fill="none"/>
-      <circle cx="440" cy="520" r="200" stroke="rgba(74,163,255,0.38)" stroke-width="3.5" stroke-dasharray="5 8" fill="none" class="orbit-ring-1"/>
+      <circle cx="440" cy="520" r="200" stroke="rgba(74,163,255,0.38)" stroke-width="7.5" stroke-dasharray="5 8" fill="none" class="orbit-ring-1"/>
       <circle cx="440" cy="520" r="275" stroke="rgba(255,255,255,0.03)" stroke-width="1.5" fill="none" class="orbit-ring-2"/>
-      <line x1="440" y1="520" x2="640" y2="520" stroke="rgba(255,179,64,0.32)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="566" y2="366" stroke="rgba(74,163,255,0.35)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="396" y2="322" stroke="rgba(74,163,255,0.30)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="260" y2="430" stroke="rgba(74,163,255,0.30)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="260" y2="610" stroke="rgba(62,210,119,0.35)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="396" y2="718" stroke="rgba(180,166,255,0.35)" stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="566" y2="674" stroke="rgba(255,179,64,0.30)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="640" y2="520" stroke="rgba(255,179,64,0.32)"  stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="566" y2="366" stroke="rgba(74,163,255,0.35)"  stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="396" y2="322" stroke="rgba(74,163,255,0.30)"  stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="260" y2="430" stroke="rgba(74,163,255,0.30)"  stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="260" y2="610" stroke="rgba(62,210,119,0.35)"  stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="396" y2="718" stroke="rgba(180,166,255,0.35)" stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="566" y2="674" stroke="rgba(255,179,64,0.30)"  stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
       <circle cx="640" cy="520" r="38" fill="rgba(255,179,64,0.10)" class="hng"/>
       <circle cx="640" cy="520" r="24" fill="rgba(255,179,64,0.14)" stroke="rgba(255,179,64,0.70)" stroke-width="3" class="hng"/>
       <circle cx="640" cy="520" r="8"  fill="rgba(255,179,64,0.85)"/>
@@ -789,15 +791,15 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
       </defs>
       <rect x="0" y="0" width="900" height="1100" fill="url(#hco-light)"/>
       <circle cx="440" cy="520" r="100" stroke="rgba(0,0,0,0.14)" stroke-width="2" fill="none"/>
-      <circle cx="440" cy="520" r="200" stroke="rgba(41,128,232,0.38)" stroke-width="3.5" stroke-dasharray="5 8" fill="none" class="orbit-ring-1"/>
+      <circle cx="440" cy="520" r="200" stroke="rgba(41,128,232,0.38)" stroke-width="7.5" stroke-dasharray="5 8" fill="none" class="orbit-ring-1"/>
       <circle cx="440" cy="520" r="275" stroke="rgba(0,0,0,0.03)" stroke-width="1.5" fill="none" class="orbit-ring-2"/>
-      <line x1="440" y1="520" x2="640" y2="520" stroke="rgba(217,136,32,0.35)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="566" y2="366" stroke="rgba(41,128,232,0.38)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="396" y2="322" stroke="rgba(41,128,232,0.32)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="260" y2="430" stroke="rgba(41,128,232,0.32)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="260" y2="610" stroke="rgba(34,181,90,0.38)"   stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="396" y2="718" stroke="rgba(124,107,212,0.38)" stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
-      <line x1="440" y1="520" x2="566" y2="674" stroke="rgba(217,136,32,0.32)"  stroke-width="3.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="640" y2="520" stroke="rgba(217,136,32,0.35)"  stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="566" y2="366" stroke="rgba(41,128,232,0.38)"  stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="396" y2="322" stroke="rgba(41,128,232,0.32)"  stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="260" y2="430" stroke="rgba(41,128,232,0.32)"  stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="260" y2="610" stroke="rgba(34,181,90,0.38)"   stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="396" y2="718" stroke="rgba(124,107,212,0.38)" stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
+      <line x1="440" y1="520" x2="566" y2="674" stroke="rgba(217,136,32,0.32)"  stroke-width="7.5" stroke-dasharray="5 6" class="hsk"/>
       <circle cx="640" cy="520" r="38" fill="rgba(217,136,32,0.12)" class="hng"/>
       <circle cx="640" cy="520" r="24" fill="rgba(217,136,32,0.16)" stroke="rgba(217,136,32,0.76)" stroke-width="3" class="hng"/>
       <circle cx="640" cy="520" r="8"  fill="rgba(217,136,32,0.90)"/>
@@ -1314,8 +1316,19 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
             <span class="sig-tl-date" data-i18n="sig.tl.d4">15. Mai</span>
             <span class="sig-tl-label" data-i18n="sig.tl.e4">Eskalation ausgelöst</span>
           </div>
+          <div class="sig-tl-item esc">
+            <span class="sig-tl-date" data-i18n="sig.tl.d5">16. Mai</span>
+            <span class="sig-tl-label" data-i18n="sig.tl.e5">Zweiter Lieferant kontaktiert</span>
+          </div>
+          <div class="sig-tl-item esc">
+            <span class="sig-tl-date" data-i18n="sig.tl.d6">17. Mai</span>
+            <span class="sig-tl-label" data-i18n="sig.tl.e6">Management informiert</span>
+          </div>
+          <div class="sig-tl-item esc">
+            <span class="sig-tl-date" data-i18n="sig.tl.d7">19. Mai</span>
+            <span class="sig-tl-label" data-i18n="sig.tl.e7">Vertragsstrafe geprüft</span>
+          </div>
         </div>
-        <button class="sig-esc-toggle" onclick="toggleSigEsc()" data-i18n="sig.esc.off">Eskalation simulieren →</button>
         <p class="sig-event-caption" data-i18n="sig.event.caption">Ausgelöst von · Lieferanten-Relation</p>
       </div>
 
@@ -1426,7 +1439,6 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
         <span class="sig-bar-sep">·</span>
         <span class="sig-count-item"><span class="sig-dot sig-dot-h"></span><span data-i18n="sig.bar.hint">4 Hinweise</span></span>
       </div>
-      <a class="sig-cta-link" href="#" data-i18n="sig.bar.cta">Alle Signale im Command Center anzeigen →</a>
     </div>
   </div>
 </section>
@@ -1440,36 +1452,29 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
     </div>
     <div class="ai-cols">
       <div class="ai-col" style="background:rgba(255,255,255,0.015);">
-        <p class="ai-col-label" style="color:rgba(255,255,255,0.62);" data-i18n="ai.left.label">Ohne Company OS</p>
+        <p class="ai-col-label" style="color:rgba(255,101,119,0.95);" data-i18n="ai.left.label">Ohne Company OS</p>
         <div class="ai-tools">
           <div class="ai-tool"><p class="ai-tool-name" data-i18n="ai.tool.crm">CRM</p><p class="ai-tool-sub" data-i18n="ai.tool.iso">isoliert</p></div>
           <div class="ai-tool"><p class="ai-tool-name" data-i18n="ai.tool.docs">Docs</p><p class="ai-tool-sub" data-i18n="ai.tool.iso">isoliert</p></div>
           <div class="ai-tool"><p class="ai-tool-name" data-i18n="ai.tool.chat">Chat</p><p class="ai-tool-sub" data-i18n="ai.tool.iso">isoliert</p></div>
           <div class="ai-tool"><p class="ai-tool-name" data-i18n="ai.tool.erp">ERP</p><p class="ai-tool-sub" data-i18n="ai.tool.iso">isoliert</p></div>
         </div>
-        <p class="ai-flow">↓ &nbsp;<span data-i18n="ai.left.flow">kein Zusammenhang</span>&nbsp; ↓</p>
-        <div class="ai-model-box" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.1);">
-          <p class="ai-model-label" style="color:rgba(255,255,255,0.68);letter-spacing:.08em;" data-i18n="ai.model">AI-Modell</p>
-          <p class="ai-model-icon" style="color:rgba(255,255,255,0.52);">?</p>
-        </div>
-        <div class="ai-spacer"></div>
+        <div style="flex:1"></div>
+        <p class="ai-flow" id="aiFlowLeft">↓ &nbsp;<span data-i18n="ai.left.flow">kein Zusammenhang</span>&nbsp; ↓</p>
+        <div style="flex:1"></div>
         <div class="ai-result" style="background:rgba(255,101,119,0.04);border:1px solid rgba(255,101,119,0.12);">
           <p class="ai-result-label" style="color:rgba(255,101,119,0.95);" data-i18n="ai.left.result.label">Fragmentierter Kontext</p>
           <p class="ai-result-body" data-i18n="ai.left.result.body">Generische Ausgabe. Keine operative Relevanz. Fehlende Nachvollziehbarkeit.</p>
         </div>
       </div>
       <div class="ai-divider-v"></div>
-      <div class="ai-col" style="background:rgba(74,163,255,0.025);">
+      <div class="ai-col">
         <p class="ai-col-label" style="color:rgba(74,163,255,0.95);" data-i18n="ai.right.label">Mit Company OS</p>
-        <div class="ai-graph-box">
-          <p class="ai-graph-label" data-i18n="ai.graph.label">Operational Graph</p>
-          <div class="ai-graph-nodes">
-            <span class="ai-node" data-i18n="ai.graph.n1">Auftrag</span><span class="ai-edge">→</span>
-            <span class="ai-node" data-i18n="ai.graph.n2">Lieferant</span><span class="ai-edge">→</span>
-            <span class="ai-node" data-i18n="ai.graph.n3">Rechnung</span><span class="ai-edge">→</span>
-            <span class="ai-node" data-i18n="ai.graph.n4">Risiko</span>
-          </div>
-          <p class="ai-graph-sub" data-i18n="ai.graph.sub">+ Kontext · Status · Dokumente · Relationen · Geschichte</p>
+        <div class="ai-tools">
+          <div class="ai-tool"><p class="ai-tool-name" data-i18n="ai.graph.n1">Auftrag</p><p class="ai-tool-sub" data-i18n="ai.tool.conn">vernetzt</p></div>
+          <div class="ai-tool"><p class="ai-tool-name" data-i18n="ai.graph.n2">Lieferant</p><p class="ai-tool-sub" data-i18n="ai.tool.conn">vernetzt</p></div>
+          <div class="ai-tool"><p class="ai-tool-name" data-i18n="ai.graph.n3">Rechnung</p><p class="ai-tool-sub" data-i18n="ai.tool.conn">vernetzt</p></div>
+          <div class="ai-tool"><p class="ai-tool-name" data-i18n="ai.graph.n4">Risiko</p><p class="ai-tool-sub" data-i18n="ai.tool.conn">vernetzt</p></div>
         </div>
         <p class="ai-flow" style="color:rgba(74,163,255,0.82);">↓ &nbsp;<span data-i18n="ai.right.flow">strukturierter Kontext</span>&nbsp; ↓</p>
         <div class="ai-model-box" style="background:rgba(74,163,255,0.06);border:1px solid rgba(74,163,255,0.18);">
@@ -1599,7 +1604,7 @@ tr.rev.on{animation:row-fade .7s cubic-bezier(0.22,1,0.36,1) forwards !important
         <p class="body" style="font-size:13px;margin-bottom:22px;" data-i18n="founder.body">Die Idee hinter Company OS entstand nicht plötzlich. Über Jahre hinweg zeigte sich in verschiedenen Rollen und Industrien dasselbe Muster: Menschen wurden zur Schnittstelle zwischen fragmentierten Systemen.</p>
         <div style="padding:14px 0;border-top:1px solid var(--border);">
           <p style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px;" data-i18n="founder.name">Daniel Sobiak</p>
-          <p style="font-size:11px;color:var(--muted);" data-i18n="founder.role">Founder &amp; CEO · Decode IT · daniel@decode-it.net</p>
+          <p style="font-size:11px;color:var(--muted);" data-i18n="founder.role">Decode IT · daniel@decode-it.net</p>
         </div>
       </div>
       <div class="founder-cards" style="display:flex;flex-direction:column;gap:14px;justify-content:center;">
@@ -1696,7 +1701,7 @@ const i18n = {
     'aud.a2.title':'IT-Dienstleister','aud.a2.p':'Mehrere Kundenprojekte parallel, knappe Marge, klare Lieferung. Tickets müssen mit Kosten und Pipeline reden.',
     'aud.a3.title':'Kleine SaaS- und Agenturteams','aud.a3.p':'Produkt und Firma gleichzeitig bauen. Beides darf sich nicht gegenseitig verschlucken.',
     'aud.a4.title':'Teams mit zu vielen Tools','aud.a4.p':'Jira plus Notion plus HubSpot plus DATEV plus Slack. Keine einheitliche Datenbasis, viel Doppelarbeit.',
-    'hero.eyebrow':'Strukturierte Unternehmenssteuerung','hero.h1':'Company OS','hero.tagline':'Wer die Realität strukturiert,<br>besitzt die Grundlage für KI.',
+    'hero.eyebrow':'Die nächste Generation operativer Systeme','hero.h1':'Company OS','hero.tagline':'Wer die Realität strukturiert,<br>besitzt die Grundlage für KI.',
     'hero.sub':'Die meisten Unternehmen laufen auf fragmentierten Tools und menschlicher Koordination.<span style="display:block;margin-top:12px;color:var(--text);font-weight:500;">Company OS verbindet operative Realität zu strukturierter Intelligenz.</span>',
     'hero.cta':'System erkunden','hero.secondary':'Demo anfragen',
     'shift.eyebrow':'Die Evolution','shift.h1':'Von der Fragmentierung zur verbundenen operativen Realität.',
@@ -1724,10 +1729,10 @@ const i18n = {
     'story.e5.time':'11. Mai · 08:45','story.e5.title':'Liefertermin verschoben: 12. → 16. Mai.','story.e5.body':'Risiko-Signal ausgelöst. Folgeauftrag F-09 betroffen.','story.e5.pill':'Risiko',
     'story.e6.time':'12. Mai · 16:00','story.e6.title':'Abschluss: Alle Dokumente vollständig.','story.e6.body':'Rechnung freigegeben. Signal: Prozess abgeschlossen.','story.e6.pill':'Abgeschlossen',
     'sig.eyebrow':'Signal-Layer','sig.h1':'Zusammenhänge erzeugen Signale.','sig.lede':'Risiken entstehen selten isoliert.',
-    'sig.event.eyebrow':'Beschaffungsvorgang','sig.event.id':'Beschaffungsauftrag #B-2047','sig.event.h':'Lieferung 4 Tage verspätet.','sig.event.sub':'Folgeaufträge betroffen.',
+    'sig.event.eyebrow':'Beschaffungsvorgang','sig.event.id':'Beschaffungsauftrag #B-2047','sig.event.h':'Lieferung 4 Tage verspätet.','sig.event.h.esc':'Lieferung 12 Tage verspätet.','sig.event.sub':'Folgeaufträge betroffen.',
     'sig.event.m1k':'Lieferant','sig.event.m2k':'Betrag','sig.event.m3k':'Projekt','sig.event.m4k':'Verspätung','sig.event.caption':'Ausgelöst von · Lieferanten-Relation',
     'sig.delay.norm':'+4 Tage','sig.delay.esc':'+12 Tage',
-    'sig.tl.d1':'12. Mai','sig.tl.e1':'Lieferverzug erkannt','sig.tl.d2':'13. Mai','sig.tl.e2':'Forecast-Risiko eskaliert','sig.tl.d3':'14. Mai','sig.tl.e3':'Sprint betroffen','sig.tl.d4':'15. Mai','sig.tl.e4':'Eskalation ausgelöst',
+    'sig.tl.d1':'12. Mai','sig.tl.e1':'Lieferverzug erkannt','sig.tl.d2':'13. Mai','sig.tl.e2':'Forecast-Risiko eskaliert','sig.tl.d3':'14. Mai','sig.tl.e3':'Sprint betroffen','sig.tl.d4':'15. Mai','sig.tl.e4':'Eskalation ausgelöst','sig.tl.d5':'16. Mai','sig.tl.e5':'Zweiter Lieferant kontaktiert','sig.tl.d6':'17. Mai','sig.tl.e6':'Management informiert','sig.tl.d7':'19. Mai','sig.tl.e7':'Vertragsstrafe geprüft',
     'sig.esc.off':'Eskalation simulieren →','sig.esc.on':'Zurück zu +4 Tage ←',
     'sig.p1.label':'Finance','sig.p1.title':'Forecast-Risiko erkannt','sig.p1.r1':'€12.000 späterer Zahlungseingang','sig.p1.r2':'Runway −0.2 Monate','sig.p1.r3':'Q2-Forecast betroffen','sig.p1.r4':'Q2-Ziel gefährdet','sig.p1.r5':'Investoren-Update notwendig',
     'sig.p2.label':'Execution','sig.p2.title':'2 Projekte in Verzug','sig.p2.r1':'Sprint verschiebt sich','sig.p2.r2':'1 Deadline gefährdet','sig.p2.r3':'Abhängigkeiten erkannt','sig.p2.r4':'3 Kundentermine betroffen','sig.p2.r5':'Projektabbruch möglich',
@@ -1737,7 +1742,7 @@ const i18n = {
     'sig.p6.label':'Operations','sig.p6.title':'Beschaffungsprozess gestört','sig.p6.r1':'Lagerbestand kritisch','sig.p6.r2':'Nachbestellung blockiert','sig.p6.r3':'Lieferkette unterbrochen','sig.p6.r4':'Produktionsstopp droht','sig.p6.r5':'Alternativlieferant gesucht',
     'sig.bar.active':'10 aktive Signale','sig.bar.crit':'3 Kritisch','sig.bar.warn':'6 Warnungen','sig.bar.hint':'4 Hinweise','sig.bar.cta':'Alle Signale im Command Center anzeigen →',
     'ai.eyebrow':'AI-Architektur','ai.h1':'Struktur ist die Voraussetzung für Intelligenz.',
-    'ai.left.label':'Ohne Company OS','ai.tool.crm':'CRM','ai.tool.docs':'Docs','ai.tool.chat':'Chat','ai.tool.erp':'ERP','ai.tool.iso':'isoliert',
+    'ai.left.label':'Ohne Company OS','ai.tool.crm':'CRM','ai.tool.docs':'Docs','ai.tool.chat':'Chat','ai.tool.erp':'ERP','ai.tool.iso':'isoliert','ai.tool.conn':'vernetzt',
     'ai.left.flow':'kein Zusammenhang','ai.model':'AI-Modell',
     'ai.left.result.label':'Fragmentierter Kontext','ai.left.result.body':'Generische Ausgabe. Keine operative Relevanz. Fehlende Nachvollziehbarkeit.',
     'ai.right.label':'Mit Company OS','ai.graph.label':'Operational Graph',
@@ -1753,7 +1758,7 @@ const i18n = {
     'founder.eyebrow':'Gründer','founder.h1':'Unternehmen hatten Software. Aber kein System.',
     'founder.quote':'"Das eigentliche Betriebssystem war häufig der Mensch selbst."',
     'founder.body':'Die Idee hinter Company OS entstand nicht plötzlich. Über Jahre hinweg zeigte sich in verschiedenen Rollen und Industrien dasselbe Muster: Menschen wurden zur Schnittstelle zwischen fragmentierten Systemen.',
-    'founder.name':'Daniel Sobiak','founder.role':'Founder &amp; CEO · Decode IT · daniel@decode-it.net',
+    'founder.name':'Daniel Sobiak','founder.role':'Decode IT · daniel@decode-it.net',
     'founder.c1.label':'Operative Erfahrung','founder.c1.title':'Mehrere Industrien. Dasselbe Muster.',
     'founder.c1.body':'Auftragsabwicklung, Messeorganisation, Fulfillment, Lieferkettenkoordination, Organisationsentwicklung, internationale Startup-Umfelder. In jeder Umgebung: isolierte Systeme, menschliche Synchronisation.',
     'founder.c2.label':'Station F · Paris','founder.c2.title':'Technologisch reif. Organisatorisch improvisiert.',
@@ -1807,7 +1812,7 @@ const i18n = {
     'aud.a2.title':'IT service providers','aud.a2.p':'Multiple client projects in parallel, thin margins, clear delivery. Tickets need to talk to costs and pipeline.',
     'aud.a3.title':'Small SaaS and agency teams','aud.a3.p':'Building a product and a company simultaneously. Neither should devour the other.',
     'aud.a4.title':'Teams with too many tools','aud.a4.p':'Jira plus Notion plus HubSpot plus accounting plus Slack. No unified truth, lots of duplicate work.',
-    'hero.eyebrow':'Structured Operational Context','hero.h1':'Company OS','hero.tagline':'Whoever structures reality<br>owns the foundation for AI.',
+    'hero.eyebrow':'The Next Generation of Operational Systems','hero.h1':'Company OS','hero.tagline':'Whoever structures reality<br>owns the foundation for AI.',
     'hero.sub':'Most companies run on disconnected tools and human coordination.<span style="display:block;margin-top:12px;color:var(--text);font-weight:500;">Company OS connects operational reality into structured intelligence.</span>',
     'hero.cta':'Explore system','hero.secondary':'Request demo',
     'shift.eyebrow':'The Evolution','shift.h1':'From fragmentation to connected operational reality.',
@@ -1835,10 +1840,10 @@ const i18n = {
     'story.e5.time':'11 May · 08:45','story.e5.title':'Delivery date shifted: 12 → 16 May.','story.e5.body':'Risk signal triggered. Follow-up order F-09 affected.','story.e5.pill':'Risk',
     'story.e6.time':'12 May · 16:00','story.e6.title':'Close: All documents complete.','story.e6.body':'Invoice released. Signal: Process complete.','story.e6.pill':'Completed',
     'sig.eyebrow':'Signal Layer','sig.h1':'Connections generate signals.','sig.lede':'Risks rarely emerge in isolation.',
-    'sig.event.eyebrow':'Procurement event','sig.event.id':'Procurement order #B-2047','sig.event.h':'Delivery 4 days late.','sig.event.sub':'Follow-up orders affected.',
+    'sig.event.eyebrow':'Procurement event','sig.event.id':'Procurement order #B-2047','sig.event.h':'Delivery 4 days late.','sig.event.h.esc':'Delivery 12 days late.','sig.event.sub':'Follow-up orders affected.',
     'sig.event.m1k':'Supplier','sig.event.m2k':'Amount','sig.event.m3k':'Project','sig.event.m4k':'Delay','sig.event.caption':'Triggered by · Supplier relation',
     'sig.delay.norm':'+4 days','sig.delay.esc':'+12 days',
-    'sig.tl.d1':'12 May','sig.tl.e1':'Delivery delay detected','sig.tl.d2':'13 May','sig.tl.e2':'Forecast risk escalated','sig.tl.d3':'14 May','sig.tl.e3':'Sprint affected','sig.tl.d4':'15 May','sig.tl.e4':'Escalation triggered',
+    'sig.tl.d1':'12 May','sig.tl.e1':'Delivery delay detected','sig.tl.d2':'13 May','sig.tl.e2':'Forecast risk escalated','sig.tl.d3':'14 May','sig.tl.e3':'Sprint affected','sig.tl.d4':'15 May','sig.tl.e4':'Escalation triggered','sig.tl.d5':'16 May','sig.tl.e5':'Second supplier contacted','sig.tl.d6':'17 May','sig.tl.e6':'Management notified','sig.tl.d7':'19 May','sig.tl.e7':'Penalty clause reviewed',
     'sig.esc.off':'Simulate escalation →','sig.esc.on':'Reset to +4 days ←',
     'sig.p1.label':'Finance','sig.p1.title':'Forecast risk detected','sig.p1.r1':'€12,000 later cash inflow','sig.p1.r2':'Runway −0.2 months','sig.p1.r3':'Q2 forecast affected','sig.p1.r4':'Q2 target at risk','sig.p1.r5':'Investor update required',
     'sig.p2.label':'Execution','sig.p2.title':'2 projects delayed','sig.p2.r1':'Sprint shifts','sig.p2.r2':'1 deadline at risk','sig.p2.r3':'Dependencies detected','sig.p2.r4':'3 client dates affected','sig.p2.r5':'Project cancellation possible',
@@ -1848,7 +1853,7 @@ const i18n = {
     'sig.p6.label':'Operations','sig.p6.title':'Procurement process disrupted','sig.p6.r1':'Inventory critical','sig.p6.r2':'Reorder blocked','sig.p6.r3':'Supply chain interrupted','sig.p6.r4':'Production halt imminent','sig.p6.r5':'Alternative supplier needed',
     'sig.bar.active':'10 active signals','sig.bar.crit':'3 Critical','sig.bar.warn':'6 Warnings','sig.bar.hint':'4 Info','sig.bar.cta':'View all signals in Command Center →',
     'ai.eyebrow':'AI Architecture','ai.h1':'Structure is the prerequisite for intelligence.',
-    'ai.left.label':'Without Company OS','ai.tool.crm':'CRM','ai.tool.docs':'Docs','ai.tool.chat':'Chat','ai.tool.erp':'ERP','ai.tool.iso':'isolated',
+    'ai.left.label':'Without Company OS','ai.tool.crm':'CRM','ai.tool.docs':'Docs','ai.tool.chat':'Chat','ai.tool.erp':'ERP','ai.tool.iso':'isolated','ai.tool.conn':'connected',
     'ai.left.flow':'no context','ai.model':'AI Model',
     'ai.left.result.label':'Fragmented context','ai.left.result.body':'Generic output. No operational relevance. Lacking traceability.',
     'ai.right.label':'With Company OS','ai.graph.label':'Operational Graph',
@@ -1864,7 +1869,7 @@ const i18n = {
     'founder.eyebrow':'Founder','founder.h1':'Companies had software. But no system.',
     'founder.quote':'"The real operating system was often the human themselves."',
     'founder.body':"The idea behind Company OS didn't arise suddenly. Over years, the same pattern emerged across different roles and industries: people became the interface between fragmented systems.",
-    'founder.name':'Daniel Sobiak','founder.role':'Founder &amp; CEO · Decode IT · daniel@decode-it.net',
+    'founder.name':'Daniel Sobiak','founder.role':'Decode IT · daniel@decode-it.net',
     'founder.c1.label':'Operational Experience','founder.c1.title':'Multiple industries. The same pattern.',
     'founder.c1.body':'Order processing, trade show organization, fulfillment, supply chain coordination, organizational development, international startup environments. In every context: isolated systems, human synchronization.',
     'founder.c2.label':'Station F · Paris','founder.c2.title':'Technologically mature. Organizationally improvised.',
@@ -1911,16 +1916,127 @@ function applyTheme(t) {
   document.getElementById('themeBtn').textContent = t === 'dark' ? '☀' : '☾';
 }
 
+var _sigEscTimer = null;
+
 function toggleSigEsc() {
   var grid = document.querySelector('.sig-event-grid');
-  var btn = document.querySelector('.sig-esc-toggle');
   var esc = grid.classList.toggle('escalated');
-  var key = esc ? 'sig.esc.on' : 'sig.esc.off';
-  btn.setAttribute('data-i18n', key);
-  btn.textContent = i18n[lang][key];
   sigAnimateDelay(esc ? 4 : 12, esc ? 12 : 4);
   sigStageItems(esc);
   sigStageBorders(esc);
+  var h = document.querySelector('.sig-event-h');
+  if (h) { var key = esc ? 'sig.event.h.esc' : 'sig.event.h'; h.setAttribute('data-i18n', key); h.textContent = i18n[lang][key]; }
+}
+
+function startSigEscAuto() {
+  if (_sigEscTimer) clearInterval(_sigEscTimer);
+  _sigEscTimer = setInterval(toggleSigEsc, 5000);
+}
+
+var _aiTimers = [];
+var _aiGlowsRed = [
+  {bg:'rgba(255,101,119,0.04)',border:'rgba(255,101,119,0.12)',shadow:'none'},
+  {bg:'rgba(255,101,119,0.055)',border:'rgba(255,101,119,0.22)',shadow:'0 0 10px rgba(255,101,119,0.06)'},
+  {bg:'rgba(255,101,119,0.07)',border:'rgba(255,101,119,0.30)',shadow:'0 0 16px rgba(255,101,119,0.09)'},
+  {bg:'rgba(255,101,119,0.085)',border:'rgba(255,101,119,0.36)',shadow:'0 0 22px rgba(255,101,119,0.11)'},
+  {bg:'rgba(255,101,119,0.10)',border:'rgba(255,101,119,0.40)',shadow:'0 0 0 1px rgba(255,101,119,0.14),0 0 28px rgba(255,101,119,0.12)'}
+];
+var _aiGlowsGreen = [
+  {bg:'rgba(62,210,119,0.04)',border:'rgba(62,210,119,0.12)',shadow:'none'},
+  {bg:'rgba(62,210,119,0.055)',border:'rgba(62,210,119,0.22)',shadow:'0 0 10px rgba(62,210,119,0.06)'},
+  {bg:'rgba(62,210,119,0.07)',border:'rgba(62,210,119,0.30)',shadow:'0 0 16px rgba(62,210,119,0.09)'},
+  {bg:'rgba(62,210,119,0.085)',border:'rgba(62,210,119,0.36)',shadow:'0 0 22px rgba(62,210,119,0.11)'},
+  {bg:'rgba(62,210,119,0.10)',border:'rgba(62,210,119,0.40)',shadow:'0 0 0 1px rgba(62,210,119,0.14),0 0 28px rgba(62,210,119,0.12)'}
+];
+
+function setAiResultGlow(level, glows, colIndex) {
+  var cols = document.querySelectorAll('.ai-cols .ai-col');
+  var res = cols[colIndex] && cols[colIndex].querySelector('.ai-result');
+  if (!res) return;
+  var g = glows[level];
+  res.style.background = g.bg;
+  res.style.borderColor = g.border;
+  res.style.boxShadow = g.shadow;
+}
+
+function resetAiTools() {
+  document.querySelectorAll('.ai-cols .ai-col:first-child .ai-tool').forEach(function(t) {
+    t.classList.remove('ai-tool--lit');
+  });
+  document.querySelectorAll('.ai-cols .ai-col:last-child .ai-tool').forEach(function(t) {
+    t.classList.remove('ai-tool--lit-green');
+  });
+  setAiResultGlow(0, _aiGlowsRed, 0);
+  setAiResultGlow(0, _aiGlowsGreen, 1);
+}
+
+function runAiToolSeq() {
+  var leftTools  = Array.from(document.querySelectorAll('.ai-cols .ai-col:first-child .ai-tool'));
+  var rightTools = Array.from(document.querySelectorAll('.ai-cols .ai-col:last-child .ai-tool'));
+  var STEP = 600, ON = 500, HOLD = 2200, GAP = 600;
+
+  // Left: one at a time — on then off before next
+  leftTools.forEach(function(tool, i) {
+    var tOn = setTimeout(function() {
+      tool.classList.add('ai-tool--lit');
+      setAiResultGlow(i + 1, _aiGlowsRed, 0);
+    }, i * STEP);
+    var tOff = setTimeout(function() {
+      tool.classList.remove('ai-tool--lit');
+      setAiResultGlow(i, _aiGlowsRed, 0);
+    }, i * STEP + ON);
+    _aiTimers.push(tOn, tOff);
+  });
+
+  // Right: accumulate — each stays lit
+  rightTools.forEach(function(tool, i) {
+    var t = setTimeout(function() {
+      tool.classList.add('ai-tool--lit-green');
+      setAiResultGlow(i + 1, _aiGlowsGreen, 1);
+    }, i * STEP);
+    _aiTimers.push(t);
+  });
+
+  var total = Math.max(leftTools.length, rightTools.length);
+  var restart = setTimeout(function() {
+    resetAiTools();
+    var next = setTimeout(runAiToolSeq, GAP);
+    _aiTimers.push(next);
+  }, total * STEP + HOLD);
+  _aiTimers.push(restart);
+}
+
+function startAiToolAnim() {
+  _aiTimers.forEach(clearTimeout);
+  _aiTimers = [];
+  resetAiTools();
+  runAiToolSeq();
+}
+
+function stopAiToolAnim() {
+  _aiTimers.forEach(clearTimeout);
+  _aiTimers = [];
+  resetAiTools();
+}
+
+
+function equalizeAiResults() {
+  var results = Array.from(document.querySelectorAll('.ai-cols .ai-result'));
+  if (results.length < 2) return;
+  var max = Math.max.apply(null, results.map(function(r) { return r.offsetHeight; }));
+  results.forEach(function(r) { r.style.minHeight = max + 'px'; });
+}
+
+function lockSigCardHeights() {
+  var grid = document.querySelector('.sig-event-grid');
+  if (!grid) return;
+  grid.classList.add('sig-measuring');
+  requestAnimationFrame(function() {
+    grid.querySelectorAll('.sig-hero-card, .sig-persp-card').forEach(function(c) {
+      c.style.minHeight = c.offsetHeight + 'px';
+    });
+    grid.classList.remove('sig-measuring');
+  });
 }
 
 function sigAnimateDelay(from, to) {
@@ -1957,7 +2073,28 @@ function sigStageBorders(show) {
 function toggleLang() { applyLang(lang === 'de' ? 'en' : 'de'); }
 function toggleTheme() { applyTheme(theme === 'dark' ? 'light' : 'dark'); }
 
-document.addEventListener('DOMContentLoaded', () => { applyTheme(theme); applyLang(lang); });
+document.addEventListener('DOMContentLoaded', () => {
+  applyTheme(theme);
+  applyLang(lang);
+  equalizeAiResults();
+  lockSigCardHeights();
+  var aiSection = document.getElementById('ai');
+  if (aiSection) {
+    new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { startAiToolAnim(); } else { stopAiToolAnim(); }
+    }, { threshold: 0.25 }).observe(aiSection);
+  }
+  var sigSection = document.getElementById('signals');
+  if (sigSection) {
+    new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        startSigEscAuto();
+      } else {
+        if (_sigEscTimer) { clearInterval(_sigEscTimer); _sigEscTimer = null; }
+      }
+    }, { threshold: 0.25 }).observe(sigSection);
+  }
+});
 
 // ── Micro-interactions ──
 document.addEventListener('DOMContentLoaded', function() {
